@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Gurukulam</title>
+    <link rel="stylesheet" href="./styles/global.css">
+    <link rel="stylesheet" href="./styles/about.css">
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container header-container">
+        <!-- Logo -->
+        <div class="logo">
+            <div class="logo-circle">
+                <span>GURU</span>
+            </div>
+            <div class="logo-text">
+                <span class="logo-main">Gurukulam</span>
+                <span class="logo-tagline">Reviving Ancient Wisdom</span>
+            </div>
+        </div>
+
+        <!-- Hamburger Menu for Mobile -->
+        <div class="hamburger" onclick="toggleNavbar()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <!-- Navigation -->
+        <nav class="navbar" id="navbar">
+            <ul class="nav-list">
+                <li><a href="/index.html" class="current-page">Home</a></li>
+                <li class="has-dropdown">
+                    <a href="javascript:void(0)">Programs <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="/program.html">Vedic Studies</a>
+                        <a href="program2.html">Sanskrit Immersion</a>
+                        <a href="program3.html">Yoga & Meditation</a>
+                        <a href="program4.html">Ayurveda Basics</a>
+                    </div>
+                </li>
+                <li><a href="/books.html">Books</a></li>
+                <li><a href="Campus.html">Campus</a></li>
+                <li><a href="/Gallery/Gallery.html">Gallery</a></li>
+                <li class="has-dropdown">
+                    <a href="javascript:void(0)" class="current-page">About <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="/about.html">About Us</a>
+                        <a href="mission.html">Our Mission</a>
+                        <a href="team.html">Our Team</a>
+                    </div>
+                </li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2>About Gurukulam</h2>
+            <p>Gurukulam is dedicated to reviving the ancient Vedic education system for modern times. We offer programs in Vedic Studies, Yoga, Sanskrit, and more.</p>
+            <img src="images/card1.jpg" alt="Gurukul System">
+            <h3>Our Mission</h3>
+            <p>To preserve and propagate the timeless wisdom of the Vedas and ancient Indian traditions.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Gurukulam. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

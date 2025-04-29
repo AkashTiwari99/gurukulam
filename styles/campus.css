@@ -1,0 +1,424 @@
+/* Campus Page Specific Styles */
+
+/* Hero Section */
+.campus-hero {
+    position: relative;
+    height: 70vh;
+    min-height: 500px;
+    background-image: url('/images/fire.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.campus-hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+}
+
+.campus-hero .hero-container {
+    position: relative;
+    z-index: 1;
+}
+
+.campus-hero .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-lg);
+}
+
+.campus-hero .hero-title {
+    font-size: 3.5rem;
+    margin-bottom: var(--space-md);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.campus-hero .hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-lg);
+    opacity: 0.9;
+}
+
+/* Campus Overview Section */
+.campus-overview {
+    padding: var(--space-xl) 0;
+    background-color: var(--light);
+}
+
+.overview-content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+    margin-top: var(--space-lg);
+}
+
+.overview-text {
+    flex: 1;
+}
+
+.overview-text p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-medium);
+}
+
+.overview-image {
+    flex: 1;
+    border-radius: var(--border-radius-large);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.overview-image img {
+    background-size: cover;
+    background-position: bottom;
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform var(--transition-med);
+    object-fit: cover;
+}
+
+.overview-image:hover img {
+    transform: scale(1.03);
+}
+
+/* Campus Facilities Section */
+.campus-facilities {
+    padding: var(--space-xl) 0;
+    background-color: var(--light);
+    position: relative;
+}
+
+.campus-facilities::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/fire_2.jpg');
+    background-repeat: repeat;
+    background-size: 200px;
+    opacity: 0.04;
+    z-index: 0;
+}
+
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+    position: relative;
+    z-index: 1;
+}
+
+.facility-card {
+    background-color: white;
+    border-radius: var(--border-radius-medium);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow);
+    transition: transform var(--transition-med), box-shadow var(--transition-med);
+    text-align: center;
+}
+
+.facility-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.facility-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--border-radius-circle);
+    background: var(--gradient-primary);
+    margin: 0 auto var(--space-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: white;
+    box-shadow: 0 4px 12px rgba(107, 56, 251, 0.25);
+}
+
+.facility-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: var(--space-sm);
+    color: var(--primary-dark);
+}
+
+.facility-card p {
+    color: var(--text-medium);
+    line-height: 1.6;
+}
+
+/* Campus Life Section */
+.campus-life {
+    padding: var(--space-xl) 0;
+    background-color: var(--light);
+}
+
+.timeline {
+    max-width: 800px;
+    margin: var(--space-lg) auto 0;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 4px;
+    background: var(--gradient-primary);
+    left: 110px;
+    top: 0;
+    border-radius: 4px;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: var(--space-lg);
+    position: relative;
+}
+
+.timeline-time {
+    width: 110px;
+    padding-right: var(--space-lg);
+    text-align: right;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.timeline-content {
+    padding-left: var(--space-xl);
+    position: relative;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    left: -8px;
+    top: 6px;
+    z-index: 1;
+    box-shadow: 0 0 0 4px rgba(107, 56, 251, 0.3);
+}
+
+.timeline-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-xs);
+    color: var(--text-dark);
+}
+
+.timeline-content p {
+    color: var(--text-medium);
+}
+
+/* Virtual Tour Section */
+.virtual-tour {
+    padding: var(--space-xl) 0;
+    background-color: var(--dark-medium);
+    color: var(--text-light);
+}
+
+.virtual-tour .section-header h2,
+.virtual-tour .section-header p {
+    color: var(--text-light);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    height: 250px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-med);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all var(--transition-med);
+}
+
+.gallery-item:hover .gallery-caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tour-cta {
+    text-align: center;
+    margin-top: var(--space-xl);
+    padding: var(--space-lg);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-large);
+    backdrop-filter: blur(5px);
+}
+
+.tour-cta h3 {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-sm);
+}
+
+.tour-cta p {
+    max-width: 600px;
+    margin: 0 auto var(--space-lg);
+    opacity: 0.9;
+}
+
+/* Location Section */
+.campus-location {
+    padding: var(--space-xl) 0;
+    background-color: var(--light);
+}
+
+.location-content {
+    display: flex;
+    gap: var(--space-xl);
+    margin-top: var(--space-lg);
+    align-items: flex-start;
+}
+
+.location-map {
+    flex: 1;
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.location-map img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.location-details {
+    flex: 1;
+    padding: var(--space-lg);
+    background-color: white;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow);
+}
+
+.location-details h3 {
+    color: var(--primary-dark);
+    margin-bottom: var(--space-sm);
+    font-size: 1.25rem;
+}
+
+.location-details p,
+.location-details ul {
+    margin-bottom: var(--space-md);
+    color: var(--text-medium);
+}
+
+.location-details ul {
+    padding-left: var(--space-md);
+}
+
+.location-details li {
+    margin-bottom: var(--space-xs);
+}
+
+.location-details .btn {
+    margin-top: var(--space-md);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .campus-hero .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .overview-content {
+        flex-direction: column;
+    }
+    
+    .facilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .location-content {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .campus-hero .hero-title {
+        font-size: 2rem;
+    }
+    
+    .facilities-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+    }
+    
+    .timeline-time {
+        width: auto;
+        text-align: left;
+        padding-left: 35px;
+        margin-bottom: var(--space-xs);
+    }
+    
+    .timeline-content {
+        padding-left: 35px;
+    }
+    
+    .timeline-content::before {
+        left: -22px;
+    }
+}

@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@100..900&display=swap');
+:root {
+    --primary-bg: #f5f5f5; /* Light gray background for better readability */
+    --primary-text: #333333; /* Dark gray for main text */
+    --secondary-text: #555555; /* Slightly lighter gray for secondary text */
+    --accent-1: #6a1b9a; /* Deep purple for highlights */
+    --accent-2: #d81b60; /* Vibrant pink for contrast */
+    --quote-color: #2e7d32; /* Green for quotes to stand out */
+   --max-width: 800px;
+   --page-padding: 20px;
+}
+
+body {
+   font-family: "Noto Serif Devanagari", serif;
+   font-optical-sizing: auto;
+   font-weight: weight;
+   font-style: normal;
+   font-variation-settings:"wdth" 100;
+   background-color: var(--primary-bg);
+   margin: 0;
+   padding: var(--page-padding);
+   color: var(--primary-text);
+    line-height: 1.6; /* Improved line spacing for readability */
+}
+
+.page {
+   margin: 0 auto;
+   max-width: var(--max-width);
+   padding: var(--page-padding);
+    background-color: #ffffff; /* White background for content area */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+ }
+ 
+ .vyakhya {
+    text-align: center;
+    color: var(--accent-1);
+    font-weight: 600; /* Slightly bolder for emphasis */
+ }
+ 
+ .versetext {
+    margin-bottom: 10px;
+    text-align: center;
+    color: var(--accent-2);
+    margin-left: 0;
+    font-style: italic; /* Italicized for a poetic feel */
+ }
+ 
+ .quote {
+    font-weight: bold;
+    color: var(--quote-color);
+    background-color: #e8f5e9; /* Light green background for quotes */
+    padding: 8px 12px; /* Padding for better spacing */
+    display: inline-block; /* Ensure padding and border work correctly */
+ }
+ 
+ .authorline {
+    text-align: center;
+    color: var(--secondary-text);
+    font-size: 0.9em; /* Slightly smaller for subtlety */
+    margin-top: 20px; /* Added space above the author line */
+ }
+ 
+ .page h1 {
+   display: flex;
+   justify-content: center;
+   margin: 9px 0px;
+   border-bottom: 5px solid gray;
+   padding-bottom: 5px;
+   }
+ /* Responsive adjustments */
+@media (max-width: 768px) {
+   .page {
+      padding: 15px;
+   }
+   body {
+      padding: 10px;
+   }
+}

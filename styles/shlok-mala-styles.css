@@ -1,0 +1,398 @@
+/* Base styling with futuristic elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans', 'Noto Sans Devanagari', 'Sanskrit Text', serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f0f2f5;
+    padding: 0;
+    margin: 0;
+    background-image: linear-gradient(to bottom right, #f0f2f5, #e0e7ff);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    border-radius: 12px;
+    min-height: 100vh;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Header styling */
+.Shlok_Mala {
+    padding: 1rem 0;
+}
+
+/* Enhanced futuristic intro design - Merged with new styles */
+.intro {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding: 2.5rem;
+    max-width: 800px;
+    font-family: 'Sanskrit Text', serif;
+    background: linear-gradient(135deg, rgba(255,249,240,0.9) 0%, rgba(228,234,248,0.9) 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(211, 200, 170, 0.3);
+    border-left: 4px solid #8b4513;
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.05), 
+        inset 0 0 40px rgba(212, 175, 55, 0.1),
+        0 0 15px rgba(71, 126, 232, 0.2),
+        0 4px 8px rgba(139, 69, 19, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Sanskrit text - first line */
+.intro::first-line {
+    font-size: 1.8rem;
+    color: #8b4513;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 2.5;
+}
+
+.intro:before, .intro:after {
+    content: "☸";
+    font-size: 4rem;
+    color: rgba(212, 175, 55, 0.15);
+    position: absolute;
+    z-index: 0;
+    filter: blur(1px);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+.intro:before {
+    top: 10px;
+    left: 10px;
+}
+
+.intro:after {
+    bottom: 10px;
+    right: 10px;
+}
+
+.intro:hover {
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.1),
+        inset 0 0 60px rgba(212, 175, 55, 0.15),
+        0 0 20px rgba(71, 126, 232, 0.3);
+    transform: translateY(-5px);
+}
+
+.intro br {
+    display: block;
+    height: 12px;
+}
+
+.intro p {
+    font-size: 1rem;
+    margin-top: 1.4rem;
+    color: #444;
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+    font-style: italic;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+    text-align: justify;
+}
+
+/* Quote styling */
+.intro quote {
+    font-style: italic;
+    color: #5d4037;
+    font-weight: 500;
+}
+
+/* Section headings with futuristic touch */
+h3 {
+    margin: 1.8rem 0 0.7rem 0;
+    color: #3a5199;
+    font-size: 1.5rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #7986cb;
+    display: inline-block;
+    position: relative;
+    letter-spacing: 0.05rem;
+}
+
+h3:after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, #7986cb, transparent);
+}
+
+/* Shloka styling with hover effects */
+.shlok_A, .shlok_B, .shlok_Ar, .shlok_Ki, .shlok_Yu, .Shlok {
+    text-align: center;
+    padding: 1.2rem;
+    margin: 0.8rem 0;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.7);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    font-family: 'Sanskrit Text', serif;
+}
+
+/* Different colors for different shloka types with gradients */
+.shlok_B {
+    border-left: 4px solid #9c7a00;
+    background: linear-gradient(to right, rgba(255, 251, 235, 0.9), rgba(255, 248, 225, 0.7));
+}
+
+.shlok_A {
+    border-left: 4px solid #2e7d32;
+    background: linear-gradient(to right, rgba(241, 248, 233, 0.9), rgba(232, 245, 233, 0.7));
+}
+
+.shlok_Ar {
+    border-left: 4px solid #c62828;
+    background: linear-gradient(to right, rgba(255, 235, 238, 0.9), rgba(255, 230, 238, 0.7));
+}
+
+.shlok_Ki {
+    border-left: 4px solid #1565c0;
+    background: linear-gradient(to right, rgba(227, 242, 253, 0.9), rgba(225, 245, 254, 0.7));
+}
+
+.shlok_Yu {
+    border-left: 4px solid #6a1b9a;
+    background: linear-gradient(to right, rgba(243, 229, 245, 0.9), rgba(237, 231, 246, 0.7));
+}
+
+.sloka{
+    border-left: 4px solid #f57c00;
+    background: linear-gradient(to right, rgba(255, 243, 224, 0.9), rgba(255, 238, 225, 0.7));
+    font-size: 1.2rem;
+    background-color: #f5f5dc;
+    font-family: 'Sanskrit Text', serif;
+}
+.shlok_su{
+    font-size: 1.2rem;
+    color: #d44808;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+/* Enhanced hover effects */
+.shlok_A:hover, .shlok_B:hover, .shlok_Ar:hover, .shlok_Ki:hover, .shlok_Yu:hover, .sloka:hover {
+    transform: translateX(8px) translateY(-3px);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.shlok_A:before, .shlok_B:before, .shlok_Ar:before, .shlok_Ki:before, .shlok_Yu:before, .sloka:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.shlok_A:hover:before, .shlok_B:hover:before, .shlok_Ar:hover:before, .shlok_Ki:hover:before, .shlok_Yu:hover:before, .sloka:hover:before {
+    opacity: 1;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Enhanced main title */
+h1 {
+    text-align: center;
+    margin: 3rem 0;
+    color: #3f51b5;
+    font-size: 2.2rem;
+    padding: 1.8rem;
+    background: linear-gradient(135deg, #e8eaf6, #c5cae9, #e8eaf6);
+    border-radius: 16px;
+    position: relative;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    border: 1px solid #d1d9ff;
+    box-shadow: 0 8px 15px rgba(63,81,181,0.1);
+    letter-spacing: 1.5px;
+}
+
+h1:before, h1:after {
+    content: "✦";
+    font-size: 1.7rem;
+    color: #5c6bc0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: pulse 3s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+        transform: translateY(-50%) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-50%) scale(1.05);
+    }
+}
+
+h1:before {
+    left: 15%;
+}
+
+h1:after {
+    right: 15%;
+}
+
+/* Additional styles for potential sloka collection */
+.sloka-collection {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #d7ccc8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.2rem;
+        margin: 0.5rem;
+    }
+    
+    .shlok_A, .shlok_B, .shlok_Ar, .shlok_Ki, .shlok_Yu, .sloka {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+    }
+    
+    h1:before {
+        left: 8%;
+    }
+    
+    h1:after {
+        right: 8%;
+    }
+    
+    .intro {
+        padding: 1.5rem;
+    }
+    
+    .intro::first-line {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .intro {
+        padding: 1rem;
+    }
+    
+    .intro::first-line {
+        font-size: 1.4rem;
+        line-height: 2;
+    }
+}
+
+/* Add a nice quote styling */
+quote {
+    font-style: italic;
+    color: #555;
+    position: relative;
+    padding: 0 8px;
+    background: linear-gradient(to bottom, transparent 60%, rgba(121, 134, 203, 0.2) 40%);
+}
+
+/* Additional embellishments */
+.Shlok_Mala:before {
+    content: "॥";
+    font-size: 2.5rem;
+    color: #5c6bc0;
+    display: block;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.Shlok_Mala:after {
+    content: "॥";
+    font-size: 2.5rem;
+    color: #5c6bc0;
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Decorative elements */
+br + h3:before {
+    content: "❈";
+    margin-right: 0.7rem;
+    color: #7986cb;
+    font-size: 1.1rem;
+    text-shadow: 0 0 3px rgba(121, 134, 203, 0.5);
+}
+
+/* Print styles */
+@media print {
+    body {
+        background-color: white;
+        background-image: none;
+    }
+    
+    .container {
+        box-shadow: none;
+        max-width: 100%;
+        background: white;
+        backdrop-filter: none;
+    }
+    
+    .shlok_A, .shlok_B, .shlok_Ar, .shlok_Ki, .shlok_Yu, .sloka {
+        break-inside: avoid;
+        background: white;
+        box-shadow: none;
+        border-left-width: 2px;
+    }
+    
+    h3 {
+        break-after: avoid;
+    }
+
+    .intro {
+        background: white;
+        box-shadow: none;
+    }
+}

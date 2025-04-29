@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancient Wisdom Library</title>
+    <link rel="stylesheet" href="./styles/global.css">
+    <link rel="stylesheet" href="./styles/books.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container header-container">
+        <!-- Logo -->
+        <div class="logo">
+            <div class="logo-circle">
+                <span>GURU</span>
+            </div>
+            <div class="logo-text">
+                <span class="logo-main">Gurukulam</span>
+                <span class="logo-tagline">Reviving Ancient Wisdom</span>
+            </div>
+        </div>
+
+        <!-- Hamburger Menu for Mobile -->
+        <div class="hamburger" onclick="toggleNavbar()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <!-- Navigation -->
+        <nav class="navbar" id="navbar">
+            <ul class="nav-list">
+                <li><a href="index.html" class="current-page">Home</a></li>
+                <li class="has-dropdown">
+                    <a href="javascript:void(0)">Programs <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="program1.html">Vedic Studies</a>
+                        <a href="program2.html">Sanskrit Immersion</a>
+                        <a href="program3.html">Yoga & Meditation</a>
+                        <a href="program4.html">Ayurveda Basics</a>
+                    </div>
+                </li>
+                <li><a href="books.html" class="current-page">Books</a></li>
+                <li><a href="Campus.html">Campus</a></li>
+                <li><a href="/Gallery/Gallery.html">Gallery</a></li>
+                <li class="has-dropdown">
+                    <a href="javascript:void(0)">About <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="about-us.html">About Us</a>
+                        <a href="mission.html">Our Mission</a>
+                        <a href="team.html">Our Team</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Ancient Wisdom for Modern Times</h1>
+            <p>Explore our curated collection of timeless knowledge</p>
+        </div>
+    </section>
+
+    <!-- Library Section -->
+    <section class="library-section">
+        <h2 class="section-title">Digital Library</h2>
+        <p class="section-desc">Dive into the profound knowledge of ancient texts beautifully preserved for the digital age</p>
+        
+        <div class="book-grid">
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="book-info">
+                    <h3>Ramayana</h3>
+                    <p>The epic tale of Lord Rama</p>
+                    <a href="/Books/book_link/Bala_Srga.html" class="book-btn">Read Now</a>
+                </div>
+            </div>
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="book-info">
+                    <h3>Shloka Mala 1</h3>
+                    <p>Good values of Ramayana</p>
+                    <a href="/Books/Shlok mala/shlok_mala_1.html" class="book-btn">Read Now</a>
+                </div>
+            </div>
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="book-info">
+                    <h3>Shloka Mala_2</h3>
+                    <p>Good values of Ramayana</p>
+                    <a href="/Books/Shlok mala/shlok_mala_2.html" class="book-btn">Read Now</a>
+                </div>
+            </div>
+            
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-scroll"></i>
+                </div>
+                <div class="book-info">
+                    <h3>Reviving Vedic Knowledge</h3>
+                    <p>A guide to ancient wisdom</p>
+                    <a href="/Books//Books.pdf/REVIVING VEDIC KNOWLEDGE.pdf" class="book-btn">Read Now</a>
+                </div>
+            </div>
+            
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="book-info">
+                    <h3>Ancient Educational Structures</h3>
+                    <p>Learning systems of the past</p>
+                    <a href="/Books/Books.pdf/Ancient Educational Structures.pdf" class="book-btn">Read Now</a>
+                </div>
+            </div>
+            
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="book-info">
+                    <h3>Social Entrepreneurship with Vedic Wisdom</h3>
+                    <p>Ancient principles for modern business</p>
+                    <a href="/Books/Books.pdf/Social entrepreneurship with vedic wisdom.pdf" class="book-btn">Read Now</a>
+                </div>
+            </div>
+            
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-om"></i>
+                </div>
+                <div class="book-info">
+                    <h3>The Wisdom of the Hindus</h3>
+                    <p>Exploring Hindu philosophy</p>
+                    <a href="/Books/Books.pdf/The wisdom of the Hindus.pdf" class="book-btn">Read Now</a>
+                </div>
+            </div>
+            
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-dharmachakra"></i>
+                </div>
+                <div class="book-info">
+                    <h3>Vedic Wisdom 2</h3>
+                    <p>Advanced exploration of Vedic knowledge</p>
+                    <a href="/Books/Books.pdf/VEDIC WISDOM 2.pdf" class="book-btn">Read Now</a>
+                </div>
+            </div>
+            
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-star-of-david"></i>
+                </div>
+                <div class="book-info">
+                    <h3>Vedic Wisdom</h3>
+                    <p>Foundations of Vedic knowledge</p>
+                    <a href="/Books/Books.pdf/Vedic Wisdom.pdf" class="book-btn">Read Now</a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <!-- <div class="ramayana-content" id="content">
+        <h3>Welcome to Ramayana</h3>
+        <p>Select a सर्गः from the sidebar to view its content.</p>
+    </div> -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="logo-circle">
+                    <span>GURU</span>
+                </div>
+                <div class="logo-text">Gurukulam</div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="our-campus.html">Our Campus</a></li>
+                        <li><a href="/Gallery/Gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>More Info</h4>
+                    <ul>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="mission.html">Our Mission</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Gurukulam. All rights reserved.</p>
+        </div>
+    </main>
+
+    <footer>
+        <!-- The mobile-menu should be defined here or before the closing </body> tag -->
+        <button id="mobile-menu">Mobile Menu</button>
+    </footer>
+
+    <script src="/scripts/books.js"></script>
+    <script src="/scripts/main.js"></script>
+    <script>
+        // Simple mobile menu toggle
+        // Now the script is at the end of the body, mobile-menu should be available
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-list').classList.toggle('active');
+        });
+    </script>
+</body>

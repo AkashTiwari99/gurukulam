@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Campus | Gurukulam</title>
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/campus.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-circle">
+                    <span>GURU</span>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">Gurukulam</span>
+                    <span class="logo-tagline">Reviving Ancient Wisdom</span>
+                </div>
+            </div>
+
+            <!-- Hamburger Menu for Mobile -->
+            <div class="hamburger" onclick="toggleNavbar()">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- Navigation -->
+            <nav class="navbar" id="navbar">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="has-dropdown">
+                        <a href="javascript:void(0)">Programs <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="program1.html">Vedic Studies</a>
+                            <a href="program2.html">Sanskrit Immersion</a>
+                            <a href="program3.html">Yoga & Meditation</a>
+                            <a href="program4.html">Ayurveda Basics</a>
+                        </div>
+                    </li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="Campus.html" class="current-page">Campus</a></li>
+                    <li><a href="/Gallery/Gallery.html">Gallery</a></li>
+                    <li class="has-dropdown">
+                        <a href="javascript:void(0)">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="about-us.html">About Us</a>
+                            <a href="mission.html">Our Mission</a>
+                            <a href="team.html">Our Team</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="campus-hero">
+        <div class="overlay"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Our Sacred Learning Space</h1>
+                <p class="hero-subtitle">Experience the tranquility of our traditional Gurukul campus nestled in the foothills of the Himalayas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Overview -->
+    <section class="campus-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Campus Overview</h2>
+                <p>A harmonious blend of traditional architecture and natural surroundings</p>
+            </div>
+            <div class="overview-content">
+                <div class="overview-text">
+                    <p>Our Gurukulam campus is designed following ancient Vastu principles, creating an environment conducive to learning and spiritual growth. Spread across 10 acres of lush greenery, the campus offers a serene atmosphere where students can immerse themselves in Vedic studies away from the distractions of modern life.</p>
+                    <p>The campus architecture reflects traditional Indian design elements, with spacious courtyards, meditation halls, and learning spaces that blend harmoniously with nature. Every aspect of the campus is thoughtfully designed to support the holistic development of our students.</p>
+                </div>
+                <div class="overview-image">
+                    <img src="/images/fire 2.jpg" alt="Gurukulam Campus Overview">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Facilities -->
+    <section class="campus-facilities">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Facilities</h2>
+                <p>Modern amenities within a traditional learning environment</p>
+            </div>
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Residential Quarters</h3>
+                    <p>Simple, comfortable living spaces designed for focus and reflection. Each residence houses 4-6 students with shared amenities and study areas.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Learning Halls</h3>
+                    <p>Traditional open halls (Shalas) where students gather to learn from teachers, with natural lighting and ventilation creating an ideal learning atmosphere.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-pray"></i>
+                    </div>
+                    <h3>Meditation Spaces</h3>
+                    <p>Dedicated areas for meditation and spiritual practices, including a central temple and various smaller shrines throughout the campus.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Organic Gardens</h3>
+                    <p>Extensive herb and vegetable gardens where students learn sustainable farming practices while growing food for the campus kitchen.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Sattvic Kitchen</h3>
+                    <p>Our kitchen serves pure vegetarian, sattvic meals prepared with ingredients from our organic gardens, following traditional Ayurvedic principles.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <h3>Ancient Library</h3>
+                    <p>A collection of rare manuscripts, Vedic texts, and contemporary resources on Sanskrit, philosophy, and ancient wisdom traditions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Life -->
+    <section class="campus-life">
+        <div class="container">
+            <div class="section-header">
+                <h2>Life at Gurukulam</h2>
+                <p>Experience the rhythmic flow of traditional gurukul living</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">4:30 AM</div>
+                    <div class="timeline-content">
+                        <h3>Brahma Muhurta</h3>
+                        <p>The day begins early with the auspicious morning hour dedicated to meditation and self-study.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">6:00 AM</div>
+                    <div class="timeline-content">
+                        <h3>Yoga Practice</h3>
+                        <p>Morning yoga session to energize the body and prepare the mind for learning.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">7:30 AM</div>
+                    <div class="timeline-content">
+                        <h3>Morning Prayers & Breakfast</h3>
+                        <p>Community prayers followed by a nutritious sattvic breakfast.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">9:00 AM - 12:30 PM</div>
+                    <div class="timeline-content">
+                        <h3>Morning Classes</h3>
+                        <p>Intensive learning sessions in Sanskrit, Vedic texts, and philosophy.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">1:00 PM</div>
+                    <div class="timeline-content">
+                        <h3>Midday Meal & Rest</h3>
+                        <p>The main meal of the day followed by a short rest period.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">3:00 PM - 5:30 PM</div>
+                    <div class="timeline-content">
+                        <h3>Afternoon Sessions</h3>
+                        <p>Practical application of morning lessons, discussions, and specialized workshops.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">6:00 PM</div>
+                    <div class="timeline-content">
+                        <h3>Evening Prayers</h3>
+                        <p>Gathering for traditional fire ceremony (Agnihotra) and chanting.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">7:00 PM</div>
+                    <div class="timeline-content">
+                        <h3>Light Dinner</h3>
+                        <p>A simple evening meal followed by community activities or self-study.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">9:30 PM</div>
+                    <div class="timeline-content">
+                        <h3>Rest</h3>
+                        <p>Early retirement to prepare for the next day's early start.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Tour -->
+    <section class="virtual-tour">
+        <div class="container">
+            <div class="section-header">
+                <h2>Campus Gallery</h2>
+                <p>A visual journey through our sacred learning spaces</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="/images/card2.jpg" alt="Main Temple">
+                    <div class="gallery-caption">Main Temple</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/fire 3.jpg" alt="Learning Hall">
+                    <div class="gallery-caption">Traditional Learning Hall</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/vision of education.jpg" alt="Meditation Space">
+                    <div class="gallery-caption">River-side Meditation Space</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/student 1.jpg" alt="Student Residences">
+                    <div class="gallery-caption">Student Residences</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/student 4.jpg" alt="Herb Garden">
+                    <div class="gallery-caption">Medicinal Herb Garden</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/student 3.jpg" alt="Dining Hall">
+                    <div class="gallery-caption">Community Dining Hall</div>
+                </div>
+            </div>
+            <div class="tour-cta">
+                <h3>Experience Our Campus in Person</h3>
+                <p>Visit us for a guided tour and experience the transformative environment of our Gurukulam</p>
+                <a href="contact.html" class="btn btn-primary">Book a Visit</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Directions -->
+    <section class="campus-location">
+        <div class="container">
+            <div class="section-header">
+                <h2>Finding Us</h2>
+                <p>Our campus is located in the serene foothills of Rishikesh</p>
+            </div>
+            <div class="location-content">
+                <div class="location-map">
+                    <img src="/images/vision of education.jpg" alt="Map to Gurukulam Campus">
+                </div>
+                <div class="location-details">
+                    <h3>Address</h3>
+                    <p>Gurukulam Campus, Near Laxman Jhula,<br>Rishikesh, Uttarakhand 249302, India</p>
+                    
+                    <h3>Getting Here</h3>
+                    <ul>
+                        <li><strong>By Air:</strong> The nearest airport is Jolly Grant Airport (Dehradun), approximately 35 km from our campus.</li>
+                        <li><strong>By Train:</strong> Rishikesh Railway Station is 12 km from our campus. We can arrange pickup on request.</li>
+                        <li><strong>By Road:</strong> Regular buses connect Rishikesh to major cities like Delhi (240 km) and Haridwar (25 km).</li>
+                    </ul>
+                    
+                    <h3>Shuttle Service</h3>
+                    <p>We provide a free shuttle service from Rishikesh town to our campus at scheduled times. Please contact us in advance to arrange pickup.</p>
+                    
+                    <a href="contact.html" class="btn btn-outline">Contact for Directions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-circle">
+                            <span>GURU</span>
+                        </div>
+                        <span class="logo-name">Gurukulam</span>
+                    </div>
+                    <p>Reviving ancient wisdom and making it accessible for modern seekers through authentic teachings and immersive experiences.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/programs.html">Programs</a></li>
+                        <li><a href="/books.html">Books</a></li>
+                        <li><a href="/Gallery/Gallery.html">Gallery</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="program1.html">Vedic Studies</a></li>
+                        <li><a href="program2.html">Sanskrit Immersion</a></li>
+                        <li><a href="program3.html">Yoga & Meditation</a></li>
+                        <li><a href="program4.html">Ayurveda Basics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <address>
+                        <p><i class="fas fa-map-marker-alt"></i> Gurukulam Campus, Rishikesh, Uttarakhand, India</p>
+                        <p><i class="fas fa-phone"></i> +91 9986279053</p>
+                        <p><i class="fas fa-envelope"></i> info@gurukulam.org</p>
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Gurukulam. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

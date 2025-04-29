@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Admin</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Gallery Admin</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#upload">Upload</a></li>
+        </ul>
+    </nav>
+
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+        <button id="show-photos">Photos</button>
+        <button id="show-videos">Videos</button>
+    </div>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <h2>Gallery</h2>
+        <div class="gallery-grid" id="gallery-grid">
+            <!-- Photos and videos will be dynamically added here -->
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload" class="upload-section">
+        <h2>Upload Media</h2>
+        <form id="upload-form">
+            <input type="file" id="file-input" name="file-input" accept="image/*, video/*" multiple>
+            <button type="submit" id="upload-btn" name="upload-btn">Upload</button>
+        </form>
+    </section>
+
+    <!-- Admin Controls -->
+    <div class="admin-controls">
+        <button id="delete-btn">Delete Selected</button>
+        <button id="download-btn">Download Selected</button>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>

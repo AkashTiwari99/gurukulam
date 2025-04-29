@@ -1,0 +1,31 @@
+/* Programs Section */
+.programs {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.programs h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.program-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.program-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.program-card p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}

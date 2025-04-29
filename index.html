@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gurukulam | Reviving Ancient Wisdom</title>
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-circle">
+                    <span>GURU</span>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">kulam</span>
+                    <span class="logo-tagline">Reviving Ancient Wisdom</span>
+                </div>
+            </div>
+
+            <!-- Hamburger Menu for Mobile -->
+            <div class="hamburger" onclick="toggleNavbar()">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- Navigation -->
+            <nav class="navbar" id="navbar">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="current-page">Home</a></li>
+                    <li class="has-dropdown">
+                        <a href="javascript:void(0)">Programs <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="program1.html">Vedic Studies</a>
+                            <a href="program2.html">Sanskrit Immersion</a>
+                            <a href="program3.html">Yoga & Meditation</a>
+                            <a href="program4.html">Ayurveda Basics</a>
+                        </div>
+                    </li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="Campus.html">Campus</a></li>
+                    <li><a href="/Gallery/Gallery.html">Gallery</a></li>
+                    <li class="has-dropdown">
+                        <a href="javascript:void(0)">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="about-us.html">About Us</a>
+                            <a href="mission.html">Our Mission</a>
+                            <a href="team.html">Our Team</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="overlay"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Ancient Wisdom for Modern Times</h1>
+                <p class="hero-subtitle">Uncover the eternal teachings of the Vedas, Ramayana, and Yoga, offering guidance for today's challenges.</p>
+                <div class="hero-buttons">
+                    <a href="programs.html" class="btn btn-primary">Explore Programs</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Content -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Core Teachings</h2>
+                <p>Bridging ancient knowledge with contemporary challenges</p>
+            </div>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="images/card4.jpg" alt="Vedic Wisdom">
+                        <div class="card-badge">Featured</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Vedic Wisdom</h3>
+                        <p>Explore the ancient scriptures and their practical applications in modern life. Our courses delve into the philosophical depths of Vedic knowledge.</p>
+                        <a href="/Books/book_link/Vedic Wisdom.html" class="btn-link">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image">
+                        <img src="images/card3.jpg" alt="Gurukul System">
+                    </div>
+                    <div class="card-content">
+                        <h3>Gurukul System</h3>
+                        <p>Experience the traditional residential education model that fosters holistic development through mentor-disciple relationships in a natural environment.</p>
+                        <a href="about.html" class="btn-link">
+                            Discover <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image">
+                        <img src="images/card2.jpg" alt="Ramayana">
+                    </div>
+                    <div class="card-content">
+                        <h3>Ramayana</h3>
+                        <p>Learn the timeless lessons from the epic Ramayana that offer insights into ethics, governance, relationships, and personal dharma.</p>
+                        <a href="books.html" class="btn-link">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote">
+                <i class="fas fa-quote-left"></i>
+                <blockquote>
+                    The true teacher defends his pupils against his own personal influence.
+                </blockquote>
+                <cite>— Ancient Vedic Wisdom</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Preview -->
+    <section class="programs-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Programs</h2>
+                <p>Transform your understanding through our specialized courses</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Sanskrit Studies</h3>
+                    <p>Learn the ancient language that connects us to our roots.</p>
+                    <a href="program1.html" class="btn-outline">Explore</a>
+                </div>
+                <div class="program-card featured">
+                    <div class="program-icon">
+                        <i class="fas fa-pray"></i>
+                    </div>
+                    <h3>Yoga & Meditation</h3>
+                    <p>Discover inner peace and physical harmony through ancient practices.</p>
+                    <a href="program2.html" class="btn-outline">Explore</a>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-om"></i>
+                    </div>
+                    <h3>Vedic Philosophy</h3>
+                    <p>Dive deep into the philosophical aspects of Vedic teachings.</p>
+                    <a href="program3.html" class="btn-outline">Explore</a>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Ayurvedic Living</h3>
+                    <p>Learn holistic approaches to health and wellness.</p>
+                    <a href="program4.html" class="btn-outline">Explore</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Student Experiences</h2>
+                <p>Hear from those who have walked the path</p>
+            </div>
+            <div class="testimonial-slider" id="testimonial-slider">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-content">
+                        <p>"The Vedic Studies program transformed my understanding of ancient texts and their application in modern life."</p>
+                        <div class="testimonial-author">
+                            <img src="/images/student 1.jpg" alt="Rahul Sharma">
+                            <div class="author-info">
+                                <h4></h4>
+                                <p>Vedic Studies Graduate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <p>"Learning Sanskrit opened a new world of understanding that no translation could ever provide."</p>
+                        <div class="testimonial-author">
+                            <img src="images/student 2.jpg" alt="Priya Patel">
+                            <div class="author-info">
+                                <h4></h4>
+                                <p>Sanskrit Program Alumna</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <p>"The Gurukul experience taught me discipline and mindfulness that I carry into every aspect of life."</p>
+                        <div class="testimonial-author">
+                            <img src="images/student 3.jpg" alt="Amit Kumar">
+                            <div class="author-info">
+                                <h4></h4>
+                                <p>Residential Program Student</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-container">
+                <div class="newsletter-content">
+                    <h2>Stay Connected</h2>
+                    <p>Subscribe to our newsletter for updates on courses, events, and wisdom teachings.</p>
+                </div>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-circle">
+                            <span>GURU</span>
+                        </div>
+                        <span class="logo-name">Gurukulam</span>
+                    </div>
+                    <p>Reviving ancient wisdom and making it accessible for modern seekers through authentic teachings and immersive experiences.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/programs.html">Programs</a></li>
+                        <li><a href="/books.html">Books</a></li>
+                        <li><a href="/Gallery/Gallery.html">Gallery</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="program1.html">Vedic Studies</a></li>
+                        <li><a href="program2.html">Sanskrit Immersion</a></li>
+                        <li><a href="program3.html">Yoga & Meditation</a></li>
+                        <li><a href="program4.html">Ayurveda Basics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <address>
+                        <p><i class="fas fa-map-marker-alt"></i> Gurukulam Campus, Rishikesh, Uttarakhand, India</p>
+                        <p><i class="fas fa-phone"></i> +91 9986279053</p>
+                        <p><i class="fas fa-envelope"></i> info@gurukulam.org</p>
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Gurukulam. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/logo.js"></script>
+</body>
+</html>

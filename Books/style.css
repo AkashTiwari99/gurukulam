@@ -1,0 +1,100 @@
+/* CSS for the Book Page */
+@import url('https://fonts.googleapis.com/css2?family=Amita&family=Noto+Serif+Devanagari:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Martel:wght@200;300;400;600;700;800;900&display=swap');
+
+:root {
+    --primary-bg: #f5f5f5; /* Light gray background for better readability */
+    --primary-text: #333333; /* Dark gray for main text */
+    --secondary-text: #000000; /* Slightly lighter gray for secondary text */
+    --accent-1: #6a1b9a; /* Deep purple for highlights */
+    --accent-2: #d81b60; /* Vibrant pink for contrast */
+    --quote-color: #2e7d32; /* Green for quotes to stand out */
+    --max-width: 100%;
+    --page-padding:300px; /* Padding for the page */
+}
+body {
+    font-family: var(--font-primary);
+    background-color: var(--background-color);
+    color: #333;
+    /* line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0px;
+    padding-left: 0px; */
+}
+.page {
+    min-height: calc(100vh - 60px);
+    font-family: "Noto Serif Devanagari","Amita" serif;
+    font-weight: 600;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    padding-left: 250px;
+    padding-right: 15px;
+}
+
+.vyakhya {
+    font-family: "Martel", serif;
+    font-style: normal;
+    text-align: center;
+    color: var(--accent-1);
+    font-weight: 600; /* Slightly bolder for emphasis */
+}
+
+.versetext {
+    font-family: "Noto Serif Devanagari", serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.2em; /* Slightly larger for better readability */
+    margin-bottom: 10px;
+    text-align: center;
+    color: var(--accent-2);
+    margin-left: 0;
+    font-style: italic; /* Italicized for a poetic feel */
+}
+
+.quote {
+    font-weight: bold;
+    color: var(--quote-color);
+    background-color: #e8f5e9; /* Light green background for quotes */
+    padding: 8px 12px; /* Padding for better spacing */
+    display: inline-block; /* Ensure padding and border work correctly */
+}
+
+.authorline {
+    text-align: center;
+    color: var(--secondary-text);
+    font-size: 1.2em; /* Slightly smaller for subtlety */
+    margin-top: 20px; /* Added space above the author line */
+}
+
+.page h1 {
+    display: flex;
+    justify-content: center;
+    margin: 9px 0px;
+    border-bottom: 5px solid gray;
+    padding-bottom: 5px;
+}
+
+/* Zoom-in and Zoom-out classes */
+.zoom-in {
+    transform: scale(1.2); /* Scale up by 20% */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.zoom-out {
+    transform: scale(0.8); /* Scale down by 20% */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .page {
+        padding: 15px;
+    }
+    body {
+        padding: 10px;
+    }
+}
