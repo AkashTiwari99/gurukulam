@@ -14,6 +14,8 @@
 }
 
 .hero-title {
+    padding-left: 20%;
+    text-align: center;
     font-size: var(--text-3xl);
     margin-bottom: var(--space-md);
     color: var(--text-dark);
