@@ -37,7 +37,7 @@ document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => {
 });
 
 // Initialize Kanda dropdown
-function initKandaDropdown() {
+function initKandaDropdown(){
     const kandaLinks = [
         { url: "/gurukulam/Books/book_link/Bala_Srga.html", name: "बालकाण्डः" },
         { url: "/gurukulam/Books/book_link/Ay_Sarga.html", name: "अयोध्याकाण्डः" },
