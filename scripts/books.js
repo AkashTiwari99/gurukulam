@@ -39,12 +39,12 @@ document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => {
 // Initialize Kanda dropdown
 function initKandaDropdown() {
     const kandaLinks = [
-        { url: "/Books/book_link/Bala_Srga.html", name: "बालकाण्डः" },
-        { url: "/Books/book_link/Ay_Sarga.html", name: "अयोध्याकाण्डः" },
-        { url: "/Books/book_link/Ara_sarga.html", name: "अरण्यकाण्डः" },
-        { url: "/Books/book_link/KIs_Sraga.html", name: "किष्किन्धाकाण्डः" },
-        { url: "/Books/book_link/SU_Sraga.html", name: "सुन्दरकाण्डः" },
-        { url: "/Books/book_link/YU_Sarga.html", name: "युद्धकाण्डः" }
+        { url: "/gurukulam/Books/book_link/Bala_Srga.html", name: "बालकाण्डः" },
+        { url: "/gurukulam/Books/book_link/Ay_Sarga.html", name: "अयोध्याकाण्डः" },
+        { url: "/gurukulam/Books/book_link/Ara_sarga.html", name: "अरण्यकाण्डः" },
+        { url: "/gurukulam/Books/book_link/KIs_Sraga.html", name: "किष्किन्धाकाण्डः" },
+        { url: "/gurukulam/Books/book_link/SU_Sraga.html", name: "सुन्दरकाण्डः" },
+        { url: "/gurukulam/Books/book_link/YU_Sarga.html", name: "युद्धकाण्डः" }
     ];
 
     const dropdownMenu = document.getElementById("kanda-dropdown-menu");
