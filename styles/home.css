@@ -9,39 +9,45 @@ body {
     font-family: 'Poppins', sans-serif;
     color: var(--text-dark);
     background-color: var(--light);
-    line-height: 1.7; /* Increased from 1.6 for better readability */
+    line-height: 1.7;
     font-size: 16px;
     overflow-x: hidden;
-    padding-top: 90px; /* Slightly increased padding */
+    padding-top: 90px;
 }
 
 .container {
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 24px; /* Increased side padding */
+    padding: 0 24px;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: color var(--transition-fast);
+/* ===== SPACING SYSTEM ===== */
+/* Using a consistent spacing scale based on 8px units */
+:root {
+    --space-xs: 0.5rem;   /* 8px */
+    --space-sm: 1rem;     /* 16px */
+    --space-md: 1.5rem;   /* 24px */
+    --space-lg: 2rem;     /* 32px */
+    --space-xl: 3rem;     /* 48px */
+    --space-xxl: 4rem;    /* 64px */
 }
 
-img {
-    max-width: 100%;
-    display: block; /* Prevents spacing issues below images */
+/* ===== TYPOGRAPHY & TEXT SPACING ===== */
+h1, h2, h3, h4 {
+    line-height: 1.3;
+    margin-bottom: var(--space-sm);
 }
 
-/* ==== TYPOGRAPHY & SPACING ==== */
 p {
-    margin-bottom: 1.25em; /* Consistent paragraph spacing */
+    margin-bottom: var(--space-md);
+    line-height: 1.7;
 }
 
-/* ===== BUTTONS ===== */
+/* ===== BUTTON STYLES ===== */
 .btn {
     display: inline-block;
-    padding: 14px 32px; /* Slightly larger padding */
+    padding: 0.875rem 2rem;
     font-weight: 500;
     border-radius: var(--border-radius-medium);
     text-align: center;
@@ -49,7 +55,7 @@ p {
     transition: all var(--transition-fast);
     border: none;
     font-size: 1rem;
-    margin: 1.5em 0; /* Added margin to buttons */
+    margin: var(--space-md) 0;
 }
 
 .btn-primary {
@@ -58,76 +64,154 @@ p {
     box-shadow: 0 4px 12px rgba(107, 56, 251, 0.3);
 }
 
-.btn-primary:hover {
-    box-shadow: 0 6px 16px rgba(107, 56, 251, 0.5);
-    transform: translateY(-2px);
-}
-
-.btn-secondary {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
-}
-
 .btn-outline {
     background: transparent;
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
-    padding: 12px 28px; /* Slightly larger */
-    border-radius: var(--border-radius-medium);
-    transition: all var(--transition-fast);
-    margin: 1.25em 0; /* Added margin */
-}
-
-.btn-outline:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-2px);
+    padding: 0.75rem 1.75rem;
+    margin: var(--space-sm) 0 var(--space-md);
 }
 
 .btn-link {
-    color: var(--primary-color);
+    margin: var(--space-sm) 0;
     display: inline-flex;
     align-items: center;
-    font-weight: 500;
-    transition: all var(--transition-fast);
-    margin: 1em 0; /* Added margin */
+    gap: 0.5rem;
 }
 
-.btn-link i {
-    margin-left: 8px;
-    transition: transform var(--transition-fast);
+/* ===== HERO SECTION ===== */
+.hero-content {
+    padding: var(--space-xxl) 0;
 }
 
-.btn-link:hover {
-    color: var(--primary-dark);
+.hero-title {
+    margin-bottom: var(--space-sm);
 }
 
-.btn-link:hover i {
-    transform: translateX(4px);
+.hero-subtitle {
+    margin-bottom: var(--space-lg);
 }
 
-/* ===== SECTION STYLES ===== */
+.hero-buttons {
+    margin-top: var(--space-lg);
+}
+
+/* ===== CARD COMPONENTS ===== */
+.card {
+    margin-bottom: var(--space-xl);
+}
+
+.card-image {
+    margin-bottom: var(--space-md);
+    position: relative;
+}
+
+.card-image img {
+    border-radius: var(--border-radius-medium);
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card-content {
+    padding: var(--space-md);
+}
+
+.card-content h3 {
+    margin-bottom: var(--space-sm);
+}
+
+.card-content p {
+    margin-bottom: var(--space-md);
+}
+
+/* ===== PROGRAM CARDS ===== */
+.programs-grid {
+    gap: var(--space-md);
+    margin: var(--space-lg) 0;
+}
+
+.program-card {
+    padding: var(--space-lg);
+}
+
+.program-icon {
+    margin-bottom: var(--space-md);
+}
+
+.program-card h3 {
+    margin-bottom: var(--space-sm);
+}
+
+.program-card p {
+    margin-bottom: var(--space-md);
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonial-slide {
+    padding: var(--space-lg);
+}
+
+.testimonial-content p {
+    margin-bottom: var(--space-md);
+}
+
+.testimonial-author {
+    margin-top: var(--space-md);
+}
+
+/* ===== NEWSLETTER ===== */
+.newsletter-container {
+    padding: var(--space-xl) 0;
+}
+
+.newsletter-content h2 {
+    margin-bottom: var(--space-sm);
+}
+
+.newsletter-form input {
+    margin-bottom: var(--space-sm);
+}
+
+/* ===== FOOTER ===== */
+.footer-container {
+    padding: var(--space-lg) 0;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 768px) {
+    .hero-content {
+        padding: var(--space-xl) 0;
+    }
+    
+    .card {
+        margin-bottom: var(--space-lg);
+    }
+    
+    .program-card {
+        padding: var(--space-md);
+    }
+    
+    .section-header {
+        margin-bottom: var(--space-xl);
+    }
+}
+
+/* ===== SECTION HEADERS ===== */
 .section-header {
+    margin-bottom: var(--space-xxl);
     text-align: center;
-    margin-bottom: 70px; /* Increased from 60px */
-    padding: 0 20px; /* Added padding */
 }
 
 .section-header h2 {
     font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 16px; /* Increased from 10px */
-    color: var(--text-dark);
-    position: relative;
-    display: inline-block;
-    line-height: 1.3;
+    margin-bottom: var(--space-sm);
+}
+
+.section-header p {
+    max-width: 700px;
+    margin: var(--space-md) auto 0;
+    font-size: 1.1rem;
 }
 
 .section-header h2::after {
@@ -136,67 +220,8 @@ p {
     width: 60px;
     height: 3px;
     background: var(--gradient-primary);
-    bottom: -14px; /* Increased from -10px */
+    bottom: -14px;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 2px;
-}
-
-.section-header p {
-    color: var(--text-medium);
-    font-size: 1.1rem;
-    max-width: 650px; /* Slightly wider */
-    margin: 24px auto 0; /* Increased top margin */
-    line-height: 1.8; /* More readable line height */
-}
-
-/* ===== CARD STYLES ===== */
-.card {
-    margin-bottom: 2em; /* Added space between cards */
-}
-
-.card-content {
-    padding: 1.5em; /* Increased padding */
-}
-
-.card-content h3 {
-    margin-bottom: 0.75em; /* Added space below headings */
-}
-
-.card-content p {
-    margin-bottom: 1.5em; /* Added space above buttons */
-}
-
-.card-image {
-    margin-bottom: 1em; /* Space between image and content */
-}
-
-/* ===== TESTIMONIAL STYLES ===== */
-.testimonial-content {
-    padding: 2em; /* More breathing room */
-}
-
-.testimonial-content p {
-    margin-bottom: 1.5em; /* Space before author info */
-}
-
-/* ===== FORM STYLES ===== */
-.newsletter-form input {
-    margin-bottom: 1em; /* Space between input and button */
-}
-
-/* ===== RESPONSIVE ADJUSTMENTS ===== */
-@media (max-width: 768px) {
-    .btn {
-        padding: 12px 24px; /* Slightly smaller on mobile */
-        margin: 1em 0; /* Adjusted margin */
-    }
-    
-    .section-header {
-        margin-bottom: 50px; /* Reduced on mobile */
-    }
-    
-    .section-header h2 {
-        font-size: 2rem; /* Smaller heading on mobile */
-    }
 }
