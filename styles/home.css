@@ -16,18 +16,22 @@
 .hero-title {
     padding-left: 20%;
     text-align: center;
-    font-size: var(--text-3xl);
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    letter-spacing: 1px;
     margin-bottom: var(--space-md);
     color: var(--text-dark);
 }
 
 .hero-subtitle {
+    padding-left: 20%;
     font-size: var(--text-lg);
     margin-bottom: var(--space-lg);
     color: var(--text-medium);
 }
 
 .hero-buttons {
+    padding-left: 20%;
     display: flex;
     gap: var(--space-sm);
     margin-top: var(--space-md);
