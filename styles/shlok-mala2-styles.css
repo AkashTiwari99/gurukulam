@@ -21,6 +21,7 @@
 
 /* Base Styles with enhanced background */
 body {
+    -webkit-text-fill-color: #0a0a1a;
     font-family: var(--main-font);
     background-color: var(--primary-bg);
     color: var(--primary-text);
