@@ -219,6 +219,7 @@ body {
     }
 /* Enhanced Headings */
 h1, h2, h3 {
+    -webkit-text-fill-color: brown;
     font-family: var(--decorative-font);
     text-align: center;
     margin: 2.5rem 0 1.5rem;
