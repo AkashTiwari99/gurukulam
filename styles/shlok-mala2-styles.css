@@ -388,5 +388,5 @@
     }
   }
   
-  /* Font Imports - Load at the end for better performance */
+  /* Font Imports -for better performance */
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Space+Grotesk:wght@500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap');
