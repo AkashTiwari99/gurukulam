@@ -1,595 +1,643 @@
-/* Enhanced Shlok Mala Styles - Modern, Futuristic with Hindu Symbolism */
+/* Futuristic Shlok Mala Styles - Buttery Smooth & Easy on the Eyes */
 
-/* Custom Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap');
+/* Import modern, readable fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap');
 
-/* CSS Variables for easier theming and maintenance */
+/* CSS Variables for easy theming and maintenance */
 :root {
-    --primary-bg: #0a0a1a;
-    --card-bg: rgba(229, 229, 237, 0.8);
-    --primary-text:whitesmoke;
-    --accent-1: #ff7e33;  /* Saffron - sacred color */
-    --accent-2: #ffcc66;  /* Gold */
-    --accent-3: #88ccff;  /* Sky blue */
-    --gradient-1: linear-gradient(135deg, #ff9966, #ff5e62);
-    --gradient-2: linear-gradient(135deg, rgba(235, 234, 235, 0.3), rgba(233, 237, 241, 0.3));
-    --glow-1: 0 0 15px rgba(255, 126, 51, 0.5);
-    --glow-2: 0 0 20px rgba(255, 204, 102, 0.3);
-    --main-font: "Tiro Devanagari Sanskrit", serif;
-    --decorative-font: "Tiro Devanagari Sanskrit", serif;
+  /* Core colors - softer, futuristic palette */
+  --bg-primary: #0a0e17;
+  --bg-secondary: #101620;
+  --bg-tertiary: #1a2130;
+  --card-bg: rgba(26, 33, 48, 0.75);
+  --text-primary: #e2e8f0;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  
+  /* Accent colors - pleasing to the eyes */
+  --accent-primary: #60a5fa;  /* Soft blue */
+  --accent-secondary: #a78bfa; /* Soft purple */
+  --accent-tertiary: #10b981;  /* Soft emerald */
+  --accent-quaternary: #f59e0b; /* Soft amber */
+  
+  /* Gradients - subtle transitions */
+  --gradient-main: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1));
+  --gradient-card: linear-gradient(170deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.7));
+  --gradient-accent: linear-gradient(135deg, #60a5fa, #a78bfa);
+  
+  /* Shadows and glows - subdued for eye comfort */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.2);
+  --glow-blue: 0 0 15px rgba(96, 165, 250, 0.3);
+  --glow-purple: 0 0 15px rgba(167, 139, 250, 0.3);
+  
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Poppins', var(--font-sans);
+  --font-sanskrit: 'Tiro Devanagari Sanskrit', serif;
+  
+  /* Spacing and sizing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  
+  /* Animation speeds */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Borders */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.5rem;
+  --border-thin: 1px;
+  --border-medium: 2px;
 }
 
-/* Base Styles with enhanced background */
+/* Base Styles with modern background */
 body {
-    -webkit-text-fill-color: #0a0a1a;
-    font-family: var(--main-font);
-    background-color: var(--primary-bg);
-    color: var(--primary-text);
-    line-height: 1.8;
-    margin: 0;
-    padding: 0;
-    background-image:
-        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0l.83.828-1.415 1.415L51.8 0h2.827zM5.373 0l-.83.828L5.96 2.243 8.2 0H5.374zM48.97 0l3.657 3.657-1.414 1.414L46.143 0h2.828zM11.03 0L7.372 3.657 8.787 5.07 13.857 0H11.03zm32.284 0L49.8 6.485 48.384 7.9l-7.9-7.9h2.83zM16.686 0L10.2 6.485 11.616 7.9l7.9-7.9h-2.83zm20.97 0l9.315 9.314-1.414 1.414L34.828 0h2.83zM22.344 0L13.03 9.314l1.414 1.414L25.172 0h-2.83zM32 0l12.142 12.142-1.414 1.414L30 .828 17.272 13.556l-1.414-1.414L28 0h4zM.284 0l28 28-1.414 1.414L0 2.544V0h.284zM0 5.373l25.456 25.455-1.414 1.415L0 8.2V5.374zm0 5.656l22.627 22.627-1.414 1.414L0 13.86v-2.83zm0 5.656l19.8 19.8-1.415 1.413L0 19.514v-2.83zm0 5.657l16.97 16.97-1.414 1.415L0 25.172v-2.83zM0 28l14.142 14.142-1.414 1.414L0 30.828V28zm0 5.657L11.314 44.97l-1.414 1.414L0 36.485v-2.83zm0 5.657L8.485 47.8l-1.414 1.414L0 42.142v-2.83zm0 5.657l5.657 5.657-1.414 1.415L0 47.8v-2.83zM0 56.97l2.828 2.83-1.414 1.414L0 59.314V56.97zm60 0L45.858 42.83l1.414-1.414L60 54.142V56.97zm0-5.657L42.142 36.485l1.414-1.414L60 48.485V51.314zm0-5.657l-14.142-14.14 1.414-1.416L60 42.828V45.657zm0-5.657l-16.97-16.97 1.414-1.414L60 37.172v2.83zm0-5.657l-19.8-19.8 1.415-1.413L60 31.515v2.83zm0-5.657l-22.627-22.627 1.414-1.414L60 25.858v2.83zm0-5.657L36.828 8.602l1.414-1.415L60 20.2v2.83zm0-5.656L39.657 5.657l1.414-1.414L60 14.544V17.37zm0-5.657L42.485 2.828l1.414-1.414L60 8.2V11.03zm0-5.657l-12.142-12.14L49.272 0 60 10.73V5.373zM54.627 60L30 35.373 5.373 60H8.2L30 38.2 51.8 60h2.827zm-5.656 0L30 41.03 11.03 60h2.828L30 43.858 46.142 60h2.83zm-5.657 0L30 46.686 16.686 60h2.83L30 49.514 40.485 60h2.83zm-5.657 0L30 52.343 22.344 60h2.83L30 55.172 34.828 60h2.83zM32 60l-2-2-2 2h4zM59.716 0l-28 28 1.414 1.414L60 2.544V0h-.284zM60 5.373L34.544 30.828l1.414 1.415L60 8.2V5.374zm0 5.656L37.373 33.657l1.414 1.414L60 13.86v-2.83zm0 5.656l-19.8 19.8 1.415 1.413L60 19.514v-2.83zm0 5.657l-16.97 16.97 1.414 1.415L60 25.172v-2.83zM60 28L45.858 42.142l1.414 1.414L60 30.828V28zm0 5.657L48.686 44.97l1.414 1.414L60 36.485v-2.83zm0 5.657L51.515 47.8l1.414 1.414L60 42.142v-2.83zm0 5.657l-5.657 5.657 1.414 1.415L60 47.8v-2.83zM60 56.97l-2.828 2.83 1.414 1.414L60 59.314V56.97z' fill='rgba(255, 255, 255, 0.03)' fill-rule='evenodd'/%3E%3C/svg%3E"),
-        radial-gradient(circle at 10% 20%, rgba(87, 108, 188, 0.15) 0%, rgba(87, 108, 188, 0) 70%),
-        radial-gradient(circle at 90% 80%, rgba(233, 76, 161, 0.15) 0%, rgba(233, 76, 161, 0) 70%),
-        radial-gradient(circle at 50% 50%, rgba(255, 126, 51, 0.05) 0%, rgba(255, 126, 51, 0) 100%);
-    background-attachment: fixed;
-    background-size: auto, cover, cover, cover;
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0l.83.828-1.415 1.415L51.8 0h2.827zM5.373 0l-.83.828L5.96 2.243 8.2 0H5.374zM48.97 0l3.657 3.657-1.414 1.414L46.143 0h2.828zM11.03 0L7.372 3.657 8.787 5.07 13.857 0H11.03zm32.284 0L49.8 6.485 48.384 7.9l-7.9-7.9h2.83zM16.686 0L10.2 6.485 11.616 7.9l7.9-7.9h-2.83zm20.97 0l9.315 9.314-1.414 1.414L34.828 0h2.83zM22.344 0L13.03 9.314l1.414 1.414L25.172 0h-2.83zM32 0l12.142 12.142-1.414 1.414L30 .828 17.272 13.556l-1.414-1.414L28 0h4zM.284 0l28 28-1.414 1.414L0 2.544V0h.284zM0 5.373l25.456 25.455-1.414 1.415L0 8.2V5.374zm0 5.656l22.627 22.627-1.414 1.414L0 13.86v-2.83zm0 5.656l19.8 19.8-1.415 1.413L0 19.514v-2.83zm0 5.657l16.97 16.97-1.414 1.415L0 25.172v-2.83zM0 28l14.142 14.142-1.414 1.414L0 30.828V28zm0 5.657L11.314 44.97l-1.414 1.414L0 36.485v-2.83zm0 5.657L8.485 47.8l-1.414 1.414L0 42.142v-2.83zm0 5.657l5.657 5.657-1.414 1.415L0 47.8v-2.83zM0 56.97l2.828 2.83-1.414 1.414L0 59.314V56.97zm60 0L45.858 42.83l1.414-1.414L60 54.142V56.97zm0-5.657L42.142 36.485l1.414-1.414L60 48.485V51.314zm0-5.657l-14.142-14.14 1.414-1.416L60 42.828V45.657zm0-5.657l-16.97-16.97 1.414-1.414L60 37.172v2.83zm0-5.657l-19.8-19.8 1.415-1.413L60 31.515v2.83zm0-5.657l-22.627-22.627 1.414-1.414L60 25.858v2.83zm0-5.657L36.828 8.602l1.414-1.415L60 20.2v2.83zm0-5.656L39.657 5.657l1.414-1.414L60 14.544V17.37zm0-5.657L42.485 2.828l1.414-1.414L60 8.2V11.03zm0-5.657l-12.142-12.14L49.272 0 60 10.73V5.373zM54.627 60L30 35.373 5.373 60H8.2L30 38.2 51.8 60h2.827zm-5.656 0L30 41.03 11.03 60h2.828L30 43.858 46.142 60h2.83zm-5.657 0L30 46.686 16.686 60h2.83L30 49.514 40.485 60h2.83zm-5.657 0L30 52.343 22.344 60h2.83L30 55.172 34.828 60h2.83zM32 60l-2-2-2 2h4zM59.716 0l-28 28 1.414 1.414L60 2.544V0h-.284zM60 5.373L34.544 30.828l1.414 1.415L60 8.2V5.374zm0 5.656L37.373 33.657l1.414 1.414L60 13.86v-2.83zm0 5.656l-19.8 19.8 1.415 1.413L60 19.514v-2.83zm0 5.657l-16.97 16.97 1.414 1.415L60 25.172v-2.83zM60 28L45.858 42.142l1.414 1.414L60 30.828V28zm0 5.657L48.686 44.97l1.414 1.414L60 36.485v-2.83zm0 5.657L51.515 47.8l1.414 1.414L60 42.142v-2.83zm0 5.657l-5.657 5.657 1.414 1.415L60 47.8v-2.83zM60 56.97l-2.828 2.83 1.414 1.414L60 59.314V56.97z' fill='rgba(96, 165, 250, 0.03)' fill-rule='evenodd'/%3E%3C/svg%3E"),
+    radial-gradient(circle at 10% 20%, rgba(96, 165, 250, 0.08) 0%, rgba(96, 165, 250, 0) 70%),
+    radial-gradient(circle at 90% 80%, rgba(167, 139, 250, 0.08) 0%, rgba(167, 139, 250, 0) 70%),
+    radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.04) 0%, rgba(16, 185, 129, 0) 100%);
+  background-attachment: fixed;
+  background-size: auto, cover, cover, cover;
+  font-feature-settings: "kern", "liga", "calt";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 8px;
 }
+
 ::-webkit-scrollbar-track {
-    background: rgba(20, 20, 40, 0.5);
+  background: var(--bg-secondary);
+  border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb {
-    background: var(--accent-1);
-    border-radius: 10px;
+  background: var(--bg-tertiary);
+  border-radius: 10px;
+  border: 2px solid var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-2);
+  background: var(--accent-primary);
 }
 
 /* Container with enhanced max-width for better readability */
 .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem;
-    position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-8);
+  position: relative;
 }
 
-/* Header and Title Styles */
+/* Main Content Container */
 .Shlok_Mala_2 {
-    background-color: var(--card-bg);
-    border-radius: 24px;
-    padding: 2.5rem;
-    box-shadow: 0 20px 60px #ffffff;
-    backdrop-filter: blur(12px);
-    border: 1px solid rgb(236, 240, 240);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
+  background: var(--gradient-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(12px);
+  border: var(--border-thin) solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: var(--transition-normal);
 }
 
-/* Sacred Symbols in Background */
-.Shlok_Mala_2::before {
-    content: "ॐ";
-    position: absolute;
-    font-size: 300px;
-    opacity: 0.03;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    color: var(--accent-1);
+.Shlok_Mala_2:hover {
+  box-shadow: var(--shadow-lg), var(--glow-blue);
+  border-color: rgba(255, 255, 255, 0.1);
 }
+
+/* Sacred Symbols in Background - more subtle */
+.Shlok_Mala_2::before {
+  content: "ॐ";
+  position: absolute;
+  font-size: 300px;
+  opacity: 0.02;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  color: var(--accent-primary);
+  filter: blur(2px);
+}
+
+/* Introduction Section */
 .intro_2 {
-        text-align: center;
-        margin: 0 auto;
-        padding: 3rem 2.5rem;
-        max-width: 800px;
-        font-family: 'Sanskrit Text', serif;
-        background: linear-gradient(135deg, rgba(255,249,240,0.95) 0%, rgba(228,234,248,0.95) 100%);
-        border-radius: 20px;
-        border: 1px solid rgba(211, 200, 170, 0.5);
-        border-left: 5px solid #8b4513;
-        box-shadow:
-            0 10px 25px rgba(0, 0, 0, 0.08),
-            inset 0 0 40px rgba(212, 175, 55, 0.15),
-            0 0 15px rgba(71, 126, 232, 0.25),
-            0 4px 8px rgba(139, 69, 19, 0.15);
-        position: relative;
-        overflow: hidden;
-        transition: all 0.3s ease;
-    }
-    
-    /* Sanskrit text - first line */
-    .intro_2::first-line {
-        font-size: 2rem;
-        color: #714009;
-        font-weight: bold;
-        letter-spacing: 1px;
-        line-height: 2.5;
-        text-shadow: 0 1px 1px rgba(255,255,255,0.8);
-    }
-    .intro_2 .second-line {
-        font-size: 2rem;
-        color: #714009;
-        font-weight: bold;
-        letter-spacing: 1px;
-        line-height: 2.5;
-        text-shadow: 0 1px 1px rgba(255,255,255,0.8);
-    }
-    
-    .intro_2:before, .intro_2:after {
-        content: "☸";
-        font-size: 4.5rem;
-        color: rgba(212, 175, 55, 0.2);
-        position: absolute;
-        z-index: 0;
-        filter: blur(1px);
-        animation: rotate 20s linear infinite;
-    }
-    
-    @keyframes rotate {
-        from {transform: rotate(0deg);}
-        to {transform: rotate(360deg);}
-    }
-    
-    .intro_2:before {
-        top: 10px;
-        left: 10px;
-    }
-    
-    .intro_2:after {
-        bottom: 10px;
-        right: 10px;
-    }
-    
-    .intro_2:hover {
-        box-shadow:
-            0 15px 35px rgba(0, 0, 0, 0.12),
-            inset 0 0 60px rgba(212, 175, 55, 0.2),
-            0 0 20px rgba(71, 126, 232, 0.35);
-        transform: translateY(-5px);
-    }
-    
-    .intro_2 br {
-        display: block;
-        height: 14px;
-    }
-    
-    .intro_2 p {
-        font-size: 1.1rem;
-        margin-top: 1.6rem;
-        color: #333;
-        line-height: 1.9;
-        position: relative;
-        z-index: 1;
-        font-style: italic;
-        text-shadow: 0 1px 2px rgba(255,255,255,0.9);
-        text-align: justify;
-        font-weight: 400;
-    }
-    
-    /* Quote styling */
-    .intro_2 quote {
-        font-style: italic;
-        color: #4a3328;
-        font-weight: 600;
-        text-shadow: 0 1px 1px rgba(255,255,255,0.7);
-    }
-    
-    /* Add responsive adjustments */
-    @media (max-width: 768px) {
-        .intro_2 {
-            padding: 2rem 1.5rem;
-        }
-        
-        .intro_2::first-line,
-        .intro_2 .second-line {
-            font-size: 1.8rem;
-        }
-        
-        .intro_2 p {
-            font-size: 1rem;
-        }
-    }
-    
-    /* Add subtle texture overlay for depth */
-    .intro_2::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23816b4b' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
-        pointer-events: none;
-        z-index: 0;
-    }
-    
-    /* Additional improvements for Sanskrit text */
-    @font-face {
-        font-family: 'Sanskrit Text';
-        src: local('Noto Sans Devanagari'), local('Mangal'), local('Arial Unicode MS');
-    }
+  text-align: center;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6);
+  max-width: 800px;
+  font-family: var(--font-sanskrit);
+  background: linear-gradient(170deg, rgba(26, 33, 48, 0.85), rgba(15, 23, 42, 0.85));
+  border-radius: var(--radius-lg);
+  border: var(--border-thin) solid rgba(255, 255, 255, 0.05);
+  border-left: 3px solid var(--accent-secondary);
+  box-shadow: 
+    var(--shadow-md),
+    inset 0 0 40px rgba(167, 139, 250, 0.1),
+    0 0 20px rgba(96, 165, 250, 0.15);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-normal);
+}
+
+/* Sanskrit text styling - first line */
+.intro_2::first-line {
+  font-size: 2rem;
+  color: var(--accent-quaternary);
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 2.5;
+}
+
+.intro_2 .second-line {
+  font-size: 2rem;
+  color: var(--accent-quaternary);
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 2.5;
+}
+
+/* Dharma wheel animations */
+.intro_2:before, .intro_2:after {
+  content: "☸";
+  font-size: 4.5rem;
+  color: rgba(167, 139, 250, 0.1);
+  position: absolute;
+  z-index: 0;
+  filter: blur(1px);
+  animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+
+.intro_2:before {
+  top: 10px;
+  left: 10px;
+}
+
+.intro_2:after {
+  bottom: 10px;
+  right: 10px;
+}
+
+.intro_2:hover {
+  box-shadow:
+    var(--shadow-lg),
+    inset 0 0 60px rgba(167, 139, 250, 0.15),
+    0 0 25px rgba(96, 165, 250, 0.25);
+  transform: translateY(-3px);
+}
+
+.intro_2 br {
+  display: block;
+  height: 14px;
+}
+
+.intro_2 p {
+  font-size: 1.1rem;
+  margin-top: 1.6rem;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  position: relative;
+  z-index: 1;
+  font-style: italic;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  text-align: justify;
+  font-weight: 400;
+}
+
+/* Quote styling */
+.intro_2 quote {
+  font-style: italic;
+  color: var(--accent-tertiary);
+  font-weight: 500;
+}
+
 /* Enhanced Headings */
 h1, h2, h3 {
-    -webkit-text-fill-color: brown;
-    font-family: var(--decorative-font);
-    text-align: center;
-    margin: 2.5rem 0 1.5rem;
-    position: relative;
+  font-family: var(--font-heading);
+  text-align: center;
+  margin: var(--space-8) 0 var(--space-6);
+  position: relative;
+  letter-spacing: -0.02em;
 }
 
 h1 {
-    font-size: 3rem;
-    background: var(--gradient-1);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: var(--glow-1);
-    letter-spacing: 2px;
-    padding: 0.5rem 0;
+  font-size: 3rem;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: var(--glow-blue);
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  padding: var(--space-2) 0;
 }
 
-/* Decorative swirls around h1 */
+/* Futuristic decorative elements around h1 */
 h1::before, h1::after {
-    content: "☸";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.8rem;
-    color: var(--accent-1);
-    opacity: 0.7;
+  content: "☸";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.8rem;
+  color: var(--accent-primary);
+  opacity: 0.7;
+  transition: var(--transition-normal);
 }
 
 h1::before {
-    left: 0;
-    animation: pulse 3s infinite alternate;
+  left: 0;
+  animation: pulse 3s infinite alternate;
 }
 
 h1::after {
-    right: 0;
-    animation: pulse 3s infinite alternate-reverse;
+  right: 0;
+  animation: pulse 3s infinite alternate-reverse;
 }
 
 h2 {
-    font-size: 2rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 2px solid rgba(255, 204, 102, 0.3);
-    color: var(--accent-2);
-    text-shadow: 0 0 10px rgba(255, 204, 102, 0.3);
+  font-size: 2rem;
+  padding-bottom: var(--space-3);
+  border-bottom: var(--border-thin) solid rgba(96, 165, 250, 0.2);
+  color: var(--accent-primary);
+  text-shadow: var(--glow-blue);
+  font-weight: 500;
 }
 
 h2::before {
-    content: "॥";
-    margin-right: 0.8rem;
-    color: var(--accent-1);
+  content: "॥";
+  margin-right: var(--space-3);
+  color: var(--accent-secondary);
 }
 
 h2::after {
-    content: "॥";
-    margin-left: 0.8rem;
-    color: var(--accent-1);
+  content: "॥";
+  margin-left: var(--space-3);
+  color: var(--accent-secondary);
 }
 
 h3 {
-    font-size: 1.7rem;
-    color: var(--accent-3);
-    margin-top: 3.5rem;
-    text-shadow: 0 0 10px rgba(136, 204, 255, 0.3);
+  font-size: 1.7rem;
+  color: var(--accent-tertiary);
+  margin-top: var(--space-12);
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+  font-weight: 500;
 }
 
 /* Decorative divider */
 h3::after {
-    content: "";
-    display: block;
-    width: 150px;
-    height: 3px;
-    background: linear-gradient(to right, transparent, var(--accent-3), transparent);
-    margin: 1rem auto 0;
+  content: "";
+  display: block;
+  width: 150px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--accent-tertiary), transparent);
+  margin: var(--space-4) auto 0;
 }
 
 /* Enhanced Shloka Styles */
 .shlok_2 {
-    font-size: 1.3rem;
-    padding: 2rem;
-    margin: 2rem 0;
-    border-radius: 16px;
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border-left: 4px solid;
-    background-color: white;
-    box-shadow: 0 5px 15px rgba(237, 236, 236, 0.2);
-    overflow: hidden;
+  font-size: 1.3rem;
+  padding: var(--space-8);
+  margin: var(--space-8) 0;
+  border-radius: var(--radius-md);
+  position: relative;
+  transition: var(--transition-normal);
+  border-left: 3px solid;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  backdrop-filter: blur(5px);
 }
 
 .shlok_2:hover {
-    transform: translateY(-5px) scale(1.01);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg), 0 0 20px rgba(96, 165, 250, 0.2);
 }
 
 /* Glowing effect on hover */
 .shlok_2:hover::before, .shlok_2:hover::after {
-    color: var(--accent-1);
-    opacity: 0.5;
-    filter: drop-shadow(0 0 5px var(--accent-1));
+  color: var(--accent-primary);
+  opacity: 0.5;
+  filter: drop-shadow(0 0 5px var(--accent-primary));
 }
 
-/* Section colors with enhanced gradients */
+/* Section colors with futuristic gradients */
 .shlok_2\'1\' {
-    box-sizing: content-box;
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #ff5e62;
-    background: whitesmoke;
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: var(--accent-primary);
+  background: linear-gradient(to right, rgba(96, 165, 250, 0.1), var(--bg-tertiary));
 }
 
 .shlok_2\'2\' {
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #4facfe;
-    background: linear-gradient(to right, rgba(79, 172, 254, 0.15), rgba(5, 5, 28, 0.6));
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: var(--accent-secondary);
+  background: linear-gradient(to right, rgba(167, 139, 250, 0.1), var(--bg-tertiary));
 }
 
 .shlok_2\'3\' {
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #a18cd1;
-    background: linear-gradient(to right, rgba(161, 140, 209, 0.15), rgba(16, 16, 35, 0.6));
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: var(--accent-tertiary);
+  background: linear-gradient(to right, rgba(16, 185, 129, 0.1), var(--bg-tertiary));
 }
 
 .shlok_2\'4\' {
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #84fab0;
-    background: linear-gradient(to right, rgba(132, 250, 176, 0.15), rgba(14, 14, 40, 0.6));
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: var(--accent-quaternary);
+  background: linear-gradient(to right, rgba(245, 158, 11, 0.1), var(--bg-tertiary));
 }
 
 .shlok_2\'5\' {
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #fbc2eb;
-    background: linear-gradient(to right, rgba(251, 194, 235, 0.15), rgba(10, 10, 39, 0.6));
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: #ec4899;
+  background: linear-gradient(to right, rgba(236, 72, 153, 0.1), var(--bg-tertiary));
 }
 
 .shlok_2\'6\'{
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #ff9a9e;
-    background: linear-gradient(to right, rgba(255, 154, 158, 0.15), rgba(10, 10, 46, 0.6));
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: #f43f5e;
+  background: linear-gradient(to right, rgba(244, 63, 94, 0.1), var(--bg-tertiary));
 }
 
 .shlok_2\'7\'{
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #f6d365;
-    background: linear-gradient(to right, rgba(246, 211, 101, 0.15), rgba(4, 4, 18, 0.6));
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: #eab308;
+  background: linear-gradient(to right, rgba(234, 179, 8, 0.1), var(--bg-tertiary));
 }
 
 .shlok_2\'8\'{
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #a6c1ee;
-    background: linear-gradient(to right, rgba(166, 193, 238, 0.15), rgba(10, 10, 40, 0.6));
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: #3b82f6;
+  background: linear-gradient(to right, rgba(59, 130, 246, 0.1), var(--bg-tertiary));
 }
 
 .shlok_2\'9\'{
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #f092b0;
-    background: linear-gradient(to right, rgba(240, 146, 176, 0.15), rgba(6, 6, 49, 0.6));
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: #d946ef;
+  background: linear-gradient(to right, rgba(217, 70, 239, 0.1), var(--bg-tertiary));
 }
 
 .shlok_2\'10\'{
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #30cfd0;
-    background: linear-gradient(to right, rgba(48, 207, 208, 0.15), rgba(8, 8, 44, 0.6));
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: #14b8a6;
+  background: linear-gradient(to right, rgba(20, 184, 166, 0.1), var(--bg-tertiary));
 }
 
 .shlok_2\'11\'{
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #d4fc79;
-    background: linear-gradient(to right, rgba(212, 252, 121, 0.15), rgba(11, 11, 45, 0.6));
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: #84cc16;
+  background: linear-gradient(to right, rgba(132, 204, 22, 0.1), var(--bg-tertiary));
 }
 
 .shlok_2\'12\' {
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #96e6a1;
-    background: linear-gradient(to right, rgba(150, 230, 161, 0.15), rgba(8, 8, 38, 0.6));
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: #22c55e;
+  background: linear-gradient(to right, rgba(34, 197, 94, 0.1), var(--bg-tertiary));
 }
 
 .shlok_2\'13\' {
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #fbc2eb;
-    border-left-color: #4facfe;
-    background: linear-gradient(to right, rgba(79, 172, 254, 0.15), rgba(5, 5, 31, 0.6));
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: #6366f1;
+  background: linear-gradient(to right, rgba(99, 102, 241, 0.1), var(--bg-tertiary));
 }
 
 .shlok_2\'14\' {
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #a6c0fe;
-    background: linear-gradient(to right, rgba(166, 192, 254, 0.15), rgba(4, 4, 28, 0.6));
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: #8b5cf6;
+  background: linear-gradient(to right, rgba(139, 92, 246, 0.1), var(--bg-tertiary));
 }
 
 .shlok_2\'15\' {
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #f68084;
-    background: linear-gradient(to right, rgba(246, 128, 132, 0.15), rgba(7, 7, 36, 0.6));
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: #f43f5e;
+  background: linear-gradient(to right, rgba(244, 63, 94, 0.1), var(--bg-tertiary));
 }
 
 .shlok_2\'16\' {
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #5ee7df;
-    background: linear-gradient(to right, rgba(94, 231, 223, 0.15), rgba(3, 3, 26, 0.6));
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: #06b6d4;
+  background: linear-gradient(to right, rgba(6, 182, 212, 0.1), var(--bg-tertiary));
 }
 
 .shlok_2\'17\' {
-    font-size: 1.5rem;
-    text-align: center;
-    border-left-color: #b490ca;
-    background: linear-gradient(to right, rgba(180, 144, 202, 0.15), rgba(5, 5, 28, 0.6));
+  font-size: 1.5rem;
+  text-align: center;
+  border-left-color: #a855f7;
+  background: linear-gradient(to right, rgba(168, 85, 247, 0.1), var(--bg-tertiary));
 }
 
 /* Enhanced Decorative Elements */
 .shlok_2::before {
-    content: "॥";
-    position: absolute;
-    left: 15px;
-    top: 15px;
-    color: rgba(255, 255, 255, 0.2);
-    font-size: 2rem;
-    transition: all 0.3s ease;
+  content: "॥";
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  color: rgba(255, 255, 255, 0.1);
+  font-size: 2rem;
+  transition: var(--transition-normal);
 }
 
 .shlok_2::after {
-    content: "॥";
-    position: absolute;
-    right: 15px;
-    bottom: 15px;
-    color: rgba(255, 255, 255, 0.2);
-    font-size: 2rem;
-    transition: all 0.3s ease;
+  content: "॥";
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  color: rgba(255, 255, 255, 0.1);
+  font-size: 2rem;
+  transition: var(--transition-normal);
 }
 
 /* Special Highlight for Important Shlokas */
 #Shlok_1, #Shlok_112, #Shlok_152, #Shlok_200, #Shlok_220 {
-    background-color: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 204, 102, 0.4);
-    box-shadow: 0 0 30px rgba(255, 204, 102, 0.15);
+  background: linear-gradient(170deg, rgba(96, 165, 250, 0.05), rgba(15, 23, 42, 0.9));
+  border: var(--border-thin) solid rgba(96, 165, 250, 0.2);
+  box-shadow: var(--shadow-md), var(--glow-blue);
 }
 
 /* Add lotus symbol for important shlokas */
 #Shlok_1::before, #Shlok_112::before, #Shlok_152::before, #Shlok_200::before, #Shlok_220::before {
-    content: "✾";
-    color: rgba(255, 204, 102, 0.4);
+  content: "✾";
+  color: rgba(96, 165, 250, 0.3);
 }
 
 /* Footer Style */
 h3:last-of-type {
-    margin-top: 4rem;
-    color: var(--accent-1);
-    font-size: 2rem;
-    text-shadow: var(--glow-1);
+  margin-top: var(--space-16);
+  color: var(--accent-primary);
+  font-size: 2rem;
+  text-shadow: var(--glow-blue);
 }
 
-/* Enhanced Animation Effects */
+/* Enhanced Animation Effects - subtle and smooth */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pulse {
-    0% { opacity: 0.5; transform: translateY(-50%) scale(0.95); }
-    100% { opacity: 0.9; transform: translateY(-50%) scale(1.05); }
+  0% { opacity: 0.5; transform: translateY(-50%) scale(0.95); }
+  100% { opacity: 0.8; transform: translateY(-50%) scale(1.05); }
 }
 
 @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
 }
 
 .Shlok_Mala_2 {
-    animation: fadeIn 1s ease-out;
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Interactive floating effect for shloka sections */
+/* Subtle floating effect for shloka sections */
 .shlok_2:nth-child(odd) {
-    animation: float 6s ease-in-out infinite;
+  animation: float 8s ease-in-out infinite;
 }
 
 .shlok_2:nth-child(even) {
-    animation: float 7s ease-in-out infinite reverse;
+  animation: float 9s ease-in-out infinite reverse;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-    .container {
-        padding: 1.5rem;
-    }
-    
-    h1 {
-        font-size: 2.5rem;
-    }
+  .container {
+    padding: var(--space-6);
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
 }
 
 @media (max-width: 768px) {
-    .container {
-        padding: 1rem;
-    }
-    
-    h1 {
-        font-size: 2rem;
-    }
-    
-    h2 {
-        font-size: 1.6rem;
-    }
-    
-    .shlok_2 {
-        padding: 1.5rem;
-        font-size: 1.1rem;
-    }
-    
-    .intro_2_2 {
-        padding: 1.5rem;
-        font-size: 1.1rem;
-    }
+  :root {
+    --space-8: 1.5rem;
+    --space-12: 2.5rem;
+    --space-16: 3.5rem;
+  }
+  
+  .container {
+    padding: var(--space-4);
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.6rem;
+  }
+  
+  .shlok_2 {
+    padding: var(--space-6);
+    font-size: 1.1rem;
+  }
 }
 
 @media (max-width: 480px) {
-    h1 {
-        font-size: 1.8rem;
-    }
-    
-    h2 {
-        font-size: 1.4rem;
-    }
-    
-    h3 {
-        font-size: 1.3rem;
-    }
-    
-    .shlok_2 {
-        padding: 1.2rem;
-        font-size: 1rem;
-        margin: 1.5rem 0;
-    }
-    
-    .intro_2_2 {
-        padding: 1.2rem;
-        font-size: 1rem;
-    }
-    
-    /* Hide some decorative elements on very small screens */
-    h1::before, h1::after {
-        display: none;
-    }
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.4rem;
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+  }
+  
+  .shlok_2 {
+    padding: var(--space-4);
+    font-size: 1rem;
+    margin: var(--space-6) 0;
+  }
+  
+  /* Simplify decorative elements on very small screens */
+  h1::before, h1::after {
+    font-size: 1.2rem;
+  }
+  
+  .intro_2:before, .intro_2:after {
+    font-size: 3rem;
+  }
 }
 
-/* Prefers reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    .Shlok_Mala_2,
-    .shlok_2,
-    h1::before, h1::after {
-        animation: none !important;
-        transition: none !important;
-    }
-    
-    .shlok_2:hover {
-        transform: none;
-    }
+/* Support for dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #0a0e17;
+    --bg-secondary: #101620;
+    --bg-tertiary: #1a2130;
+  }
 }
+
+/* Support for light mode */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --bg-tertiary: #e2e8f0;
+    --card-bg: rgba(241, 245, 249, 0.85);
+    --text-primary: #1e293b;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+  }
+  
+.shlok_2, .intro_2 {
+    background: rgba(241, 245, 249, 0.85);
+    color: var(--text-primary);
+    border: var(--border-thin) solid rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
+}
+
+  .shlok_2:hover {
+    box-shadow: var(--shadow-lg), 0 0 20px rgba(96, 165, 250, 0.2);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+}
+/* End of CSS */
+/* This CSS file is designed to create a futuristic, smooth, and easy-to-read interface for the Shlok Mala 2 application. 
+   It incorporates modern design principles, subtle animations, and a soothing color palette to enhance user experience. */
