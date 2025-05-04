@@ -633,10 +633,10 @@ h3:last-of-type {
     box-shadow: var(--shadow-md);
 }
 
-  .shlok_2:hover {
+.shlok_2:hover {
     box-shadow: var(--shadow-lg), 0 0 20px rgba(96, 165, 250, 0.2);
     border-color: rgba(0, 0, 0, 0.1);
-  }
+}
 }
 /* End of CSS */
 /* This CSS file is designed to create a futuristic, smooth, and easy-to-read interface for the Shlok Mala 2 application. 
