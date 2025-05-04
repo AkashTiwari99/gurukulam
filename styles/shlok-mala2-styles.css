@@ -62,7 +62,7 @@
 
 /* Base Styles with modern background */
 body {
-  font-family: var(--font-sans);
+  font-family: sans-serif,devanagari;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.8;
@@ -111,6 +111,7 @@ body {
 
 /* Main Content Container */
 .Shlok_Mala_2 {
+font-family: ;
   background: var(--gradient-card);
   border-radius: var(--radius-lg);
   padding: var(--space-8);
