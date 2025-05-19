@@ -1,5 +1,5 @@
 /* CSS for the Book Page */
-@import url('https://fonts.googleapis.com/css2?family=Martel:wght@200;300;400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap');
 
 :root {
     --primary-bg: #f5f5f5; /* Light gray background for better readability */
@@ -25,7 +25,7 @@ body {
 }
 .page {
     min-height: calc(100vh - 60px);
-    font-family: "Martel", serif;
+    font-family: "Tiro Devanagari Sanskrit", serif;
     font-size: 1.2em;
     line-height: 1.6;
     font-weight: 600;
@@ -37,7 +37,7 @@ body {
 }
 
 .vyakhya {
-    font-family: "Martel", serif;
+    font-family: "Tiro Devanagari Sanskrit", serif;
     font-style: normal;
     text-align: center;
     color: var(--accent-1);
@@ -45,7 +45,7 @@ body {
 }
 
 .versetext {
-    font-family: "Martel", serif;
+    font-family:  "Tiro Devanagari Sanskrit", serif;
     font-style: normal;
     font-weight: 400; /* Normal weight for the text */
     font-size: 1.2em; /* Slightly larger for better readability */
