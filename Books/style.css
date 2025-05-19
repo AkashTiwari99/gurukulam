@@ -38,6 +38,10 @@ body {
 
 .vyakhya {
     font-family: "Tiro Devanagari Sanskrit", serif;
+    font-size: 1.5em; /* Larger font size for the title */
+    line-height: 1.6;
+    font-weight: 600; /* Bold for emphasis */
+    font-optical-sizing: auto;
     font-style: normal;
     text-align: center;
     color: var(--accent-1);
@@ -49,6 +53,7 @@ body {
     font-style: normal;
     font-weight: 400; /* Normal weight for the text */
     font-size: 1.2em; /* Slightly larger for better readability */
+    font-optical-sizing: auto;
     margin-bottom: 10px;
     text-align: center;
     color: var(--accent-2);
