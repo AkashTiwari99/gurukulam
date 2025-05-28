@@ -46,13 +46,13 @@ body {
     font-family: "Tiro Devanagari Sanskrit", "Noto Sans Devanagari", serif;
     background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
     color: var(--primary-text);
-    line-height: 1.7;
+    /* line-height: 1.7;
     margin: 0;
     padding: 0;
     min-height: 100vh;
     font-size: var(--font-base);
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    -moz-osx-font-smoothing: grayscale; */
 }
 
 /* Main Page Container */
