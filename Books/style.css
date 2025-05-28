@@ -63,8 +63,8 @@ body {
 .quote {
     font-weight: bold;
     color: var(--quote-color);
-    background-color: #e8f5e9; /* Light green background for quotes */
-    padding: 8px 12px; /* Padding for better spacing */
+    /* background-color: #e8f5e9; Light green background for quotes */
+    /* padding: 8px 12px; Padding for better spacing */
     /* display: inline-block; Ensure padding and border work correctly */
 }
 
