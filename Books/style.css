@@ -1,305 +1,105 @@
-/* Enhanced CSS for Sanskrit Book Page - Improved Visibility & Scalability */
-@import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap');
+/* CSS for the Book Page */
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap');
 
 :root {
-    /* Enhanced Color Palette */
-    --primary-bg: #fdfcfa; /* Warm off-white for better reading */
-    --secondary-bg: #f8f6f2; /* Subtle background variation */
-    --primary-text: #2d2d2d; /* Rich dark gray */
-    --secondary-text: #4a4a4a; /* Medium gray */
-    --accent-1: #7b1fa2; /* Rich purple - enhanced visibility */
-    --accent-2: #c2185b; /* Vibrant pink - improved contrast */
-    --quote-color: #2e7d32; /* Forest green for quotes */
-    --quote-bg: rgba(46, 125, 50, 0.08); /* Subtle quote background */
-    --border-color: #d0c7b8; /* Warm border color */
-    --shadow-light: rgba(0, 0, 0, 0.1);
-    --shadow-medium: rgba(0, 0, 0, 0.15);
-    
-    /* Typography Scale */
-    --font-base: 1.1rem;
-    --font-lg: 1.3rem;
-    --font-xl: 1.6rem;
-    --font-2xl: 2rem;
-    --font-3xl: 2.5rem;
-    
-    /* Spacing Scale */
-    --space-xs: 0.5rem;
-    --space-sm: 1rem;
-    --space-md: 1.5rem;
-    --space-lg: 2rem;
-    --space-xl: 3rem;
-    --space-2xl: 4rem;
-    
-    /* Layout */
-    --max-width: 1200px;
-    --page-padding: 2rem;
-    --border-radius: 8px;
+    --primary-bg: #f5f5f5; /* Light gray background for better readability */
+    --primary-text: #333333; /* Dark gray for main text */
+    --secondary-text: #000000; /* Slightly lighter gray for secondary text */
+    --accent-1: #6a1b9a; /* Deep purple for highlights */
+    --accent-2: #d81b60; /* Vibrant pink for contrast */
+    --quote-color: #2e7d32; /* Green for quotes to stand out */
+    --max-width: 100%;
+    --page-padding:300px; /* Padding for the page */
 }
-
-/* Reset and Base Styles */
-* {
-    box-sizing: border-box;
-}
-
 body {
-    font-family: "Tiro Devanagari Sanskrit", "Noto Sans Devanagari", serif;
-    background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
-    color: var(--primary-text);
-    /* line-height: 1.7;
-    margin: 0;
-    padding: 0;
+    font-family: var(--font-primary);
+    background-color: var(--background-color);
+    color: #333;
+    /* line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
-    font-size: var(--font-base);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; */
+    padding: 0px;
+    padding-left: 0px; */
 }
-
-/* Main Page Container */
 .page {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: var(--space-xl) var(--page-padding);
-    min-height: calc(100vh - 4rem);
-    background: var(--primary-bg);
-    box-shadow: 0 4px 20px var(--shadow-light);
-    border-radius: var(--border-radius);
-    position: relative;
-}
-
-/* Page Title */
-.page h1 {
-    font-size: var(--font-3xl);
+    min-height: calc(100vh - 60px);
+    font-family: "Tiro Devanagari Sanskrit", serif;
+    font-size: 1.2em;
+    line-height: 1.6;
     font-weight: 600;
-    text-align: center;
-    margin: 0 0 var(--space-2xl) 0;
-    padding-bottom: var(--space-md);
-    border-bottom: 3px solid var(--accent-1);
-    color: var(--accent-1);
-    position: relative;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    padding-left: 250px;
+    padding-right: 15px;
 }
 
-.page h1::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: var(--accent-2);
-    border-radius: 2px;
-}
-
-/* Commentary Title */
 .vyakhya {
     font-family: "Tiro Devanagari Sanskrit", serif;
-    font-size: var(--font-2xl);
+    font-size: 1.5em; /* Larger font size for the title */
     line-height: 1.4;
-    font-weight: 500;
+    font-weight: 450; /* Bold for emphasis */
+    font-optical-sizing: auto;
+    font-style: normal;
     text-align: center;
     color: var(--accent-1);
-    margin: var(--space-xl) 0 var(--space-lg) 0;
-    padding: var(--space-md);
-    background: linear-gradient(135deg, rgba(123, 31, 162, 0.05) 0%, rgba(194, 24, 91, 0.05) 100%);
-    border-radius: var(--border-radius);
-    border-left: 4px solid var(--accent-1);
-    position: relative;
 }
 
-/* Verse Text */
 .versetext {
-    font-family: "Tiro Devanagari Sanskrit", serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: var(--font-xl);
-    line-height: 1.6;
+    font-family:  "Tiro Devanagari Sanskrit", serif;
+    font-style: normal;
+    font-weight: 400; /* Normal weight for the text */
+    font-size: 1.2em; /* Slightly larger for better readability */
+    font-optical-sizing: auto;
+    margin-bottom: 10px;
     text-align: center;
     color: var(--accent-2);
-    margin: var(--space-lg) 0;
-    padding: var(--space-md) var(--space-lg);
-    background: rgba(194, 24, 91, 0.03);
-    border-radius: var(--border-radius);
-    border: 1px solid rgba(194, 24, 91, 0.1);
-    position: relative;
+    margin-left: 0;
+    font-style: italic; /* Italicized for a poetic feel */
 }
 
-.versetext::before,
-.versetext::after {
-    content: '"';
-    font-size: var(--font-2xl);
-    color: var(--accent-2);
-    opacity: 0.6;
-    font-style: normal;
-}
-
-/* Quote Styling */
 .quote {
-    font-weight: 600;
+    font-weight: bold;
     color: var(--quote-color);
-    background: var(--quote-bg);
-    padding: var(--space-xs) var(--space-sm);
-    border-radius: 4px;
-    border-left: 3px solid var(--quote-color);
-    display: inline-block;
-    margin: var(--space-xs) 0;
-    position: relative;
+    background-color: #e8f5e9; /* Light green background for quotes */
+    padding: 8px 12px; /* Padding for better spacing */
+    display: inline-block; /* Ensure padding and border work correctly */
 }
 
-/* Author Line */
 .authorline {
     text-align: center;
     color: var(--secondary-text);
-    font-size: var(--font-lg);
-    font-weight: 500;
-    margin-top: var(--space-xl);
-    padding-top: var(--space-md);
-    border-top: 1px solid var(--border-color);
-    font-style: italic;
+    font-size: 1.2em; /* Slightly smaller for subtlety */
+    margin-top: 20px; /* Added space above the author line */
 }
 
-/* Enhanced Zoom Classes */
+.page h1 {
+    display: flex;
+    justify-content: center;
+    margin: 9px 0px;
+    border-bottom: 5px solid gray;
+    padding-bottom: 5px;
+}
+
+/* Zoom-in and Zoom-out classes */
 .zoom-in {
-    transform: scale(1.1);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 32px var(--shadow-medium);
+    transform: scale(1.2); /* Scale up by 20% */
+    transition: transform 0.3s ease; /* Smooth transition */
 }
 
 .zoom-out {
-    transform: scale(0.9);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0.8;
+    transform: scale(0.8); /* Scale down by 20% */
+    transition: transform 0.3s ease; /* Smooth transition */
 }
 
-/* Interactive Elements */
-.page *:hover {
-    transition: all 0.3s ease;
-}
-
-.versetext:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(194, 24, 91, 0.15);
-}
-
-.quote:hover {
-    transform: translateX(4px);
-    box-shadow: 0 2px 8px rgba(46, 125, 50, 0.2);
-}
-
-/* Enhanced Typography */
-p {
-    margin: var(--space-md) 0;
-    font-size: var(--font-lg);
-    line-height: 1.8;
-}
-
-/* Accessibility Improvements */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
-/* Enhanced Responsive Design */
-@media screen and (max-width: 1024px) {
-    :root {
-        --font-base: 1rem;
-        --font-lg: 1.2rem;
-        --font-xl: 1.4rem;
-        --font-2xl: 1.8rem;
-        --font-3xl: 2.2rem;
-        --page-padding: 1.5rem;
-    }
-    
+/* Responsive adjustments */
+@media (max-width: 768px) {
     .page {
-        margin: var(--space-sm);
-        padding: var(--space-lg) var(--page-padding);
+        padding: 15px;
     }
-}
-
-@media screen and (max-width: 768px) {
-    :root {
-        --font-base: 0.95rem;
-        --font-lg: 1.1rem;
-        --font-xl: 1.3rem;
-        --font-2xl: 1.6rem;
-        --font-3xl: 2rem;
-        --page-padding: 1rem;
-    }
-    
-    .page {
-        margin: 0;
-        border-radius: 0;
-        min-height: 100vh;
-    }
-    
-    .versetext {
-        font-size: var(--font-lg);
-        padding: var(--space-sm);
-    }
-    
-    .vyakhya {
-        font-size: var(--font-xl);
-        padding: var(--space-sm);
-    }
-}
-
-@media screen and (max-width: 480px) {
-    :root {
-        --page-padding: 0.75rem;
-        --space-xl: 2rem;
-        --space-2xl: 2.5rem;
-    }
-    
-    .page h1 {
-        font-size: var(--font-2xl);
-    }
-    
-    .versetext::before,
-    .versetext::after {
-        font-size: var(--font-xl);
-    }
-}
-
-/* Print Styles */
-@media print {
-    .page {
-        box-shadow: none;
-        background: white;
-        max-width: none;
-        margin: 0;
-        padding: 1in;
-    }
-    
-    .zoom-in,
-    .zoom-out {
-        transform: none;
-    }
-    
-    * {
-        transition: none !important;
-    }
-}
-
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --primary-bg: #1a1a1a;
-        --secondary-bg: #2d2d2d;
-        --primary-text: #e0e0e0;
-        --secondary-text: #b0b0b0;
-        --accent-1: #bb86fc;
-        --accent-2: #ff6b9d;
-        --quote-color: #4caf50;
-        --quote-bg: rgba(76, 175, 80, 0.1);
-        --border-color: #444;
-        --shadow-light: rgba(255, 255, 255, 0.1);
-        --shadow-medium: rgba(255, 255, 255, 0.15);
-    }
-    
     body {
-        background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+        padding: 10px;
     }
 }
