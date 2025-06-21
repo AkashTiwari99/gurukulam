@@ -1,268 +1,209 @@
-/* Vibrant & Spiritual Shlok Mala Design */
-:root {
-  /* Divine Color Palette */
-  --primary-bg: #fff9f0;        /* Warm ivory background */
-  --card-bg: #ffffff;           /* Pure white for purity */
-  --primary-text: #3a3226;      /* Earthy brown for grounding */
-  --accent-1: #9c27b0;          /* Royal purple (spirituality) */
-  --accent-2: #ff9800;          /* Saffron orange (sacred fire) */
-  --accent-3: #4caf50;          /* Emerald green (prosperity) */
-  --accent-4: #2196f3;          /* Sky blue (divine wisdom) */
-  --border-color: #e0c9a6;      /* Gold leaf border */
-  --highlight: #fff3e0;         /* Warm highlight */
-  
-  /* Font Sizes */
-  --h1-size: clamp(2rem, 5vw, 2.8rem);
-  --h2-size: clamp(1.5rem, 4vw, 2.2rem);
-  --h3-size: clamp(1.2rem, 3.5vw, 1.7rem);
-  --shlok-size: clamp(1.1rem, 3vw, 1.3rem);
-  --intro-size: clamp(1rem, 3vw, 1.2rem);
-  
-  /* Font Family */
-  --main-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --decorative-font: "Sanskrit Text", "Tiro Devanagari Sanskrit", serif;
-}
+/* Divine Centered Shlok Mala Design */
+        :root {
+            /* Sacred Color Palette */
+            --primary-bg: #fff9f0;        /* Warm ivory */
+            --card-bg: #ffffff;           /* Pure white */
+            --primary-text: #3a3226;      /* Earthy brown */
+            --accent-1: #9c27b0;          /* Royal purple */
+            --accent-2: #ff9800;          /* Saffron orange */
+            --accent-3: #4caf50;          /* Emerald green */
+            --accent-4: #2196f3;          /* Sky blue */
+            --border-color: #e0c9a6;      /* Gold leaf */
+            --highlight: #fff3e0;         /* Warm highlight */
+            
+            /* Font Sizes */
+            --h1-size: clamp(2rem, 5vw, 2.8rem);
+            --h2-size: clamp(1.5rem, 4vw, 2.2rem);
+            --shlok-size: clamp(1.2rem, 4vw, 1.4rem);
+            --meaning-size: clamp(1rem, 3vw, 1.1rem);
+        }
 
-/* Base Styles with Sacred Patterns */
-body {
-  font-family: var(--main-font);
-  background-color: var(--primary-bg);
-  color: var(--primary-text);
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background-image: 
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23ff9800" opacity="0.05" d="M50 0L100 50L50 100L0 50Z"/></svg>'),
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle fill="%239c27b0" opacity="0.05" cx="50" cy="50" r="40"/></svg>');
-  background-size: 80px 80px, 60px 60px;
-  background-position: 0 0, 30px 30px;
-}
+        /* Base Styles with Sacred Patterns */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--primary-text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23ff9800" opacity="0.03" d="M30,15 L70,15 L85,50 L70,85 L30,85 L15,50 Z"/></svg>');
+            background-size: 100px 100px;
+        }
 
-/* Container with Lotus Motif */
-.container {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  position: relative;
-}
+        /* Main Container */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
-.container::before {
-  content: "🪷";
-  position: absolute;
-  font-size: 3rem;
-  opacity: 0.1;
-  right: 1rem;
-  top: 1rem;
-  z-index: 0;
-}
+        /* Header with Divine Decoration */
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
 
-/* Header Section with Diya Decoration */
-.Shlok_Mala_2 {
-  background-color: var(--card-bg);
-  border-radius: 16px;
-  padding: 2.5rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  margin-bottom: 2rem;
-  border: 1px solid var(--border-color);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
+        h1 {
+            font-family: "Sanskrit Text", "Tiro Devanagari Sanskrit", serif;
+            font-size: var(--h1-size);
+            color: var(--accent-1);
+            margin: 1rem 0;
+            position: relative;
+            display: inline-block;
+        }
 
-.Shlok_Mala_2::after {
-  content: "🪔";
-  position: absolute;
-  font-size: 2rem;
-  opacity: 0.1;
-  right: 1.5rem;
-  bottom: 1rem;
-}
+        h1::before, h1::after {
+            content: "🕉️";
+            color: var(--accent-2);
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            top: -0.1rem;
+        }
 
-/* Introduction Card with Om Symbol */
-.intro_2 {
-  background-color: var(--card-bg);
-  border-radius: 16px;
-  padding: 2.5rem;
-  margin: 2.5rem 0;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 248, 240, 0.9) 100%);
-}
+        /* Centered Shloka Container */
+        .shloka-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin: 2rem 0;
+        }
 
-.intro_2::before {
-  content: "ॐ";
-  position: absolute;
-  font-family: var(--decorative-font);
-  font-size: 12rem;
-  opacity: 0.05;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--accent-1);
-  z-index: 0;
-}
+        /* Shloka Card - Always Centered */
+        .shloka-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+            position: relative;
+            margin: 1rem 0;
+            text-align: center;
+        }
 
-.intro_2 p {
-  position: relative;
-  z-index: 1;
-  font-size: var(--intro-size);
-  color: var(--primary-text);
-  line-height: 1.8;
-}
+        .shloka-card::before {
+            content: "ॐ";
+            position: absolute;
+            font-family: "Sanskrit Text", "Tiro Devanagari Sanskrit", serif;
+            font-size: 8rem;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--accent-1);
+            z-index: 0;
+        }
 
-/* Sacred Headings */
-h1, h2, h3 {
-  font-family: var(--decorative-font);
-  color: var(--accent-1);
-  text-align: center;
-  margin: 1.5rem 0;
-  font-weight: normal;
-  position: relative;
-}
+        .shloka-sanskrit {
+            font-family: "Sanskrit Text", "Tiro Devanagari Sanskrit", serif;
+            font-size: var(--shlok-size);
+            line-height: 1.9;
+            color: var(--primary-text);
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+        }
 
-h1 {
-  font-size: var(--h1-size);
-  margin: 1rem 0 2.5rem;
-  color: var(--accent-1);
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
-}
+        .shloka-meaning {
+            font-size: var(--meaning-size);
+            line-height: 1.7;
+            color: var(--primary-text);
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
 
-h1::before, h1::after {
-  content: "🕉️";
-  color: var(--accent-2);
-  margin: 0 0.5rem;
-  font-size: 1.2rem;
-  position: relative;
-  top: -0.1rem;
-}
+        .shloka-number {
+            display: inline-block;
+            background-color: var(--accent-2);
+            color: white;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            line-height: 2.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
 
-h2 {
-  font-size: var(--h2-size);
-  padding-bottom: 0.5rem;
-  border-bottom: 2px dashed var(--border-color);
-  margin: 2.5rem 0 1.8rem;
-  color: var(--accent-2);
-}
+        /* Section Heading */
+        .section-heading {
+            font-family: "Sanskrit Text", "Tiro Devanagari Sanskrit", serif;
+            font-size: var(--h2-size);
+            color: var(--accent-2);
+            text-align: center;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px dashed var(--border-color);
+            position: relative;
+        }
 
-h2::before, h2::after {
-  content: "•";
-  color: var(--accent-3);
-  margin: 0 0.5rem;
-}
+        .section-heading::before, .section-heading::after {
+            content: "•";
+            color: var(--accent-3);
+            margin: 0 0.5rem;
+        }
 
-h3 {
-  font-size: var(--h3-size);
-  color: var(--accent-3);
-  margin: 2rem 0 1.2rem;
-  padding: 0.5rem 0;
-  border-top: 1px dotted var(--border-color);
-  border-bottom: 1px dotted var(--border-color);
-}
+        /* Footer with Blessing */
+        footer {
+            text-align: center;
+            margin-top: auto;
+            padding: 2rem 0;
+            color: var(--accent-1);
+            border-top: 1px solid var(--border-color);
+        }
 
-/* Shloka Cards with Sacred Borders */
-.shlok_2 {
-  background-color: var(--card-bg);
-  border-radius: 12px;
-  padding: 1.8rem;
-  margin: 1.8rem 0;
-  border-left: 6px solid var(--accent-2);
-  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
+        footer::before {
+            content: "🙏";
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
 
-.shlok_2:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-}
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .shloka-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .shloka-card::before {
+                font-size: 6rem;
+            }
+        }
 
-.shlok_2::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 100%);
-  z-index: 0;
-}
-
-.shlok_2 p {
-  font-size: var(--shlok-size);
-  line-height: 1.9;
-  margin: 0;
-  position: relative;
-  z-index: 1;
-}
-
-.shlok_2 p:first-child::first-letter {
-  font-family: var(--decorative-font);
-  font-size: 1.8em;
-  color: var(--accent-1);
-  padding-right: 0.2em;
-  line-height: 0.8;
-}
-
-/* Section-specific accents with Hindu symbolism */
-.shlok_2\'1\' { border-left-color: #9c27b0; background-image: radial-gradient(circle at 10% 50%, rgba(156, 39, 176, 0.03) 0%, transparent 30%); }
-.shlok_2\'2\' { border-left-color: #ff9800; background-image: radial-gradient(circle at 10% 50%, rgba(255, 152, 0, 0.03) 0%, transparent 30%); }
-.shlok_2\'3\' { border-left-color: #4caf50; background-image: radial-gradient(circle at 10% 50%, rgba(76, 175, 80, 0.03) 0%, transparent 30%); }
-.shlok_2\'4\' { border-left-color: #2196f3; background-image: radial-gradient(circle at 10% 50%, rgba(33, 150, 243, 0.03) 0%, transparent 30%); }
-.shlok_2\'5\' { border-left-color: #ff5722; background-image: radial-gradient(circle at 10% 50%, rgba(255, 87, 34, 0.03) 0%, transparent 30%); }
-
-/* Footer with Blessing */
-.footer {
-  text-align: center;
-  margin-top: 4rem;
-  color: var(--accent-1);
-  font-size: 0.9rem;
-  padding: 1.5rem;
-  border-top: 1px solid var(--border-color);
-  position: relative;
-}
-
-.footer::before {
-  content: "🙏";
-  font-size: 1.5rem;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .container {
-    padding: 1.2rem;
-  }
-  
-  .Shlok_Mala_2, .intro_2 {
-    padding: 1.8rem;
-  }
-  
-  h1::before, h1::after {
-    font-size: 1rem;
-  }
-  
-  .intro_2::before {
-    font-size: 8rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .shlok_2 {
-    padding: 1.4rem;
-  }
-  
-  .intro_2::before {
-    font-size: 6rem;
-  }
-  
-  .container::before {
-    font-size: 2rem;
-  }
-}
+        @media (max-width: 480px) {
+            .shloka-card {
+                padding: 1.8rem 1.2rem;
+                border-radius: 12px;
+            }
+            
+            .shloka-card::before {
+                font-size: 4rem;
+            }
+            
+            h1::before, h1::after {
+                display: none;
+            }
+        }
