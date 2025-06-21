@@ -20,7 +20,10 @@
 
         /* Base Styles with Sacred Patterns */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: "Sanskrit Text","Tiro Devanagari Sanskrit", serif;
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: center;
             background-color: var(--primary-bg);
             color: var(--primary-text);
             line-height: 1.6;
@@ -29,11 +32,10 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            background-image: 
+            background-image:
                 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23ff9800" opacity="0.03" d="M30,15 L70,15 L85,50 L70,85 L30,85 L15,50 Z"/></svg>');
             background-size: 100px 100px;
         }
-
         /* Main Container */
         .container {
             width: 100%;
@@ -53,7 +55,7 @@
         }
 
         h1 {
-            font-family: "Sanskrit Text", "Tiro Devanagari Sanskrit", serif;
+            font-family: "Sanskrit Text","Tiro Devanagari Sanskrit", serif;
             font-size: var(--h1-size);
             color: var(--accent-1);
             margin: 1rem 0;
