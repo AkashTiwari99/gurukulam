@@ -21,8 +21,8 @@
         /* Base Styles with Sacred Patterns */
         body {
             font-family: "Sanskrit Text","Tiro Devanagari Sanskrit", serif;
-            font-size: 16px;
-            line-height: 1.5;
+            font-size: clamp(1.8rem, 2vw, 1.2rem);
+            line-height: 3.5;
             text-align: center;
             background-color: var(--primary-bg);
             color: var(--primary-text);
