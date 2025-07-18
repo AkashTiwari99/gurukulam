@@ -63,9 +63,31 @@ body {
 .quote {
     font-weight: bold;
     color: var(--quote-color);
-    background-color: #e8f5e9; /* Light green background for quotes */
+    /* background-color: #e8f5e9; Light green background for quotes */
     padding: 8px 12px; /* Padding for better spacing */
     display: inline-block; /* Ensure padding and border work correctly */
+}
+.rama_1 {
+    font-weight: 600; /* Bold for emphasis */
+    color: blueviolet;
+    margin-top: 10px; /* Space above each section */
+    margin-bottom: 10px; /* Space below each section */
+    text-align: justify; /* Justify text for better readability */
+}
+.rama_2{
+font-weight: 400; /* Bold for emphasis */
+    color: rgb(8, 27, 84);
+    margin-top: 10px; /* Space above each section */
+    margin-bottom: 10px; /* Space below each section */
+    text-align: justify; /* Justify text for better readability */
+}
+.rama_3{
+    font-weight: 500; /* Bold for emphasis */
+    color: rgba(220, 6, 6, 0.495);
+    margin-top: 10px; /* Space above each section */
+    margin-bottom: 10px; /* Space below each section */
+    text-align: center; /* Justify text for better readability */
+    font-size: 1.2em; /* Slightly larger for emphasis */
 }
 
 .authorline {
