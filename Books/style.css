@@ -67,21 +67,21 @@ body {
     padding: 8px 12px; /* Padding for better spacing */
     display: inline-block; /* Ensure padding and border work correctly */
 }
-.rama_1 {
+.Rama_1 {
     font-weight: 600; /* Bold for emphasis */
     color: blueviolet;
     margin-top: 10px; /* Space above each section */
     margin-bottom: 10px; /* Space below each section */
     text-align: justify; /* Justify text for better readability */
 }
-.rama_2{
+.Rama_2{
 font-weight: 400; /* Bold for emphasis */
     color: rgb(8, 27, 84);
     margin-top: 10px; /* Space above each section */
     margin-bottom: 10px; /* Space below each section */
     text-align: justify; /* Justify text for better readability */
 }
-.rama_3{
+.Rama_3{
     font-weight: 500; /* Bold for emphasis */
     color: rgba(220, 6, 6, 0.495);
     margin-top: 10px; /* Space above each section */
