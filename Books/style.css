@@ -79,15 +79,15 @@ font-weight: 400; /* Bold for emphasis */
     color: rgb(8, 27, 84);
     margin-top: 10px; /* Space above each section */
     margin-bottom: 10px; /* Space below each section */
-    text-align: justify; /* Justify text for better readability */
+    text-align: center; /* Justify text for better readability */
 }
 .Rama_3{
-    font-weight: 500; /* Bold for emphasis */
-    color: rgba(220, 6, 6, 0.495);
+    font-weight: 800; /* Bold for emphasis */
+    color: rgb(242, 5, 5);
     margin-top: 10px; /* Space above each section */
     margin-bottom: 10px; /* Space below each section */
     text-align: center; /* Justify text for better readability */
-    font-size: 1.2em; /* Slightly larger for emphasis */
+    font-size: 4.2em; /* Slightly larger for emphasis */
 }
 
 .authorline {
