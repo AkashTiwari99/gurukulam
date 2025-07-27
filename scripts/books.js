@@ -1,43 +1,130 @@
-// Function to load content dynamically
+// Function to load content dynamically with enhanced error handling
 async function loadContent(url, targetElementId, linkElement) {
     const contentElement = document.getElementById(targetElementId);
     if (!contentElement) return;
 
-    contentElement.innerHTML = '<div class="loader"></div>'; // Show loading spinner
-    contentElement.style.opacity = '0.5'; // Dim the content area
+    // Show loading state
+    contentElement.innerHTML = `
+        <div class="loader-container" style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+        ">
+            <div class="loader" style="
+                border: 5px solid #f3f3f3;
+                border-top: 5px solid #3498db;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                animation: spin 1s linear infinite;
+            "></div>
+        </div>
+    `;
+    contentElement.style.opacity = '0.8';
 
     try {
-        const response = await fetch(url); // Fetch the content
+        const response = await fetch(url);
         if (!response.ok) {
-            throw new Error(`Failed to load content: ${response.statusText}`);
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.text(); // Get the HTML content
-        contentElement.innerHTML = data; // Insert into the target element
-        contentElement.style.opacity = '1'; // Restore opacity
+        const data = await response.text();
+        
+        // Success - insert content
+        contentElement.innerHTML = data;
+        contentElement.style.opacity = '1';
 
-        // Remove active class from all links
-        document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => link.classList.remove('active'));
-        // Add active class to the clicked link
+        // Update active link
+        document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => {
+            link.classList.remove('active');
+        });
         linkElement.classList.add('active');
+
+        // Scroll to top of content
+        contentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
     } catch (error) {
-        console.error(error);
-        contentElement.innerHTML = `<p>Error loading content: ${error.message}</p>`;
-        contentElement.style.opacity = '1'; // Restore opacity
+        console.error('Content loading failed:', error);
+        
+        // Centered error display
+        contentElement.innerHTML = `
+            <div style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80%;
+                max-width: 500px;
+                text-align: center;
+                padding: 30px;
+                background: #fff8f8;
+                border: 1px solid #ffcccc;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            ">
+                <div style="
+                    font-size: 24px;
+                    color: #d32f2f;
+                    margin-bottom: 15px;
+                ">
+                    <i class="fa fa-exclamation-triangle"></i> Error
+                </div>
+                <p style="
+                    color: #5f2120;
+                    margin-bottom: 20px;
+                    line-height: 1.5;
+                ">
+                    Failed to load content: ${error.message}
+                </p>
+                <div style="display: flex; justify-content: center; gap: 15px;">
+                    <button onclick="window.location.reload()" style="
+                        padding: 8px 20px;
+                        background: #f0f0f0;
+                        border: 1px solid #ddd;
+                        border-radius: 4px;
+                        cursor: pointer;
+                    ">
+                        <i class="fa fa-refresh"></i> Retry
+                    </button>
+                    <button onclick="this.closest('#${targetElementId}').innerHTML=''" style="
+                        padding: 8px 20px;
+                        background: #d32f2f;
+                        color: white;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                    ">
+                        <i class="fa fa-times"></i> Dismiss
+                    </button>
+                </div>
+            </div>
+        `;
+        contentElement.style.opacity = '1';
     }
 }
+
+// Add animation for loader
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+`;
+document.head.appendChild(style);
 
 // Add event listeners to all links
 document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => {
     link.addEventListener('click', (event) => {
-        event.preventDefault(); // Prevent default link behavior
-        const url = link.getAttribute('href'); // Get the URL from the href attribute
-        const targetElementId = link.getAttribute('data-target'); // Get the target element ID
-        loadContent(url, targetElementId, link); // Load the content
+        event.preventDefault();
+        const url = link.getAttribute('href');
+        const targetElementId = link.getAttribute('data-target');
+        loadContent(url, targetElementId, link);
     });
 });
 
 // Initialize Kanda dropdown
-function initKandaDropdown(){
+function initKandaDropdown() {
     const kandaLinks = [
         { url: "/gurukulam/Books/book_link/Bala_Srga.html", name: "बालकाण्डः" },
         { url: "/gurukulam/Books/book_link/Ay_Sarga.html", name: "अयोध्याकाण्डः" },
@@ -52,13 +139,14 @@ function initKandaDropdown(){
     const currentPage = window.location.pathname;
 
     if (dropdownMenu) {
-        dropdownMenu.innerHTML = ''; // Clear existing items
+        dropdownMenu.innerHTML = '';
         kandaLinks.forEach(link => {
             if (link.url !== currentPage) {
                 const listItem = document.createElement("li");
                 const anchor = document.createElement("a");
                 anchor.href = link.url;
                 anchor.textContent = link.name;
+                anchor.setAttribute('data-target', 'content-area'); // Add data-target attribute
                 listItem.appendChild(anchor);
                 dropdownMenu.appendChild(listItem);
             }
@@ -66,10 +154,7 @@ function initKandaDropdown(){
     }
 }
 
-// Call the function to initialize the dropdown
-initKandaDropdown();
-
-// dynamic-sidebar.js
+// Dynamic sidebar functionality
 document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.querySelector('.sidebar');
     const content = document.querySelector('.content');
@@ -79,19 +164,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!sidebar || !content || !sidebarToggle || !header) return;
     
     const headerHeight = header.offsetHeight;
-    
-    // Set CSS variables
     document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
     
-    // Mobile detection
     function isMobile() {
         return window.matchMedia('(max-width: 992px)').matches;
     }
     
-    // Initialize sidebar state
     let sidebarCollapsed = isMobile();
     
-    // Try to get saved state from localStorage (only for desktop)
     if (!isMobile()) {
         const savedState = localStorage.getItem('sidebarCollapsed');
         if (savedState !== null) {
@@ -99,18 +179,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Toggle function
     function toggleSidebar() {
         sidebarCollapsed = !sidebarCollapsed;
         updateSidebar();
         
-        // Save state (only for desktop)
         if (!isMobile()) {
             localStorage.setItem('sidebarCollapsed', sidebarCollapsed);
         }
     }
     
-    // Update sidebar state
     function updateSidebar() {
         if (sidebarCollapsed) {
             sidebar.classList.add('collapsed');
@@ -123,15 +200,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Adjust content height
     function updateContentHeight() {
         content.style.minHeight = `calc(100vh - ${headerHeight}px)`;
     }
     
-    // Event listeners
     sidebarToggle.addEventListener('click', toggleSidebar);
     
-    // Hover effect for desktop
     if (!isMobile()) {
         sidebar.addEventListener('mouseenter', () => {
             if (sidebarCollapsed) {
@@ -149,7 +223,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Handle resize
     function handleResize() {
         if (isMobile()) {
             if (!sidebarCollapsed) {
@@ -157,7 +230,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 updateSidebar();
             }
         } else {
-            // Restore saved state on desktop
             const savedState = localStorage.getItem('sidebarCollapsed');
             if (savedState !== null) {
                 sidebarCollapsed = savedState === 'true';
@@ -172,16 +244,34 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize
     updateSidebar();
     updateContentHeight();
+    initKandaDropdown(); // Initialize dropdown after DOM is loaded
 });
+
+// Toggle navbar for mobile
 function toggleNavbar() {
     const navbar = document.querySelector('.navbar-collapse');
     if (navbar) {
         navbar.classList.toggle('show');
     }
     
-    // Optional: Toggle hamburger icon animation
     const hamburger = document.querySelector('.navbar-toggler');
     if (hamburger) {
         hamburger.classList.toggle('active');
     }
 }
+
+// Initialize everything when DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Set click handlers for all navigation links
+    document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (this.getAttribute('href').startsWith('#')) return;
+            e.preventDefault();
+            loadContent(
+                this.getAttribute('href'),
+                this.getAttribute('data-target') || 'content-area',
+                this
+            );
+        });
+    });
+});
