@@ -216,7 +216,7 @@
     outline: none;
     padding: 15px 15px 15px 0;
     width: 100%;
-    color: var(--text-lighter);
+    color: white
     font-family: 'Poppins', sans-serif;
     font-size: 0.95rem;
 }
