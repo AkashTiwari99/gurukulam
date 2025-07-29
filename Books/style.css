@@ -48,16 +48,16 @@ body {
 }
 
 .versetext {
-    font-family:  "Tiro Devanagari Sanskrit", serif;
-    font-style: normal;
-    font-weight: 600; /* Normal weight for the text */
-    font-size: .9em; /* Slightly larger for better readability */
+    font-family: "Noto Serif Devanagari", serif;
+    font-size: 1.2em; /* Slightly larger for better readability */
+    line-height: 1.4;
+    font-weight: 400; /* Normal weight for the text */
     font-optical-sizing: auto;
+    font-style: normal;
     margin-bottom: 10px;
     text-align: center;
     color: var(--accent-2);
     margin-left: 0;
-    font-style: italic; /* Italicized for a poetic feel */
 }
 
 .quote {
