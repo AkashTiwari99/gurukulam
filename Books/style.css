@@ -1,6 +1,4 @@
 /* CSS for the Book Page */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@100..900&family=Poppins:wght@400;500;700&display=swap');
-
 :root {
     --primary-bg: #f5f5f5; /* Light gray background for better readability */
     --primary-text: #333333; /* Dark gray for main text */
