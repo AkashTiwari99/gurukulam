@@ -219,6 +219,7 @@
     color: var(--text-lighter);
     font-family: 'Poppins', sans-serif;
     font-size: 0.95rem;
+    text-decoration-color: brown;
 }
 
 .form-field textarea {
