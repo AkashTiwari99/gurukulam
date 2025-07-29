@@ -1,5 +1,5 @@
 /* CSS for the Book Page */
-@import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@100..900&family=Poppins:wght@400;500;700&display=swap');
 
 :root {
     --primary-bg: #f5f5f5; /* Light gray background for better readability */
@@ -25,7 +25,7 @@ body {
 }
 .page {
     min-height: calc(100vh - 60px);
-    font-family: "Tiro Devanagari Sanskrit", serif;
+    font-family: "Noto Serif Devanagari", serif;
     font-size: 1.2em;
     line-height: 1.6;
     font-weight: 600;
@@ -37,7 +37,7 @@ body {
 }
 
 .vyakhya {
-    font-family: "Tiro Devanagari Sanskrit", serif;
+    font-family: "Noto Serif Devanagari", serif;
     font-size: 1.5em; /* Larger font size for the title */
     line-height: 1.4;
     font-weight: 450; /* Bold for emphasis */
