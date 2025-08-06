@@ -24,6 +24,7 @@
 }
 
 .campus-hero .hero-container {
+    height: max-content;
     position: relative;
     z-index: 1;
 }
