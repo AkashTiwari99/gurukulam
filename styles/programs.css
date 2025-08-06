@@ -8,7 +8,7 @@
     font-size: 36px;
     margin-bottom: 30px;
 }
-.program-button {
+.button {
     display: inline-block;
     padding: 10px 20px;
     background-color: #4CAF50; /* Green background */
@@ -22,7 +22,7 @@
     transition: background-color 0.3s;
 }
 
-.program-button:hover {
+.button:hover {
     background-color: #45a049; /* Darker green on hover */
 }
 
