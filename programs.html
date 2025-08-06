@@ -6,80 +6,126 @@
     <title>Programs | Gurukulam</title>
     <link rel="stylesheet" href="/gurukulam/styles/global.css">
     <link rel="stylesheet" href="/gurukulam/styles/programs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-<!-- Header -->
-<header class="header">
-    <div class="container header-container">
-        <!-- Logo -->
-        <div class="logo">
-            <div class="logo-circle">
-                <span>GURU</span>
-            </div>
-            <div class="logo-text">
-                <span class="logo-main">Gurukulam</span>
-                <span class="logo-tagline">Reviving Ancient Wisdom</span>
-            </div>
-        </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <!-- Logo -->
+            <a href="/gurukulam/index.html" class="logo-link">
+                <div class="logo">
+                    <div class="logo-circle">
+                        <span>GURU</span>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main">Gurukulam</span>
+                        <span class="logo-tagline">Reviving Ancient Wisdom</span>
+                    </div>
+                </div>
+            </a>
 
-        <!-- Hamburger Menu for Mobile -->
-        <div class="hamburger" onclick="toggleNavbar()">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <!-- Hamburger Menu for Mobile -->
+            <div class="hamburger" onclick="toggleNavbar()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="navbar" id="navbar">
+                <ul class="nav-list">
+                    <li><a href="/gurukulam/index.html">Home</a></li>
+                    <li class="current-page"><a href="/gurukulam/programs.html">Programs</a></li>
+                    <li><a href="/gurukulam/books.html">Books</a></li>
+                    <li><a href="/gurukulam/Campus.html">Campus</a></li>
+                    <li><a href="/gurukulam/Gallery/Gallery.html">Gallery</a></li>
+                    <li class="has-dropdown">
+                        <a href="javascript:void(0)">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="/gurukulam/about.html">About Us</a>
+                            <a href="/gurukulam/Sanatan Dharma_Vision & Mission.html">Our Mission</a>
+                            <a href="/gurukulam/team.html">Our Team</a>
+                        </div>
+                    </li>
+                    <li><a href="/gurukulam/contact.html">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <!-- Navigation -->
-        <nav class="navbar" id="navbar">
-            <ul class="nav-list">
-                <li><a href="/gurukulam/index.html" class="current-page">Home</a></li>
-                <li class="has-dropdown">
-                    <a href="javascript:void(0)"class="current-page">Programs <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="/gurukulam/program.html">Vedic Studies</a>
-                        <a href="/gurukulam/Sanatan Dharma.html">Sanskrit Immersion</a>
-                        <a href="program3.html">Yoga & Meditation</a>
-                        <a href="program4.html">Ayurveda Basics</a>
-                        <a href="/gurukulam/Books/Shlok mala/shlok_mala_1.html">Ramayana Classes</a>
-                        <a href="/gurukulam/">Yoga Training</a>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Programs Section -->
+        <section class="programs">
+            <div class="container">
+                <h2>Our Programs</h2>
+                <p class="section-description">Discover our comprehensive range of traditional learning programs designed to connect you with ancient wisdom.</p>
+                
+                <div class="programs-grid">
+                    <!-- Vedic Studies -->
+                    <div class="program-card">
+                        <div class="card-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3>Vedic Studies</h3>
+                        <p>Immerse yourself in the ancient wisdom of the Vedas through our comprehensive courses. Explore the scriptures and their contemporary relevance.</p>
+                        <a href="/gurukulam/program.html" class="button">Explore Program</a>
                     </div>
-                </li>
-                <li><a href="/gurukulam/books.html">Books</a></li>
-                <li><a href="/gurukulam/Campus.html">Campus</a></li>
-                <li><a href="/gurukulam/Gallery/Gallery.html">Gallery</a></li>
-                <li class="has-dropdown">
-                    <a href="javascript:void(0)">About <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="/gurukulam/about.html">About Us</a>
-                        <a href="/gurukulam/Sanatan Dharma_Vision & Mission.html">Our Mission</a>
-                        <a href="team.html">Our Team</a>
+                    
+                    <!-- Sanskrit Immersion -->
+                    <div class="program-card">
+                        <div class="card-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3>Sanskrit Immersion</h3>
+                        <p>Learn the divine language of Sanskrit through our immersive courses designed for all levels of learners.</p>
+                        <a href="/gurukulam/Sanatan Dharma.html" class="button">Begin Journey</a>
                     </div>
-                </li>
-                <li><a href="/gurukulam/contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-<!-- Programs Section -->
-<section class="programs">
-    <div class="container">
-        <div class="program-card">
-            <h3>Vedic Studies</h3>
-            <p>Immerse yourself in the ancient wisdom of the Vedas through our comprehensive courses. Explore the ancient scriptures and their relevance today.</p>
-            <button class="program-button" onclick="window.location.href='/gurukulam/program.html'">Vedic Studies</button>
-        </div>
-        <div class="program-card">
-            <h3>Ramayana Classes</h3>
-            <p>Join our classes to learn the epic Ramayana, its timeless stories, and valuable life lessons.</p>
-            <button class="program-button" onclick="window.location.href='/gurukulam/Books/Shlok mala/shlok_mala_1.html'">Ramayana Classes</button>
-        </div>
-        <div class="program-card">
-            <h3>Yoga Training</h3>
-            <p>Discover the physical and spiritual benefits of traditional Yoga practice.</p>
-            <button class="program-button" onclick="window.location.href='/gurukulam/'">Yoga Training</button>
-        </div>
-    </div>
-</section>
+                    
+                    <!-- Yoga & Meditation -->
+                    <div class="program-card">
+                        <div class="card-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3>Yoga & Meditation</h3>
+                        <p>Experience the physical and spiritual benefits of traditional Yoga and meditation with our certified instructors.</p>
+                        <a href="/gurukulam/programs.html#yoga" class="button">Start Training</a>
+                    </div>
+                    
+                    <!-- Ayurveda Basics -->
+                    <div class="program-card">
+                        <div class="card-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Ayurveda Basics</h3>
+                        <p>Discover the ancient science of life and holistic wellness through fundamental Ayurvedic principles.</p>
+                        <a href="/gurukulam/programs.html#ayurveda" class="button">Learn More</a>
+                    </div>
+                    
+                    <!-- Ramayana Classes -->
+                    <div class="program-card">
+                        <div class="card-icon">
+                            <i class="fas fa-scroll"></i>
+                        </div>
+                        <h3>Ramayana Classes</h3>
+                        <p>Discover timeless stories and life lessons from the epic Ramayana through our structured classes.</p>
+                        <a href="/gurukulam/Books/Shlok mala/shlok_mala_1.html" class="button">Join Classes</a>
+                    </div>
+                    
+                    <!-- Yoga Training -->
+                    <div class="program-card">
+                        <div class="card-icon">
+                            <i class="fas fa-yin-yang"></i>
+                        </div>
+                        <h3>Yoga Training</h3>
+                        <p>Comprehensive yoga training program covering asanas, pranayama, and yogic philosophy.</p>
+                        <a href="/gurukulam/" class="button">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
