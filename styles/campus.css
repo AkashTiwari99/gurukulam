@@ -36,11 +36,12 @@
 }
 
 .campus-hero .hero-title {
-    color: rgb(red, green, blue);
-    font-size: 4rem;
+    text-decoration: gold;
+    text-align:center;
+    font-size: 3rem;
     margin-bottom: var(--space-md);
     font-weight: 700;
-    line-height: 3.2;
+    line-height: 1.2;
 }
 
 .campus-hero .hero-subtitle {
