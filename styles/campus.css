@@ -81,15 +81,6 @@
     overflow: hidden;
     box-shadow: var(--shadow);
 }
-background-size: cover;
-    background-position: bottom;
-    width: 445px;
-    height: -webkit-fill-available;
-    display: flex
-;
-    transition: transform var(--transition-med);
-    object-fit: revert-layer;
-    flex-direction: row;
 .overview-image img {
     background-size: cover;
     background-position: bottom;
