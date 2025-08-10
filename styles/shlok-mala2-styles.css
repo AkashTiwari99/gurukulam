@@ -31,7 +31,13 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: "Noto Serif Devanagari", serif;
+            font-size: 1.2em;
+            line-height: 1.6;
+            font-weight: 600;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
             background: var(--bg-color);
             color: var(--primary-text);
             line-height: 1.6;
