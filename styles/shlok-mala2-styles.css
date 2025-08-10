@@ -1,8 +1,8 @@
 /* Divine Centered Shlok Mala Design */
         :root {
             /* Sacred Color Palette */
-            --primary-bg: #fff9f0;        /* Warm ivory */
-            --card-bg: #ffffff;           /* Pure white */
+            --primary-bg:white;        /* Warm ivory */
+            --card-bg: #e7eae2;           /* Pure white */
             --primary-text: #3a3226;      /* Earthy brown */
             --accent-1: #9c27b0;          /* Royal purple */
             --accent-2: #ff9800;          /* Saffron orange */
