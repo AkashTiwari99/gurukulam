@@ -8,6 +8,11 @@
 </head>
 <body>
     <div class="container">
+        <header>
+            <h1 class="main-title">श्लोक माला</h1>
+            <p class="subtitle">A Collection of Sacred Verses</p>
+            <div class="om-symbol">ॐ</div>
+        </header>
         <div class="Shlok_Mala_2">
             <div class="intro_2" id="SH_S0">श्रीजानकीवल्लभो विजयते<br/>श्रीरामसेनाद्वारा श्रीरङ्गनाथेन प्रचुरित श्रीरामायणान्तर्गतश्लोकाः<br/><p>We acknowledge <quote>Sri Dr.Ranganji, PhD, the founder president of WEBOLIM (Web of Life Makers)</quote><br/>A movement to enhance the human values found in Rāmāyana, whose collection of the Slokas from the Ramayana are given here.</p></div><br/>
             <h2>१. जय उद्घोषः</h2>
@@ -262,3 +267,73 @@
         </div>
     </div>
 </body>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add shloka class to all shloka divs
+    const shlokas = document.querySelectorAll('[class^="shlok_2"]');
+    shlokas.forEach(shloka => {
+        shloka.classList.add('shlok_2');
+    });
+
+    // Smooth scroll reveal animation
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.shlok_2').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+    });
+
+    // Add navigation dots functionality
+    const sections = document.querySelectorAll('h2');
+    const navDots = document.createElement('div');
+    navDots.className = 'nav-dots';
+    
+    sections.forEach((section, index) => {
+        const dot = document.createElement('div');
+        dot.className = 'nav-dot';
+        dot.dataset.section = section.id || `section-${index}`;
+        navDots.appendChild(dot);
+        
+        dot.addEventListener('click', () => {
+            section.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+    
+    document.querySelector('.container').appendChild(navDots);
+    
+    // Highlight active section dot
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY + 100;
+        
+        sections.forEach((section, index) => {
+            const dot = document.querySelector(`.nav-dot:nth-child(${index + 1})`);
+            if (!dot) return;
+            
+            const sectionTop = section.offsetTop;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                document.querySelectorAll('.nav-dot').forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+            }
+        });
+    });
+    
+    // Trigger initial active state
+    window.dispatchEvent(new Event('scroll'));
+});
+</script>
