@@ -91,7 +91,7 @@
 
         /* Colorful Intro */
         .intro {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
+            background: linear-gradient(135deg, rgba(106, 128, 10, 0.95), rgba(7, 181, 56, 0.669));
             backdrop-filter: blur(10px);
             padding: 2rem;
             border-radius: var(--radius);
