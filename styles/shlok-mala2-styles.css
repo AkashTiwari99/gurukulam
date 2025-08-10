@@ -58,7 +58,7 @@
         }
 
         .main-title {
-            font-family: 'Noto Sans Devanagari', serif;
+            font-family: 'Sanskrit Text', serif;
             font-size: var(--text-4xl);
             font-weight: 700;
             background: linear-gradient(135deg, #fff, #f7fafc);
