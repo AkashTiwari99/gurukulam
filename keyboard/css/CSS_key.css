@@ -1,0 +1,1080 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@font-face {
+    font-family: 'Siddhanta';
+    src: url('font/AdishilaSanVedic.ttf') format('truetype');
+    font-display: swap;
+}
+
+:root {
+  --primary-color: #667eea;
+  --primary-light: #818cf8;
+  --primary-dark: #4338ca;
+  --secondary-color: #764ba2;
+  --accent-color: #f093fb;
+  --background-color: #fafafa;
+  --background-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --text-color: #1f2937;
+  --text-light: #6b7280;
+  --key-bg: #ffffff;
+  --key-hover: #f8faff;
+  --key-active: #e0e7ff;
+  --border-color: #e5e7eb;
+  --border-light: #f3f4f6;
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --error-color: #ef4444;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --notification-bg: rgba(17, 24, 39, 0.95);
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --backdrop-blur: blur(16px);
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 20px;
+  --character-color: #1f2937; /* Default character color */
+}
+
+[data-theme="dark"] {
+  --primary-color: #818cf8;
+  --primary-light: #a5b4fc;
+  --primary-dark: #6366f1;
+  --secondary-color: #a78bfa;
+  --accent-color: #fb7185;
+  --background-color: #0f172a;
+  --background-gradient: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  --text-color: #f8fafc;
+  --text-light: #cbd5e1;
+  --key-bg: #1e293b;
+  --key-hover: #334155;
+  --key-active: #475569;
+  --border-color: #334155;
+  --border-light: #475569;
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(148, 163, 184, 0.2);
+  --character-color: #f8fafc; /* Light character color for dark mode */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Siddhanta', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--background-color);
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  background: var(--background-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.header p {
+  color: var(--text-light);
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.text-area-container {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.section-toggles-above {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.btn-toggle {
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--border-radius-md);
+  background: var(--background-gradient);
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-toggle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-toggle:hover::before {
+  left: 100%;
+}
+
+.btn-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-toggle:active {
+  transform: translateY(0);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+  justify-content: flex-start;
+}
+
+.controls button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--border-radius-md);
+  background: var(--key-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.controls button:hover {
+  background: var(--key-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.controls button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+#text-input {
+  width: 100%;
+  min-height: 180px;
+  padding: 24px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  font-size: 20px;
+  font-family: 'Siddhanta', 'Inter', monospace;
+  resize: vertical, horizontal;
+  background: var(--key-bg);
+  color: var(--character-color); /* Use character color variable */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  line-height: 1.8;
+  backdrop-filter: var(--backdrop-blur);
+}
+
+#text-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), var(--shadow-md);
+  background: var(--key-bg);
+}
+/* Additional CSS fixes for drag functionality - Add these to your CSS file */
+
+.keyboard-container {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 380px;
+  height: 400px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-xl);
+  padding: 0;
+  box-shadow: var(--shadow-xl);
+  z-index: 1000;
+  user-select: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: auto;
+  resize: both;
+  min-width: 320px;
+  min-height: 280px;
+  /* Ensure draggable positioning works */
+  transform: none !important; /* Override any transforms that might interfere */
+}
+
+/* When dragging starts, we need to ensure the element can be positioned correctly */
+.keyboard-container.dragging {
+  transition: none; /* Disable transitions during drag */
+}
+
+.keyboard-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: var(--background-gradient);
+  color: white;
+  border-radius: var(--border-radius-xl) var(--border-radius-xl) 0 0;
+  cursor: grab; /* Show grab cursor */
+  text-align: center;
+  font-weight: 600;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.keyboard-header:active {
+  cursor: grabbing; /* Show grabbing cursor when active */
+}
+
+/* Ensure the header is properly styled for dragging */
+.keyboard-header * {
+  pointer-events: none; /* Prevent child elements from interfering with drag */
+}
+
+.keyboard-header .section-toggle-container {
+  pointer-events: auto; /* Re-enable pointer events for toggle buttons */
+}
+
+.keyboard-header .section-toggle-container * {
+  pointer-events: auto; /* Re-enable pointer events for toggle button children */
+}
+
+/* Mobile responsiveness for dragging */
+@media (max-width: 768px) {
+  .keyboard-container {
+    width: calc(100% - 20px);
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    border-radius: var(--border-radius-lg);
+    max-height: 60vh;
+    /* Ensure mobile dragging works properly */
+    touch-action: none; /* Prevent default touch behaviors during drag */
+  }
+  
+  .keyboard-header {
+    cursor: grab;
+    touch-action: none; /* Prevent scrolling during drag on mobile */
+  }
+  
+  .keyboard-header:active {
+    cursor: grabbing;
+  }
+}
+
+/* Fix for potential z-index issues during dragging */
+.keyboard-container.dragging {
+  z-index: 1100; /* Increase z-index while dragging */
+}
+
+/* Ensure smooth transitions when not dragging */
+.keyboard-container:not(.dragging) {
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Additional visual feedback for dragging */
+.keyboard-container.dragging {
+  box-shadow: var(--shadow-xl), 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Prevent text selection during drag operations */
+.keyboard-container.dragging,
+.keyboard-container.dragging * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+.keyboard-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--background-gradient);
+  opacity: 0.05;
+  z-index: -1;
+}
+
+.keyboard-container.hidden {
+  display: none;
+}
+
+.keyboard-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.keyboard-header:active {
+  cursor: grabbing;
+}
+
+.keyboard-header-text {
+  margin: 0;
+  padding: 5px 0;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.keyboard-body {
+  padding: 20px;
+  height: calc(100% - 80px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) transparent;
+}
+
+.keyboard-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.keyboard-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.keyboard-body::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+.keyboard-section {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: var(--key-bg);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-light);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: var(--backdrop-blur);
+}
+
+.keyboard-section:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.keyboard-section.hidden {
+  display: none;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-color);
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: var(--background-gradient);
+  border-radius: 1px;
+}
+
+.key-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+
+.key {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--key-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  font-size: 22px;
+  font-family: 'Siddhanta', sans-serif;
+  color: var(--character-color); /* Use character color variable */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.key::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.key:hover {
+  background: var(--key-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.key:hover::before {
+  width: 100px;
+  height: 100px;
+  opacity: 0.1;
+}
+
+.key:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: var(--shadow-sm);
+}
+
+.vowel-key {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 52px;
+  height: 80px;
+  padding: 8px;
+  background: var(--key-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  font-size: 20px;
+  color: var(--character-color); /* Use character color variable */
+  font-family: 'Siddhanta', sans-serif;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.vowel-key:hover {
+  background: var(--key-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.vowel-main-btn {
+  width: 100%;
+  padding: 4px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--character-color); /* Use character color variable */
+  font-family: 'Siddhanta', sans-serif;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  pointer-events: auto;
+}
+
+.vowel-main-btn:hover {
+  background: var(--key-hover);
+}
+
+.matra-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.matra-btn {
+  font-size: 14px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  padding: 0px 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 28px;
+  text-align: center;
+  font-family: 'Siddhanta', sans-serif;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  pointer-events: auto;
+}
+
+.matra-btn:hover {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+.matra-btn:active {
+  transform: translateY(0) scale(1);
+}
+
+.number-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.number-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--key-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--character-color); /* Use character color variable */
+  font-family: 'Siddhanta', sans-serif;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  pointer-events: auto;
+}
+
+.number-btn:hover {
+  background: var(--key-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.super-btn {
+  font-size: 14px;
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+  color: white;
+  border: none;
+}
+
+.super-btn:hover {
+  background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+}
+
+.toggle-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+
+.section-toggle {
+  padding: 8px 14px;
+  background: var(--key-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+}
+
+.section-toggle:hover {
+  background: var(--key-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.section-toggle.active {
+  background: var(--background-gradient);
+  color: white;
+  border-color: var(--primary-color);
+  font-weight: 600;
+}
+
+.diacritic-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 16px 0 12px 0;
+  color: var(--primary-color);
+  text-align: center;
+  position: relative;
+}
+
+.diacritic-section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: calc(50% - 10px);
+  height: 1px;
+  background: var(--border-color);
+}
+
+.diacritic-section-title::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: calc(50% - 10px);
+  height: 1px;
+  background: var(--border-color);
+}
+
+.diacritic-spacer {
+  height: 12px;
+}
+
+.accent-key {
+  background: linear-gradient(135deg, #fef3c7, #fbbf24);
+  color: #92400e;
+  border-color: #f59e0b;
+}
+
+.accent-key:hover {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: white;
+}
+
+#notification {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 16px 24px;
+  background: var(--notification-bg);
+  color: white;
+  border-radius: var(--border-radius-lg);
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  backdrop-filter: var(--backdrop-blur);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-xl);
+  font-weight: 500;
+  z-index: 1100;
+}
+
+#notification.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+#notification.success {
+  background: linear-gradient(135deg, var(--success-color), #059669);
+}
+
+#notification.error {
+  background: linear-gradient(135deg, var(--error-color), #dc2626);
+}
+
+#theme-toggle {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  padding: 12px 20px;
+  background: var(--background-gradient);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+  z-index: 1001;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: var(--backdrop-blur);
+}
+
+#theme-toggle:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+#theme-toggle:active {
+  transform: translateY(0) scale(1);
+}
+
+#toggle-keyboard {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 12px 20px;
+  background: var(--background-gradient);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+  z-index: 999;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: var(--backdrop-blur);
+}
+
+#toggle-keyboard:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+/* Section toggle buttons */
+.section-toggle-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-md);
+}
+
+.section-toggle-btn {
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: var(--backdrop-blur);
+}
+
+.section-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+.section-toggle-btn.active {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode adjustments for section toggles */
+[data-theme="dark"] .section-toggle-container {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .section-toggle-btn {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .section-toggle-btn:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .section-toggle-btn.active {
+    background: rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+/* Section toggles above text area */
+.section-toggles-above {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+/* Instructions toggle button styling */
+#toggle-instructions {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius-md);
+    background: var(--key-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+}
+
+#toggle-instructions:hover {
+    background: var(--key-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Instructions panel */
+.instructions {
+    position: relative;
+    background: var(--key-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 24px;
+    margin: 20px 0;
+    box-shadow: var(--shadow-md);
+}
+
+.instructions.hidden {
+    display: none;
+}
+
+.instructions h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.instructions ul {
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
+.instructions li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.instructions li:last-child {
+    margin-bottom: 0;
+}
+
+.instructions code {
+    background: var(--key-hover);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+.close-instructions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-light);
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.close-instructions:hover {
+    background: var(--key-hover);
+    color: var(--text-color);
+}
+
+/* Dark mode adjustments for instructions */
+[data-theme="dark"] .instructions {
+    background: var(--key-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .instructions code {
+    background: var(--key-hover);
+}
+
+/*  instructions toggle container styles since we moved the button */
+.instructions-toggle-container {
+    display: none;
+}
+
+/* Mobile responsiveness for section toggles */
+@media (max-width: 768px) {
+    .section-toggle-container {
+        gap: 4px;
+        padding: 6px;
+    }
+    
+    .section-toggle-btn {
+        padding: 4px 6px;
+        font-size: 10px;
+    }
+}
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.keyboard-container {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .keyboard-container {
+    width: calc(100% - 20px);
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    border-radius: var(--border-radius-lg);
+    max-height: 60vh;
+  }
+  
+  .key, .vowel-key {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .vowel-key {
+    height: 66px;
+  }
+  
+  .key {
+    font-size: 18px;
+  }
+  
+  #text-input {
+    font-size: 18px;
+    min-height: 150px;
+    padding: 20px;
+  }
+  
+  #theme-toggle, #toggle-keyboard {
+    top: 15px;
+    right: 15px;
+    bottom: auto;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  #toggle-keyboard {
+    top: 60px;
+  }
+  
+  #notification {
+    bottom: 15px;
+    right: 15px;
+    left: 15px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .key-group {
+    gap: 6px;
+  }
+  
+  .keyboard-section {
+    padding: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .toggle-container {
+    gap: 6px;
+  }
+  
+  .section-toggle {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+}
+
+/* Special character styling for dark mode */
+[data-theme="dark"] .accent-key {
+  background: linear-gradient(135deg, #d97706, #f59e0b);
+  color: #ffffff;
+  border-color: #f59e0b;
+}
+
+[data-theme="dark"] .accent-key:hover {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+}
+
+[data-theme="dark"] .devanagari-example {
+  color: #f8fafc;
+}
+
+/* Ensure all text elements use appropriate colors */
+[data-theme="dark"] .instructions,
+[data-theme="dark"] .instructions li,
+[data-theme="dark"] .instructions code {
+  color: #cbd5e1;
+}
