@@ -55,13 +55,15 @@
             { roman: 'e', devanagari: 'ए', matra: 'े' },
             { roman: 'ai', devanagari: 'ऐ', matra: 'ै' },
             { roman: 'o', devanagari: 'ओ', matra: 'ो' },
-            { roman: 'au', devanagari: 'औ', matra: 'ौ' }
+            { roman: 'au', devanagari: 'औ', matra: 'ौ' },
+            { roman: 'visarga', devanagari: 'ः', matra: null },
+            { roman: 'virama', devanagari: '्', matra: null },
+            { roman: 'anusvara', devanagari: 'ं', matra :null },
+            { roman: 'candrabindu', devanagari: 'ँ', matra: null },
+            { roman: 'avagraha', devanagari: 'ऽ', matra: null},
         ];
 
         const specialChars = [
-            { roman: '्', devanagari: '्', title: 'virama' },
-            { roman: 'ं', devanagari: 'ं', title: 'anusvara' },
-            { roman: 'ँ', devanagari: 'ँ', title: 'candrabindu' },
             { roman: '॑', devanagari: '॑', title: 'svarita' },
             { roman: '॒', devanagari: '॒', title: 'udātta' },
             { roman: '॓', devanagari: '॓', title: 'anudātta' },
@@ -69,11 +71,9 @@
             { roman: 'ॕ', devanagari: 'ॕ', title: 'avagraha' },
             { roman: 'ॖ', devanagari: 'ॖ', title: 'anusvāra' },
             { roman: 'ॗ', devanagari: 'ॗ', title: 'candrabindu' },
-            { roman: 'ः', devanagari: 'ः', title: 'visarga' },
             { roman: '़', devanagari: '़', title: 'nukta' },
             { roman: '।', devanagari: '।', title: 'danda' },
             { roman: '॥', devanagari: '॥', title: 'double danda' },
-            { roman: 'ऽ', devanagari: 'ऽ', title: 'avagraha' },
             { roman: '॰', devanagari: '॰', title: 'abbreviation sign' },
             { roman: 'ॐ', devanagari: 'ॐ', title: 'om' }
         ];
