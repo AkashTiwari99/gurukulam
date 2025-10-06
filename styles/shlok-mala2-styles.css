@@ -175,7 +175,7 @@ header {
     position: relative;
     
     /* Only left-right edges blending */
-    mask: linear-gradient(
+    /* mask: linear-gradient(
         to right,
         transparent 0%,
         transparent 5%,
@@ -192,7 +192,7 @@ header {
         white 90%,
         transparent 95%,
         transparent 100%
-    );
+    ); */
 }
 
 .intro-card:hover {
