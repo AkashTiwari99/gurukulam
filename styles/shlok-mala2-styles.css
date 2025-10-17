@@ -1,337 +1,512 @@
-/* Modernized Shlok Mala Styles (cosmic + glassmorphism) */
-:root{
-    /* Palette & theming */
-    --bg-deep-1: #1a1a2e;  /* Dark blue background */
-    --bg-deep-2: #16213e;  /* Deeper blue background */
-    --nebula-1: rgba(147, 112, 219, 0.18); /* Purple nebula */
-    --nebula-2: rgba(64, 224, 208, 0.15);  /* Turquoise nebula */
-    --nebula-3: rgba(255, 215, 0, 0.12);   /* Gold nebula */
-    --nebula-4: rgba(255, 140, 0, 0.11);   /* Orange nebula */
-    --card-bg: rgba(255, 255, 255, 0.08);  /* Slightly more visible glass */
-    --card-bg-strong: rgba(255, 255, 255, 0.95); /* for print/alternate */
-    --primary-text: rgba(255, 255, 255, 0.95);   /* Brighter white text */
-    --secondary-text: rgba(220, 220, 255, 0.85);  /* Soft blue-white */
-    --muted: rgba(200, 210, 220, 0.6);           /* More visible muted text */
-    --accent-1: #9370DB;     /* Medium Purple */
-    --accent-2: #40E0D0;     /* Turquoise */
-    --accent-3: #FFD700;     /* Gold */
-    --accent-4: #FF8C00;     /* Dark Orange */
-    --border-color: rgba(64, 224, 208, 0.3);     /* Subtle turquoise border */
-    --glass-border: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-    --shadow: 0 8px 30px rgba(0,0,0,0.7);
-    --shadow-soft: 0 6px 20px rgba(0,0,0,0.5);
-    --shadow-hover: 0 14px 40px rgba(0,0,0,0.6);
-    --gradient-text: linear-gradient(90deg, #9370DB, #40E0D0, #FFD700);
-    --radius: 28px;
-
-    /* typography scale */
+/* Modernized Shlok Mala Styles - Refreshed Cosmic Design */
+:root {
+    /* New Vibrant Color Palette */
+    --bg-deep-1: #0f0f23;  /* Deeper space background */
+    --bg-deep-2: #1a1a2e;  /* Cosmic purple-blue */
+    --nebula-1: rgba(168, 85, 247, 0.25);  /* Electric purple */
+    --nebula-2: rgba(34, 211, 238, 0.22);  /* Cyan */
+    --nebula-3: rgba(251, 191, 36, 0.2);   /* Sunny yellow */
+    --nebula-4: rgba(236, 72, 153, 0.18);  /* Pink */
+    --nebula-5: rgba(16, 185, 129, 0.15);  /* Emerald */
+    
+    /* Enhanced Glass Morphism */
+    --card-bg: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05));
+    --card-border: rgba(255,255,255,0.15);
+    --card-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    
+    /* New Accent Colors */
+    --accent-1: #a855f7;    /* Electric Purple */
+    --accent-2: #06b6d4;    /* Cyan */
+    --accent-3: #f59e0b;    /* Amber */
+    --accent-4: #ec4899;    /* Pink */
+    --accent-5: #10b981;    /* Emerald */
+    
+    /* Text Colors */
+    --primary-text: rgba(255, 255, 255, 0.98);
+    --secondary-text: rgba(220, 230, 255, 0.9);
+    --muted: rgba(200, 210, 255, 0.7);
+    
+    /* Gradients */
+    --hero-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --accent-gradient: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    --gold-gradient: linear-gradient(135deg, var(--accent-3), #fbbf24);
+    --text-gradient: linear-gradient(135deg, #a855f7, #06b6d4, #f59e0b);
+    
+    /* Enhanced Shadows */
+    --shadow-soft: 0 4px 20px rgba(0,0,0,0.3);
+    --shadow-medium: 0 8px 30px rgba(0,0,0,0.4);
+    --shadow-hover: 0 15px 50px rgba(168, 85, 247, 0.25);
+    
+    /* Typography */
     --text-xs: 0.75rem;
     --text-sm: 0.875rem;
     --text-base: 1rem;
     --text-lg: 1.125rem;
     --text-xl: 1.375rem;
     --text-2xl: 1.75rem;
-    --text-3xl: 2.25rem;
+    --text-3xl: 2.5rem;
+    
+    --radius: 24px;
 }
 
-/* Reset */
-*{box-sizing:border-box;margin:0;padding:0}
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-/* Cosmic background (fixed, layered) */
-body{
-    font-family: 'Noto Sans', 'Noto Sans Devanagari', 'Sanskrit Text', serif;
-    min-height:100vh;
-    color:var(--primary-text);
-    line-height:1.6;
-    background:
-        radial-gradient(1200px 600px at 10% 20%, var(--nebula-1) 0%, transparent 18%),
-        radial-gradient(900px 500px at 85% 15%, var(--nebula-2) 0%, transparent 22%),
-        radial-gradient(800px 450px at 40% 75%, var(--nebula-3) 0%, transparent 20%),
-        radial-gradient(700px 350px at 92% 70%, var(--nebula-4) 0%, transparent 18%),
-        linear-gradient(180deg, var(--bg-deep-1) 0%, var(--bg-deep-2) 100%);
+/* Enhanced Cosmic Background */
+body {
+    font-family: 'Inter', 'Noto Sans', 'Noto Sans Devanagari', 'Sanskrit Text', sans-serif;
+    min-height: 100vh;
+    color: var(--primary-text);
+    line-height: 1.6;
+    background: 
+        radial-gradient(1200px 800px at 5% 10%, var(--nebula-1) 0%, transparent 40%),
+        radial-gradient(1000px 600px at 90% 20%, var(--nebula-2) 0%, transparent 35%),
+        radial-gradient(800px 500px at 20% 80%, var(--nebula-3) 0%, transparent 30%),
+        radial-gradient(700px 400px at 80% 85%, var(--nebula-4) 0%, transparent 25%),
+        radial-gradient(600px 300px at 50% 30%, var(--nebula-5) 0%, transparent 20%),
+        linear-gradient(160deg, var(--bg-deep-1) 0%, var(--bg-deep-2) 100%);
     background-attachment: fixed;
-    background-blend-mode: screen;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    padding: 2.5rem 1rem;
+    padding: 2rem 1rem;
     position: relative;
+    overflow-x: hidden;
 }
 
-/* Star layers (subtle, performant) */
-body::before,
-body::after{
-    content:'';
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:-1;
-    mix-blend-mode:screen;
-}
-body::before{
-    background-image:
-        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.95) 0.5px, transparent 1px),
-        radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.9) 0.5px, transparent 1px),
-        radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.85) 0.5px, transparent 1px);
-    background-size: 260px 260px;
-    opacity: 0.45;
-    animation: starMove 60s linear infinite;
-}
-body::after{
-    background: linear-gradient(180deg, rgba(92, 218, 178, 0.858), rgba(64, 68, 66, 0.918));
-    opacity:0.9;
+/* Animated Starfield */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.8) 1px, transparent 2px),
+        radial-gradient(2px 2px at 40% 70%, rgba(255,255,255,0.6) 1px, transparent 2px),
+        radial-gradient(1px 1px at 60% 20%, rgba(255,255,255,0.9) 1px, transparent 1px),
+        radial-gradient(1px 1px at 80% 40%, rgba(255,255,255,0.7) 1px, transparent 1px),
+        radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.8) 1px, transparent 1px),
+        radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.6) 1px, transparent 1px);
+    background-size: 400px 400px, 300px 300px, 200px 200px;
+    animation: starTwinkle 8s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: -1;
 }
 
-@keyframes starMove{
-    from{transform:translateY(0) translateX(0)}
-    to{transform:translateY(-120px) translateX(80px)}
+@keyframes starTwinkle {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
 }
 
-/* Layout container */
-.container{
-    max-width:920px;
-    margin:0 auto;
-    padding:1.25rem;
+/* Floating Particles */
+.floating-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
 }
 
-/* Header (glass card) */
-header{
-    text-align:center;
-    margin-bottom:2.5rem;
-    padding:2rem 1.25rem;
-    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-    border-radius: calc(var(--radius) + 8px);
-    border: 1px solid rgba(56, 245, 116, 0.863);
-    box-shadow: var(--shadow-soft);
-    backdrop-filter: blur(8px) saturate(115%);
-    position:relative;
+.particle {
+    position: absolute;
+    background: var(--accent-1);
+    border-radius: 50%;
+    animation: float 20s infinite linear;
 }
 
-/* Title styling */
-.main-title{
-    font-family:'Sanskrit Text', serif;
-    font-size:var(--text-3xl);
-    font-weight:700;
-    margin-bottom:0.35rem;
-    background: var(--gradient-text);
-    background-clip:text;
-    -webkit-background-clip:text;
-    color:red;
-    text-shadow: 0 6px 18px whitesmoke;
-    letter-spacing: 0.6px;
+.particle:nth-child(1) { 
+    top: 20%; left: 10%; width: 3px; height: 3px; 
+    background: var(--accent-2); 
+    animation-duration: 25s; 
+}
+.particle:nth-child(2) { 
+    top: 60%; left: 80%; width: 2px; height: 2px; 
+    background: var(--accent-3); 
+    animation-duration: 30s; 
+}
+.particle:nth-child(3) { 
+    top: 80%; left: 20%; width: 4px; height: 4px; 
+    background: var(--accent-4); 
+    animation-duration: 35s; 
 }
 
-.subtitle{
-    font-size:var(--text-lg);
-    color:var(--secondary-text);
-    font-weight:500;
-    opacity:0.95;
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
 }
 
-/* decorative OM */
-.om-symbol{
-    display:inline-block;
-    margin-top:0.9rem;
-    font-size:var(--text-xl);
-    color:var(--accent-4);
-    text-shadow: 0 6px 20px rgba(255,79,136,0.12);
+/* Layout */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1.5rem;
 }
 
-/* Content area */
-.content{
-    display:flex;
-    flex-direction:column;
-    gap:1.75rem;
+/* Enhanced Header */
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 3rem 2rem;
+    background: var(--card-bg);
+    border-radius: calc(var(--radius) + 12px);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Intro card (support both class names used) */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255,255,255,0.1), 
+        transparent);
+    transition: left 0.6s ease;
+}
+
+header:hover::before {
+    left: 100%;
+}
+
+/* Enhanced Title */
+.main-title {
+    font-family: 'Sanskrit Text', serif;
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: var(--text-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+    letter-spacing: 0.8px;
+    position: relative;
+    display: inline-block;
+}
+
+.main-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+}
+
+.subtitle {
+    font-size: var(--text-lg);
+    color: var(--secondary-text);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.om-symbol {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: var(--text-2xl);
+    background: var(--gold-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+/* Content Area */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Enhanced Intro Card */
 .intro_2,
-.intro-card{
-    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-    padding:1.75rem;
-    border-radius: calc(var(--radius) - 6px);
-    box-shadow: var(--shadow);
-    color:var(--secondary-text);
-    border:1px solid var(--border-color);
-    position:relative;
-    backdrop-filter: blur(6px);
-    transition: transform 220ms ease, box-shadow 220ms ease;
-}
-
-/* slight lift on hover/focus */
-.intro_2:hover,
-.intro_2:focus-within,
-.intro-card:hover,
-.intro-card:focus-within{
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-hover);
-}
-
-/* thin color accent bar */
-.intro_2::before,
-.intro-card::before{
-    content:'';
-    position:absolute;
-    left:14px;
-    right:14px;
-    top:12px;
-    height:3px;
-    border-radius:4px;
-    background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-4));
-    opacity:0.95;
-}
-
-/* Section heading (modern pill) */
-h2{
-    font-family:'Sanskrit Text', serif;
-    font-size:var(--text-2xl);
-    font-weight:700;
-    color:var(--primary-text);
-    text-align:center;
-    margin:1.75rem 0 0.75rem;
-    padding:1rem;
-    background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-    border-radius: calc(var(--radius) - 12px);
-    border: 1px solid rgba(255,255,255,0.06);
-    box-shadow: 0 8px 30px rgba(17,24,39,0.45);
-}
-
-/* small underline accent */
-h2::after{
-    content:'';
-    display:block;
-    width:64px;
-    height:4px;
-    margin:10px auto 0;
-    border-radius:4px;
-    background: linear-gradient(90deg, var(--accent-1), var(--accent-3));
-}
-
-/* Shlok card */
-.shlok{
-    background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
-    padding:1.75rem;
+.intro-card {
+    background: var(--card-bg);
+    padding: 2.5rem 2rem;
     border-radius: var(--radius);
-    box-shadow: var(--shadow-soft);
-    border:1px solid var(--border-color);
-    transition: transform 180ms ease, box-shadow 180ms ease;
-    position:relative;
-    overflow:visible;
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(15px);
+    box-shadow: var(--shadow-medium);
+    color: var(--secondary-text);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
-/* hover elevation and subtle accent glow */
-.shlok:hover,
-.shlok:focus-within{
+.intro_2::before,
+.intro-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent-gradient);
+}
+
+.intro_2:hover,
+.intro-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-hover);
 }
 
-/* Shloka number (floating badge) */
-.shlok-number{
-    position:absolute;
-    top:-16px;
-    left:20px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    font-weight:700;
-    font-size:var(--text-sm);
-    color:#fff;
-    background: conic-gradient(from 120deg, var(--accent-1), var(--accent-2), var(--accent-4));
-    border:2px solid rgba(255,255,255,0.18);
-    box-shadow: 0 8px 22px rgba(7,18,41,0.6);
-    z-index:3;
+/* Section Headers */
+h2 {
+    font-family: 'Sanskrit Text', serif;
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    text-align: center;
+    margin: 2.5rem 0 1.5rem;
+    padding: 1.25rem 2rem;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Sanskrit text styling */
-.sanskrit-text{
-    font-family:'Sanskrit Text', serif;
-    font-size:var(--text-xl);
-    line-height:1.85;
-    color:var(--primary-text);
-    text-align:center;
-    font-weight:600;
-    margin-bottom:1rem;
-    text-shadow: 0 6px 20px rgba(2,8,20,0.6);
+h2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(168, 85, 247, 0.1), 
+        rgba(6, 182, 212, 0.1));
+    z-index: -1;
 }
 
-/* Translation styling */
-.translation{
-    font-size:var(--text-base);
-    color:var(--secondary-text);
-    text-align:center;
-    line-height:1.6;
-    padding-top:1.25rem;
-    border-top:1px solid rgba(255,255,255,0.03);
-    font-style:italic;
-    background: linear-gradient(180deg, rgba(122,68,255,0.02), rgba(0,200,210,0.02));
-    margin: 1rem -0.75rem -0.75rem -0.75rem;
-    padding: 1rem;
-    border-radius: 0 0 calc(var(--radius) - 6px) calc(var(--radius) - 6px);
+/* Enhanced Shlok Cards */
+.shlok {
+    background: var(--card-bg);
+    padding: 2.5rem 2rem 2rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(15px);
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Footer (harmonized) */
-footer{
-    text-align:center;
-    margin-top:3.25rem;
-    padding:1.6rem;
-    background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+.shlok::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255,255,255,0.05),
+        transparent);
+    transition: left 0.6s ease;
+}
+
+.shlok:hover::before {
+    left: 100%;
+}
+
+.shlok:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Enhanced Shlok Number */
+.shlok-number {
+    position: absolute;
+    top: -15px;
+    left: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: var(--text-base);
+    color: white;
+    background: var(--accent-gradient);
+    border: 3px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.3);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.shlok:hover .shlok-number {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 12px 30px rgba(168, 85, 247, 0.4);
+}
+
+/* Sanskrit Text */
+.sanskrit-text {
+    font-family: 'Sanskrit Text', serif;
+    font-size: var(--text-xl);
+    line-height: 1.9;
+    color: var(--primary-text);
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+/* Enhanced Translation */
+.translation {
+    font-size: var(--text-base);
+    color: var(--secondary-text);
+    text-align: center;
+    line-height: 1.7;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, 
+        rgba(168, 85, 247, 0.05), 
+        rgba(6, 182, 212, 0.05));
     border-radius: calc(var(--radius) - 8px);
-    border:1px solid rgba(255,255,255,0.06);
-    box-shadow: var(--shadow-soft);
-    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.05);
+    position: relative;
 }
 
-/* Blessing text — subtle gradient */
-.blessing{
-    font-size:var(--text-xl);
-    font-weight:700;
-    color:transparent;
-    background: linear-gradient(90deg, var(--accent-3), var(--accent-4));
-    -webkit-background-clip:text;
-    background-clip:text;
-    letter-spacing:0.3px;
+.translation::before {
+    content: '"';
+    font-size: 3rem;
+    color: var(--accent-1);
+    opacity: 0.3;
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
 }
 
-/* Accessibility: focus outlines */
-a:focus, button:focus, [tabindex]:focus{
-    outline: 3px solid rgba(122,68,255,0.18);
-    outline-offset:4px;
-    border-radius:8px;
+.translation::after {
+    content: '"';
+    font-size: 3rem;
+    color: var(--accent-1);
+    opacity: 0.3;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 1rem;
 }
 
-/* Minor helpers */
-.small-muted{color:var(--muted);font-size:var(--text-sm)}
-
-/* Responsive adjustments */
-@media (max-width:768px){
-    .container{padding:0.75rem}
-    header{padding:1.25rem}
-    .main-title{font-size:var(--text-2xl)}
-    .sanskrit-text{font-size:var(--text-lg)}
-    .shlok{padding:1.25rem}
-    .intro_2,.intro-card{padding:1.25rem}
+/* Enhanced Footer */
+footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 2.5rem;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(15px);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    overflow: hidden;
 }
 
-@media (max-width:480px){
-    body{padding:1rem}
-    .main-title{font-size:var(--text-xl)}
-    .shlok-number{left:14px;top:-12px;width:36px;height:36px}
-    .sanskrit-text{font-size:1.05rem}
-    .translation{margin-left:-0.5rem;margin-right:-0.5rem}
+.blessing {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    background: var(--text-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
 }
 
-/* Print-specific: simplify and ensure legibility */
-@media print{
-    body{background:white;color:black}
-    .shlok,.intro_2,.intro-card,header,footer{
-        box-shadow:none;
-        background:var(--card-bg-strong);
-        -webkit-print-color-adjust:exact;
-        border:1px solid #ddd;
+/* Scroll Progress Indicator */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--accent-gradient);
+    z-index: 1000;
+    transition: width 0.1s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
     }
-    .main-title{color:black;background:none;-webkit-text-fill-color:initial}
-    .shlok-number{background:#333;color:#fff;border-color:#fff}
+    
+    header {
+        padding: 2rem 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .main-title {
+        font-size: var(--text-2xl);
+    }
+    
+    .shlok {
+        padding: 2rem 1.5rem 1.5rem;
+    }
+    
+    .sanskrit-text {
+        font-size: var(--text-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+    
+    .main-title {
+        font-size: var(--text-xl);
+    }
+    
+    .shlok-number {
+        left: 1rem;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .sanskrit-text {
+        font-size: 1.1rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .shlok, .intro_2, .intro-card, header, footer {
+        background: white !important;
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+    }
+    
+    .main-title {
+        background: none !important;
+        -webkit-text-fill-color: black !important;
+        color: black !important;
+    }
 }
