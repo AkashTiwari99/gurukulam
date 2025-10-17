@@ -116,7 +116,7 @@ header{
     background-clip:text;
     -webkit-background-clip:text;
     color:red;
-    text-shadow: 0 6px 18px whitesmoke
+    text-shadow: 0 6px 18px whitesmoke;
     letter-spacing: 0.6px;
 }
 
