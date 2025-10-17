@@ -1,65 +1,83 @@
-:root {
-    --pattern-opacity: 0.08;
-    /* Softer, warmer color palette */
-    --wave-color-1: rgba(255, 183, 122, var(--pattern-opacity));
-    --wave-color-2: rgba(255, 145, 164, calc(var(--pattern-opacity) * 0.9));
-    --accent-glow: rgba(255, 210, 170, 0.15);
+:root{
+    /* subtle pattern controls */
+    --pattern-opacity: 0.06;
+    --wave-color-1: rgba(120,150,255,var(--pattern-opacity));
+    --wave-color-2: rgba(0,200,210,calc(var(--pattern-opacity) * 0.9));
 }
 
-body {
-    /* Centered gradient background with peaceful colors */
+/* Body: add a calm wave / soft glow layer on top of existing nebulas */
+body{
+    /* keep existing nebula layers, add gentle repeating-wave layer for calm, cool design */
     background:
-        radial-gradient(1200px 600px at 50% 20%, rgba(255,183,122,0.15) 0%, transparent 25%),
-        radial-gradient(900px 500px at 50% 60%, rgba(255,145,164,0.12) 0%, transparent 30%),
-        /* Soft texture overlay */
+        radial-gradient(1200px 600px at 10% 20%, var(--nebula-1) 0%, transparent 18%),
+        radial-gradient(900px 500px at 85% 15%, var(--nebula-2) 0%, transparent 22%),
+        radial-gradient(800px 450px at 40% 75%, var(--nebula-3) 0%, transparent 20%),
+        radial-gradient(700px 350px at 92% 70%, var(--nebula-4) 0%, transparent 18%),
+
+        /* soft large blurred cool blobs to form a peaceful background */
+        radial-gradient(900px 600px at 50% 30%, rgba(120,150,255,0.035) 0%, transparent 28%),
+        radial-gradient(700px 450px at 20% 70%, rgba(0,200,210,0.03) 0%, transparent 26%),
+
+        /* subtle repeating slanted waves for a calm texture */
         repeating-linear-gradient(135deg,
-            rgba(255,255,255,0.03) 0px 30px,
-            rgba(255,210,170,0.02) 30px 60px
+            rgba(255,255,255,0.00) 0 24px,
+            rgba(180,200,255,0.008) 24px 48px
         ),
-        linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+
+        linear-gradient(180deg, var(--bg-deep-1) 0%, var(--bg-deep-2) 100%);
     background-attachment: fixed;
-    background-blend-mode: soft-light;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-blend-mode: screen, normal;
 }
 
-.shlok {
-    /* Enhanced card styling */
-    background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-    border: 1px solid rgba(255,255,255,0.15);
-    box-shadow: 
-        0 20px 50px rgba(0,0,0,0.4),
-        0 0 30px rgba(255,183,122,0.1);
-    backdrop-filter: blur(12px);
-    max-width: 800px;
-    margin: 2rem auto;
-    position: relative;
+/* keep stars but slow & subtle for calm feel */
+@keyframes starMove{
+    from{transform:translateY(0) translateX(0)}
+    to{transform:translateY(-40px) translateX(30px)}
+}
+body::before{ animation-duration: 120s; opacity: 0.38; }
+
+/* Honor reduced motion */
+@media (prefers-reduced-motion: reduce){
+    body::before, body::after { animation: none !important; transition: none !important; }
 }
 
-.shlok::before {
+/* Make shloka card more legible atop the new design */
+.shlok{
+    background: linear-gradient(180deg, rgba(255,255,255,0.085), rgba(255,255,255,0.06));
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 18px 50px rgba(5,12,30,0.6);
+    backdrop-filter: blur(14px) saturate(120%);
+    z-index: 2;
+}
+
+/* soft, colored halo behind each shloka to improve contrast and add calm accent */
+.shlok::before{
     content: '';
     position: absolute;
-    inset: -20%;
-    background:
-        radial-gradient(ellipse at 30% 30%, var(--accent-glow), transparent 70%),
-        radial-gradient(ellipse at 70% 70%, rgba(255,145,164,0.1), transparent 70%);
-    filter: blur(40px);
+    inset: -26%;
+    left: -10%;
+    right: -10%;
     z-index: -1;
+    background:
+        radial-gradient(ellipse at 20% 25%, rgba(122,68,255,0.06), transparent 18%),
+        radial-gradient(ellipse at 80% 75%, rgba(0,200,210,0.045), transparent 20%);
+    filter: blur(48px);
+    pointer-events: none;
+    opacity: 0.95;
 }
 
-.sanskrit-text {
-    color: rgba(255,255,255,0.95);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+/* slightly stronger number badge for visibility */
+.shlok-number{
+    border:2px solid rgba(255,255,255,0.20);
+    box-shadow: 0 10px 28px rgba(7,18,41,0.65);
 }
 
-.translation {
-    color: rgba(255,255,255,0.8);
-}
+/* maintain good contrast for text */
+.sanskrit-text{ color: var(--primary-text); text-shadow: 0 10px 26px rgba(2,8,20,0.65) }
+.translation{ color: var(--secondary-text); }
 
-.shlok-number {
-    background: linear-gradient(135deg, rgba(255,183,122,0.2), rgba(255,145,164,0.2));
-    border: 2px solid rgba(255,255,255,0.25);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+/* print rules remain legible */
+@media print{
+    body{background:white;color:black}
+    .shlok{ background: var(--card-bg-strong); border:1px solid #ddd; box-shadow:none; -webkit-print-color-adjust: exact; }
 }
