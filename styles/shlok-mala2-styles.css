@@ -115,8 +115,8 @@ header{
     background: var(--gradient-text);
     background-clip:text;
     -webkit-background-clip:text;
-    color: transparent;
-    text-shadow: 0 6px 18px rgba(12,18,40,0.6);
+    color:red;
+    text-shadow: 0 6px 18px whitesmoke
     letter-spacing: 0.6px;
 }
 
