@@ -1,27 +1,27 @@
 /* Modernized Shlok Mala Styles (cosmic + glassmorphism) */
 :root{
     /* Palette & theming */
-    --bg-deep-1:white;
-    --bg-deep-2: whitesmoke;
-    --nebula-1: rgba(122, 68, 255, 0.14); /* indigo */
-    --nebula-2: rgba(0, 200, 210, 0.12);  /* teal */
-    --nebula-3: rgba(255, 160, 60, 0.10); /* warm amber */
-    --nebula-4: rgba(255, 80, 130, 0.09); /* pink */
-    --card-bg: rgba(255,255,255,0.06);    /* subtle glass */
-    --card-bg-strong: rgba(255,255,255,0.90); /* for print/alternate */
-    --primary-text: rgba(255, 243, 242, 0.918);
-    --secondary-text: rgba(225, 232, 240, 0.78);
-    --muted: rgba(200,210,220,0.45);
-    --accent-1: #7a44ff;     /* indigo */
-    --accent-2: #00c8d2;     /* teal */
-    --accent-3: #ffb44a;     /* amber */
-    --accent-4: #ff4f88;     /* pink/coral */
-    --border-color: rgba(10, 207, 16, 0.897);
-    --glass-border: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-    --shadow: 0 8px 30px rgba(2,6,23,0.6);
-    --shadow-soft: 0 6px 20px rgba(90, 100, 120, 0.45);
-    --shadow-hover: 0 14px 40px rgba(10,24,60,0.55);
-    --gradient-text: linear-gradient(90deg,var(--accent-1),var(--accent-2),var(--accent-4));
+    --bg-deep-1: #1a1a2e;  /* Dark blue background */
+    --bg-deep-2: #16213e;  /* Deeper blue background */
+    --nebula-1: rgba(147, 112, 219, 0.18); /* Purple nebula */
+    --nebula-2: rgba(64, 224, 208, 0.15);  /* Turquoise nebula */
+    --nebula-3: rgba(255, 215, 0, 0.12);   /* Gold nebula */
+    --nebula-4: rgba(255, 140, 0, 0.11);   /* Orange nebula */
+    --card-bg: rgba(255, 255, 255, 0.08);  /* Slightly more visible glass */
+    --card-bg-strong: rgba(255, 255, 255, 0.95); /* for print/alternate */
+    --primary-text: rgba(255, 255, 255, 0.95);   /* Brighter white text */
+    --secondary-text: rgba(220, 220, 255, 0.85);  /* Soft blue-white */
+    --muted: rgba(200, 210, 220, 0.6);           /* More visible muted text */
+    --accent-1: #9370DB;     /* Medium Purple */
+    --accent-2: #40E0D0;     /* Turquoise */
+    --accent-3: #FFD700;     /* Gold */
+    --accent-4: #FF8C00;     /* Dark Orange */
+    --border-color: rgba(64, 224, 208, 0.3);     /* Subtle turquoise border */
+    --glass-border: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+    --shadow: 0 8px 30px rgba(0,0,0,0.7);
+    --shadow-soft: 0 6px 20px rgba(0,0,0,0.5);
+    --shadow-hover: 0 14px 40px rgba(0,0,0,0.6);
+    --gradient-text: linear-gradient(90deg, #9370DB, #40E0D0, #FFD700);
     --radius: 28px;
 
     /* typography scale */
