@@ -46,3 +46,19 @@ Quick checklist for PRs
 
 ---
 If you'd like, I can further tailor this file with explicit examples of duplicated file paths or generate a short script to launch a local server on Windows for testing. What would you like next?
+
+Try it (local preview)
+
+- Windows (cmd.exe): included helper `dev\\serve-windows.bat` starts a simple static server on port 8000. Run it from the repo root and open http://localhost:8000 in your browser.
+
+```cmd
+dev\\serve-windows.bat
+```
+
+- Manual alternatives:
+
+```cmd
+python -m http.server 8000
+# or
+py -3 -m http.server 8000
+```
