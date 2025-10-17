@@ -1,25 +1,25 @@
 /* Modernized Shlok Mala Styles (cosmic + glassmorphism) */
 :root{
     /* Palette & theming */
-    --bg-deep-1: #071229;
-    --bg-deep-2: #0d1430;
+    --bg-deep-1:white;
+    --bg-deep-2: whitesmoke;
     --nebula-1: rgba(122, 68, 255, 0.14); /* indigo */
     --nebula-2: rgba(0, 200, 210, 0.12);  /* teal */
     --nebula-3: rgba(255, 160, 60, 0.10); /* warm amber */
     --nebula-4: rgba(255, 80, 130, 0.09); /* pink */
     --card-bg: rgba(255,255,255,0.06);    /* subtle glass */
     --card-bg-strong: rgba(255,255,255,0.90); /* for print/alternate */
-    --primary-text: rgba(242, 246, 255, 0.96);
+    --primary-text: rgba(255, 243, 242, 0.918);
     --secondary-text: rgba(225, 232, 240, 0.78);
     --muted: rgba(200,210,220,0.45);
     --accent-1: #7a44ff;     /* indigo */
     --accent-2: #00c8d2;     /* teal */
     --accent-3: #ffb44a;     /* amber */
     --accent-4: #ff4f88;     /* pink/coral */
-    --border-color: rgba(255,255,255,0.08);
+    --border-color: rgba(10, 207, 16, 0.897);
     --glass-border: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
     --shadow: 0 8px 30px rgba(2,6,23,0.6);
-    --shadow-soft: 0 6px 20px rgba(7,18,41,0.45);
+    --shadow-soft: 0 6px 20px rgba(90, 100, 120, 0.45);
     --shadow-hover: 0 14px 40px rgba(10,24,60,0.55);
     --gradient-text: linear-gradient(90deg,var(--accent-1),var(--accent-2),var(--accent-4));
     --radius: 28px;
@@ -100,7 +100,7 @@ header{
     padding:2rem 1.25rem;
     background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
     border-radius: calc(var(--radius) + 8px);
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid rgba(56, 245, 116, 0.863);
     box-shadow: var(--shadow-soft);
     backdrop-filter: blur(8px) saturate(115%);
     position:relative;
