@@ -1,103 +1,337 @@
-:root {
-    /* Modern Color Palette */
-    --bg-color: #0f172a;
-    --card-bg: rgba(255, 255, 255, 0.95);
-    --primary-text: #1e293b;
-    --secondary-text: #475569;
-    --accent-primary: #6366f1;
-    --accent-secondary: #f43f5e;
-    --accent-tertiary: #10b981;
-    --border-color: rgba(255, 255, 255, 0.1);
-    
-    /* Enhanced Shadows */
-    --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.2);
-    
-    /* Modern Border Radius */
-    --radius: 16px;
-    --radius-lg: 24px;
-    
-    /* Updated Font Sizes */
-    --text-sm: clamp(0.875rem, 1vw, 1rem);
-    --text-base: clamp(1rem, 1.2vw, 1.125rem);
-    --text-lg: clamp(1.125rem, 1.5vw, 1.25rem);
-    --text-xl: clamp(1.25rem, 2vw, 1.5rem);
-    --text-2xl: clamp(1.5rem, 2.5vw, 2rem);
-    --text-3xl: clamp(2rem, 3vw, 2.5rem);
-    --text-4xl: clamp(2.5rem, 4vw, 3rem);
+/* Modernized Shlok Mala Styles (cosmic + glassmorphism) */
+:root{
+    /* Palette & theming */
+    --bg-deep-1: #071229;
+    --bg-deep-2: #0d1430;
+    --nebula-1: rgba(122, 68, 255, 0.14); /* indigo */
+    --nebula-2: rgba(0, 200, 210, 0.12);  /* teal */
+    --nebula-3: rgba(255, 160, 60, 0.10); /* warm amber */
+    --nebula-4: rgba(255, 80, 130, 0.09); /* pink */
+    --card-bg: rgba(255,255,255,0.06);    /* subtle glass */
+    --card-bg-strong: rgba(255,255,255,0.90); /* for print/alternate */
+    --primary-text: rgba(242, 246, 255, 0.96);
+    --secondary-text: rgba(225, 232, 240, 0.78);
+    --muted: rgba(200,210,220,0.45);
+    --accent-1: #7a44ff;     /* indigo */
+    --accent-2: #00c8d2;     /* teal */
+    --accent-3: #ffb44a;     /* amber */
+    --accent-4: #ff4f88;     /* pink/coral */
+    --border-color: rgba(255,255,255,0.08);
+    --glass-border: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    --shadow: 0 8px 30px rgba(2,6,23,0.6);
+    --shadow-soft: 0 6px 20px rgba(7,18,41,0.45);
+    --shadow-hover: 0 14px 40px rgba(10,24,60,0.55);
+    --gradient-text: linear-gradient(90deg,var(--accent-1),var(--accent-2),var(--accent-4));
+    --radius: 28px;
+
+    /* typography scale */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.375rem;
+    --text-2xl: 1.75rem;
+    --text-3xl: 2.25rem;
 }
 
-body {
-    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-    font-family: 'Noto Sans', sans-serif;
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0}
+
+/* Cosmic background (fixed, layered) */
+body{
+    font-family: 'Noto Sans', 'Noto Sans Devanagari', 'Sanskrit Text', serif;
+    min-height:100vh;
+    color:var(--primary-text);
+    line-height:1.6;
+    background:
+        radial-gradient(1200px 600px at 10% 20%, var(--nebula-1) 0%, transparent 18%),
+        radial-gradient(900px 500px at 85% 15%, var(--nebula-2) 0%, transparent 22%),
+        radial-gradient(800px 450px at 40% 75%, var(--nebula-3) 0%, transparent 20%),
+        radial-gradient(700px 350px at 92% 70%, var(--nebula-4) 0%, transparent 18%),
+        linear-gradient(180deg, var(--bg-deep-1) 0%, var(--bg-deep-2) 100%);
+    background-attachment: fixed;
+    background-blend-mode: screen;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    padding: 2.5rem 1rem;
+    position: relative;
 }
 
-header {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+/* Star layers (subtle, performant) */
+body::before,
+body::after{
+    content:'';
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+    mix-blend-mode:screen;
+}
+body::before{
+    background-image:
+        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.95) 0.5px, transparent 1px),
+        radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.9) 0.5px, transparent 1px),
+        radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.85) 0.5px, transparent 1px);
+    background-size: 260px 260px;
+    opacity: 0.45;
+    animation: starMove 60s linear infinite;
+}
+body::after{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+    opacity:0.9;
 }
 
-.main-title {
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 800;
+@keyframes starMove{
+    from{transform:translateY(0) translateX(0)}
+    to{transform:translateY(-120px) translateX(80px)}
 }
 
-.shlok {
-    background: rgba(255, 255, 255, 0.98);
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Layout container */
+.container{
+    max-width:920px;
+    margin:0 auto;
+    padding:1.25rem;
 }
 
-.shlok:hover {
-    transform: translateY(-5px);
+/* Header (glass card) */
+header{
+    text-align:center;
+    margin-bottom:2.5rem;
+    padding:2rem 1.25rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border-radius: calc(var(--radius) + 8px);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(8px) saturate(115%);
+    position:relative;
+}
+
+/* Title styling */
+.main-title{
+    font-family:'Sanskrit Text', serif;
+    font-size:var(--text-3xl);
+    font-weight:700;
+    margin-bottom:0.35rem;
+    background: var(--gradient-text);
+    background-clip:text;
+    -webkit-background-clip:text;
+    color: transparent;
+    text-shadow: 0 6px 18px rgba(12,18,40,0.6);
+    letter-spacing: 0.6px;
+}
+
+.subtitle{
+    font-size:var(--text-lg);
+    color:var(--secondary-text);
+    font-weight:500;
+    opacity:0.95;
+}
+
+/* decorative OM */
+.om-symbol{
+    display:inline-block;
+    margin-top:0.9rem;
+    font-size:var(--text-xl);
+    color:var(--accent-4);
+    text-shadow: 0 6px 20px rgba(255,79,136,0.12);
+}
+
+/* Content area */
+.content{
+    display:flex;
+    flex-direction:column;
+    gap:1.75rem;
+}
+
+/* Intro card (support both class names used) */
+.intro_2,
+.intro-card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    padding:1.75rem;
+    border-radius: calc(var(--radius) - 6px);
+    box-shadow: var(--shadow);
+    color:var(--secondary-text);
+    border:1px solid var(--border-color);
+    position:relative;
+    backdrop-filter: blur(6px);
+    transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+/* slight lift on hover/focus */
+.intro_2:hover,
+.intro_2:focus-within,
+.intro-card:hover,
+.intro-card:focus-within{
+    transform: translateY(-6px);
     box-shadow: var(--shadow-hover);
 }
 
-.sanskrit-text {
-    color: var(--primary-text);
-    font-weight: 600;
-    line-height: 2;
+/* thin color accent bar */
+.intro_2::before,
+.intro-card::before{
+    content:'';
+    position:absolute;
+    left:14px;
+    right:14px;
+    top:12px;
+    height:3px;
+    border-radius:4px;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-4));
+    opacity:0.95;
 }
 
-.translation {
-    background: linear-gradient(135deg, 
-        rgba(99, 102, 241, 0.05), 
-        rgba(244, 63, 94, 0.05));
-    border-top: 2px solid rgba(99, 102, 241, 0.1);
+/* Section heading (modern pill) */
+h2{
+    font-family:'Sanskrit Text', serif;
+    font-size:var(--text-2xl);
+    font-weight:700;
+    color:var(--primary-text);
+    text-align:center;
+    margin:1.75rem 0 0.75rem;
+    padding:1rem;
+    background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    border-radius: calc(var(--radius) - 12px);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 8px 30px rgba(17,24,39,0.45);
 }
 
-h2 {
-    background: linear-gradient(135deg, 
-        rgba(99, 102, 241, 0.9), 
-        rgba(244, 63, 94, 0.9));
-    color: white;
-    font-weight: 800;
+/* small underline accent */
+h2::after{
+    content:'';
+    display:block;
+    width:64px;
+    height:4px;
+    margin:10px auto 0;
+    border-radius:4px;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-3));
 }
 
-footer {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
+/* Shlok card */
+.shlok{
+    background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+    padding:1.75rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    border:1px solid var(--border-color);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+    position:relative;
+    overflow:visible;
 }
 
-.shlok-number {
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    border: none;
-    font-weight: 700;
+/* hover elevation and subtle accent glow */
+.shlok:hover,
+.shlok:focus-within{
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
 }
 
-/* Smooth Animations */
-.shlok, .main-title, h2, .shlok-number {
-    transition: all 0.3s ease;
+/* Shloka number (floating badge) */
+.shlok-number{
+    position:absolute;
+    top:-16px;
+    left:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    font-weight:700;
+    font-size:var(--text-sm);
+    color:#fff;
+    background: conic-gradient(from 120deg, var(--accent-1), var(--accent-2), var(--accent-4));
+    border:2px solid rgba(255,255,255,0.18);
+    box-shadow: 0 8px 22px rgba(7,18,41,0.6);
+    z-index:3;
 }
 
-/* Glass Morphism Effect */
-.intro_2, .shlok, header, footer {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+/* Sanskrit text styling */
+.sanskrit-text{
+    font-family:'Sanskrit Text', serif;
+    font-size:var(--text-xl);
+    line-height:1.85;
+    color:var(--primary-text);
+    text-align:center;
+    font-weight:600;
+    margin-bottom:1rem;
+    text-shadow: 0 6px 20px rgba(2,8,20,0.6);
+}
+
+/* Translation styling */
+.translation{
+    font-size:var(--text-base);
+    color:var(--secondary-text);
+    text-align:center;
+    line-height:1.6;
+    padding-top:1.25rem;
+    border-top:1px solid rgba(255,255,255,0.03);
+    font-style:italic;
+    background: linear-gradient(180deg, rgba(122,68,255,0.02), rgba(0,200,210,0.02));
+    margin: 1rem -0.75rem -0.75rem -0.75rem;
+    padding: 1rem;
+    border-radius: 0 0 calc(var(--radius) - 6px) calc(var(--radius) - 6px);
+}
+
+/* Footer (harmonized) */
+footer{
+    text-align:center;
+    margin-top:3.25rem;
+    padding:1.6rem;
+    background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border-radius: calc(var(--radius) - 8px);
+    border:1px solid rgba(255,255,255,0.06);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(6px);
+}
+
+/* Blessing text — subtle gradient */
+.blessing{
+    font-size:var(--text-xl);
+    font-weight:700;
+    color:transparent;
+    background: linear-gradient(90deg, var(--accent-3), var(--accent-4));
+    -webkit-background-clip:text;
+    background-clip:text;
+    letter-spacing:0.3px;
+}
+
+/* Accessibility: focus outlines */
+a:focus, button:focus, [tabindex]:focus{
+    outline: 3px solid rgba(122,68,255,0.18);
+    outline-offset:4px;
+    border-radius:8px;
+}
+
+/* Minor helpers */
+.small-muted{color:var(--muted);font-size:var(--text-sm)}
+
+/* Responsive adjustments */
+@media (max-width:768px){
+    .container{padding:0.75rem}
+    header{padding:1.25rem}
+    .main-title{font-size:var(--text-2xl)}
+    .sanskrit-text{font-size:var(--text-lg)}
+    .shlok{padding:1.25rem}
+    .intro_2,.intro-card{padding:1.25rem}
+}
+
+@media (max-width:480px){
+    body{padding:1rem}
+    .main-title{font-size:var(--text-xl)}
+    .shlok-number{left:14px;top:-12px;width:36px;height:36px}
+    .sanskrit-text{font-size:1.05rem}
+    .translation{margin-left:-0.5rem;margin-right:-0.5rem}
+}
+
+/* Print-specific: simplify and ensure legibility */
+@media print{
+    body{background:white;color:black}
+    .shlok,.intro_2,.intro-card,header,footer{
+        box-shadow:none;
+        background:var(--card-bg-strong);
+        -webkit-print-color-adjust:exact;
+        border:1px solid #ddd;
+    }
+    .main-title{color:black;background:none;-webkit-text-fill-color:initial}
+    .shlok-number{background:#333;color:#fff;border-color:#fff}
 }
