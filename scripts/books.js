@@ -37,15 +37,15 @@ document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => {
 });
 
 // Initialize Kanda dropdown
-function initKandaDropdown(){
+function initKandaDropdown() {
     const kandaLinks = [
-        { url: "/gurukulam/Books/book_link/Bala_Srga.html", name: "बालकाण्डः" },
-        { url: "/gurukulam/Books/book_link/Ay_Sarga.html", name: "अयोध्याकाण्डः" },
-        { url: "/gurukulam/Books/book_link/Ara_sarga.html", name: "अरण्यकाण्डः" },
-        { url: "/gurukulam/Books/book_link/KIs_Sraga.html", name: "किष्किन्धाकाण्डः" },
-        { url: "/gurukulam/Books/book_link/SU_Sraga.html", name: "सुन्दरकाण्डः" },
-        { url: "/gurukulam/Books/book_link/YU_Sarga.html", name: "युद्धकाण्डः" },
-        { url: "/gurukulam/Books/book_link/utt_sarga.html", name: "उत्तरकाण्डः" }
+        { url: "Books/book_link/Bala_Srga.html", name: "बालकाण्डः" },
+        { url: "Books/book_link/Ay_Sarga.html", name: "अयोध्याकाण्डः" },
+        { url: "Books/book_link/Ara_sarga.html", name: "अरण्यकाण्डः" },
+        { url: "Books/book_link/KIs_Sraga.html", name: "किष्किन्धाकाण्डः" },
+        { url: "Books/book_link/SU_Sraga.html", name: "सुन्दरकाण्डः" },
+        { url: "Books/book_link/YU_Sarga.html", name: "युद्धकाण्डः" },
+        { url: "Books/book_link/utt_sarga.html", name: "उत्तरकाण्डः" }
     ];
 
     const dropdownMenu = document.getElementById("kanda-dropdown-menu");
@@ -70,27 +70,27 @@ function initKandaDropdown(){
 initKandaDropdown();
 
 // dynamic-sidebar.js
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const sidebar = document.querySelector('.sidebar');
     const content = document.querySelector('.content');
     const sidebarToggle = document.querySelector('.sidebar-toggle');
     const header = document.querySelector('.header');
-    
+
     if (!sidebar || !content || !sidebarToggle || !header) return;
-    
+
     const headerHeight = header.offsetHeight;
-    
+
     // Set CSS variables
     document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
-    
+
     // Mobile detection
     function isMobile() {
         return window.matchMedia('(max-width: 992px)').matches;
     }
-    
+
     // Initialize sidebar state
     let sidebarCollapsed = isMobile();
-    
+
     // Try to get saved state from localStorage (only for desktop)
     if (!isMobile()) {
         const savedState = localStorage.getItem('sidebarCollapsed');
@@ -98,18 +98,18 @@ document.addEventListener('DOMContentLoaded', function() {
             sidebarCollapsed = savedState === 'true';
         }
     }
-    
+
     // Toggle function
     function toggleSidebar() {
         sidebarCollapsed = !sidebarCollapsed;
         updateSidebar();
-        
+
         // Save state (only for desktop)
         if (!isMobile()) {
             localStorage.setItem('sidebarCollapsed', sidebarCollapsed);
         }
     }
-    
+
     // Update sidebar state
     function updateSidebar() {
         if (sidebarCollapsed) {
@@ -122,15 +122,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 .getPropertyValue('--sidebar-width');
         }
     }
-    
+
     // Adjust content height
     function updateContentHeight() {
         content.style.minHeight = `calc(100vh - ${headerHeight}px)`;
     }
-    
+
     // Event listeners
     sidebarToggle.addEventListener('click', toggleSidebar);
-    
+
     // Hover effect for desktop
     if (!isMobile()) {
         sidebar.addEventListener('mouseenter', () => {
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 updateSidebar();
             }
         });
-        
+
         sidebar.addEventListener('mouseleave', () => {
             const savedState = localStorage.getItem('sidebarCollapsed');
             if (!sidebarCollapsed && savedState === 'true') {
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     // Handle resize
     function handleResize() {
         if (isMobile()) {
@@ -166,22 +166,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         updateContentHeight();
     }
-    
+
     window.addEventListener('resize', handleResize);
-    
+
     // Initialize
     updateSidebar();
     updateContentHeight();
 });
-function toggleNavbar() {
-    const navbar = document.querySelector('.navbar-collapse');
-    if (navbar) {
-        navbar.classList.toggle('show');
-    }
-    
-    // Optional: Toggle hamburger icon animation
-    const hamburger = document.querySelector('.navbar-toggler');
-    if (hamburger) {
-        hamburger.classList.toggle('active');
-    }
-}

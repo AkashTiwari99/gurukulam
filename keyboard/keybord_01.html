@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vedic Sanskrit Keyboard - Devanagari</title>
-    <meta name="description" content="Modern online Vedic Sanskrit keyboard for typing Devanagari characters with Vedic diacritics">
-    <link rel="stylesheet" href="/gurukulam/keyboard/css/CSS_key.css">
+    <meta name="description"
+        content="Modern online Vedic Sanskrit keyboard for typing Devanagari characters with Vedic diacritics">
+    <link rel="stylesheet" href="../keyboard/css/CSS_key.css">
 </head>
+
 <body>
     <div class="container">
         <header class="header">
@@ -18,13 +21,9 @@
             <div class="section-toggles-above">
                 <button class="btn btn-toggle" id="toggle-keyboard">⌨️ Hide Keyboard</button>
             </div>
-            
-            <textarea
-                id="text-input"
-                placeholder="Start typing in Sanskrit... / संस्कृत में टाइप करना शुरू करें..."
-                autocomplete="off"
-                spellcheck="false"
-            ></textarea>
+
+            <textarea id="text-input" placeholder="Start typing in Sanskrit... / संस्कृत में टाइप करना शुरू करें..."
+                autocomplete="off" spellcheck="false"></textarea>
 
             <div class="controls">
                 <button class="btn btn-primary" id="copy-btn">📋 Copy</button>
@@ -38,33 +37,50 @@
             <h3>Keyboard Shortcuts</h3>
             <button class="close-instructions" id="close-instructions">×</button>
             <ul>
-            <li><strong>Retroflex consonants:</strong> <code>T</code>, <code>Th</code>, <code>D</code>, <code>Dh</code>, <code>N</code>, <code>L</code>, <code>S</code> → <span class="devanagari-example">ट, ठ, ड, ढ, ण, ळ, ष</span></li>
-            <li><strong>Nasal consonants:</strong> <code>G</code> → <span class="devanagari-example">ङ</span>, <code>J</code> → <span class="devanagari-example">ञ</span></li>
-            <li><strong>Palatal śa:</strong> <code>z</code>, <code>ç</code>, <code>sh</code> → <span class="devanagari-example">श</span></li>
-            <li><strong>Long vowels:</strong> <code>aa</code>, <code>ii</code>, <code>uu</code> or <code>A</code>, <code>I</code>, <code>U</code> → <span class="devanagari-example">आ, ई, ऊ</span></li>
-            <li><strong>Vowel diacritics:</strong> <code>-r</code>, <code>-ri</code> → <span class="devanagari-example">ृ, ॄ</span>; <code>-l</code>, <code>-li</code> → <span class="devanagari-example">ॢ, ॣ</span></li>
-            <li><strong>Anusvara & Candrabindu:</strong> <code>M</code> → <span class="devanagari-example">ं</span>, <code>MM</code> → <span class="devanagari-example">ँ</span></li>
-            <li><strong>Visarga:</strong> <code>H</code> → <span class="devanagari-example">ः</span></li>
-            <li><strong>Nukta:</strong> <code>=</code> → <span class="devanagari-example">़</span></li>
-            <li><strong>Vedic accents:</strong> <code>_</code> (anudātta), <code>__</code> (udātta), <code>___</code> (svarita)</li>
-            <li><strong>Danda:</strong> <code>/</code> or <code>|</code> → <span class="devanagari-example">।</span></li>
-            <li><strong>Avagraha:</strong> <code>'</code> → <span class="devanagari-example">ऽ</span></li>
-            <li><strong>Om symbol:</strong> <code>OM</code> → <span class="devanagari-example">ॐ</span></li>
-            <li><strong>Numbers:</strong> <code>0-9</code> → <span class="devanagari-example">०-९</span>; <code>^0-^9</code> for superscript numbers</li>
+                <li><strong>Retroflex consonants:</strong> <code>T</code>, <code>Th</code>, <code>D</code>,
+                    <code>Dh</code>, <code>N</code>, <code>L</code>, <code>S</code> → <span
+                        class="devanagari-example">ट, ठ, ड, ढ, ण, ळ, ष</span>
+                </li>
+                <li><strong>Nasal consonants:</strong> <code>G</code> → <span class="devanagari-example">ङ</span>,
+                    <code>J</code> → <span class="devanagari-example">ञ</span>
+                </li>
+                <li><strong>Palatal śa:</strong> <code>z</code>, <code>ç</code>, <code>sh</code> → <span
+                        class="devanagari-example">श</span></li>
+                <li><strong>Long vowels:</strong> <code>aa</code>, <code>ii</code>, <code>uu</code> or <code>A</code>,
+                    <code>I</code>, <code>U</code> → <span class="devanagari-example">आ, ई, ऊ</span>
+                </li>
+                <li><strong>Vowel diacritics:</strong> <code>-r</code>, <code>-ri</code> → <span
+                        class="devanagari-example">ृ, ॄ</span>; <code>-l</code>, <code>-li</code> → <span
+                        class="devanagari-example">ॢ, ॣ</span></li>
+                <li><strong>Anusvara & Candrabindu:</strong> <code>M</code> → <span class="devanagari-example">ं</span>,
+                    <code>MM</code> → <span class="devanagari-example">ँ</span>
+                </li>
+                <li><strong>Visarga:</strong> <code>H</code> → <span class="devanagari-example">ः</span></li>
+                <li><strong>Nukta:</strong> <code>=</code> → <span class="devanagari-example">़</span></li>
+                <li><strong>Vedic accents:</strong> <code>_</code> (anudātta), <code>__</code> (udātta),
+                    <code>___</code> (svarita)
+                </li>
+                <li><strong>Danda:</strong> <code>/</code> or <code>|</code> → <span class="devanagari-example">।</span>
+                </li>
+                <li><strong>Avagraha:</strong> <code>'</code> → <span class="devanagari-example">ऽ</span></li>
+                <li><strong>Om symbol:</strong> <code>OM</code> → <span class="devanagari-example">ॐ</span></li>
+                <li><strong>Numbers:</strong> <code>0-9</code> → <span class="devanagari-example">०-९</span>;
+                    <code>^0-^9</code> for superscript numbers
+                </li>
             </ul>
         </div>
 
         <div class="keyboard-container">
             <div class="keyboard-header">
-                    <div class="keyboard-header-text">Sanskrit Keyboard (Drag Me)</div>
-                    <!-- The section toggle container will be added by JavaScript -->
-                    </div>
-            
+                <div class="keyboard-header-text">Sanskrit Keyboard (Drag Me)</div>
+                <!-- The section toggle container will be added by JavaScript -->
+            </div>
+
             <div class="keyboard-section" id="vowels-section">
                 <h3 class="section-title">Vowels (स्वर)</h3>
                 <div class="key-group vowels" id="vowels-group"></div>
             </div>
-            
+
             <div class="keyboard-section" id="consonants-section">
                 <h3 class="section-title">Consonants (व्यञ्जन)</h3>
                 <div class="key-group consonants" id="consonants-group"></div>
@@ -92,7 +108,8 @@
         </div>
     </div>
     <div class="notification" id="notification"></div>
-    <script src="/gurukulam/keyboard/script/Character_data.js"></script>
-    <script src="/gurukulam/keyboard/script/keyboard.js"></script>
+    <script src="../keyboard/script/Character_data.js"></script>
+    <script src="../keyboard/script/keyboard.js"></script>
 </body>
+
 </html>

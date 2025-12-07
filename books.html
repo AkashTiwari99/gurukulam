@@ -1,59 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ancient Wisdom Library</title>
-    <link rel="stylesheet" href="/gurukulam/styles/global.css">
-    <link rel="stylesheet" href="/gurukulam/styles/books.css">
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/books.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
-<!-- Header -->
-<header class="header">
-    <div class="container header-container">
-        <!-- Logo -->
-        <div class="logo">
-            <div class="logo-circle">
-                <span>GURU</span>
-            </div>
-            <div class="logo-text">
-                <span class="logo-main">Gurukulam</span>
-                <span class="logo-tagline">Reviving Ancient Wisdom</span>
-            </div>
-        </div>
 
-        <!-- Hamburger Menu for Mobile -->
-        <div class="hamburger" onclick="toggleNavbar()">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-circle">
+                    <span>GURU</span>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">Gurukulam</span>
+                    <span class="logo-tagline">Reviving Ancient Wisdom</span>
+                </div>
+            </div>
+
+            <!-- Hamburger Menu for Mobile -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- Navigation -->
+            <nav class="navbar" id="navbar">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="current-page">Home</a></li>
+                    <li><a href="programs.html">programs</a></li>
+                    <li><a href="books.html" class="current-page">Books</a></li>
+                    <li><a href="Campus.html">Campus</a></li>
+                    <li><a href="Gallery/Gallery.html">Gallery</a></li>
+                    <li><a href="keyboard/keybord_01.html">keyboard</a></li>
+                    <li class="has-dropdown">
+                        <a href="javascript:void(0)">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="about.html">About Us</a>
+                            <a href="Sanatan Dharma_Vision & Mission.html">Our Mission</a>
+                            <a href="team.html">Our Team</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <!-- Navigation -->
-        <nav class="navbar" id="navbar">
-            <ul class="nav-list">
-                <li><a href="/gurukulam/index.html" class="current-page">Home</a></li>
-                <li><a href="/gurukulam/programs.html">programs</a></li>
-                <li><a href="/gurukulam/books.html" class="current-page">Books</a></li>
-                <li><a href="/gurukulam/Campus.html">Campus</a></li>
-                <li><a href="/gurukulam/Gallery/Gallery.html">Gallery</a></li>
-                <li><a href="/gurukulam/keyboard/keybord_01.html">keyboard</a></li>
-                <li class="has-dropdown">
-                    <a href="javascript:void(0)">About <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="/gurukulam/about.html">About Us</a>
-                        <a href="/gurukulam/Sanatan Dharma_Vision & Mission.html">Our Mission</a>
-                        <a href="team.html">Our Team</a>
-                    </div>
-                </li>
-                <li><a href="/gurukulam/contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-<!-- Hero Section -->
+    </header>
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Ancient Wisdom for Modern Times</h1>
@@ -64,8 +66,9 @@
     <!-- Library Section -->
     <section class="library-section">
         <h2 class="section-title">Digital Library</h2>
-        <p class="section-desc">Dive into the profound knowledge of ancient texts beautifully preserved for the digital age</p>
-        
+        <p class="section-desc">Dive into the profound knowledge of ancient texts beautifully preserved for the digital
+            age</p>
+
         <div class="book-grid">
             <div class="book-card">
                 <div class="book-cover">
@@ -74,7 +77,7 @@
                 <div class="book-info">
                     <h3>Ramayana</h3>
                     <p>The epic tale of Lord Rama</p>
-                    <a href="/gurukulam/Books/book_link/Bala_Srga.html" class="book-btn">Read Now</a>
+                    <a href="Books/book_link/Bala_Srga.html" class="book-btn">Read Now</a>
                 </div>
             </div>
             <div class="book-card">
@@ -84,7 +87,7 @@
                 <div class="book-info">
                     <h3>Shloka Mala 1</h3>
                     <p>Good values of Ramayana</p>
-                    <a href="/gurukulam/Books/Shlok mala/shlok_mala_1.html" class="book-btn">Read Now</a>
+                    <a href="Books/Shlok mala/shlok_mala_1.html" class="book-btn">Read Now</a>
                 </div>
             </div>
             <div class="book-card">
@@ -94,10 +97,10 @@
                 <div class="book-info">
                     <h3>Shloka Mala_2</h3>
                     <p>Good values of Ramayana</p>
-                    <a href="/gurukulam/Books/Shlok mala/shlok_mala_2.html" class="book-btn">Read Now</a>
+                    <a href="Books/Shlok mala/shlok_mala_2.html" class="book-btn">Read Now</a>
                 </div>
             </div>
-            
+
             <div class="book-card">
                 <div class="book-cover">
                     <i class="fas fa-scroll"></i>
@@ -105,10 +108,10 @@
                 <div class="book-info">
                     <h3>Reviving Vedic Knowledge</h3>
                     <p>A guide to ancient wisdom</p>
-                    <a href="/gurukulam/Books//Books.pdf/REVIVING VEDIC KNOWLEDGE.pdf" class="book-btn">Read Now</a>
+                    <a href="Books//Books.pdf/REVIVING VEDIC KNOWLEDGE.pdf" class="book-btn">Read Now</a>
                 </div>
             </div>
-            
+
             <div class="book-card">
                 <div class="book-cover">
                     <i class="fas fa-university"></i>
@@ -116,10 +119,10 @@
                 <div class="book-info">
                     <h3>Ancient Educational Structures</h3>
                     <p>Learning systems of the past</p>
-                    <a href="/gurukulam/Books/Books.pdf/Ancient Educational Structures.pdf" class="book-btn">Read Now</a>
+                    <a href="Books/Books.pdf/Ancient Educational Structures.pdf" class="book-btn">Read Now</a>
                 </div>
             </div>
-            
+
             <div class="book-card">
                 <div class="book-cover">
                     <i class="fas fa-hands-helping"></i>
@@ -127,10 +130,11 @@
                 <div class="book-info">
                     <h3>Social Entrepreneurship with Vedic Wisdom</h3>
                     <p>Ancient principles for modern business</p>
-                    <a href="/gurukulam/Books/Books.pdf/Social entrepreneurship with vedic wisdom.pdf" class="book-btn">Read Now</a>
+                    <a href="Books/Books.pdf/Social entrepreneurship with vedic wisdom.pdf" class="book-btn">Read
+                        Now</a>
                 </div>
             </div>
-            
+
             <div class="book-card">
                 <div class="book-cover">
                     <i class="fas fa-om"></i>
@@ -138,7 +142,7 @@
                 <div class="book-info">
                     <h3>The Wisdom of the Hindus</h3>
                     <p>Exploring Hindu philosophy</p>
-                    <a href="/gurukulam/Books/Books.pdf/The wisdom of the Hindus.pdf" class="book-btn">Read Now</a>
+                    <a href="Books/Books.pdf/The wisdom of the Hindus.pdf" class="book-btn">Read Now</a>
                 </div>
             </div>
 
@@ -149,10 +153,10 @@
                 <div class="book-info">
                     <h3>Vedic Wisdom</h3>
                     <p>Foundations of Vedic knowledge</p>
-                    <a href="/gurukulam/Books/Books.pdf/Vedic Wisdom.pdf" class="book-btn">Read Now</a>
+                    <a href="Books/Books.pdf/Vedic Wisdom.pdf" class="book-btn">Read Now</a>
                 </div>
             </div>
-            
+
             <div class="book-card">
                 <div class="book-cover">
                     <i class="fas fa-dharmachakra"></i>
@@ -160,7 +164,7 @@
                 <div class="book-info">
                     <h3>Vedic Wisdom 2</h3>
                     <p>Advanced exploration of Vedic knowledge</p>
-                    <a href="/gurukulam/Books/Books.pdf/VEDIC WISDOM 2.pdf" class="book-btn">Read Now</a>
+                    <a href="Books/Books.pdf/VEDIC WISDOM 2.pdf" class="book-btn">Read Now</a>
                 </div>
             </div>
         </div>
@@ -181,28 +185,28 @@
                 </div>
                 <div class="logo-text">Gurukulam</div>
             </div>
-            
+
             <div class="footer-links">
                 <div class="footer-section">
                     <h4>Navigation</h4>
                     <ul>
-                        <li><a href="/gurukulamindex.html">Home</a></li>
-                        <li><a href="/gurukulamprograms.html">Programs</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="programs.html">Programs</a></li>
                         <li><a href="our-campus.html">Our Campus</a></li>
-                        <li><a href="/gurukulam/Gallery/Gallery.html">Gallery</a></li>
+                        <li><a href="Gallery/Gallery.html">Gallery</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>More Info</h4>
                     <ul>
-                        <li><a href="/gurukulamabout.html">About Us</a></li>
-                        <li><a href="/gurukulam/Sanatan Dharma_Vision & Mission.html">Our Mission</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="Sanatan Dharma_Vision & Mission.html">Our Mission</a></li>
                         <li><a href="team.html">Our Team</a></li>
-                        <li><a href="/gurukulam/contact.html">Contact Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>Connect With Us</h4>
                     <div class="social-icons">
@@ -214,24 +218,24 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="copyright">
             <p>&copy; 2025 Gurukulam. All rights reserved.</p>
         </div>
-    </main>
+        </main>
 
-    <footer>
-        <!-- The mobile-menu should be defined here or before the closing </body> tag -->
-        <button id="mobile-menu">Mobile Menu</button>
-    </footer>
+        <footer>
+            <!-- The mobile-menu should be defined here or before the closing </body> tag -->
+            <button id="mobile-menu">Mobile Menu</button>
+        </footer>
 
-    <script src="/gurukulam/scripts/books.js"></script>
-    <script src="/gurukulam/scripts/main.js"></script>
-    <script>
-        // Simple mobile menu toggle
-        // Now the script is at the end of the body, mobile-menu should be available
-        document.getElementById('mobile-menu').addEventListener('click', function() {
-            document.querySelector('.nav-list').classList.toggle('active');
-        });
-    </script>
+        <script src="scripts/books.js"></script>
+        <script src="scripts/main.js"></script>
+        <script>
+            // Simple mobile menu toggle
+            // Now the script is at the end of the body, mobile-menu should be available
+            document.getElementById('mobile-menu').addEventListener('click', function () {
+                document.querySelector('.nav-list').classList.toggle('active');
+            });
+        </script>
 </body>
