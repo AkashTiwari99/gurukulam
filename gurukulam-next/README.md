@@ -2,6 +2,12 @@
 
 The complete source code for your modern Next.js website has been generated in this folder (`gurukulam-next`).
 
+## ⚠️ Prerequisites (Required)
+It looks like **Node.js** is not installed on your computer yet. You need it to run this new site.
+1.  **Download Node.js (LTS)**: [https://nodejs.org/](https://nodejs.org/)
+2.  **Install it**: Run the installer and click "Next" through the defaults.
+3.  **Restart**: Close and reopen your terminal (Command Prompt) after installing.
+
 ## 🚀 Status
 - **Code:** ✅ Complete (Pages & Components)
 - **Styles:** ✅ Complete (Migrated to `styles/`)
