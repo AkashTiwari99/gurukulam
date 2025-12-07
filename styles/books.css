@@ -2,15 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 .hero {
-  height: 40vh;
-  background: linear-gradient(rgba(246, 246, 246, 0.7), rgba(247, 248, 249, 0.7)),
-            url('') no-repeat center center/cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+    height: 40vh;
+    background: linear-gradient(rgba(246, 246, 246, 0.7), rgba(247, 248, 249, 0.7)),
+        url('') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero::before {
@@ -57,14 +57,14 @@
     text-align: center;
     margin-bottom: 1rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-text-fill-color: black;
+    color: var(--text-dark);
 }
 
 .section-desc {
     text-align: center;
     max-width: 700px;
     margin: 0 auto 3rem;
-    color: var(--text-color);
+    color: var(--text-medium);
     opacity: 0.8;
 }
 
@@ -75,8 +75,8 @@
 }
 
 .book-card {
-    background-color: var(--card-bg-color);
-    border-radius: var(--border-radius);
+    background-color: var(--white);
+    border-radius: var(--border-radius-medium);
     overflow: hidden;
     transition: all var(--transition-speed) ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -89,7 +89,7 @@
 
 .book-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 20px var(--glow-color);
+    box-shadow: var(--shadow-xl);
 }
 
 .book-cover {
@@ -122,7 +122,7 @@
 }
 
 .book-info p {
-    color: var(--text-color);
+    color: var(--text-medium);
     opacity: 0.8;
     margin-bottom: 1.5rem;
     flex: 1;
@@ -162,7 +162,7 @@
 }
 
 .book-btn:hover {
-    box-shadow: 0 0 15px var(--glow-color);
+    box-shadow: var(--shadow-lg);
     transform: translateY(-3px);
 }
 
@@ -193,7 +193,9 @@
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
+        opacity: 1;
         opacity: 1;
         transform: translateY(0);
     }
@@ -204,10 +206,10 @@
     opacity: 0;
 }
 
-.book-card:nth-child(1) { animation-delay: 0.1s; }
-.book-card:nth-child(2) { animation-delay: 0.2s; }
-.book-card:nth-child(3) { animation-delay: 0.3s; }
-.book-card:nth-child(4) { animation-delay: 0.4s; }
-.book-card:nth-child(5) { animation-delay: 0.5s; }
-.book-card:nth-child(6) { animation-delay: 0.6s; }
-.book-card:nth-child(7) { animation-delay: 0.7s; }
+.book-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.book-card:nth-child(even) {
+    animation-delay: 0.1s;
+}

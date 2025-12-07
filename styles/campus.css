@@ -5,7 +5,7 @@
     position: relative;
     height: 70vh;
     min-height: 500px;
-    background-image: url('/images/fire.jpg');
+    background-image: url('../images/fire.jpg');
     background-size: cover;
     background-position: center;
     color: var(--text-light);
@@ -36,16 +36,17 @@
 }
 
 .campus-hero .hero-title {
-    text-decoration: gold;
-    text-align:center;
+    color: var(--white);
+    text-align: center;
     font-size: 3rem;
     margin-bottom: var(--space-md);
     font-weight: 700;
     line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .campus-hero .hero-subtitle {
-    color-scheme: dark;
+    color: var(--text-light);
     font-size: 1.25rem;
     margin-bottom: var(--space-lg);
     opacity: 0.9;
@@ -81,11 +82,12 @@
     overflow: hidden;
     box-shadow: var(--shadow);
 }
+
 .overview-image img {
     background-size: cover;
     background-position: bottom;
-    width: 445px;
-    height: -webkit-fill-available;
+    width: 100%;
+    height: auto;
     display: block;
     transition: transform var(--transition-med);
     object-fit: cover;
@@ -109,7 +111,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/images/fire_2.jpg');
+    background-image: url('../images/fire_2.jpg');
     background-repeat: repeat;
     background-size: 200px;
     opacity: 0.04;
@@ -371,19 +373,19 @@
     .campus-hero .hero-title {
         font-size: 2.5rem;
     }
-    
+
     .overview-content {
         flex-direction: column;
     }
-    
+
     .facilities-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .location-content {
         flex-direction: column;
     }
@@ -393,34 +395,34 @@
     .campus-hero .hero-title {
         font-size: 2rem;
     }
-    
+
     .facilities-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .gallery-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .timeline::before {
         left: 20px;
     }
-    
+
     .timeline-item {
         flex-direction: column;
     }
-    
+
     .timeline-time {
         width: auto;
         text-align: left;
         padding-left: 35px;
         margin-bottom: var(--space-xs);
     }
-    
+
     .timeline-content {
         padding-left: 35px;
     }
-    
+
     .timeline-content::before {
         left: -22px;
     }

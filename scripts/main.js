@@ -23,7 +23,7 @@ class MainApp {
             const linkHref = link.getAttribute('href').split('/').pop();
             if (linkHref === currentPage) {
                 link.classList.add('current-page');
-                
+
                 // Highlight dropdown parent if applicable
                 const parent = link.closest('.has-dropdown');
                 if (parent) {
@@ -39,17 +39,17 @@ class MainApp {
         if (contactForm) {
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                
+
                 // Simple validation
                 const name = contactForm.querySelector('#name').value.trim();
                 const email = contactForm.querySelector('#email').value.trim();
                 const message = contactForm.querySelector('#message').value.trim();
-                
+
                 if (!name || !email || !message) {
                     alert('Please fill in all required fields.');
                     return;
                 }
-                
+
                 // Simulate form submission
                 this.showFormSubmissionFeedback();
                 contactForm.reset();
@@ -66,7 +66,7 @@ class MainApp {
                 <p>Thank you for your message! We will get back to you soon.</p>
             </div>
         `;
-        
+
         const contactSection = document.querySelector('.contact-section');
         if (contactSection) {
             contactSection.appendChild(feedback);
@@ -91,10 +91,12 @@ class MainApp {
         // Toggle dropdowns on click
         document.querySelectorAll('.has-dropdown > a').forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const dropdown = e.target.closest('.has-dropdown');
-                const content = dropdown.querySelector('.dropdown-content');
-                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                // Only prevent default if we are on mobile or if it's a click interaction
+                if (window.innerWidth <= 1024) {
+                    e.preventDefault();
+                    const dropdown = e.target.closest('.has-dropdown');
+                    dropdown.classList.toggle('active');
+                }
             });
         });
     }
@@ -103,7 +105,7 @@ class MainApp {
     setupTestimonialSlider() {
         const slides = document.querySelectorAll('.testimonial-slide');
         const dots = document.querySelectorAll('.dot');
-        
+
         if (slides.length === 0) return;
 
         this.currentSlide = 0;
@@ -125,7 +127,7 @@ class MainApp {
     showTestimonial(n) {
         const slides = document.querySelectorAll('.testimonial-slide');
         const dots = document.querySelectorAll('.dot');
-        
+
         slides.forEach(slide => slide.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
 
@@ -150,7 +152,7 @@ class MainApp {
     setupNavbarToggle() {
         const navbar = document.getElementById('navbar');
         const hamburger = document.querySelector('.hamburger');
-        
+
         if (navbar && hamburger) {
             hamburger.addEventListener('click', () => {
                 navbar.classList.toggle('active');

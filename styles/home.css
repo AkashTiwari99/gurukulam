@@ -4,6 +4,22 @@
     padding: var(--space-xxl) 0;
     background-size: cover;
     background-position: center;
+    min-height: 80vh;
+    /* Ensure proper height */
+    display: flex;
+    align-items: center;
+    background-image: var(--gradient-dark);
+    /* Fallback */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(17, 24, 39, 0.8));
 }
 
 .hero-content {
@@ -47,10 +63,15 @@
 
 .card {
     background: white;
-    border-radius: var(--radius-lg);
+    border-radius: var(--border-radius-medium);
+    /* Use global var */
     overflow: hidden;
     box-shadow: var(--shadow);
-    transition: transform var(--transition-fast);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    /* Subtle border */
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
@@ -230,23 +251,25 @@
     .hero-content {
         padding: var(--space-lg) 0;
     }
-    
+
     .hero-title {
         font-size: var(--text-2xl);
     }
-    
+
     .hero-subtitle {
         font-size: var(--text-base);
     }
-    
+
     .card-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        /* Better responsiveness */
+        gap: var(--space-md);
     }
-    
+
     .section-header h2 {
         font-size: var(--text-2xl);
     }
-    
+
     .newsletter-form {
         flex-direction: column;
     }
