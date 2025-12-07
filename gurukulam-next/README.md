@@ -1,40 +1,36 @@
-# Next.js Migration Instructions
+# Next.js Migration - Final Steps
 
-The code for your new high-performance Next.js website has been generated in the `gurukulam-next` folder.
-Due to environment restrictions, some assets could not be moved automatically. Please follow these steps to finish the setup:
+The complete source code for your modern Next.js website has been generated in this folder (`gurukulam-next`).
 
-1. **Open your terminal** and navigate to the project:
-   ```bash
-   cd "c:\akash tiwari\gurukulam\gurukulam-next"
-   ```
+## 🚀 Status
+- **Code:** ✅ Complete (Pages & Components)
+- **Styles:** ✅ Complete (Migrated to `styles/`)
+- **Assets:** ⚠️ Action Required (Images need copying)
+- **Dependencies:** ⚠️ Action Required (Run install)
 
-2. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
+## 🛠️ How to Start the Site
 
-3. **Copy Assets** (Manual Step):
-   - Copy the folder `c:\akash tiwari\gurukulam\images` into `c:\akash tiwari\gurukulam\gurukulam-next\public\`
-   - Copy the folder `c:\akash tiwari\gurukulam\styles` into `c:\akash tiwari\gurukulam\gurukulam-next\`
+Since the automated system cannot access your image files or run installer commands, please perform these 3 simple steps:
 
-   *Your folder structure should look like:*
-   ```
-   gurukulam-next/
-   ├── components/
-   ├── pages/
-   ├── public/
-       └── images/   <-- Images here
-   ├── styles/       <-- CSS files here
-   ├── package.json
-   └── ...
-   ```
+### 1. Copy Images
+Copy all images from your original `images` folder:
+`c:\akash tiwari\gurukulam\images\`
+...paste them into:
+`c:\akash tiwari\gurukulam\gurukulam-next\public\images\`
 
-4. **Start the Server**:
-   ```bash
-   npm run dev
-   ```
+*(Note: I have created the `public/images` folder for you, just drop the files in there)*
 
-5. **View Your Site**:
-   open http://localhost:3000
+### 2. Install Dependencies
+Open your terminal (Command Prompt or PowerShell) in this folder and run:
+```bash
+cd "c:\akash tiwari\gurukulam\gurukulam-next"
+npm install
+```
 
-The site should now be fully functional, responsive, and ready for future database integration!
+### 3. Run the Server
+Start the development server:
+```bash
+npm run dev
+```
+
+Then open [http://localhost:3000](http://localhost:3000) to see your new site!
