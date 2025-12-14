@@ -36,16 +36,29 @@ document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => {
     });
 });
 
+// Helper to determine the correct base path
+function getBasePath() {
+    const path = window.location.pathname;
+    // If hosted on GitHub Pages under /gurukulam/
+    if (path.includes('/gurukulam/')) {
+        return '/gurukulam';
+    }
+    return '';
+}
+
 // Initialize Kanda dropdown
 function initKandaDropdown() {
+    const basePath = getBasePath();
+
+    // Links must be absolute from the domain root OR include the repo base path
     const kandaLinks = [
-        { url: "./Books/book_link/Bala_Srga.html", name: "बालकाण्डः" },
-        { url: "./Books/book_link/Ay_Sarga.html", name: "अयोध्याकाण्डः" },
-        { url: "./Books/book_link/Ara_sarga.html", name: "अरण्यकाण्डः" },
-        { url: "./Books/book_link/KIs_Sraga.html", name: "किष्किन्धाकाण्डः" },
-        { url: "./Books/book_link/SU_Sraga.html", name: "सुन्दरकाण्डः" },
-        { url: "/Books/book_link/YU_Sarga.html", name: "युद्धकाण्डः" },
-        { url: "/Books/book_link/utt_sarga.html", name: "उत्तरकाण्डः" }
+        { url: `${basePath}/Books/book_link/Bala_Srga.html`, name: "बालकाण्डः" },
+        { url: `${basePath}/Books/book_link/Ay_Sarga.html`, name: "अयोध्याकाण्डः" },
+        { url: `${basePath}/Books/book_link/Ara_sarga.html`, name: "अरण्यकाण्डः" },
+        { url: `${basePath}/Books/book_link/KIs_Sraga.html`, name: "किष्किन्धाकाण्डः" },
+        { url: `${basePath}/Books/book_link/SU_Sraga.html`, name: "सुन्दरकाण्डः" },
+        { url: `${basePath}/Books/book_link/YU_Sarga.html`, name: "युद्धकाण्डः" },
+        { url: `${basePath}/Books/book_link/utt_sarga.html`, name: "उत्तरकाण्डः" }
     ];
 
     const dropdownMenu = document.getElementById("kanda-dropdown-menu");
@@ -54,8 +67,11 @@ function initKandaDropdown() {
     if (dropdownMenu) {
         dropdownMenu.innerHTML = ''; // Clear existing items
         kandaLinks.forEach(link => {
-            // Using absolute paths ensures correct routing regardless of the current page depth
-            if (link.url !== currentPage && !currentPage.endsWith(link.url)) {
+            // We verify if the current page path ends with the link filename to avoid duplicating 
+            // the current page in the menu (checking end of string is safer with varying base paths)
+            const isCurrentPage = currentPage.endsWith(link.url) || currentPage === link.url;
+
+            if (!isCurrentPage) {
                 const listItem = document.createElement("li");
                 const anchor = document.createElement("a");
                 anchor.href = link.url;

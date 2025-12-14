@@ -5,6 +5,9 @@ import '../styles/books.css';
 import '../styles/campus.css';
 import '../styles/contact.css';
 import '../styles/programs.css';
+import '../styles/mission.css';
+import '../styles/sanatan-dharma.css';
+import '../styles/gallery.css';
 import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {

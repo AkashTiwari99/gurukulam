@@ -8,8 +8,8 @@ export default function About() {
                 <title>About Gurukulam</title>
             </Head>
 
-            <section class="about">
-                <div class="container">
+            <section className="about">
+                <div className="container">
                     <h2>About Gurukulam</h2>
                     <p>Gurukulam is dedicated to reviving the ancient Vedic education system for modern times. We offer programs in Vedic Studies, Yoga, Sanskrit, and more.</p>
                     <img src="/images/card1.jpg" alt="Gurukul System" />

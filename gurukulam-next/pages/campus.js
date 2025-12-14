@@ -9,51 +9,51 @@ export default function Campus() {
                 <title>Our Campus | Gurukulam</title>
             </Head>
 
-            <section class="campus-hero">
-                <div class="overlay"></div>
-                <div class="container hero-container">
-                    <div class="hero-content">
-                        <h1 class="hero-title">Our Sacred Learning Space</h1>
-                        <p class="hero-subtitle">Experience the tranquility of our traditional Gurukul campus.</p>
+            <section className="campus-hero">
+                <div className="overlay"></div>
+                <div className="container hero-container">
+                    <div className="hero-content">
+                        <h1 className="hero-title">Our Sacred Learning Space</h1>
+                        <p className="hero-subtitle">Experience the tranquility of our traditional Gurukul campus.</p>
                     </div>
                 </div>
             </section>
 
-            <section class="campus-overview">
-                <div class="container">
-                    <div class="section-header">
+            <section className="campus-overview">
+                <div className="container">
+                    <div className="section-header">
                         <h2>Campus Overview</h2>
                         <p>A harmonious blend of traditional architecture and natural surroundings</p>
                     </div>
-                    <div class="overview-content">
-                        <div class="overview-text">
+                    <div className="overview-content">
+                        <div className="overview-text">
                             <p>Our Gurukulam campus is designed following ancient Vastu principles. Spread across 10 acres of lush greenery.</p>
                         </div>
-                        <div class="overview-image">
+                        <div className="overview-image">
                             <img src="/images/fire.jpg" alt="Gurukulam Campus Overview" />
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="campus-facilities">
-                <div class="container">
-                    <div class="section-header">
+            <section className="campus-facilities">
+                <div className="container">
+                    <div className="section-header">
                         <h2>Our Facilities</h2>
                     </div>
-                    <div class="facilities-grid">
-                        <div class="facility-card">
-                            <div class="facility-icon"><i class="fas fa-home"></i></div>
+                    <div className="facilities-grid">
+                        <div className="facility-card">
+                            <div className="facility-icon"><i className="fas fa-home"></i></div>
                             <h3>Residential Quarters</h3>
                             <p>Simple, comfortable living spaces.</p>
                         </div>
-                        <div class="facility-card">
-                            <div class="facility-icon"><i class="fas fa-book"></i></div>
+                        <div className="facility-card">
+                            <div className="facility-icon"><i className="fas fa-book"></i></div>
                             <h3>Learning Halls</h3>
                             <p>Traditional open halls (Shalas) with natural lighting.</p>
                         </div>
-                        <div class="facility-card">
-                            <div class="facility-icon"><i class="fas fa-pray"></i></div>
+                        <div className="facility-card">
+                            <div className="facility-icon"><i className="fas fa-pray"></i></div>
                             <h3>Meditation Spaces</h3>
                             <p>Dedicated areas for meditation.</p>
                         </div>

@@ -18,22 +18,22 @@ export default function Header() {
     const isActive = (path) => router.pathname === path ? 'current-page' : '';
 
     return (
-        <header class={`header ${isScrolled ? 'scrolled' : ''}`}>
-            <div class="container header-container">
+        <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+            <div className="container header-container">
                 {/* Logo */}
-                <Link href="/" class="logo">
-                    <div class="logo-circle">
+                <Link href="/" className="logo">
+                    <div className="logo-circle">
                         <span>GURU</span>
                     </div>
-                    <div class="logo-text">
-                        <span class="logo-main">Gurukulam</span>
-                        <span class="logo-tagline">Reviving Ancient Wisdom</span>
+                    <div className="logo-text">
+                        <span className="logo-main">Gurukulam</span>
+                        <span className="logo-tagline">Reviving Ancient Wisdom</span>
                     </div>
                 </Link>
 
                 {/* Hamburger Menu for Mobile */}
                 <div
-                    class={`hamburger ${isMobileMenuOpen ? 'active' : ''}`}
+                    className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`}
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 >
                     <span></span>
@@ -42,22 +42,30 @@ export default function Header() {
                 </div>
 
                 {/* Navigation */}
-                <nav class={`navbar ${isMobileMenuOpen ? 'active' : ''}`} id="navbar">
-                    <ul class="nav-list">
-                        <li><Link href="/" class={isActive('/')}>Home</Link></li>
-                        <li><Link href="/programs" class={isActive('/programs')}>Programs</Link></li>
-                        <li><Link href="/books" class={isActive('/books')}>Books</Link></li>
-                        <li><Link href="/campus" class={isActive('/campus')}>Campus</Link></li>
-                        <li><Link href="/gallery" class={isActive('/gallery')}>Gallery</Link></li>
-                        <li class="has-dropdown">
-                            <a href="#" onClick={(e) => { e.preventDefault(); }}>About <i class="fas fa-chevron-down"></i></a>
-                            <div class="dropdown-content">
+                <nav className={`navbar ${isMobileMenuOpen ? 'active' : ''}`} id="navbar">
+                    <ul className="nav-list">
+                        <li><Link href="/" className={isActive('/')}>Home</Link></li>
+                        <li className="has-dropdown">
+                            <a href="#" onClick={(e) => { e.preventDefault(); }}>Programs <i className="fas fa-chevron-down"></i></a>
+                            <div className="dropdown-content">
+                                <Link href="/programs">Vedic Studies</Link>
+                                <Link href="/sanatan-dharma">Sanskrit Immersion</Link>
+                                <Link href="/programs">Yoga & Meditation</Link>
+                                <Link href="/programs">Ayurveda Basics</Link>
+                            </div>
+                        </li>
+                        <li><Link href="/books" className={isActive('/books')}>Books</Link></li>
+                        <li><Link href="/campus" className={isActive('/campus')}>Campus</Link></li>
+                        <li><Link href="/gallery" className={isActive('/gallery')}>Gallery</Link></li>
+                        <li className="has-dropdown">
+                            <a href="#" onClick={(e) => { e.preventDefault(); }}>About <i className="fas fa-chevron-down"></i></a>
+                            <div className="dropdown-content">
                                 <Link href="/about">About Us</Link>
                                 <Link href="/mission">Our Mission</Link>
                                 <Link href="/team">Our Team</Link>
                             </div>
                         </li>
-                        <li><Link href="/contact" class={isActive('/contact')}>Contact</Link></li>
+                        <li><Link href="/contact" className={isActive('/contact')}>Contact</Link></li>
                     </ul>
                 </nav>
             </div>

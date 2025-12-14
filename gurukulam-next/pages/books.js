@@ -10,32 +10,38 @@ export default function Books() {
             </Head>
 
             {/* Hero Section */}
-            <section class="hero">
-                <div class="hero-content">
+            <section className="hero">
+                <div className="hero-content">
                     <h1>Ancient Wisdom for Modern Times</h1>
                     <p>Explore our curated collection of timeless knowledge</p>
                 </div>
             </section>
 
             {/* Library Section */}
-            <section class="library-section">
-                <h2 class="section-title">Digital Library</h2>
-                <p class="section-desc">Dive into the profound knowledge of ancient texts beautifully preserved.</p>
+            <section className="library-section">
+                <h2 className="section-title">Digital Library</h2>
+                <p className="section-desc">Dive into the profound knowledge of ancient texts beautifully preserved.</p>
 
-                <div class="book-grid">
+                <div className="book-grid">
                     {[
-                        "Ramayana", "Shloka Mala 1", "Shloka Mala 2",
-                        "Reviving Vedic Knowledge", "Ancient Educational Structures",
-                        "Social Entrepreneurship", "Wisdom of Hindus", "Vedic Wisdom", "Vedic Wisdom 2"
-                    ].map((title, i) => (
-                        <div class="book-card" key={i} style={{ animationDelay: `${i * 0.1}s` }}>
-                            <div class="book-cover">
-                                <i class="fas fa-book"></i>
+                        { title: "Ramayana", desc: "The epic tale of Lord Rama", link: "/Books/book_link/Bala_Srga.html", icon: "fas fa-book" },
+                        { title: "Shloka Mala 1", desc: "Good values of Ramayana", link: "/Books/Shlok mala/shlok_mala_1.html", icon: "fas fa-lightbulb" },
+                        { title: "Shloka Mala 2", desc: "Good values of Ramayana", link: "/Books/Shlok mala/shlok_mala_2.html", icon: "fas fa-book-open" },
+                        { title: "Reviving Vedic Knowledge", desc: "A guide to ancient wisdom", link: "/Books/Books.pdf/REVIVING VEDIC KNOWLEDGE.pdf", icon: "fas fa-scroll" },
+                        { title: "Ancient Educational Structures", desc: "Learning systems of the past", link: "/Books/Books.pdf/Ancient Educational Structures.pdf", icon: "fas fa-university" },
+                        { title: "Social Entrepreneurship", desc: "Ancient principles for modern business", link: "/Books/Books.pdf/Social entrepreneurship with vedic wisdom.pdf", icon: "fas fa-hands-helping" },
+                        { title: "Wisdom of Hindus", desc: "Exploring Hindu philosophy", link: "/Books/Books.pdf/The wisdom of the Hindus.pdf", icon: "fas fa-om" },
+                        { title: "Vedic Wisdom", desc: "Foundations of Vedic knowledge", link: "/Books/Books.pdf/Vedic Wisdom.pdf", icon: "fas fa-star-of-david" },
+                        { title: "Vedic Wisdom 2", desc: "Advanced exploration of Vedic knowledge", link: "/Books/Books.pdf/VEDIC WISDOM 2.pdf", icon: "fas fa-dharmachakra" }
+                    ].map((book, i) => (
+                        <div className="book-card" key={i} style={{ animationDelay: `${i * 0.1}s` }}>
+                            <div className="book-cover">
+                                <i className={book.icon}></i>
                             </div>
-                            <div class="book-info">
-                                <h3>{title}</h3>
-                                <p>Explore this ancient text profoundly.</p>
-                                <button class="book-btn">Read Now</button>
+                            <div className="book-info">
+                                <h3>{book.title}</h3>
+                                <p>{book.desc}</p>
+                                <a href={book.link} className="book-btn">Read Now</a>
                             </div>
                         </div>
                     ))}
