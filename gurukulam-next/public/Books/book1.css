@@ -1,32 +1,43 @@
 /* ===== ENHANCED BOOK PAGE STYLES ===== */
 :root {
-    --sidebar-width: auto;
-    --sidebar-collapsed-width: 30px --header-height: 60px;
+    --sidebar-width: 300px;
+    --sidebar-collapsed-width: 60px;
+    --header-height: 70px;
+    /* Matches global header height */
+    --accent-color: #ff9933;
+    /* Ensuring variable availability if not imported */
+    --transition-med: 0.3s ease;
+    --space-md: 1rem;
+    --space-sm: 0.5rem;
+    --space-xl: 2rem;
+    --border-radius-medium: 8px;
 }
 
 .main-container {
     display: flex;
     min-height: calc(100vh - var(--header-height));
     margin-top: 0;
+    /* Header is usually fixed, but check global styles */
     position: relative;
     transition: margin-left var(--transition-med);
+    padding-top: var(--header-height);
+    /* Push content down for fixed header */
 }
 
 /* Sidebar Styles */
 .sidebar {
-    width: auto;
+    width: var(--sidebar-width);
     background: rgba(15, 12, 41, 0.98);
     border-right: 2px solid var(--accent-color);
-    box-shadow: 0 0 2px rgba(35, 213, 171, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     padding: var(--space-md);
     overflow-y: auto;
-    transition: all var(--transition-med) ease;
-    z-index: 1000;
+    transition: width var(--transition-med);
+    z-index: 100;
     height: calc(100vh - var(--header-height));
     position: fixed;
     top: var(--header-height);
-    will-change: width;
-    margin: right 0;
+    left: 0;
 }
 
 .sidebar h1 {
@@ -38,7 +49,6 @@
     padding-bottom: var(--space-sm);
     font-family: 'Noto Serif Devanagari', serif;
     text-shadow: 0 0 5px rgba(35, 213, 171, 0.3);
-    transition: all var(--transition-med);
 }
 
 .sidebar a {
@@ -46,9 +56,9 @@
     align-items: center;
     color: var(--accent-color);
     padding: var(--space-sm) var(--space-md);
-    margin: var(--space-xs) 0;
+    margin: 5px 0;
     border-radius: var(--border-radius-medium);
-    transition: all var(--transition-fast);
+    transition: all 0.2s ease;
     text-decoration: none;
     white-space: nowrap;
     overflow: hidden;
@@ -58,9 +68,9 @@
 
 .sidebar a:hover,
 .sidebar a.active {
-    background: rgba(35, 213, 171, 0.15);
+    background: rgba(255, 153, 51, 0.15);
+    /* Orange tint */
     color: white;
-    box-shadow: 0 0 15px rgba(35, 213, 171, 0.3);
     transform: translateX(5px);
 }
 
@@ -73,7 +83,7 @@
     width: 3px;
     background: var(--accent-color);
     transform: scaleY(0);
-    transition: transform var(--transition-fast);
+    transition: transform 0.2s ease;
 }
 
 .sidebar a:hover::before,
@@ -91,13 +101,13 @@
 .content {
     flex: 1;
     padding: var(--space-xl);
-    margin: left 0;
+    margin-left: var(--sidebar-width);
+    /* Push content to right of sidebar */
     min-height: calc(100vh - var(--header-height));
     background-color: #ffffff;
-    /* White background for content area */
-    overflow-y: auto;
     transition: margin-left var(--transition-med);
-    margin-right: 30px;
+    width: 100%;
+    /* Ensure full width */
 }
 
 .content img {
@@ -109,306 +119,138 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Header adjustments */
-.header {
-    height: var(--header-height) !important;
+/* Sidebar Collapsed State (Desktop Toggle) */
+.sidebar.collapsed {
+    width: var(--sidebar-collapsed-width);
 }
 
-.header-container {
-    height: 100%;
+.sidebar.collapsed h1,
+.sidebar.collapsed a span,
+.sidebar.collapsed .logo-text {
+    display: none;
+    opacity: 0;
 }
 
-/* Scrolling behavior */
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: var(--header-height);
+.sidebar.collapsed a {
+    justify-content: center;
+    padding: var(--space-sm);
 }
 
-/* Responsive Adjustments */
+.sidebar.collapsed a i {
+    margin-right: 0;
+}
+
+/* Adjust content when sidebar is collapsed */
+.sidebar.collapsed~.content {
+    margin-left: var(--sidebar-collapsed-width);
+}
+
+
+/* ===== RESPONSIVE MEDIA QUERIES ===== */
+
+/* Tablet (768px - 992px) */
 @media (max-width: 992px) {
-
-    /* ===== DYNAMIC SIDEBAR STYLES ===== */
-    :root {
-        --sidebar-width: 280px;
-        --sidebar-collapsed-width: 70px;
-        --header-height: 60px;
-    }
-
-    .main-container {
-        margin-left: 0;
-        display: flex;
-        min-height: calc(100vh - var(--header-height));
-        margin-top: var(--header-height);
-    }
-
     .sidebar {
         width: var(--sidebar-width);
-        background: rgba(15, 12, 41, 0.98);
-        border-right: 2px solid var(--accent-color);
-        padding: var(--space-lg);
-        overflow-y: auto;
-        transition: width 0.3s ease;
-        height: calc(100vh - var(--header-height));
-        position: fixed;
-        top: var(--header-height);
-        left: 0;
         z-index: 1000;
     }
 
-    .content {
-        flex: 1;
-        padding: var(--space-xl);
-        margin-left: var(--sidebar-width);
-        min-height: calc(100vh - var(--header-height));
-        background-color: white;
-        /* White background for content area */
-        transition: margin-left 0.3s ease;
-    }
-
-    /* Collapsed state styles */
     .sidebar.collapsed {
         width: var(--sidebar-collapsed-width);
-        overflow-x: hidden;
     }
 
-    .sidebar.collapsed .nav-text {
-        display: none;
+    .content {
+        margin-left: var(--sidebar-width);
     }
 
-    .sidebar.collapsed h1 {
-        font-size: 0;
-        padding: 0;
-        margin: 0;
-        border: none;
+    .sidebar.collapsed~.content {
+        margin-left: var(--sidebar-collapsed-width);
     }
+}
 
-    .sidebar.collapsed a {
-        justify-content: center;
-        padding: var(--space-sm);
-    }
-
-    .sidebar.collapsed a i {
-        margin-right: 0;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: auto) {
-        .sidebar {
-            width: var(--sidebar-collapsed-width);
-        }
-
-        .sidebar:not(.collapsed) {
-            width: var(--sidebar-width);
-        }
-
-        .content {
-            margin-left: var(--sidebar-collapsed-width);
-        }
-
-        .sidebar:not(.collapsed)~.content {
-            margin-left: var(--sidebar-width);
-        }
-
-        .sidebar-toggle {
-            display: block !important;
-        }
-    }
-
+/* Mobile (Below 768px) */
+@media (max-width: 768px) {
     :root {
-        --sidebar-width: 240px;
+        --sidebar-width: 250px;
     }
 
     .sidebar {
-        width: var(--sidebar-collapsed-width);
-        padding: var(--space-md) var(--space-sm);
-    }
-
-    .sidebar h1 {
-        font-size: 0;
-        padding: 0;
-        margin: 0;
-        border: none;
-    }
-
-    .sidebar a {
-        padding: var(--space-sm);
-        justify-content: center;
-    }
-
-    .sidebar a span {
-        display: none;
-        margin-left: var(--space-sm);
-    }
-
-    .sidebar a i {
-        margin-right: 0;
-    }
-
-    .sidebar:hover {
+        /* OPEN STATE (no collapsed class) */
+        transform: translateX(0);
         width: var(--sidebar-width);
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .sidebar.collapsed {
+        /* CLOSED STATE */
+        transform: translateX(-100%);
+        width: var(--sidebar-width);
+        /* Keep width but hide */
+    }
+
+    .content {
+        /* Content always full width on mobile, covered by sidebar when open */
+        margin-left: 0 !important;
+        width: 100%;
         padding: var(--space-md);
     }
 
-    .sidebar:hover h1 {
-        font-size: 1.3rem;
-        margin-bottom: var(--space-lg);
-        border-bottom: 2px solid var(--accent-color);
-        padding-bottom: var(--space-sm);
+    /* Ensure content doesn't shift when sidebar is collapsed/open to avoid layout jank */
+    .sidebar~.content,
+    .sidebar.collapsed~.content {
+        margin-left: 0 !important;
     }
 
-    .sidebar:hover a {
-        padding: var(--space-sm) var(--space-md);
+    /* In open state (desktop/tablet style overrides needed) */
+    .sidebar h1,
+    .sidebar a span {
+        display: inline-block;
+        opacity: 1;
+    }
+
+    .sidebar a {
         justify-content: flex-start;
     }
 
-    .sidebar:hover a span {
-        display: inline;
+    .sidebar a i {
+        margin-right: var(--space-sm);
     }
 
-    .content {
-        margin-left: var(--sidebar-collapsed-width) !important;
-    }
-
-    .sidebar:hover~.content {
-        margin-left: var(--sidebar-width) !important;
-    }
-}
-
-/* Large desktop screens */
-@media (min-width: 768px) {
-    :root {
-        --sidebar-width: auto;
-    }
-
-    .sidebar {
-        padding: var(--space-xl);
-    }
-
-    .content {
-        padding: var(--space-xl) var(--space-xxl);
+    /* Toggle Button Visibility - Ensure it floats above everything */
+    .sidebar-toggle {
+        display: block !important;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1001;
+        background: var(--accent-color);
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        font-size: 1.2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
-/* Kanda Dropdown */
+/* Kanda Dropdown Corrections */
 .kanda-dropdown-container {
+    /* Adjust as needed, keeping existing logic */
     position: absolute;
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-toggle {
-    background: var(--primary-color);
-    color: white;
-    padding: var(--space-sm) var(--space-md);
-    border: none;
-    border-radius: var(--border-radius-medium);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-}
-
-.dropdown-toggle:hover {
-    background: var(--primary-dark);
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: var(--light);
-    min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border-radius: var(--border-radius-medium);
-    overflow: hidden;
-}
-
-.dropdown-menu li {
-    list-style: none;
-}
-
-.dropdown-menu a {
-    color: var(--text-dark);
-    padding: var(--space-sm) var(--space-md);
-    text-decoration: none;
-    display: block;
-    transition: all var(--transition-fast);
-    font-family: 'Noto Serif Devanagari', serif;
-}
-
-.dropdown-menu a:hover {
-    background-color: rgba(107, 56, 251, 0.1);
-    color: var(--primary-color);
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-/* Loader Styles */
-.loader-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-}
-
-.loader {
-    border: 5px solid rgba(243, 243, 243, 0.3);
-    border-top: 5px solid var(--accent-color);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-    margin-bottom: var(--space-md);
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.error-message {
-    text-align: center;
-    padding: var(--space-xl);
-    color: var(--secondary-color);
-    background: rgba(255, 107, 107, 0.1);
-    border-radius: var(--border-radius-medium);
-    margin: var(--space-md);
-}
-
-.error-message .btn {
-    margin-top: var(--space-md);
-}
-
-/* Reduced motion preference */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
     * {
         transition: none !important;
         animation: none !important;
     }
-
-    .sidebar {
-        transition: none !important;
-    }
-
-    .content {
-        transition: none !important;
-    }
-}
-
-/* Always hide toggle button */
-.sidebar-toggle {
-    display: none !important;
 }
