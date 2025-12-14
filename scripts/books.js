@@ -38,28 +38,45 @@ document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => {
 
 // Initialize Kanda dropdown
 function initKandaDropdown() {
-    const kandaLinks = [
-        { url: "./Books/book_link/Bala_Srga.html", name: "बालकाण्डः" },
-        { url: "./Books/book_link/Ay_Sarga.html", name: "अयोध्याकाण्डः" },
-        { url: "./Books/book_link/Ara_sarga.html", name: "अरण्यकाण्डः" },
-        { url: "./Books/book_link/KIs_Sraga.html", name: "किष्किन्धाकाण्डः" },
-        { url: "./Books/book_link/SU_Sraga.html", name: "सुन्दरकाण्डः" },
-        { url: "/Books/book_link/YU_Sarga.html", name: "युद्धकाण्डः" },
-        { url: "/Books/book_link/utt_sarga.html", name: "उत्तरकाण्डः" }
+    // Define files with their basenames since they all reside in Books/book_link/
+    const kandaFiles = [
+        { file: "Bala_Srga.html", name: "बालकाण्डः" },
+        { file: "Ay_Sarga.html", name: "अयोध्याकाण्डः" },
+        { file: "Ara_sarga.html", name: "अरण्यकाण्डः" },
+        { file: "KIs_Sraga.html", name: "किष्किन्धाकाण्डः" },
+        { file: "SU_Sraga.html", name: "सुन्दरकाण्डः" },
+        { file: "YU_Sarga.html", name: "युद्धकाण्डः" },
+        { file: "utt_sarga.html", name: "उत्तरकाण्डः" }
     ];
 
     const dropdownMenu = document.getElementById("kanda-dropdown-menu");
-    const currentPage = window.location.pathname;
+    const currentPath = window.location.pathname;
 
     if (dropdownMenu) {
         dropdownMenu.innerHTML = ''; // Clear existing items
-        kandaLinks.forEach(link => {
-            // Using absolute paths ensures correct routing regardless of the current page depth
-            if (link.url !== currentPage && !currentPage.endsWith(link.url)) {
+
+        // Determine the prefix based on current location
+        let prefix = "";
+        if (currentPath.includes("/Books/book_link/")) {
+            // We are already inside the directory, so just link to the file
+            prefix = "";
+        } else if (currentPath.includes("/Books/")) {
+            // We are in Books/ but not book_link/ (unlikely given structure, but safe)
+            prefix = "book_link/";
+        } else {
+            // We are likely at root or elsewhere
+            prefix = "./Books/book_link/";
+        }
+
+        kandaFiles.forEach(item => {
+            const finalUrl = prefix + item.file;
+
+            // Check if this is the current page to avoid linking to self (optional, but good UX)
+            if (!currentPath.endsWith(item.file)) {
                 const listItem = document.createElement("li");
                 const anchor = document.createElement("a");
-                anchor.href = link.url;
-                anchor.textContent = link.name;
+                anchor.href = finalUrl;
+                anchor.textContent = item.name;
                 listItem.appendChild(anchor);
                 dropdownMenu.appendChild(listItem);
             }
