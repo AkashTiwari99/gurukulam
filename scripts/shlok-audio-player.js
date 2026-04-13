@@ -11,7 +11,7 @@
     
     // Configuration
     const config = {
-        audioPath: 'audio/', // Folder where MP3 files are stored
+        audioPath: './audio/', // Folder where MP3 files are stored
         filePrefix: 'shlok_', // Prefix for audio files
         fileExtension: '.mp3' // Audio file format (change to .wav, .m4a etc. if needed)
     };
