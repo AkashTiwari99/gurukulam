@@ -11,7 +11,7 @@
     
     // Configuration
     const config = {
-        audioPath: './audio/', // Folder where MP3 files are stored
+        audioPath: './Shlok_audio/', // Folder where MP3 files are stored relative to this page
         filePrefix: 'shlok_', // Prefix for audio files
         fileExtension: '.mp3' // Audio file format (change to .wav, .m4a etc. if needed)
     };
@@ -399,8 +399,7 @@
         });
         
         infoBtn.addEventListener('click', () => {
-            showNotification('🎵 Audio files loaded from /audio/ folder | Space: Play/Pause | Ctrl+→: Next', 'info');
-        });
+                showNotification('🎵 Audio files loaded from Shlok_audio/ folder | Space: Play/Pause | Ctrl+→: Next', 'info');
         
         document.body.appendChild(infoBtn);
     }
@@ -463,8 +462,8 @@
             console.log('✅ Audio files detected successfully');
         });
         testAudio.addEventListener('error', () => {
-            console.warn('⚠️ Audio files not found. Make sure they are in the /audio/ folder.');
-            showNotification('📁 Place MP3 files in /audio/ folder as shlok_1.mp3, shlok_2.mp3, etc.', 'warning');
+            console.warn('⚠️ Audio files not found. Make sure they are in the ./Shlok_audio/ folder.');
+            showNotification('📁 Place MP3 files in ./Shlok_audio/ folder as shlok_1.mp3, shlok_2.mp3, etc.', 'warning');
         });
         testAudio.load();
     }
@@ -483,7 +482,7 @@
         observer.observe(document.body, { childList: true, subtree: true });
         
         console.log('🎵 Shlok Mala Audio Player initialized');
-        console.log('📁 Place audio files in: /audio/shlok_1.mp3, /audio/shlok_2.mp3, etc.');
+        console.log('📁 Place audio files in: ./Shlok_audio/shlok_1.mp3, ./Shlok_audio/shlok_2.mp3, etc.');
     }
 
     // Start when DOM is ready
