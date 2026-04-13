@@ -11,7 +11,7 @@
     
     // Configuration
     const config = {
-        audioPath: './Shlok_audio/', // Folder where MP3 files are stored relative to this page
+        audioPath: 'Shlok_audio/', // Folder where MP3 files are stored relative to this page
         filePrefix: 'shlok_', // Prefix for audio files
         fileExtension: '.mp3' // Audio file format (change to .wav, .m4a etc. if needed)
     };
@@ -233,10 +233,10 @@
             });
             
             audio.addEventListener('error', (e) => {
-                console.error('Audio load error:', e);
+                console.error('Audio load error:', e, 'audio src:', audio.src);
                 button.textContent = '▶';
                 button.disabled = false;
-                showNotification(`❌ Audio file missing: shlok_${shlokNumber}.mp3`, 'warning');
+                showNotification(`❌ Audio file missing: ${audio.src.split('/').pop()}`, 'warning');
             });
             
             button.textContent = '⏳';
@@ -399,8 +399,9 @@
         });
         
         infoBtn.addEventListener('click', () => {
-                showNotification('🎵 Audio files loaded from Shlok_audio/ folder | Space: Play/Pause | Ctrl+→: Next', 'info');
-        
+            showNotification('🎵 Audio files loaded from Shlok_audio/ folder | Space: Play/Pause | Ctrl+→: Next', 'info');
+        });
+
         document.body.appendChild(infoBtn);
     }
 
@@ -458,12 +459,13 @@
         if (!firstShlok) return;
         
         const testAudio = new Audio(getAudioPath('1'));
+        console.log('🔎 Testing audio path:', getAudioPath('1'));
         testAudio.addEventListener('loadedmetadata', () => {
-            console.log('✅ Audio files detected successfully');
+            console.log('✅ Audio file found at:', testAudio.src);
         });
         testAudio.addEventListener('error', () => {
-            console.warn('⚠️ Audio files not found. Make sure they are in the ./Shlok_audio/ folder.');
-            showNotification('📁 Place MP3 files in ./Shlok_audio/ folder as shlok_1.mp3, shlok_2.mp3, etc.', 'warning');
+            console.warn('⚠️ Audio files not found. Make sure they are in the Shlok_audio/ folder relative to this page.');
+            showNotification(`📁 Cannot load ${getAudioPath('1')}. Place MP3 files in Shlok_audio/ folder as shlok_1.mp3, shlok_2.mp3, etc.`, 'warning');
         });
         testAudio.load();
     }
