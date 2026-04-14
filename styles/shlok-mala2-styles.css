@@ -134,7 +134,8 @@ header {
 }
 
 /* Header quote tag */
-header quote {
+header .quote {
+  display: inline-block;
   font-style: italic;
   font-weight: 600;
   color: var(--maroon-soft);
@@ -142,6 +143,7 @@ header quote {
   padding: 0.15rem 0.7rem;
   border-radius: var(--radius-pill);
   border: 1px solid rgba(224, 123, 47, 0.25);
+  margin-top: 0.75rem;
 }
 
 header p {
