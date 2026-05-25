@@ -11,9 +11,9 @@
     
     // Configuration
     const config = {
-        audioPath: 'Shlok_audio/', // Folder where MP3 files are stored relative to this page
+        audioPath: 'Shlok_audio/', // Folder where audio files are stored relative to this page
         filePrefix: 'shlok_', // Prefix for audio files
-        fileExtension: '.mp3' // Audio file format (change to .wav, .m4a etc. if needed)
+        fileExtension: '.m4a' // Audio file format (this page uses .m4a files)
     };
 
     // Create floating audio player modal
@@ -107,12 +107,20 @@
                     playBtn.textContent = '⏸';
                     playBtn.classList.add('playing');
                 }
+                if (currentButton) {
+                    currentButton.textContent = '⏸';
+                    currentButton.classList.add('playing');
+                }
                 isPlaying = true;
             });
             audio.addEventListener('pause', () => {
                 if (playBtn) {
                     playBtn.textContent = '▶';
                     playBtn.classList.remove('playing');
+                }
+                if (currentButton) {
+                    currentButton.textContent = '▶';
+                    currentButton.classList.remove('playing');
                 }
                 isPlaying = false;
             });
@@ -136,6 +144,8 @@
         if (currentButton) {
             currentButton.textContent = '▶';
             currentButton.classList.remove('playing');
+            currentButton.disabled = false;
+            currentButton = null;
         }
         isPlaying = false;
         clearInterval(progressInterval);
@@ -203,55 +213,57 @@
 
         const audioPath = getAudioPath(shlokNumber);
         const title = getShlokTitle(shlokDiv);
+        const isSameButton = currentButton === button;
+        const isAudioPlaying = currentAudio && !currentAudio.paused && !currentAudio.ended;
 
-        // Stop current audio
+        if (isSameButton && currentAudio) {
+            if (isAudioPlaying) {
+                currentAudio.pause();
+            } else {
+                currentAudio.play();
+            }
+            return;
+        }
+
         if (currentAudio) {
             currentAudio.pause();
             currentAudio = null;
         }
-        
+
         if (currentButton) {
             currentButton.textContent = '▶';
             currentButton.classList.remove('playing');
+            currentButton.disabled = false;
         }
 
-        // Check if this button is already playing
-        const isCurrentlyPlaying = button.classList.contains('playing');
-        
-        if (!isCurrentlyPlaying) {
-            // Create new audio
-            const audio = new Audio(audioPath);
-            
-            audio.addEventListener('canplaythrough', () => {
-                button.textContent = '⏸';
-                button.classList.add('playing');
-                button.disabled = false;
-                
-                showModal(audio, title);
-                audio.play();
-                showNotification(`🎵 Playing: ${title}`, 'success');
-            });
-            
-            audio.addEventListener('error', (e) => {
-                console.error('Audio load error:', e, 'audio src:', audio.src);
-                button.textContent = '▶';
-                button.disabled = false;
-                showNotification(`❌ Audio file missing: ${audio.src.split('/').pop()}`, 'warning');
-            });
-            
-            button.textContent = '⏳';
-            button.disabled = true;
-            
-            currentAudio = audio;
-            currentButton = button;
-            
-            // Start loading
-            audio.load();
-        } else {
-            currentButton = null;
-            const modal = document.getElementById('shlokAudioPlayer');
-            if (modal) modal.classList.remove('show');
-        }
+        // Create new audio
+        const audio = new Audio(audioPath);
+
+        audio.addEventListener('canplaythrough', () => {
+            button.textContent = '⏸';
+            button.classList.add('playing');
+            button.disabled = false;
+
+            showModal(audio, title);
+            audio.play();
+            showNotification(`🎵 Playing: ${title}`, 'success');
+        });
+
+        audio.addEventListener('error', (e) => {
+            console.error('Audio load error:', e, 'audio src:', audio.src);
+            button.textContent = '▶';
+            button.disabled = false;
+            showNotification(`❌ Audio file missing: ${audio.src.split('/').pop()}`, 'warning');
+        });
+
+        button.textContent = '⏳';
+        button.disabled = true;
+
+        currentAudio = audio;
+        currentButton = button;
+
+        // Start loading
+        audio.load();
     }
 
     // Add play buttons to all shloks
@@ -465,7 +477,7 @@
         });
         testAudio.addEventListener('error', () => {
             console.warn('⚠️ Audio files not found. Make sure they are in the Shlok_audio/ folder relative to this page.');
-            showNotification(`📁 Cannot load ${getAudioPath('1')}. Place MP3 files in Shlok_audio/ folder as shlok_1.mp3, shlok_2.mp3, etc.`, 'warning');
+            showNotification(`📁 Cannot load ${getAudioPath('1')}. Place audio files in Shlok_audio/ folder as shlok_1.m4a, shlok_2.m4a, etc.`, 'warning');
         });
         testAudio.load();
     }
@@ -484,7 +496,7 @@
         observer.observe(document.body, { childList: true, subtree: true });
         
         console.log('🎵 Shlok Mala Audio Player initialized');
-        console.log('📁 Place audio files in: ./Shlok_audio/shlok_1.mp3, ./Shlok_audio/shlok_2.mp3, etc.');
+console.log('📁 Place audio files in: ./Shlok_audio/shlok_1.m4a, ./Shlok_audio/shlok_2.m4a, etc.');
     }
 
     // Start when DOM is ready
