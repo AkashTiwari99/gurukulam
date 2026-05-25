@@ -8,6 +8,9 @@
     let currentButton = null;
     let progressInterval = null;
     let isPlaying = false;
+    let currentShlokNumber = null;
+    let autoPlayActive = false;
+    let autoPlayEnd = null;
     
     // Configuration
     const config = {
@@ -34,6 +37,12 @@
                 </div>
                 <div class="modal-controls">
                     <button class="modal-speed-btn" id="modalSpeedBtn">1.0x</button>
+                    <div class="modal-autoplay">
+                        <input type="number" id="modalAutoStart" min="1" max="120" placeholder="Start" />
+                        <input type="number" id="modalAutoEnd" min="1" max="120" placeholder="End" />
+                        <button id="modalAutoBtn" class="modal-auto-btn">Auto</button>
+                        <button id="modalStopAutoBtn" class="modal-stop-btn" style="display:none">Stop</button>
+                    </div>
                 </div>
             </div>
             <button class="modal-close" id="modalCloseBtn">✕</button>
@@ -98,9 +107,12 @@
             audio.addEventListener('loadedmetadata', updateProgress);
             audio.addEventListener('timeupdate', updateProgress);
             audio.addEventListener('ended', () => {
-                resetPlayState();
-                // Auto-play next shlok if available
-                playNextShlok();
+                if (!autoPlayActive) {
+                    resetPlayState();
+                    // Auto-play next shlok if available
+                    playNextShlok();
+                }
+                // when autoPlayActive is true, the auto flow is handled by the playShlokFromDiv ended handler
             });
             audio.addEventListener('play', () => {
                 if (playBtn) {
@@ -256,6 +268,22 @@
             showNotification(`❌ Audio file missing: ${audio.src.split('/').pop()}`, 'warning');
         });
 
+        // Track current shlok number for autoplay handling
+        currentShlokNumber = parseInt(shlokNumber, 10);
+
+        // When audio ends while in autoplay mode, advance to the next number until end
+        audio.addEventListener('ended', () => {
+            if (autoPlayActive) {
+                const nextNum = currentShlokNumber + 1;
+                if (autoPlayEnd && nextNum <= autoPlayEnd) {
+                    playShlokByNumber(nextNum);
+                } else {
+                    stopAutoPlay();
+                    resetPlayState();
+                }
+            }
+        });
+
         button.textContent = '⏳';
         button.disabled = true;
 
@@ -264,6 +292,57 @@
 
         // Start loading
         audio.load();
+    }
+
+    // Play a shlok by its number (e.g., 1..120)
+    function playShlokByNumber(n) {
+        const num = parseInt(n, 10);
+        if (isNaN(num)) {
+            showNotification('❌ Invalid shlok number', 'warning');
+            stopAutoPlay();
+            return;
+        }
+        const div = document.querySelector(`#SH_S${num}`);
+        if (!div) {
+            showNotification(`❌ Shlok not found: ${num}`, 'warning');
+            stopAutoPlay();
+            return;
+        }
+        const btn = div.querySelector('.shlok-play-btn');
+        if (!btn) {
+            showNotification(`❌ No audio button for shlok: ${num}`, 'warning');
+            stopAutoPlay();
+            return;
+        }
+        playShlokFromDiv(div, btn);
+    }
+
+    // Start autoplay from start->end (inclusive)
+    function startAutoPlay(start, end) {
+        const s = parseInt(start, 10);
+        const e = parseInt(end, 10);
+        if (isNaN(s) || isNaN(e) || s < 1 || e < s) {
+            showNotification('❌ Invalid autoplay range', 'warning');
+            return;
+        }
+        autoPlayActive = true;
+        autoPlayEnd = e;
+        // toggle modal controls
+        const autoBtn = document.getElementById('modalAutoBtn');
+        const stopBtn = document.getElementById('modalStopAutoBtn');
+        if (autoBtn) autoBtn.style.display = 'none';
+        if (stopBtn) stopBtn.style.display = 'inline-block';
+        playShlokByNumber(s);
+    }
+
+    function stopAutoPlay() {
+        autoPlayActive = false;
+        autoPlayEnd = null;
+        const autoBtn = document.getElementById('modalAutoBtn');
+        const stopBtn = document.getElementById('modalStopAutoBtn');
+        if (autoBtn) autoBtn.style.display = 'inline-block';
+        if (stopBtn) stopBtn.style.display = 'none';
+        showNotification('⏹️ Auto play stopped', 'info');
     }
 
     // Add play buttons to all shloks
@@ -319,6 +398,10 @@
             const closeBtn = document.getElementById('modalCloseBtn');
             const playBtn = document.getElementById('modalPlayBtn');
             const speedBtn = document.getElementById('modalSpeedBtn');
+            const autoBtn = document.getElementById('modalAutoBtn');
+            const stopAutoBtn = document.getElementById('modalStopAutoBtn');
+            const autoStartInput = document.getElementById('modalAutoStart');
+            const autoEndInput = document.getElementById('modalAutoEnd');
             
             // Close modal
             if (closeBtn && closeBtn.contains(e.target)) {
@@ -350,6 +433,23 @@
                     speedBtn.textContent = speeds[nextIndex] + 'x';
                 }
             }
+
+            // Autoplay start
+            if (autoBtn && autoBtn.contains(e.target)) {
+                const s = autoStartInput ? autoStartInput.value : '';
+                const en = autoEndInput ? autoEndInput.value : '';
+                // default to full range if end not provided
+                const startVal = s || '1';
+                const endVal = en || '120';
+                startAutoPlay(startVal, endVal);
+            }
+
+            // Autoplay stop
+            if (stopAutoBtn && stopAutoBtn.contains(e.target)) {
+                stopAutoPlay();
+                if (currentAudio) currentAudio.pause();
+                resetPlayState();
+            }
         });
     }
 
@@ -376,46 +476,7 @@
         });
     }
 
-    // Add settings/info button
-    function addInfoButton() {
-        const container = document.querySelector('.container');
-        if (!container || document.getElementById('audioInfoBtn')) return;
-        
-        const infoBtn = document.createElement('button');
-        infoBtn.id = 'audioInfoBtn';
-        infoBtn.innerHTML = '🎵';
-        infoBtn.title = 'Audio Player Info';
-        infoBtn.style.cssText = `
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #d4a574, #c4956a);
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.4);
-            z-index: 999;
-            transition: all 0.3s ease;
-        `;
-        
-        infoBtn.addEventListener('mouseenter', () => {
-            infoBtn.style.transform = 'scale(1.1)';
-        });
-        
-        infoBtn.addEventListener('mouseleave', () => {
-            infoBtn.style.transform = 'scale(1)';
-        });
-        
-        infoBtn.addEventListener('click', () => {
-            showNotification('🎵 Audio files loaded from Shlok_audio/ folder | Space: Play/Pause | Ctrl+→: Next', 'info');
-        });
-
-        document.body.appendChild(infoBtn);
-    }
+    // (Removed: floating audio info button)
 
     // Add required CSS styles
     function addStyles() {
@@ -456,6 +517,28 @@
             .modal-speed-btn:hover {
                 background: rgba(212, 175, 55, 0.3);
             }
+
+            .modal-autoplay input[type="number"] {
+                width: 64px;
+                padding: 4px 6px;
+                border-radius: 6px;
+                border: 1px solid rgba(0,0,0,0.08);
+                font-size: 12px;
+            }
+
+            .modal-auto-btn, .modal-stop-btn {
+                padding: 4px 8px;
+                border-radius: 8px;
+                border: none;
+                background: #d4a574;
+                color: #fff;
+                cursor: pointer;
+                font-size: 12px;
+            }
+
+            .modal-stop-btn {
+                background: #c94b4b;
+            }
             
             .shlok-play-btn:disabled {
                 opacity: 0.6;
@@ -488,7 +571,6 @@
         addPlayButtons();
         setupModalListeners();
         setupKeyboardShortcuts();
-        addInfoButton();
         checkAudioAvailability();
         
         // Re-add buttons if DOM changes (for dynamic content)
