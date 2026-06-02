@@ -207,13 +207,20 @@
     display: flex;
     gap: var(--space-sm);
     width: 100%;
+    flex-wrap: wrap;
 }
 
 .newsletter-form input {
     flex: 1;
-    padding: var(--space-xs) var(--space-sm);
+    min-width: 250px;
+    padding: 12px 16px;
     border: 1px solid var(--light-medium);
     border-radius: var(--radius-md);
+    font-size: 1rem;
+}
+
+.newsletter-form button {
+    min-height: 48px;
 }
 
 /* Section Headers */
@@ -254,6 +261,7 @@
 
     .hero-title {
         font-size: var(--text-2xl);
+        letter-spacing: 0.5px;
     }
 
     .hero-subtitle {
@@ -262,7 +270,6 @@
 
     .card-container {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        /* Better responsiveness */
         gap: var(--space-md);
     }
 
@@ -270,7 +277,48 @@
         font-size: var(--text-2xl);
     }
 
+    .section-header p {
+        font-size: var(--text-base);
+    }
+
     .newsletter-form {
         flex-direction: column;
+    }
+
+    .newsletter-form input,
+    .newsletter-form button {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        min-height: 60vh;
+        padding: var(--space-lg) 0;
+    }
+
+    .hero-title {
+        font-size: var(--text-3xl);
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+
+    .program-card {
+        padding: var(--space-md);
+    }
+
+    .program-icon {
+        font-size: 2rem;
     }
 }

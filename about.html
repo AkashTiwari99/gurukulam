@@ -7,6 +7,7 @@
     <title>About Gurukulam</title>
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/about.css">
+    <link rel="stylesheet" href="styles/responsive-improvements.css">
 </head>
 
 <body>
@@ -25,14 +26,14 @@
             </div>
 
             <!-- Hamburger Menu for Mobile -->
-            <div class="hamburger">
+            <div class="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
             <!-- Navigation -->
-            <nav class="navbar" id="navbar">
+            <nav class="navbar" id="navbar" aria-label="Main navigation">
                 <ul class="nav-list">
                     <li><a href="index.html" class="current-page">Home</a></li>
                     <li><a href="programs.html">programs</a></li>
@@ -41,8 +42,8 @@
                     <li><a href="Gallery/Gallery.html">Gallery</a></li>
                     <li><a href="keyboard/keybord_01.html">keyboard</a></li>
                     <li class="has-dropdown">
-                        <a href="javascript:void(0)" class="current-page">About <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-content">
+                        <a href="javascript:void(0)" class="current-page" aria-haspopup="true" aria-expanded="false">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content" role="menu">
                             <a href="about.html">About Us</a>
                             <a href="Sanatan Dharma_Vision & Mission.html">Our Mission</a>
                             <a href="team.html">Our Team</a>
@@ -68,7 +69,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Gurukulam. All rights reserved.</p>
+            <p>&copy; 2026 Gurukulam. All rights reserved.</p>
         </div>
     </footer>
 

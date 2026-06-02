@@ -1,38 +1,94 @@
+// Content cache to avoid repeated fetches
+const contentCache = new Map();
+
 // Function to load content dynamically
 async function loadContent(url, targetElementId, linkElement) {
     const contentElement = document.getElementById(targetElementId);
-    if (!contentElement) return;
+    if (!contentElement) {
+        console.warn(`Target element not found: ${targetElementId}`);
+        return;
+    }
 
-    contentElement.innerHTML = '<div class="loader"></div>'; // Show loading spinner
-    contentElement.style.opacity = '0.5'; // Dim the content area
+    // Check cache first
+    if (contentCache.has(url)) {
+        contentElement.innerHTML = contentCache.get(url);
+        contentElement.style.opacity = '1';
+        
+        // Remove active class from all links
+        document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => link.classList.remove('active'));
+        // Add active class to the clicked link
+        if (linkElement) {
+            linkElement.classList.add('active');
+        }
+        return;
+    }
+
+    contentElement.innerHTML = '<div class="loader"><p>Loading...</p></div>';
+    contentElement.style.opacity = '0.5';
 
     try {
-        const response = await fetch(url); // Fetch the content
+        // Create AbortController for timeout handling (5 seconds)
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+        const response = await fetch(url, { signal: controller.signal });
+        clearTimeout(timeoutId);
+
         if (!response.ok) {
-            throw new Error(`Failed to load content: ${response.statusText}`);
+            throw new Error(`Server error: ${response.status} ${response.statusText}`);
         }
-        const data = await response.text(); // Get the HTML content
-        contentElement.innerHTML = data; // Insert into the target element
-        contentElement.style.opacity = '1'; // Restore opacity
+
+        const data = await response.text();
+        
+        // Cache the successful response
+        contentCache.set(url, data);
+        
+        contentElement.innerHTML = data;
+        contentElement.style.opacity = '1';
 
         // Remove active class from all links
         document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => link.classList.remove('active'));
         // Add active class to the clicked link
-        linkElement.classList.add('active');
+        if (linkElement) {
+            linkElement.classList.add('active');
+        }
     } catch (error) {
-        console.error(error);
-        contentElement.innerHTML = `<p>Error loading content: ${error.message}</p>`;
-        contentElement.style.opacity = '1'; // Restore opacity
+        console.error('Content loading error:', error);
+        
+        let errorMessage = 'Unable to load content. ';
+        if (error.name === 'AbortError') {
+            errorMessage += 'The request took too long. Please check your connection and try again.';
+        } else if (error instanceof TypeError) {
+            errorMessage += 'Network error. Please check your internet connection.';
+        } else {
+            errorMessage += error.message || 'Please try again later.';
+        }
+        
+        contentElement.innerHTML = `
+            <div class="error-message" style="padding: 20px; background-color: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px; color: #721c24;">
+                <p><strong>Error:</strong> ${errorMessage}</p>
+                <p style="font-size: 0.9em; margin-top: 10px;">If the problem persists, try refreshing the page.</p>
+            </div>
+        `;
+        contentElement.style.opacity = '1';
     }
 }
 
 // Add event listeners to all links
-document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => {
-    link.addEventListener('click', (event) => {
-        event.preventDefault(); // Prevent default link behavior
-        const url = link.getAttribute('href'); // Get the URL from the href attribute
-        const targetElementId = link.getAttribute('data-target'); // Get the target element ID
-        loadContent(url, targetElementId, link); // Load the content
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const url = link.getAttribute('href');
+            const targetElementId = link.getAttribute('data-target');
+            
+            if (!url || !targetElementId) {
+                console.warn('Link missing href or data-target attribute');
+                return;
+            }
+            
+            loadContent(url, targetElementId, link);
+        });
     });
 });
 
