@@ -159,7 +159,8 @@ body {
 .container {
     width: 100%;
     max-width: 1280px;
-    margin-left: 180px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0;
 }
 
