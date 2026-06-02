@@ -90,7 +90,7 @@ initKandaDropdown();
 document.addEventListener('DOMContentLoaded', function () {
     const sidebar = document.querySelector('.sidebar');
     const content = document.querySelector('.content');
-    const sidebarToggle = document.querySelector('.sidebar-toggle');
+    const sidebarToggle = document.getElementById('sidebarToggle') || document.querySelector('.sidebar-toggle');
     const header = document.querySelector('.header');
 
     if (!sidebar || !content || !sidebarToggle || !header) return;
