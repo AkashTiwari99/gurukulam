@@ -7,12 +7,11 @@
 
 /* Override body padding to match book header height */
 body {
-    padding-top: var(--header-height) !important;
+    padding-top: 0 !important;
 }
 
 .main-container {
     display: block;
-    min-height: calc(100vh - var(--header-height));
     margin-top: 0;
     position: relative;
     transition: margin-left var(--transition-med);
@@ -375,4 +374,11 @@ html {
     #sidebarToggle:hover {
         transform: scale(1.1);
     }
+}
+
+/* Fix nested page margin/padding offset issues in the content area */
+.content .page {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }

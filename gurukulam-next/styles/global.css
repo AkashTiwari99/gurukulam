@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@100..900&family=Poppins:wght@400;500;700&display=swap');
-
 /* Global Styles */
 :root {
     /* Premium Color Palette */
@@ -13,6 +11,18 @@
     /* Pink 500 */
     --accent-color: #10B981;
     /* Emerald 500 */
+    --accent-1: #6a1b9a;
+    /* Deep purple */
+    --accent-2: #d81b60;
+    /* Vibrant pink */
+    --quote-color: #2e7d32;
+    /* Green for quotes */
+    --gallery-button-bg: #333333;
+    /* Gallery button background */
+    --gallery-button-hover: #555555;
+    /* Gallery button hover */
+    --gallery-active: #6C5CE7;
+    /* Gallery active button */
 
     /* Neutral colors - Premium Grays */
     --dark: #111827;
@@ -31,6 +41,34 @@
     --text-dark: #111827;
     --text-medium: #4B5563;
     --text-light: #F9FAFB;
+    --primary-text: #333333;
+    /* Dark gray for readability */
+    --secondary-text: #000000;
+    /* Black for secondary text */
+
+    /* Background colors */
+    --primary-bg: #f5f5f5;
+    /* Light gray background */
+
+    /* Typography - Responsive Font Sizes */
+    --text-xs: 0.75rem;
+    /* 12px */
+    --text-sm: 0.875rem;
+    /* 14px */
+    --text-base: 1rem;
+    /* 16px */
+    --text-lg: 1.125rem;
+    /* 18px */
+    --text-xl: 1.25rem;
+    /* 20px */
+    --text-2xl: 1.875rem;
+    /* 30px */
+    --text-3xl: 2.25rem;
+    /* 36px */
+    --text-4xl: 3rem;
+    /* 48px */
+    --text-5xl: 3.75rem;
+    /* 60px */
 
     /* Glass effect variables */
     --glass-bg: rgba(255, 255, 255, 0.7);
@@ -58,6 +96,9 @@
     --border-radius-medium: 12px;
     --border-radius-large: 24px;
     --border-radius-circle: 50%;
+    --radius-md: var(--border-radius-medium);
+    --radius-lg: var(--border-radius-large);
+    --radius-circle: var(--border-radius-circle);
 
     /* Spacing */
     --space-xs: 4px;
@@ -66,6 +107,25 @@
     --space-lg: 24px;
     --space-xl: 32px;
     --space-xxl: 64px;
+
+    /* Layout dimensions */
+    --page-padding: 32px;
+    /* Standard page padding */
+    --sidebar-width: 250px;
+    /* Sidebar width */
+    --header-height: 80px;
+    /* Header height */
+
+    /* Touch-friendly sizes */
+    --touch-target-min: 48px;
+    /* Minimum touch target size */
+    --button-padding-mobile: 12px 20px;
+    --button-padding-desktop: 14px 28px;
+
+    /* Container max-widths */
+    --container-mobile: 100%;
+    --container-tablet: 90%;
+    --container-desktop: 1280px;
 }
 
 /* Glassmorphism Utility */
@@ -91,7 +151,9 @@ body {
     line-height: 1.6;
     font-size: 16px;
     overflow-x: hidden;
-    padding-top: 80px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
 }
 
 .container {
@@ -100,6 +162,8 @@ body {
     margin: 0 auto;
     padding: 0;
 }
+
+/* ... (rest of global.css remains unchanged) ... */
 
 a {
     text-decoration: none;
@@ -115,7 +179,7 @@ img {
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: 12px 28px;
+    padding: var(--button-padding-desktop);
     font-weight: 500;
     border-radius: var(--border-radius-medium);
     text-align: center;
@@ -123,6 +187,11 @@ img {
     transition: all var(--transition-fast);
     border: none;
     font-size: 1rem;
+    min-height: var(--touch-target-min);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
 }
 
 .btn-primary {
@@ -134,6 +203,10 @@ img {
 .btn-primary:hover {
     box-shadow: 0 6px 16px rgba(107, 56, 251, 0.5);
     transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
 }
 
 .btn-secondary {
@@ -169,6 +242,7 @@ img {
     align-items: center;
     font-weight: 500;
     transition: all var(--transition-fast);
+    min-height: 44px;
 }
 
 .btn-link i {
@@ -186,7 +260,7 @@ img {
 
 /* Header Styles */
 .header {
-    position: fixed;
+    position: sticky;
     width: 100%;
     top: 0;
     left: 0;
@@ -444,8 +518,75 @@ img {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Mobile Responsive Styles */
-/* Mobile Responsive Styles */
+/* Mobile Responsive Styles - Mobile First Approach */
+/* Mobile: < 640px */
+@media (max-width: 640px) {
+    .btn {
+        padding: var(--button-padding-mobile);
+        font-size: 0.95rem;
+        width: 100%;
+    }
+
+    .btn-outline {
+        padding: 10px 20px;
+    }
+
+    .logo-main {
+        font-size: 1rem;
+    }
+
+    .logo-circle {
+        width: 40px;
+        height: 40px;
+    }
+
+    .logo-circle span {
+        font-size: 12px;
+    }
+
+    body {
+        font-size: 15px;
+    }
+
+    .container {
+        padding: 0 var(--space-md);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+        font-size: 16px;
+        padding: 14px 16px;
+    }
+}
+
+/* Tablet: 640px to 1024px */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .btn {
+        padding: 12px 24px;
+    }
+
+    .container {
+        padding: 0 var(--space-lg);
+    }
+}
+
+/* Desktop: > 1024px */
+@media (min-width: 1025px) {
+    .container {
+        padding: 0 var(--space-lg);
+    }
+}
+
+/* Large Desktop: > 1440px */
+@media (min-width: 1441px) {
+    .btn {
+        padding: 14px 32px;
+    }
+}
+
+/* Previous media queries (kept for compatibility) */
 @media (max-width: 1024px) {
     .nav-list {
         gap: 10px;
@@ -460,6 +601,8 @@ img {
 @media (max-width: 900px) {
     .hamburger {
         display: flex;
+        min-height: var(--touch-target-min);
+        min-width: var(--touch-target-min);
     }
 
     .navbar {
@@ -556,6 +699,28 @@ img {
         font-size: 2rem !important;
         /* Override specific page styles if needed */
     }
+
+    .header-container {
+        padding: 0 var(--space-sm);
+    }
+
+    .container {
+        padding: 0 var(--space-sm);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea,
+    select {
+        font-size: 16px;
+        min-height: 44px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px 16px;
+    }
 }
 
 /* Footer Styles */
@@ -572,4 +737,10 @@ img {
 .footer p,
 .footer a {
     display: block;
+}
+
+/* View Transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.3s;
 }

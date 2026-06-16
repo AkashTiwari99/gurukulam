@@ -30,7 +30,7 @@ export default function Campus() {
                             <p>Our Gurukulam campus is designed following ancient Vastu principles. Spread across 10 acres of lush greenery.</p>
                         </div>
                         <div className="overview-image">
-                            <img src="/images/fire.jpg" alt="Gurukulam Campus Overview" />
+                            <img src="/images/fire.webp" alt="Gurukulam Campus Overview" />
                         </div>
                     </div>
                 </div>

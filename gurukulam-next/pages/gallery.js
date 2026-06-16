@@ -12,8 +12,8 @@ export default function Gallery() {
         { src: "/images/card3.jpg", alt: "Gallery Image 3" },
         { src: "/images/card4.jpg", alt: "Gallery Image 4" },
         { src: "/images/card5.jpg", alt: "Gallery Image 5" },
-        { src: "/images/card6.jpg", alt: "Gallery Image 6" },
-        { src: "/images/fire.jpg", alt: "Fire Ritual" },
+        { src: "/images/card6-1080.webp", alt: "Gallery Image 6" },
+        { src: "/images/fire.webp", alt: "Fire Ritual" },
     ];
 
     return (

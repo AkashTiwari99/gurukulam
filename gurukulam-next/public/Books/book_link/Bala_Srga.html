@@ -8,6 +8,12 @@
         content="Gurukulam - Reviving Ancient Wisdom through Vedic Studies, Sanskrit Immersion, Yoga, and Ayurveda.">
     <title>B_Sarga</title>
     <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../../styles/global.css">
     <link rel="stylesheet" href="../book1.css">
     <link rel="stylesheet" type="text/css" href="../style.css">
@@ -85,7 +91,7 @@
     </button>
 
     <!-- Main Container -->
-    <div class="main-container">
+    <main class="main-container">
         <!-- Sidebar -->
         <div class="sidebar">
             <h1>बालकाण्डः</h1>
@@ -171,10 +177,14 @@
         </div>
         <!-- Content Area -->
         <div class="content" id="content">
-            <img src="../../images/card6.jpg" alt="rama">
+            <picture>
+                <source srcset="../../images/card6-540.webp" media="(max-width: 640px)" type="image/webp">
+                <source srcset="../../images/card6-1080.webp" type="image/webp">
+                <img src="../../images/card6.jpg" alt="rama" loading="lazy">
+            </picture>
             <!-- Content will be loaded here dynamically -->
         </div>
-    </div>
+    </main>
 
     <!-- New Footer -->
     <footer class="footer">
@@ -183,9 +193,9 @@
         </div>
     </footer>
     <!-- JavaScript Files -->
-    <script src="../../scripts/books.js"></script>
-    <script src="../../scripts/main.js"></script>
-    <script src="/gurukulam/scripts/Logo.js"></script>
+    <script src="../../scripts/books.js" defer></script>
+    <script src="../../scripts/main.js" defer></script>
+    <script src="../../scripts/Logo.js" defer></script>
 </body>
 
 </html>

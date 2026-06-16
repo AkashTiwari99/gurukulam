@@ -9,17 +9,31 @@ async function loadContent(url, targetElementId, linkElement) {
         return;
     }
 
-    // Check cache first
-    if (contentCache.has(url)) {
-        contentElement.innerHTML = contentCache.get(url);
+    const updateDOM = (htmlContent, isError = false) => {
+        contentElement.innerHTML = htmlContent;
         contentElement.style.opacity = '1';
         
-        // Remove active class from all links
-        document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => link.classList.remove('active'));
-        // Add active class to the clicked link
-        if (linkElement) {
-            linkElement.classList.add('active');
+        if (!isError) {
+            // Remove active class from all links
+            document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => link.classList.remove('active'));
+            // Add active class to the clicked link
+            if (linkElement) {
+                linkElement.classList.add('active');
+            }
         }
+    };
+
+    const runDOMUpdate = (htmlContent, isError = false) => {
+        if (document.startViewTransition) {
+            document.startViewTransition(() => updateDOM(htmlContent, isError));
+        } else {
+            updateDOM(htmlContent, isError);
+        }
+    };
+
+    // Check cache first
+    if (contentCache.has(url)) {
+        runDOMUpdate(contentCache.get(url));
         return;
     }
 
@@ -40,18 +54,16 @@ async function loadContent(url, targetElementId, linkElement) {
 
         const data = await response.text();
         
-        // Cache the successful response
-        contentCache.set(url, data);
+        // Parse html to extract only the actual content wrapper (.page)
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data, 'text/html');
+        const pageContent = doc.querySelector('.page');
+        const cleanData = pageContent ? pageContent.outerHTML : doc.body.innerHTML;
         
-        contentElement.innerHTML = data;
-        contentElement.style.opacity = '1';
-
-        // Remove active class from all links
-        document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => link.classList.remove('active'));
-        // Add active class to the clicked link
-        if (linkElement) {
-            linkElement.classList.add('active');
-        }
+        // Cache the successful response
+        contentCache.set(url, cleanData);
+        
+        runDOMUpdate(cleanData);
     } catch (error) {
         console.error('Content loading error:', error);
         
@@ -64,13 +76,13 @@ async function loadContent(url, targetElementId, linkElement) {
             errorMessage += error.message || 'Please try again later.';
         }
         
-        contentElement.innerHTML = `
+        const errorHtml = `
             <div class="error-message" style="padding: 20px; background-color: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px; color: #721c24;">
                 <p><strong>Error:</strong> ${errorMessage}</p>
                 <p style="font-size: 0.9em; margin-top: 10px;">If the problem persists, try refreshing the page.</p>
             </div>
         `;
-        contentElement.style.opacity = '1';
+        runDOMUpdate(errorHtml, true);
     }
 }
 
@@ -147,10 +159,11 @@ initKandaDropdown();
 document.addEventListener('DOMContentLoaded', function () {
     const sidebar = document.querySelector('.sidebar');
     const content = document.querySelector('.content');
+    const mainContainer = document.querySelector('.main-container');
     const sidebarToggle = document.getElementById('sidebarToggle') || document.querySelector('.sidebar-toggle');
     const header = document.querySelector('.header');
 
-    if (!sidebar || !content || !sidebarToggle || !header) return;
+    if (!sidebar || !content || !sidebarToggle || !header || !mainContainer) return;
 
     const headerHeight = header.offsetHeight;
 
@@ -186,13 +199,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Update sidebar state
     function updateSidebar() {
+        content.style.marginLeft = '0'; // Clear any direct content margin
         if (sidebarCollapsed) {
             sidebar.classList.add('collapsed');
-            content.style.marginLeft = getComputedStyle(document.documentElement)
+            mainContainer.style.marginLeft = getComputedStyle(document.documentElement)
                 .getPropertyValue('--sidebar-collapsed-width');
         } else {
             sidebar.classList.remove('collapsed');
-            content.style.marginLeft = getComputedStyle(document.documentElement)
+            mainContainer.style.marginLeft = getComputedStyle(document.documentElement)
                 .getPropertyValue('--sidebar-width');
         }
     }

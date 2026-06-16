@@ -1,0 +1,21 @@
+/* WiFi Status Indicator */
+.wifi-status {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: var(--border-radius-medium);
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(107, 56, 251, 0.3);
+    z-index: 1000;
+}
+
+.wifi-status.connected {
+    background-color: var(--accent-color);
+}
+
+.wifi-status.disconnected {
+    background-color: var(--secondary-color);
+}

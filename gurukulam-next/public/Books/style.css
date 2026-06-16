@@ -22,10 +22,8 @@ body {
 }
 
 .content .page {
-    padding-left: 50px;
     margin-left: 200px;
-    min-height: calc(-80px + 100vh);
-    opacity: 1;
+    padding-left: 50p;
 }
 
 .vyakhya {
