@@ -184,10 +184,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const sidebar = document.querySelector('.sidebar');
     const content = document.querySelector('.content');
     const mainContainer = document.querySelector('.main-container');
-    const sidebarToggle = document.getElementById('sidebarToggle') || document.querySelector('.sidebar-toggle');
+    const sidebarToggles = Array.from(document.querySelectorAll('.sidebar-toggle')) || [];
     const header = document.querySelector('.header');
 
-    if (!sidebar || !content || !sidebarToggle || !header || !mainContainer) return;
+    if (!sidebar || !content || !header || !mainContainer) return;
+
+    // If no toggle buttons found, try to create a basic one for mobile
+    if (sidebarToggles.length === 0) {
+        const btn = document.createElement('button');
+        btn.className = 'sidebar-toggle';
+        btn.id = 'sidebarToggle';
+        btn.innerHTML = '<i class="fas fa-bars"></i>';
+        document.body.appendChild(btn);
+        sidebarToggles.push(btn);
+    }
 
     const headerHeight = header.offsetHeight;
 
@@ -215,23 +225,43 @@ document.addEventListener('DOMContentLoaded', function () {
         sidebarCollapsed = !sidebarCollapsed;
         updateSidebar();
 
+        // Update aria-expanded on toggles
+        sidebarToggles.forEach(t => t.setAttribute('aria-expanded', String(!sidebarCollapsed)));
+
         // Save state (only for desktop)
         if (!isMobile()) {
             localStorage.setItem('sidebarCollapsed', sidebarCollapsed);
+        }
+
+        // When opening on mobile, focus first link
+        if (!sidebarCollapsed && isMobile()) {
+            const firstLink = sidebar.querySelector('a');
+            if (firstLink) firstLink.focus();
         }
     }
 
     // Update sidebar state
     function updateSidebar() {
         content.style.marginLeft = '0'; // Clear any direct content margin
-        if (sidebarCollapsed) {
-            sidebar.classList.add('collapsed');
-            mainContainer.style.marginLeft = getComputedStyle(document.documentElement)
-                .getPropertyValue('--sidebar-collapsed-width');
+
+        if (isMobile()) {
+            // Mobile: use 'active' class to slide the sidebar in/out
+            if (sidebarCollapsed) {
+                sidebar.classList.remove('active');
+                mainContainer.classList.remove('sidebar-open');
+            } else {
+                sidebar.classList.add('active');
+                mainContainer.classList.add('sidebar-open');
+            }
         } else {
-            sidebar.classList.remove('collapsed');
-            mainContainer.style.marginLeft = getComputedStyle(document.documentElement)
-                .getPropertyValue('--sidebar-width');
+            // Desktop: use collapsed state and a class on main-container
+            if (sidebarCollapsed) {
+                sidebar.classList.add('collapsed');
+                mainContainer.classList.add('sidebar-collapsed');
+            } else {
+                sidebar.classList.remove('collapsed');
+                mainContainer.classList.remove('sidebar-collapsed');
+            }
         }
     }
 
@@ -241,7 +271,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Event listeners
-    sidebarToggle.addEventListener('click', toggleSidebar);
+    sidebarToggles.forEach(btn => {
+        // make the toggle keyboard accessible
+        btn.setAttribute('aria-controls', 'sidebar');
+        btn.setAttribute('aria-expanded', String(!sidebarCollapsed));
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleSidebar();
+        });
+        btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleSidebar();
+            }
+        });
+    });
 
     // Hover effect for desktop
     if (!isMobile()) {
@@ -260,6 +304,27 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    // Close sidebar on Escape (mobile)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isMobile() && !sidebarCollapsed) {
+            sidebarCollapsed = true;
+            updateSidebar();
+            sidebarToggles.forEach(t => t.setAttribute('aria-expanded', 'false'));
+        }
+    });
+
+    // Click outside to close on mobile
+    document.addEventListener('click', (e) => {
+        if (!isMobile()) return;
+        if (sidebarCollapsed) return; // already closed
+        const target = e.target;
+        if (!sidebar.contains(target) && !sidebarToggles.some(t => t.contains(target))) {
+            sidebarCollapsed = true;
+            updateSidebar();
+            sidebarToggles.forEach(t => t.setAttribute('aria-expanded', 'false'));
+        }
+    });
 
     // Handle resize
     function handleResize() {

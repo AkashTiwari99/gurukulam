@@ -226,6 +226,12 @@ html {
     .main-container.sidebar-open {
         margin-left: 0;
     }
+
+    /* Ensure the mobile toggle button is visible */
+    .header .sidebar-toggle,
+    #sidebarToggle {
+        display: flex !important;
+    }
 }
 
 /* Kanda Dropdown */
