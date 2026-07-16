@@ -267,6 +267,14 @@ html {
     overflow: hidden;
 }
 
+.dropdown-menu.open {
+    display: block;
+}
+
+.dropdown-toggle[aria-expanded="true"] + .dropdown-menu {
+    display: block;
+}
+
 .dropdown-menu li {
     list-style: none;
 }

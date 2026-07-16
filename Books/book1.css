@@ -15,7 +15,7 @@ body {
     margin-top: 0;
     position: relative;
     transition: margin-left var(--transition-med);
-    margin-left: 0px;
+    margin-left: var(--sidebar-width);
 }
 
 /* Sidebar Styles */
@@ -121,6 +121,7 @@ body {
 /* Content Area */
 .content {
     width: 100%;
+    max-width: calc(100% - var(--sidebar-width));
     padding: var(--space-xl);
     margin-left: 0;
     min-height: calc(100vh - var(--header-height));
@@ -271,6 +272,14 @@ html {
     z-index: 1;
     border-radius: var(--border-radius-medium);
     overflow: hidden;
+}
+
+.dropdown-menu.open {
+    display: block;
+}
+
+.dropdown-toggle[aria-expanded="true"] + .dropdown-menu {
+    display: block;
 }
 
 .dropdown-menu li {

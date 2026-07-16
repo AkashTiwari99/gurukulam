@@ -99,9 +99,9 @@ async function loadContent(url, targetElementId, linkElement) {
     }
 }
 
-// Add event listeners to all links
+// Add event listeners to sidebar links only
 document.addEventListener('DOMContentLoaded', function() {
-    const links = document.querySelectorAll('.sidebar a, .dropdown-menu a');
+    const links = document.querySelectorAll('.sidebar a[data-target], .dropdown-menu a[data-target]');
     if (!links || links.length === 0) return;
 
     links.forEach(link => {
@@ -150,20 +150,16 @@ function initKandaDropdown() {
         // Determine the prefix based on current location
         let prefix = "";
         if (currentPath.includes("/Books/book_link/")) {
-            // We are already inside the directory, so just link to the file
             prefix = "";
         } else if (currentPath.includes("/Books/")) {
-            // We are in Books/ but not book_link/ (unlikely given structure, but safe)
             prefix = "book_link/";
         } else {
-            // We are likely at root or elsewhere
             prefix = "./Books/book_link/";
         }
 
         kandaFiles.forEach(item => {
             const finalUrl = prefix + item.file;
 
-            // Check if this is the current page to avoid linking to self (optional, but good UX)
             if (!currentPath.endsWith(item.file)) {
                 const listItem = document.createElement("li");
                 const anchor = document.createElement("a");
@@ -176,8 +172,30 @@ function initKandaDropdown() {
     }
 }
 
+function initKandaDropdownToggle() {
+    const dropdownToggle = document.querySelector('.kanda-dropdown-container .dropdown-toggle');
+    const dropdownMenu = document.querySelector('.kanda-dropdown-container .dropdown-menu');
+
+    if (!dropdownToggle || !dropdownMenu) return;
+
+    dropdownToggle.addEventListener('click', (event) => {
+        event.preventDefault();
+        dropdownMenu.classList.toggle('open');
+        const expanded = dropdownMenu.classList.contains('open');
+        dropdownToggle.setAttribute('aria-expanded', String(expanded));
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.kanda-dropdown-container')) {
+            dropdownMenu.classList.remove('open');
+            dropdownToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+}
+
 // Call the function to initialize the dropdown
 initKandaDropdown();
+initKandaDropdownToggle();
 
 // dynamic-sidebar.js logic included
 document.addEventListener('DOMContentLoaded', function () {

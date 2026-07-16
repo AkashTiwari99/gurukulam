@@ -86,20 +86,31 @@ async function loadContent(url, targetElementId, linkElement) {
     }
 }
 
-// Add event listeners to all links
+// Add event listeners to sidebar links only
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => {
+    const links = document.querySelectorAll('.sidebar a[data-target], .dropdown-menu a[data-target]');
+    if (!links || links.length === 0) return;
+
+    links.forEach(link => {
         link.addEventListener('click', (event) => {
             event.preventDefault();
             const url = link.getAttribute('href');
             const targetElementId = link.getAttribute('data-target');
-            
+
             if (!url || !targetElementId) {
                 console.warn('Link missing href or data-target attribute');
                 return;
             }
-            
-            loadContent(url, targetElementId, link);
+
+            // Use resolved URL so cache keys are consistent
+            let resolvedUrl;
+            try {
+                resolvedUrl = new URL(url, window.location.href).href;
+            } catch (e) {
+                resolvedUrl = url;
+            }
+
+            loadContent(resolvedUrl, targetElementId, link);
         });
     });
 });
@@ -139,7 +150,6 @@ function initKandaDropdown() {
         kandaFiles.forEach(item => {
             const finalUrl = prefix + item.file;
 
-            // Check if this is the current page to avoid linking to self (optional, but good UX)
             if (!currentPath.endsWith(item.file)) {
                 const listItem = document.createElement("li");
                 const anchor = document.createElement("a");
@@ -152,8 +162,31 @@ function initKandaDropdown() {
     }
 }
 
+function initKandaDropdownToggle() {
+    const dropdownToggle = document.querySelector('.kanda-dropdown-container .dropdown-toggle');
+    const dropdownMenu = document.querySelector('.kanda-dropdown-container .dropdown-menu');
+
+    if (!dropdownToggle || !dropdownMenu) return;
+
+    dropdownToggle.addEventListener('click', (event) => {
+        event.preventDefault();
+        dropdownMenu.classList.toggle('open');
+        const expanded = dropdownMenu.classList.contains('open');
+        dropdownToggle.setAttribute('aria-expanded', String(expanded));
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.kanda-dropdown-container')) {
+            dropdownMenu.classList.remove('open');
+            dropdownToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+}
+
 // Call the function to initialize the dropdown
 initKandaDropdown();
+initKandaDropdownToggle();
+initKandaDropdownToggle();
 
 // dynamic-sidebar.js logic included
 document.addEventListener('DOMContentLoaded', function () {
