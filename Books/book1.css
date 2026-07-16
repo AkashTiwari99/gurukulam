@@ -198,8 +198,8 @@ html {
 /* Responsive Adjustments */
 @media (max-width: 992px) {
     :root {
-        --sidebar-width: 240px;
-        --sidebar-collapsed-width: 70px;
+        --sidebar-width: 100%;
+        --sidebar-collapsed-width: 0;
         --header-height: 64px;
     }
 
@@ -218,15 +218,15 @@ html {
 
     .sidebar {
         width: 100%;
-        flex-basis: auto;
+        flex: 0 0 auto;
         height: auto;
-        max-height: 320px;
+        max-height: none;
         position: relative;
         top: auto;
         border-right: none;
         border-bottom: 2px solid var(--accent-color);
         border-radius: 0 0 1rem 1rem;
-        display: none;
+        display: block;
         padding: 1rem;
     }
 
@@ -234,7 +234,13 @@ html {
         display: block;
     }
 
+    .sidebar a {
+        font-size: 0.95rem;
+        padding: 0.7rem 0.85rem;
+    }
+
     .content {
+        width: 100%;
         padding: 1.25rem 1rem;
         margin-right: 0;
         margin-left: 0;
@@ -263,13 +269,16 @@ html {
 
     .main-container {
         margin-left: 0;
+        display: flex;
+        flex-direction: column;
     }
 
     .sidebar {
         width: 100%;
-        max-height: 280px;
+        max-height: none;
         padding: 1rem;
         border-radius: 0 0 1rem 1rem;
+        display: block;
     }
 
     .sidebar a {
@@ -283,7 +292,9 @@ html {
     }
 
     .content {
+        width: 100%;
         padding: 1rem;
+        display: block;
     }
 
     .header .sidebar-toggle,
