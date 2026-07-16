@@ -8,20 +8,50 @@
 /* Override body padding to match book header height */
 body {
     padding-top: 0 !important;
+    overflow-x: hidden;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1200;
+    min-height: var(--header-height);
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+    border-bottom: 1px solid rgba(79, 70, 229, 0.1);
+}
+
+.header-container {
+    width: 100%;
+    max-width: none;
+    padding: 0 1.25rem;
+    min-height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
 }
 
 .main-container {
-    display: block;
+    display: flex;
+    align-items: flex-start;
+    min-height: calc(100vh - var(--header-height));
+    width: 100%;
     margin-top: 0;
     position: relative;
     transition: margin-left var(--transition-med);
-    margin-left: 0px;
+    margin-left: 0;
+    background: linear-gradient(180deg, var(--primary-bg), #f8f9ff);
 }
 
 /* Sidebar Styles */
 .sidebar {
     width: var(--sidebar-width);
-    background: rgba(15, 12, 41, 0.98);
+    flex: 0 0 var(--sidebar-width);
+    background: linear-gradient(180deg, rgba(15, 12, 41, 0.98), rgba(34, 27, 78, 0.98));
     border-right: 2px solid var(--accent-color);
     box-shadow: 0 0 2px rgba(35, 213, 171, 0.2);
     padding: var(--space-md);
@@ -29,9 +59,11 @@ body {
     transition: all var(--transition-med) ease;
     z-index: 1000;
     height: calc(100vh - var(--header-height));
-    position: fixed;
+    position: sticky;
     top: var(--header-height);
+    align-self: flex-start;
     will-change: width;
+    border-radius: 0 1rem 1rem 0;
 }
 
 .sidebar h1 {
@@ -120,16 +152,18 @@ body {
 
 /* Content Area */
 .content {
-    width: 100%;
-    padding: var(--space-xl);
+    flex: 1 1 auto;
+    min-width: 0;
+    width: auto;
+    padding: 2rem 2.25rem;
     margin-left: 0;
     min-height: calc(100vh - var(--header-height));
     background-color: #ffffff;
-    /* White background for content area */
     overflow-y: auto;
     transition: margin-left var(--transition-med);
     margin-right: 0;
     box-sizing: border-box;
+    box-shadow: inset 1px 0 0 rgba(79, 70, 229, 0.08);
 }
 
 .main-container.sidebar-collapsed {
@@ -165,26 +199,46 @@ html {
     :root {
         --sidebar-width: 240px;
         --sidebar-collapsed-width: 70px;
-        --header-height: 60px;
+        --header-height: 64px;
+    }
+
+    .header-container {
+        padding: 0 1rem;
+        flex-wrap: wrap;
     }
 
     .main-container {
-        display: block;
-        min-height: calc(100vh - var(--header-height));
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
         margin-top: 0;
-        margin-left: var(--sidebar-width);
+        margin-left: 0;
     }
 
     .sidebar {
-        padding: var(--space-md);
-        height: calc(100vh - var(--header-height));
-        top: var(--header-height);
+        width: 100%;
+        flex-basis: auto;
+        height: auto;
+        max-height: 320px;
+        position: relative;
+        top: auto;
+        border-right: none;
+        border-bottom: 2px solid var(--accent-color);
+        border-radius: 0 0 1rem 1rem;
+        display: none;
+        padding: 1rem;
+    }
+
+    .sidebar.active {
+        display: block;
     }
 
     .content {
-        padding: var(--space-lg);
+        padding: 1.25rem 1rem;
         margin-right: 0;
         margin-left: 0;
+        min-height: auto;
+        box-shadow: none;
     }
 }
 
@@ -199,10 +253,10 @@ html {
     }
 }
 
-/* Mobile screens - hide sidebar by default */
+/* Mobile screens - collapse sidebar cleanly */
 @media (max-width: 768px) {
     :root {
-        --sidebar-width: 0;
+        --sidebar-width: 100%;
         --sidebar-collapsed-width: 0;
     }
 
@@ -211,20 +265,24 @@ html {
     }
 
     .sidebar {
-        position: fixed;
-        left: -100%;
-        width: 240px;
-        transition: left var(--transition-med);
-        z-index: 999;
+        width: 100%;
+        max-height: 280px;
+        padding: 1rem;
+        border-radius: 0 0 1rem 1rem;
     }
 
-    .sidebar.active {
-        left: 0;
-        width: 240px;
+    .sidebar a {
+        font-size: 0.95rem;
+        padding: 0.7rem 0.85rem;
     }
 
-    .main-container.sidebar-open {
-        margin-left: 0;
+    .sidebar h1 {
+        font-size: 1.25rem;
+        margin-bottom: 0.9rem;
+    }
+
+    .content {
+        padding: 1rem;
     }
 }
 
