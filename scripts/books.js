@@ -202,8 +202,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const sidebar = document.querySelector('.sidebar');
     const content = document.querySelector('.content');
     const mainContainer = document.querySelector('.main-container');
-    const sidebarToggles = Array.from(document.querySelectorAll('.sidebar-toggle')) || [];
+    const sidebarToggles = Array.from(document.querySelectorAll('.chapter-sidebar-toggle')) || [];
     const header = document.querySelector('.header');
+    const navbar = document.getElementById('navbar');
+    const hamburger = document.querySelector('.hamburger');
+    const backdrop = document.getElementById('mobileDrawerBackdrop');
 
     if (!sidebar || !content || !header || !mainContainer) return;
 
@@ -238,6 +241,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function closeNavbarDrawer() {
+        if (navbar) {
+            navbar.classList.remove('active');
+        }
+        if (hamburger) {
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
+    }
+
+    function updateBackdrop() {
+        if (!backdrop) return;
+        const anyOpen = isMobile() && (!sidebarCollapsed || (navbar && navbar.classList.contains('active')));
+        backdrop.classList.toggle('active', anyOpen);
+        document.body.classList.toggle('drawer-open', anyOpen);
+    }
+
     // Toggle function
     function toggleSidebar() {
         sidebarCollapsed = !sidebarCollapsed;
@@ -253,6 +273,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // When opening on mobile, focus first link
         if (!sidebarCollapsed && isMobile()) {
+            closeNavbarDrawer();
             const firstLink = sidebar.querySelector('a');
             if (firstLink) firstLink.focus();
         }
@@ -263,7 +284,6 @@ document.addEventListener('DOMContentLoaded', function () {
         content.style.marginLeft = '0'; // Clear any direct content margin
 
         if (isMobile()) {
-            // Mobile: use 'active' class to slide the sidebar in/out
             if (sidebarCollapsed) {
                 sidebar.classList.remove('active');
                 mainContainer.classList.remove('sidebar-open');
@@ -271,14 +291,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 sidebar.classList.add('active');
                 mainContainer.classList.add('sidebar-open');
             }
+            updateBackdrop();
         } else {
-            // Desktop: use collapsed state and a class on main-container
             if (sidebarCollapsed) {
                 sidebar.classList.add('collapsed');
                 mainContainer.classList.add('sidebar-collapsed');
             } else {
                 sidebar.classList.remove('collapsed');
                 mainContainer.classList.remove('sidebar-collapsed');
+            }
+            if (backdrop) {
+                backdrop.classList.remove('active');
+                document.body.classList.remove('drawer-open');
             }
         }
     }
@@ -304,6 +328,27 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    // Close the chapter drawer when a chapter is chosen
+    sidebar.querySelectorAll('a[data-target]').forEach(link => {
+        link.addEventListener('click', () => {
+            if (isMobile()) {
+                sidebarCollapsed = true;
+                updateSidebar();
+            }
+        });
+    });
+
+    // Close both drawers when backdrop is tapped
+    if (backdrop) {
+        backdrop.addEventListener('click', () => {
+            if (isMobile()) {
+                sidebarCollapsed = true;
+                updateSidebar();
+                closeNavbarDrawer();
+            }
+        });
+    }
 
     // Hover effect for desktop
     if (!isMobile()) {
@@ -337,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!isMobile()) return;
         if (sidebarCollapsed) return; // already closed
         const target = e.target;
-        if (!sidebar.contains(target) && !sidebarToggles.some(t => t.contains(target))) {
+        if (!sidebar.contains(target) && !sidebarToggles.some(t => t.contains(target)) && !navbar?.contains(target) && !hamburger?.contains(target)) {
             sidebarCollapsed = true;
             updateSidebar();
             sidebarToggles.forEach(t => t.setAttribute('aria-expanded', 'false'));

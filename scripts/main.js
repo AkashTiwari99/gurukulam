@@ -279,6 +279,8 @@ class MainApp {
     setupNavbarToggle() {
         const navbar = document.getElementById('navbar');
         const hamburger = document.querySelector('.hamburger');
+        const sidebar = document.querySelector('.sidebar');
+        const backdrop = document.getElementById('mobileDrawerBackdrop');
 
         if (navbar && hamburger) {
             // Set initial aria-expanded
@@ -286,9 +288,19 @@ class MainApp {
             
             hamburger.addEventListener('click', () => {
                 const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-                navbar.classList.toggle('active');
-                hamburger.classList.toggle('active');
-                hamburger.setAttribute('aria-expanded', !isExpanded);
+                navbar.classList.toggle('active', !isExpanded);
+                hamburger.classList.toggle('active', !isExpanded);
+                hamburger.setAttribute('aria-expanded', String(!isExpanded));
+
+                if (sidebar) {
+                    sidebar.classList.remove('active');
+                }
+
+                if (backdrop) {
+                    const shouldShowBackdrop = navbar.classList.contains('active');
+                    backdrop.classList.toggle('active', shouldShowBackdrop);
+                    document.body.classList.toggle('drawer-open', shouldShowBackdrop);
+                }
             });
 
             // Add keyboard support (Space/Enter to toggle)
