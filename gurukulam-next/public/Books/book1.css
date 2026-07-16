@@ -256,36 +256,82 @@ html {
     }
 }
 
-/* Mobile screens - collapse sidebar cleanly */
+/* Mobile screens - off-canvas sidebar and full-width content */
 @media (max-width: 768px) {
     :root {
-        --sidebar-width: 100%;
+        --sidebar-width: 280px;
         --sidebar-collapsed-width: 0;
+    }
+
+    body {
+        overflow-x: hidden;
     }
 
     .main-container {
         margin-left: 0;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+        width: 100%;
     }
 
     .sidebar {
-        width: 100%;
-        max-height: 280px;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        max-height: none;
         padding: 1rem;
-        border-radius: 0 0 1rem 1rem;
+        border-radius: 0 1rem 1rem 0;
+        display: block;
+        overflow-y: auto;
+        overflow-x: hidden;
+        white-space: normal;
+        z-index: 999;
+        transition: left 0.3s ease;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .sidebar.active {
+        left: 0;
     }
 
     .sidebar a {
+        display: flex;
+        width: 100%;
         font-size: 0.95rem;
         padding: 0.7rem 0.85rem;
+        margin: 0.25rem 0;
+        border-radius: 0.75rem;
+        background: rgba(255,255,255,0.08);
+        color: #e8f7f0;
+        justify-content: flex-start;
     }
 
     .sidebar h1 {
-        font-size: 1.25rem;
-        margin-bottom: 0.9rem;
+        display: block;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
     }
 
     .content {
-        padding: 1rem;
+        width: 100%;
+        flex: none;
+        height: auto;
+        padding: 15px;
+        display: block;
+        min-height: auto;
+        overflow-y: visible;
+        box-shadow: none;
+    }
+
+    .content .page {
+        padding: 15px;
+        margin-left: 0 !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
     }
 }
 
