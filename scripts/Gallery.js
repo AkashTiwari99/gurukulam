@@ -1,4 +1,4 @@
-// DOM Elements
+// DOM Elements (queried once; may be null on pages that don't include the gallery)
 const galleryGrid = document.getElementById("gallery-grid");
 const uploadForm = document.getElementById("upload-form");
 const fileInput = document.getElementById("file-input");
@@ -21,14 +21,15 @@ let galleryItems = [
     { url: "../images/fire.webp", type: "image/webp" }
 ];
 
-// Function to render gallery items
+// Render gallery items into the DOM
 function renderGallery(items) {
+    if (!galleryGrid) return;
     galleryGrid.innerHTML = ""; // Clear the gallery
     items.forEach((item, index) => {
         const galleryItem = document.createElement("div");
         galleryItem.classList.add("gallery-item");
 
-        const mediaElement = item.type.startsWith("image")
+        const mediaElement = item.type && item.type.startsWith("image")
             ? `<img src="${item.url}" alt="Gallery Image">`
             : `<video controls><source src="${item.url}" type="${item.type}"></video>`;
 
@@ -41,12 +42,12 @@ function renderGallery(items) {
     });
 
     // Add event listeners to checkboxes
-    const checkboxes = document.querySelectorAll(".select-checkbox");
+    const checkboxes = galleryGrid.querySelectorAll(".select-checkbox");
     checkboxes.forEach((checkbox) => {
         checkbox.addEventListener("change", (e) => {
-            const index = e.target.dataset.index;
+            const index = Number(e.target.dataset.index);
             if (e.target.checked) {
-                selectedItems.push(index);
+                if (!selectedItems.includes(index)) selectedItems.push(index);
             } else {
                 selectedItems = selectedItems.filter((i) => i !== index);
             }
@@ -54,60 +55,87 @@ function renderGallery(items) {
     });
 }
 
-// Function to filter gallery items by type
+// Filter gallery items by type
 function filterGallery(type) {
-    const filteredItems = galleryItems.filter((item) => item.type.startsWith(type));
+    const filteredItems = galleryItems.filter((item) => item.type && item.type.startsWith(type));
     renderGallery(filteredItems);
 }
 
-// Initial render (show all items)
-renderGallery(galleryItems);
+// Initialize gallery only when the page includes the gallery markup
+function initGallery() {
+    if (!galleryGrid) return; // Page doesn't include a gallery
 
-// Event Listeners for Filter Buttons
-showPhotosBtn.addEventListener("click", () => {
-    filterGallery("image");
-    showPhotosBtn.classList.add("active");
-    showVideosBtn.classList.remove("active");
-});
+    // Initial render (show all items)
+    renderGallery(galleryItems);
 
-showVideosBtn.addEventListener("click", () => {
-    filterGallery("video");
-    showVideosBtn.classList.add("active");
-    showPhotosBtn.classList.remove("active");
-});
-
-// Upload Form Submission
-uploadForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const files = fileInput.files;
-    if (files.length > 0) {
-        Array.from(files).forEach((file) => {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                galleryItems.push({ url: e.target.result, type: file.type });
-                renderGallery(galleryItems);
-            };
-            reader.readAsDataURL(file);
+    // Event Listeners for Filter Buttons
+    if (showPhotosBtn) {
+        showPhotosBtn.addEventListener("click", () => {
+            filterGallery("image");
+            showPhotosBtn.classList.add("active");
+            if (showVideosBtn) showVideosBtn.classList.remove("active");
         });
     }
-});
 
-// Delete Selected Items
-deleteBtn.addEventListener("click", () => {
-    selectedItems.forEach((index) => {
-        galleryItems.splice(index, 1);
-    });
-    selectedItems = [];
-    renderGallery(galleryItems);
-});
+    if (showVideosBtn) {
+        showVideosBtn.addEventListener("click", () => {
+            filterGallery("video");
+            showVideosBtn.classList.add("active");
+            if (showPhotosBtn) showPhotosBtn.classList.remove("active");
+        });
+    }
 
-// Download Selected Items
-downloadBtn.addEventListener("click", () => {
-    selectedItems.forEach((index) => {
-        const item = galleryItems[index];
-        const link = document.createElement("a");
-        link.href = item.url;
-        link.download = item.url.split("/").pop();
-        link.click();
-    });
-});
+    // Upload Form Submission
+    if (uploadForm && fileInput) {
+        uploadForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const files = fileInput.files;
+            if (files && files.length > 0) {
+                Array.from(files).forEach((file) => {
+                    const reader = new FileReader();
+                    reader.onload = (ev) => {
+                        galleryItems.push({ url: ev.target.result, type: file.type });
+                        renderGallery(galleryItems);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+        });
+    }
+
+    // Delete Selected Items
+    if (deleteBtn) {
+        deleteBtn.addEventListener("click", () => {
+            // Remove by descending index so earlier splices don't affect later indexes
+            selectedItems
+                .map(i => Number(i))
+                .sort((a, b) => b - a)
+                .forEach((index) => {
+                    if (index >= 0 && index < galleryItems.length) {
+                        galleryItems.splice(index, 1);
+                    }
+                });
+            selectedItems = [];
+            renderGallery(galleryItems);
+        });
+    }
+
+    // Download Selected Items
+    if (downloadBtn) {
+        downloadBtn.addEventListener("click", () => {
+            selectedItems.forEach((index) => {
+                const item = galleryItems[Number(index)];
+                if (!item) return;
+                const link = document.createElement("a");
+                link.href = item.url;
+                link.download = item.url.split("/").pop();
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+            });
+        });
+    }
+}
+
+// Run init on DOMContentLoaded to ensure elements exist
+document.addEventListener('DOMContentLoaded', initGallery);

@@ -16,3 +16,40 @@ We invite scholars, researchers, and enthusiasts to join our community and contr
 3. Build a community: Connect with like-minded individuals, sharing knowledge and insights that promote a deeper understanding of Sanatan Dharma.
 
 By joining our community, you can be part of a dynamic and collaborative effort to explore and understand Sanatan Dharma, contributing to a richer and more nuanced appreciation of this ancient tradition.
+
+Developer notes
+---------------
+
+- Canonical content: The authoritative book fragments live under `Books/` at the repository root. Other copies (for example under `gurukulam-next/public/Books/` or `onepage-website-2/`) are derivatives and may be stale. When in doubt, update `Books/` and then copy to other targets as needed.
+
+- Book fragment contract: Fragments loaded dynamically by `scripts/books.js` must be HTML snippets (no `<html>`/`<head>`/`<body>` wrappers) and should include a top-level container with class `page` that contains the fragment markup. Example minimal fragment:
+
+```html
+<div class="page">
+	<h2>Sarga Title</h2>
+	<p>Content...</p>
+</div>
+```
+
+- Asset naming: Use lowercase, hyphen-separated filenames for images and assets (e.g., `student-1.jpg`). Avoid spaces and special characters. There is a helper script at `tools/normalize_assets.py` that will list problematic filenames and optionally rename references.
+
+- Local preview: Use the provided helper `dev\\serve-windows.bat` on Windows, or run a simple static server from the repo root:
+
+```bash
+python -m http.server 8000
+# then open http://localhost:8000/gurukulam/index.html
+```
+
+- Running the normalizer (dry run first):
+
+```bash
+python tools/normalize_assets.py
+```
+
+To apply renames and update references (review dry-run output first):
+
+```bash
+python tools/normalize_assets.py --apply
+```
+
+If you'd like me to run normalization and apply changes in a PR, say so and I'll proceed with the changes and a follow-up verification plan.

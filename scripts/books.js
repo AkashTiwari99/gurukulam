@@ -31,9 +31,18 @@ async function loadContent(url, targetElementId, linkElement) {
         }
     };
 
+    // Resolve the URL relative to the current location and use the resolved URL as cache key
+    let resolvedUrl;
+    try {
+        resolvedUrl = new URL(url, window.location.href).href;
+    } catch (e) {
+        // If URL constructor fails, fall back to original
+        resolvedUrl = url;
+    }
+
     // Check cache first
-    if (contentCache.has(url)) {
-        runDOMUpdate(contentCache.get(url));
+    if (contentCache.has(resolvedUrl)) {
+        runDOMUpdate(contentCache.get(resolvedUrl));
         return;
     }
 
@@ -53,16 +62,20 @@ async function loadContent(url, targetElementId, linkElement) {
         }
 
         const data = await response.text();
-        
-        // Parse html to extract only the actual content wrapper (.page)
+
+        // Parse html to extract only the actual content wrapper (.page) and sanitize scripts
         const parser = new DOMParser();
         const doc = parser.parseFromString(data, 'text/html');
+
+        // Remove any <script> tags to avoid accidental execution
+        doc.querySelectorAll('script').forEach(s => s.remove());
+
         const pageContent = doc.querySelector('.page');
         const cleanData = pageContent ? pageContent.outerHTML : doc.body.innerHTML;
-        
+
         // Cache the successful response
-        contentCache.set(url, cleanData);
-        
+        contentCache.set(resolvedUrl, cleanData);
+
         runDOMUpdate(cleanData);
     } catch (error) {
         console.error('Content loading error:', error);
@@ -88,18 +101,29 @@ async function loadContent(url, targetElementId, linkElement) {
 
 // Add event listeners to all links
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => {
+    const links = document.querySelectorAll('.sidebar a, .dropdown-menu a');
+    if (!links || links.length === 0) return;
+
+    links.forEach(link => {
         link.addEventListener('click', (event) => {
             event.preventDefault();
             const url = link.getAttribute('href');
             const targetElementId = link.getAttribute('data-target');
-            
+
             if (!url || !targetElementId) {
                 console.warn('Link missing href or data-target attribute');
                 return;
             }
-            
-            loadContent(url, targetElementId, link);
+
+            // Use resolved URL so cache keys are consistent
+            let resolvedUrl;
+            try {
+                resolvedUrl = new URL(url, window.location.href).href;
+            } catch (e) {
+                resolvedUrl = url;
+            }
+
+            loadContent(resolvedUrl, targetElementId, link);
         });
     });
 });

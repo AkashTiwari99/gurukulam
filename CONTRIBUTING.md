@@ -30,6 +30,16 @@ Then open: http://localhost:8000/gurukulam/index.html
 - Paths are often absolute (start with `/gurukulam/`); preserve that style unless you know the hosting path will change.
 - There is no backend: features requiring persistence must either be simulated client-side or introduce a documented API and server.
 
+6) Fragment and asset guidelines (developer checklist)
+- Book fragments: create fragments under `Books/` as HTML snippets only (no document wrapper). Ensure the fragment includes a top-level container with class `page` so the loader can extract content reliably.
+- Links in fragments: use relative paths when linking resources inside `Books/` (e.g., `../images/...`) to keep fragments portable.
+- Asset naming: avoid spaces and uppercase letters in filenames. Use lowercase and hyphens (e.g., `bg-recitation-0.jpg`). Run `python tools/normalize_assets.py` from the repo root to preview fixes.
+
+7) Pull request checklist (additional items)
+- If you modified or added assets, confirm filenames follow the asset naming rule and that all references were updated.
+- If you created or edited book fragments, confirm they contain a `.page` wrapper and validate dynamic loading locally.
+- Add a short note in the PR describing which folder is the authoritative source of any duplicated content.
+
 5) PR checklist (what to include in the description)
 - Short summary of the change.
 - Files changed and rationale.
