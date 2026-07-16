@@ -37,13 +37,16 @@ body {
 
 .main-container {
     display: flex;
+    flex-direction: row;
     align-items: flex-start;
     min-height: calc(100vh - var(--header-height));
+    height: calc(100vh - var(--header-height));
     width: 100%;
     margin-top: 0;
     position: relative;
     transition: margin-left var(--transition-med);
     margin-left: 0;
+    overflow: hidden;
     background: linear-gradient(180deg, var(--primary-bg), #f8f9ff);
 }
 
@@ -51,6 +54,7 @@ body {
 .sidebar {
     width: var(--sidebar-width);
     flex: 0 0 var(--sidebar-width);
+    flex-shrink: 0;
     background: linear-gradient(180deg, rgba(15, 12, 41, 0.98), rgba(34, 27, 78, 0.98));
     border-right: 2px solid var(--accent-color);
     box-shadow: 0 0 2px rgba(35, 213, 171, 0.2);
@@ -58,7 +62,7 @@ body {
     overflow-y: auto;
     transition: all var(--transition-med) ease;
     z-index: 1000;
-    height: calc(100vh - var(--header-height));
+    height: 100%;
     position: sticky;
     top: var(--header-height);
     align-self: flex-start;
@@ -155,6 +159,7 @@ body {
     flex: 1 1 auto;
     min-width: 0;
     width: auto;
+    height: 100%;
     padding: 2rem 2.25rem;
     margin-left: 0;
     min-height: calc(100vh - var(--header-height));
@@ -209,28 +214,26 @@ html {
 
     .main-container {
         display: flex;
-        flex-direction: column;
-        min-height: auto;
+        flex-direction: row;
+        min-height: calc(100vh - var(--header-height));
+        height: calc(100vh - var(--header-height));
         margin-top: 0;
         margin-left: 0;
     }
 
     .sidebar {
-        width: 100%;
-        flex-basis: auto;
-        height: auto;
-        max-height: 320px;
-        position: relative;
-        top: auto;
-        border-right: none;
-        border-bottom: 2px solid var(--accent-color);
-        border-radius: 0 0 1rem 1rem;
-        display: none;
-        padding: 1rem;
-    }
-
-    .sidebar.active {
+        width: var(--sidebar-width);
+        flex: 0 0 var(--sidebar-width);
+        height: 100%;
+        max-height: none;
+        position: sticky;
+        top: var(--header-height);
+        left: 0;
+        border-right: 2px solid var(--accent-color);
+        border-bottom: none;
+        border-radius: 0 1rem 1rem 0;
         display: block;
+        padding: 1rem;
     }
 
     .content {
