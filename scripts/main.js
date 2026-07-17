@@ -24,6 +24,7 @@ class MainApp {
 
     // Highlight current page in navigation
     highlightCurrentPage() {
+
         const currentPath = window.location.pathname;
         const currentPage = currentPath.split('/').pop() || 'index.html';
         const navLinks = document.querySelectorAll('.nav-list li a, .navbar ul li a');
@@ -315,6 +316,43 @@ class MainApp {
         }
     }
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const sidebar = document.getElementById('sidebar');
+
+    if (hamburger && sidebar) {
+        
+        // 1. Centralized Close Routine (State Management Logic)
+        const closeSidebar = () => {
+            hamburger.setAttribute('aria-expanded', 'false');
+            sidebar.classList.remove('open');
+        };
+
+        // 2. Open/Close Toggle Control on Click
+        hamburger.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+            sidebar.classList.toggle('open', !isExpanded);
+        });
+
+        // 3. AUTO-CLOSE INTERACTION: Closing when structural menu navigation links are clicked
+        const menuLinks = sidebar.querySelectorAll('a, .menu-item, li'); 
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeSidebar(); // Link click hote hi immediate close function command trigger
+            });
+        });
+
+        // 4. Auxiliary UX: Outside window click to close
+        document.addEventListener('click', (event) => {
+            if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+                closeSidebar();
+            }
+        });
+    }
+});
 
 // Initialize the Main App
 new MainApp();
