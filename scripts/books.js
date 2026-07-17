@@ -171,7 +171,7 @@ function getChapterCount(kandaFile) {
         'Ara_sarga.html': 75,
         'KIs_Sraga.html': 67,
         'SU_Sraga.html': 68,
-        'YU_Sarga.html': 131,
+        'YU_Sarga.html': 128,
         'utt_sarga.html': 111
     };
     return chapterCounts[kandaFile] || 77;
@@ -346,7 +346,7 @@ function initKandaDropdown() {
         { file: "Ara_sarga.html", name: "अरण्यकाण्डः", chapters: 75 },
         { file: "KIs_Sraga.html", name: "किष्किन्धाकाण्डः", chapters: 67 },
         { file: "SU_Sraga.html", name: "सुन्दरकाण्डः", chapters: 68 },
-        { file: "YU_Sarga.html", name: "युद्धकाण्डः", chapters: 131 },
+        { file: "YU_Sarga.html", name: "युद्धकाण्डः", chapters: 128 },
         { file: "utt_sarga.html", name: "उत्तरकाण्डः", chapters: 111 }
     ];
 
