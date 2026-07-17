@@ -1,4 +1,6 @@
-/* Global Styles */
+/* =================================================================
+   GLOBAL ROOT RESET & VIEWPORT LOCKS
+   ================================================================= */
 :root {
     /* Premium Color Palette */
     --primary-color: #4F46E5;
@@ -96,39 +98,40 @@
     --container-desktop: 1280px;
 }
 
-/* Glassmorphism Utility */
-.glass-panel {
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-backdrop);
-    -webkit-backdrop-filter: var(--glass-backdrop);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-}
-
-/* ===== GENERAL STYLES ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
+/* =================================================================
+   UNIVERSAL CSS ARCHITECTURE RESET
+   ================================================================= */
+html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
     font-family: 'Poppins', sans-serif;
     color: var(--text-dark);
     background-color: var(--light);
     line-height: 1.6;
     font-size: 16px;
-    overflow-x: hidden;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
     min-height: 100vh;
 }
 
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* ---- Component Fluid Layout Blocks ---- */
+header, .global-header, .main-wrapper, .container, main, section, footer, nav, div, article, aside {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Container with max-width for desktop */
 .container {
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
 }
 
 a {
@@ -140,11 +143,16 @@ a {
 img {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
-/* Buttons */
+/* =================================================================
+   BUTTONS
+   ================================================================= */
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: var(--button-padding-desktop);
     font-weight: 500;
     border-radius: var(--border-radius-medium);
@@ -154,15 +162,12 @@ img {
     border: none;
     font-size: 1rem;
     min-height: var(--touch-target-min);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     white-space: nowrap;
 }
 
 .btn-primary {
     background: var(--gradient-primary);
-    color: white;
+    color: white !important;
     box-shadow: 0 4px 12px rgba(107, 56, 251, 0.3);
 }
 
@@ -225,11 +230,11 @@ img {
 }
 
 /* =================================================================
-   HEADER STYLES
+   HEADER STYLES - FULL WIDTH
    ================================================================= */
 .header {
     position: sticky;
-    width: 100%;
+    width: 100% !important;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -248,14 +253,15 @@ img {
 }
 
 .header-container {
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 var(--space-md);
+    width: 100% !important;
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+    padding: 0 var(--space-md) !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
+    box-sizing: border-box;
 }
 
 /* Logo Styles */
@@ -265,6 +271,7 @@ img {
     gap: var(--space-sm);
     text-decoration: none;
     z-index: 1003;
+    flex-shrink: 0;
 }
 
 .logo-circle {
@@ -276,6 +283,7 @@ img {
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+    flex-shrink: 0;
 }
 
 .logo-circle span {
@@ -390,84 +398,18 @@ img {
 }
 
 /* =================================================================
-   RIGHT SIDE CONTROLS - Kanda + Hamburger
+   RIGHT SIDE CONTROLS
    ================================================================= */
 .header-right-controls {
     display: flex;
     align-items: center;
     gap: 12px;
     z-index: 1003;
-}
-
-/* Kanda Dropdown */
-.kanda-dropdown-container {
-    position: relative;
-    z-index: 10;
-}
-
-.kanda-dropdown-container .dropdown-toggle {
-    background: var(--gradient-primary);
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: var(--border-radius-medium);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.kanda-dropdown-container .dropdown-toggle:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
-}
-
-.kanda-dropdown-container .dropdown-toggle i {
-    font-size: 0.8rem;
-}
-
-.kanda-dropdown-container .dropdown-menu {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 100%;
-    background-color: var(--light);
-    min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1001;
-    border-radius: var(--border-radius-medium);
-    overflow: hidden;
-    padding: var(--space-sm) 0;
-    margin-top: 4px;
-}
-
-.kanda-dropdown-container .dropdown-menu.open {
-    display: block;
-}
-
-.kanda-dropdown-container .dropdown-menu li {
-    list-style: none;
-}
-
-.kanda-dropdown-container .dropdown-menu a {
-    color: var(--text-dark);
-    padding: var(--space-sm) var(--space-md);
-    text-decoration: none;
-    display: block;
-    transition: all var(--transition-fast);
-    font-family: 'Noto Serif Devanagari', serif;
-}
-
-.kanda-dropdown-container .dropdown-menu a:hover {
-    background-color: rgba(107, 56, 251, 0.1);
-    color: var(--primary-color);
+    flex-shrink: 0;
 }
 
 /* =================================================================
-   HAMBURGER ENGINE - RIGHT SIDE
+   HAMBURGER ENGINE
    ================================================================= */
 .hamburger {
     display: none;
@@ -504,7 +446,6 @@ img {
     transform-origin: center;
 }
 
-/* Morphing to "X" when active */
 .hamburger.active span:nth-child(1) {
     transform: translateY(7.5px) rotate(45deg);
 }
@@ -517,16 +458,250 @@ img {
 }
 
 /* =================================================================
-   MOBILE RESPONSIVE: TABLET & PHONES
+   HERO SECTION CONTRAST FIX
+   ================================================================= */
+.hero-section {
+    width: 100% !important;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.hero-section h1, 
+.hero-title {
+    color: #ffffff !important;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section p, 
+.hero-section .subtitle-text,
+.hero-subtitle {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    display: block;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* =================================================================
+   SHARED COMPONENTS
+   ================================================================= */
+.card {
+    background: var(--white);
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-image {
+    position: relative;
+    margin-bottom: var(--space-md);
+}
+
+.card-image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 0 var(--space-md) var(--space-md);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-xxl);
+}
+
+.section-header h2 {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-sm);
+    position: relative;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+.section-header p {
+    max-width: 700px;
+    margin: var(--space-md) auto 0;
+    font-size: var(--text-lg);
+}
+
+/* =================================================================
+   FOOTER
+   ================================================================= */
+.footer {
+    position: relative;
+    width: 100% !important;
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: 6px;
+    margin-top: auto;
+}
+
+.footer p,
+.footer a {
+    display: block;
+}
+
+/* =================================================================
+   CROSS-DEVICE RESPONSIVE BREAKPOINTS ENGINE
+   ================================================================= */
+
+/* -----------------------------------------------------------------
+   A. MOBILE PORTRAIT (Phones held vertically: max-width: 640px)
+   ----------------------------------------------------------------- */
+@media (max-width: 640px) and (orientation: portrait) {
+    .header-container {
+        padding: 0 var(--space-sm, 15px) !important;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.95rem !important;
+    }
+    
+    .btn {
+        width: 100% !important;
+        padding: 12px 16px !important;
+    }
+    
+    .card-image img {
+        height: 180px;
+    }
+    
+    .section-header h2 {
+        font-size: var(--text-2xl);
+    }
+    
+    .container {
+        padding: 0 15px !important;
+    }
+}
+
+/* -----------------------------------------------------------------
+   B. MOBILE & TABLET HORIZONTAL (Landscape Mode Lock)
+   ----------------------------------------------------------------- */
+@media (orientation: landscape) and (max-width: 1024px) {
+    .header-container {
+        padding: 0 20px !important;
+    }
+    
+    .main-wrapper {
+        flex-direction: row !important;
+    }
+    
+    .hero-section {
+        padding: 40px 20px !important;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem !important;
+    }
+    
+    .card-container,
+    .teachings-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+    }
+    
+    .programs-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+    }
+}
+
+/* -----------------------------------------------------------------
+   C. TABLET PORTRAIT (641px to 1024px)
+   ----------------------------------------------------------------- */
+@media (min-width: 641px) and (max-width: 1024px) and (orientation: portrait) {
+    .container {
+        padding: 0 var(--space-lg, 24px) !important;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem !important;
+    }
+    
+    .btn {
+        padding: 12px 24px !important;
+        width: auto !important;
+    }
+    
+    .card-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 24px !important;
+    }
+    
+    .programs-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 24px !important;
+    }
+}
+
+/* -----------------------------------------------------------------
+   D. STANDARD DESKTOP & LARGE DISPLAYS (> 1025px)
+   ----------------------------------------------------------------- */
+@media (min-width: 1025px) {
+    .container {
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        padding: 0 30px !important;
+    }
+    
+    .header-container {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0 30px !important;
+    }
+    
+    .card-container {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 30px !important;
+    }
+    
+    .programs-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 30px !important;
+    }
+}
+
+/* =================================================================
+   MOBILE RESPONSIVE - NAVBAR
    ================================================================= */
 @media (max-width: 992px) {
-    
-    /* ---- Right Side Controls on Mobile ---- */
-    .header-right-controls {
-        gap: 8px;
-    }
-
-    /* ---- Hamburger Trigger - Right Side ---- */
     .hamburger {
         display: flex !important;
         position: relative !important;
@@ -545,7 +720,6 @@ img {
         margin-left: 0;
     }
 
-    /* ---- Mobile Drawer - Slide from RIGHT ---- */
     .navbar {
         position: fixed !important;
         top: 0;
@@ -570,14 +744,12 @@ img {
         border-radius: 12px 0 0 12px !important;
     }
 
-    /* Open state - slide in from right */
     .navbar.active,
     .navbar.open {
         visibility: visible !important;
         right: 0 !important;
     }
 
-    /* ---- Close Button inside Drawer ---- */
     .navbar-close {
         display: flex !important;
         position: absolute !important;
@@ -601,7 +773,6 @@ img {
         background: rgba(79, 70, 229, 0.15) !important;
     }
 
-    /* ---- Nav List in Mobile ---- */
     .nav-list {
         flex-direction: column !important;
         width: 100% !important;
@@ -640,7 +811,6 @@ img {
         background: transparent !important;
     }
 
-    /* ---- Dropdown inside Mobile ---- */
     .has-dropdown .dropdown-content {
         position: static !important;
         background-color: transparent !important;
@@ -687,7 +857,6 @@ img {
         border-radius: var(--border-radius-small) !important;
     }
 
-    /* ---- Mobile Drawer Backdrop ---- */
     .mobile-drawer-backdrop {
         position: fixed !important;
         inset: 0 !important;
@@ -705,22 +874,6 @@ img {
 
     body.drawer-open {
         overflow: hidden !important;
-    }
-
-    /* ---- Kanda Dropdown on Mobile ---- */
-    .kanda-dropdown-container .dropdown-toggle {
-        padding: 8px 12px;
-        font-size: 0.85rem;
-    }
-
-    .kanda-dropdown-container .dropdown-toggle span {
-        display: none;
-    }
-
-    .kanda-dropdown-container .dropdown-menu {
-        right: 0;
-        left: auto;
-        min-width: 180px;
     }
 }
 
@@ -798,129 +951,20 @@ img {
     .mobile-drawer-backdrop {
         display: none !important;
     }
-
-    .kanda-dropdown-container .dropdown-toggle span {
-        display: inline;
-    }
 }
 
 /* =================================================================
-   SHARED COMPONENTS
+   RESPONSIVE BREAKPOINTS - ADDITIONAL
    ================================================================= */
-.card {
-    background: var(--white);
-    border-radius: var(--border-radius-medium);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card-image {
-    position: relative;
-    margin-bottom: var(--space-md);
-}
-
-.card-image img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    display: block;
-}
-
-.card-content {
-    padding: 0 var(--space-md) var(--space-md);
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: var(--space-xxl);
-}
-
-.section-header h2 {
-    font-size: var(--text-3xl);
-    margin-bottom: var(--space-sm);
-    position: relative;
-}
-
-.section-header h2::after {
-    content: '';
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: var(--gradient-primary);
-    border-radius: 2px;
-}
-
-.section-header p {
-    max-width: 700px;
-    margin: var(--space-md) auto 0;
-    font-size: var(--text-lg);
-}
-
-/* =================================================================
-   FOOTER
-   ================================================================= */
-.footer {
-    position: relative;
-    width: 100%;
-    background-color: var(--primary-dark);
-    color: var(--text-light);
-    text-align: center;
-    padding: 6px;
-    margin-top: auto;
-}
-
-.footer p,
-.footer a {
-    display: block;
-}
-
-/* =================================================================
-   RESPONSIVE BREAKPOINTS
-   ================================================================= */
-@media (max-width: 640px) {
-    .btn { padding: var(--button-padding-mobile); font-size: 0.95rem; width: 100%; }
-    .btn-outline { padding: 10px 20px; }
-    .logo-main { font-size: 1rem; }
-    .logo-circle { width: 40px; height: 40px; }
-    .logo-circle span { font-size: 12px; }
-    body { font-size: 15px; }
-    .container { padding: 0 var(--space-md); }
-    input[type="text"], input[type="email"], input[type="password"], textarea { font-size: 16px; padding: 14px 16px; }
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-    .btn { padding: 12px 24px; }
-    .container { padding: 0 var(--space-lg); }
-}
-
-@media (min-width: 1025px) {
-    .container { padding: 0 var(--space-lg); }
-}
-
-@media (min-width: 1441px) {
-    .btn { padding: 14px 32px; }
-}
-
 @media (max-width: 480px) {
     .logo-main {
         font-size: 1.2rem;
     }
     .header-container {
-        padding: 0 var(--space-sm);
+        padding: 0 var(--space-sm) !important;
     }
     .container {
-        padding: 0 var(--space-sm);
+        padding: 0 var(--space-sm) !important;
     }
     input[type="text"],
     input[type="email"],
@@ -931,8 +975,8 @@ img {
         min-height: 44px;
     }
     .btn {
-        width: 100%;
-        padding: 12px 16px;
+        width: 100% !important;
+        padding: 12px 16px !important;
     }
 }
 

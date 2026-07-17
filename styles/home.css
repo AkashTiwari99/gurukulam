@@ -1,72 +1,357 @@
-/* Hero Section */
+/* =================================================================
+   HOME PAGE STYLES - COMPLETE FIX
+   ================================================================= */
+
+/* ---- Hero Section ---- */
 .hero {
     position: relative;
-    padding: var(--space-xxl) 0;
-    background-size: cover;
-    background-position: center;
+    width: 100% !important;
     min-height: 80vh;
-    /* Ensure proper height */
     display: flex;
     align-items: center;
-    background-image: var(--gradient-dark);
-    /* Fallback */
+    justify-content: center;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    overflow: hidden;
+    padding: 60px 20px;
 }
 
-.hero::before {
-    content: '';
+.hero .overlay {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(17, 24, 39, 0.8));
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 12, 41, 0.5);
+    z-index: 1;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-content {
+    max-width: 800px;
+    text-align: center;
+    padding: 20px;
     position: relative;
     z-index: 2;
-    max-width: 600px;
-    padding: var(--space-xl) 0;
 }
 
+/* FIX: Hero Title - White color with good visibility */
 .hero-title {
-    padding-left: 15%;
-    text-align: center;
-    font-size: var(--text-4xl);
+    font-size: 3.5rem;
     font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: var(--space-md);
-    color: var(--white);
+    color: #ffffff !important;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
-/* Cards, Programs, Testimonials and Newsletter moved to global.css components */
+/* FIX: Hero Subtitle - Light color with good contrast */
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.85) !important;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    font-weight: 400;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-buttons .btn {
+    padding: 14px 32px;
+    font-size: 1.05rem;
+    border-radius: 50px;
+    min-width: 180px;
+}
+
+.hero-buttons .btn-primary {
+    background: var(--gradient-primary);
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+}
+
+.hero-buttons .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.5);
+}
+
+/* ---- Features Section ---- */
+.features {
+    padding: 80px 20px;
+    background: #f8f9ff;
+    width: 100% !important;
+}
+
+.features .container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* ---- Quote Section ---- */
+.quote-section {
+    padding: 80px 20px;
+    background: var(--gradient-primary);
+    text-align: center;
+    width: 100% !important;
+}
+
+.quote-section .container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
+.quote {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.quote i {
+    font-size: 2.5rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 1rem;
+}
+
+.quote blockquote {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: white !important;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.quote cite {
+    display: block;
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: normal;
+    font-size: 1rem;
+}
+
+/* ---- Programs Preview ---- */
+.programs-preview {
+    padding: 80px 20px;
+    background: #ffffff;
+    width: 100% !important;
+}
+
+.programs-preview .container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+.program-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.program-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.program-card.featured {
+    border: 2px solid var(--primary-color);
+}
+
+.program-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(79, 70, 229, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+.program-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.program-card p {
+    color: var(--text-medium);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.program-card .btn-outline {
+    padding: 8px 24px;
+    font-size: 0.9rem;
+    border-radius: 50px;
+}
+
+/* ---- Testimonials ---- */
+.testimonials {
+    padding: 80px 20px;
+    background: #f8f9ff;
+    width: 100% !important;
+}
+
+.testimonials .container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
+.testimonial-slider {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.testimonial-slide {
+    display: none;
+    padding: 30px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.testimonial-slide.active {
+    display: block;
+}
+
+.testimonial-content p {
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.testimonial-author img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.testimonial-author h4 {
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.testimonial-author p {
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: normal;
+}
+
+/* ---- Newsletter ---- */
+.newsletter {
+    padding: 80px 20px;
+    background: #ffffff;
+    width: 100% !important;
+}
+
+.newsletter .container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
+.newsletter-container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 40px;
+    background: #f8f9ff;
+    border-radius: 16px;
+}
+
+.newsletter-content h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
 .newsletter-content p {
-    margin-bottom: var(--space-md);
+    color: var(--text-medium);
+    margin-bottom: 20px;
 }
 
 .newsletter-form {
     display: flex;
-    gap: var(--space-sm);
-    width: 100%;
+    gap: 10px;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
 .newsletter-form input {
     flex: 1;
     min-width: 250px;
-    padding: 12px 16px;
-    border: 1px solid var(--light-medium);
-    border-radius: var(--radius-md);
+    padding: 12px 18px;
+    border: 2px solid #e5e7eb;
+    border-radius: 50px;
     font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
 }
 
-.newsletter-form button {
-    min-height: 48px;
+.newsletter-form input:focus {
+    border-color: var(--primary-color);
 }
 
-/* Section Headers */
+.newsletter-form .btn {
+    padding: 12px 30px;
+    border-radius: 50px;
+}
+
+/* ---- Section Headers ---- */
 .section-header {
     text-align: center;
     margin-bottom: var(--space-xxl);
@@ -96,24 +381,66 @@
     font-size: var(--text-lg);
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .hero-content {
-        padding: var(--space-lg) 0;
+/* =================================================================
+   RESPONSIVE - HOME PAGE
+   ================================================================= */
+
+/* Mobile Portrait */
+@media (max-width: 640px) and (orientation: portrait) {
+    .hero {
+        min-height: 60vh;
+        padding: 30px 15px;
     }
 
     .hero-title {
-        font-size: var(--text-2xl);
-        letter-spacing: 0.5px;
+        font-size: 1.8rem !important;
     }
 
     .hero-subtitle {
-        font-size: var(--text-base);
+        font-size: 0.95rem !important;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+        padding: 12px 20px;
+        font-size: 0.95rem;
     }
 
     .card-container {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: var(--space-md);
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+
+    .programs-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+
+    .newsletter-container {
+        padding: 20px;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .newsletter-form input {
+        min-width: 100%;
+    }
+
+    .quote blockquote {
+        font-size: 1.3rem;
+    }
+
+    .testimonial-content p {
+        font-size: 1rem;
     }
 
     .section-header h2 {
@@ -124,44 +451,153 @@
         font-size: var(--text-base);
     }
 
-    .newsletter-form {
-        flex-direction: column;
+    .features {
+        padding: 40px 15px;
     }
 
-    .newsletter-form input,
-    .newsletter-form button {
-        width: 100%;
-        min-width: unset;
+    .programs-preview {
+        padding: 40px 15px;
+    }
+
+    .testimonials {
+        padding: 40px 15px;
+    }
+
+    .newsletter {
+        padding: 40px 15px;
+    }
+
+    .quote-section {
+        padding: 40px 15px;
     }
 }
 
-@media (max-width: 480px) {
+/* Landscape Mode */
+@media (orientation: landscape) and (max-width: 1024px) {
     .hero {
-        min-height: 60vh;
-        padding: var(--space-lg) 0;
+        min-height: 70vh;
+        padding: 40px 20px;
     }
 
     .hero-title {
-        font-size: var(--text-3xl);
+        font-size: 2.2rem !important;
     }
 
-    .hero-buttons {
-        flex-direction: column;
-    }
-
-    .btn {
-        width: 100%;
+    .hero-subtitle {
+        font-size: 1rem !important;
     }
 
     .card-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px;
     }
 
-    .program-card {
-        padding: var(--space-md);
+    .programs-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px;
     }
 
-    .program-icon {
-        font-size: 2rem;
+    .hero-buttons .btn {
+        padding: 10px 24px;
+        font-size: 0.95rem;
+        min-width: 150px;
     }
+}
+
+/* Tablet Portrait */
+@media (min-width: 641px) and (max-width: 1024px) and (orientation: portrait) {
+    .hero {
+        min-height: 70vh;
+        padding: 50px 20px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem !important;
+    }
+
+    .card-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 24px;
+    }
+
+    .programs-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 24px;
+    }
+
+    .hero-buttons .btn {
+        padding: 12px 28px;
+        font-size: 1rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+    .hero {
+        min-height: 80vh;
+        padding: 80px 30px;
+    }
+
+    .hero-title {
+        font-size: 3.5rem !important;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem !important;
+    }
+
+    .card-container {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 30px;
+    }
+
+    .programs-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 30px;
+    }
+
+    .hero-buttons .btn {
+        padding: 14px 32px;
+        font-size: 1.05rem;
+    }
+}
+
+/* =================================================================
+   UTILITY FIXES
+   ================================================================= */
+
+/* Fix for any hidden text on dark backgrounds */
+.dark-bg,
+.dark-background,
+[class*="dark"] p,
+[class*="dark"] h1,
+[class*="dark"] h2,
+[class*="dark"] h3,
+[class*="dark"] h4,
+[class*="dark"] span {
+    color: #ffffff !important;
+}
+
+/* Ensure all images are responsive */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Fix for card badge */
+.card-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
 }

@@ -247,7 +247,50 @@ class MainApp {
     }
 }
 
-// --- Hamburger Toggle Handler (Standalone) ---
+// ============================================================
+// VIEWPORT REALIGNMENT CONTROLLER
+// Monitors orientation shifts and runtime layout widths
+// ============================================================
+class ViewportRealignmentController {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        // Bind viewport orientation change listener
+        window.addEventListener('resize', () => this.evaluateViewportConstraints());
+        window.addEventListener('orientationchange', () => this.evaluateViewportConstraints());
+        
+        // Initial execution trace
+        this.evaluateViewportConstraints();
+    }
+
+    /**
+     * Runtime validation to clean up dirty widths or layout constraints
+     */
+    evaluateViewportConstraints() {
+        const width = window.innerWidth;
+        const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+
+        // Force reset active side elements if dynamic dimensions conflict
+        if (width > 992 || isLandscape) {
+            const navbar = document.getElementById('navbar');
+            const hamburger = document.querySelector('.hamburger');
+            const backdrop = document.getElementById('mobileDrawerBackdrop');
+
+            if (navbar && navbar.classList.contains('active')) {
+                navbar.classList.remove('active', 'open');
+                if (hamburger) hamburger.classList.remove('active');
+                if (backdrop) backdrop.classList.remove('active');
+                document.body.classList.remove('drawer-open');
+            }
+        }
+    }
+}
+
+// ============================================================
+// HAMBURGER TOGGLE HANDLER
+// ============================================================
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navbar = document.getElementById('navbar');
@@ -363,5 +406,10 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Hamburger initialized successfully');
 });
 
-// Initialize the Main App
-new MainApp();
+// ============================================================
+// GLOBAL INVOCATION
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+    new ViewportRealignmentController();
+    new MainApp();
+});
