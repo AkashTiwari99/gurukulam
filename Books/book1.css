@@ -27,7 +27,7 @@ body {
 .header-container {
     width: 100%;
     max-width: none;
-    padding: 0 1.25rem;
+    padding:110px;
     min-height: var(--header-height);
     display: flex;
     justify-content: space-between;
