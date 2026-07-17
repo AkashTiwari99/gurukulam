@@ -390,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
-    const sidebar = document.getElementById('sidebar');
+    const navbar = document.getElementById('navbar');
 
     if (hamburger && sidebar) {
         
