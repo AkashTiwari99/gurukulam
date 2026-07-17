@@ -276,82 +276,127 @@ class MainApp {
         this.showTestimonial(this.currentSlide);
     }
 
-    // Navbar toggle for mobile
-    setupNavbarToggle() {
-        const navbar = document.getElementById('navbar');
-        const hamburger = document.querySelector('.hamburger');
-        const sidebar = document.querySelector('.sidebar');
-        const backdrop = document.getElementById('mobileDrawerBackdrop');
+    /**
+ * @class NavigationController
+ * Architectural controller handling modern slide drawer layouts and toggle interactions.
+ */
+class NavigationController {
+    constructor() {
+        this.navbar = document.getElementById('navbar');
+        this.hamburger = document.querySelector('.hamburger');
+        this.sidebar = document.querySelector('.sidebar');
+        this.backdrop = document.getElementById('mobileDrawerBackdrop');
+        
+        this.init();
+    }
 
-        if (navbar && hamburger) {
-            // Set initial aria-expanded
-            hamburger.setAttribute('aria-expanded', 'false');
-            
-            hamburger.addEventListener('click', () => {
-                const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-                navbar.classList.toggle('active', !isExpanded);
-                hamburger.classList.toggle('active', !isExpanded);
-                hamburger.setAttribute('aria-expanded', String(!isExpanded));
-
-                if (sidebar) {
-                    sidebar.classList.remove('active');
-                }
-
-                if (backdrop) {
-                    const shouldShowBackdrop = navbar.classList.contains('active');
-                    backdrop.classList.toggle('active', shouldShowBackdrop);
-                    document.body.classList.toggle('drawer-open', shouldShowBackdrop);
-                }
-            });
-
-            // Add keyboard support (Space/Enter to toggle)
-            hamburger.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    hamburger.click();
-                }
-            });
+    /**
+     * Bootstraps interface engines upon validating critical DOM elements.
+     */
+    init() {
+        if (this.navbar && this.hamburger) {
+            this.setupNavbarToggle();
+            this.setupAutoCloseLinks();
+            this.setupOutsideClickCleanup();
         } else {
-            console.warn('Navbar or hamburger element not found');
+            console.warn('Initialization aborted: Navbar or Hamburger node elements not resolved.');
         }
     }
-}
-document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.querySelector('.hamburger');
-    const navbar = document.getElementById('navbar');
 
-    if (hamburger && sidebar) {
-        
-        // 1. Centralized Close Routine (State Management Logic)
-        const closeSidebar = () => {
-            hamburger.setAttribute('aria-expanded', 'false');
-            sidebar.classList.remove('open');
-        };
+    /**
+     * Enforces explicit visual state cleanups across all interactive DOM branches.
+     */
+    closeMenu() {
+        this.hamburger.setAttribute('aria-expanded', 'false');
+        this.navbar.classList.remove('open', 'active');
+        this.hamburger.classList.remove('active');
 
-        // 2. Open/Close Toggle Control on Click
-        hamburger.addEventListener('click', (event) => {
-            event.stopPropagation();
-            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+        if (this.sidebar) {
+            this.sidebar.classList.remove('open', 'active');
+        }
+
+        if (this.backdrop) {
+            this.backdrop.classList.remove('active');
+            document.body.classList.remove('drawer-open');
+        }
+    }
+
+    /**
+     * Binds mouse click and keyboard event routines onto the trigger button node.
+     */
+    setupNavbarToggle() {
+        this.hamburger.setAttribute('aria-expanded', 'false');
+
+        this.hamburger.addEventListener('click', (event) => {
+            event.stopPropagation(); // Halts bubble loops to avoid firing window cleanup sweeps
             
-            hamburger.setAttribute('aria-expanded', !isExpanded);
-            sidebar.classList.toggle('open', !isExpanded);
+            const isExpanded = this.hamburger.getAttribute('aria-expanded') === 'true';
+            const nextState = !isExpanded;
+
+            // Synchronize operational animation token attributes
+            this.navbar.classList.toggle('open', nextState);
+            this.navbar.classList.toggle('active', nextState);
+            this.hamburger.classList.toggle('active', nextState);
+            this.hamburger.setAttribute('aria-expanded', String(nextState));
+
+            if (this.sidebar) {
+                this.sidebar.classList.toggle('open', nextState);
+                if (!nextState) this.sidebar.classList.remove('active');
+            }
+
+            if (this.backdrop) {
+                this.backdrop.classList.toggle('active', nextState);
+                document.body.classList.toggle('drawer-open', nextState);
+            }
         });
 
-        // 3. AUTO-CLOSE INTERACTION: Closing when structural menu navigation links are clicked
-        const menuLinks = sidebar.querySelectorAll('a, .menu-item, li'); 
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                closeSidebar(); // Link click hote hi immediate close function command trigger
-            });
-        });
-
-        // 4. Auxiliary UX: Outside window click to close
-        document.addEventListener('click', (event) => {
-            if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
-                closeSidebar();
+        // Accessibility (A11y) Keyboard Framework Support
+        this.hamburger.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.hamburger.click();
             }
         });
     }
+
+    /**
+     * Evaluates child tokens down structural lists.
+     * Direct link selections close the menu; interactive parent links (dropdowns) are ignored.
+     */
+    setupAutoCloseLinks() {
+        const menuLinks = this.navbar.querySelectorAll('.nav-list a');
+        
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Safeguard: Dropdown toggles matching javascript:void(0) yield execution loops early
+                if (link.getAttribute('href') === 'javascript:void(0)') {
+                    return;
+                }
+                this.closeMenu();
+            });
+        });
+    }
+
+    /**
+     * Layout listener monitoring body elements to auto-dismiss menus on external clicks.
+     */
+    setupOutsideClickCleanup() {
+        document.addEventListener('click', (event) => {
+            const target = event.target;
+            const isClickInsideNavbar = this.navbar.contains(target);
+            const isClickInsideHamburger = this.hamburger.contains(target);
+            const isClickInsideSidebar = this.sidebar && this.sidebar.contains(target);
+
+            if (!isClickInsideNavbar && !isClickInsideHamburger && !isClickInsideSidebar) {
+                this.closeMenu();
+            }
+        });
+    }
+}
+
+// Instantiate engine onto global runtime lifecycle
+document.addEventListener('DOMContentLoaded', () => {
+    new NavigationController();
 });
 
 // Initialize the Main App
