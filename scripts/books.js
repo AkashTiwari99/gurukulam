@@ -146,46 +146,100 @@ function updateSidebarTitle(url) {
     }
 }
 
-// Add event listeners to sidebar links AND dropdown links
-document.addEventListener('DOMContentLoaded', function() {
-    // Sidebar links
-    const sidebarLinks = document.querySelectorAll('.sidebar a[data-target]');
-    // Dropdown menu links (Kanda dropdown)
-    const dropdownLinks = document.querySelectorAll('.dropdown-menu a[data-target], #kanda-dropdown-menu a[data-target]');
-    // All links combined
-    const allLinks = [...sidebarLinks, ...dropdownLinks];
+// ============================================================
+// Function to get current Kanda file from URL
+// ============================================================
+function getCurrentKandaFile() {
+    const currentPath = window.location.pathname;
+    const fileName = currentPath.split('/').pop();
     
-    if (allLinks.length === 0) return;
+    const kandaFiles = ['Bala_Srga.html', 'Ay_Sarga.html', 'Ara_sarga.html', 'KIs_Sraga.html', 'SU_Sraga.html', 'YU_Sarga.html', 'utt_sarga.html'];
+    
+    if (kandaFiles.includes(fileName)) {
+        return fileName;
+    }
+    return 'Bala_Srga.html'; // Default
+}
 
-    allLinks.forEach(link => {
+// ============================================================
+// Function to get chapter count for a Kanda
+// ============================================================
+function getChapterCount(kandaFile) {
+    const chapterCounts = {
+        'Bala_Srga.html': 77,
+        'Ay_Sarga.html': 119,
+        'Ara_sarga.html': 75,
+        'KIs_Sraga.html': 67,
+        'SU_Sraga.html': 68,
+        'YU_Sarga.html': 131,
+        'utt_sarga.html': 111
+    };
+    return chapterCounts[kandaFile] || 77;
+}
+
+// ============================================================
+// Function to get Kanda prefix and pattern
+// ============================================================
+function getKandaInfo(kandaFile) {
+    const kandaPatterns = {
+        'Bala_Srga.html': { prefix: '../BALAKANDA/', pattern: 'sarga_' },
+        'Ay_Sarga.html': { prefix: '../AYODHYA KANDA/', pattern: 'Asarga_' },
+        'Ara_sarga.html': { prefix: '../ARANAYKANDA/', pattern: 'Ar_sarga_' },
+        'KIs_Sraga.html': { prefix: '../KISHKINDHAKANDA/', pattern: 'ki_sarga_' },
+        'SU_Sraga.html': { prefix: '../SUNDARAKANDA/', pattern: 'Su_sarga_' },
+        'YU_Sarga.html': { prefix: '../YUDHAKANDA/', pattern: 'Yu_sarga_' },
+        'utt_sarga.html': { prefix: '../UTTARAKANDA/', pattern: 'utt_sarga_' }
+    };
+    return kandaPatterns[kandaFile] || kandaPatterns['Bala_Srga.html'];
+}
+
+// ============================================================
+// Function to initialize sidebar with current Kanda
+// ============================================================
+function initSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    if (!sidebar) return;
+    
+    const currentKanda = getCurrentKandaFile();
+    const chapterCount = getChapterCount(currentKanda);
+    const kandaInfo = getKandaInfo(currentKanda);
+    
+    // Update title
+    const titleElement = sidebar.querySelector('h1');
+    if (titleElement) {
+        const kandaNames = {
+            'Bala_Srga.html': 'बालकाण्डः',
+            'Ay_Sarga.html': 'अयोध्याकाण्डः',
+            'Ara_sarga.html': 'अरण्यकाण्डः',
+            'KIs_Sraga.html': 'किष्किन्धाकाण्डः',
+            'SU_Sraga.html': 'सुन्दरकाण्डः',
+            'YU_Sarga.html': 'युद्धकाण्डः',
+            'utt_sarga.html': 'उत्तरकाण्डः'
+        };
+        titleElement.textContent = kandaNames[currentKanda] || 'बालकाण्डः';
+    }
+    
+    // Remove existing links
+    const existingLinks = sidebar.querySelectorAll('a[data-target]');
+    existingLinks.forEach(link => link.remove());
+    
+    // Generate chapter links
+    const basePrefix = kandaInfo.prefix;
+    const pattern = kandaInfo.pattern;
+    
+    for (let i = 1; i <= chapterCount; i++) {
+        const chapterFileName = `${pattern}${i}.html`;
+        const chapterUrl = basePrefix + chapterFileName;
+        
+        const link = document.createElement('a');
+        link.href = chapterUrl;
+        link.textContent = `सर्गः ${i}`;
+        link.setAttribute('data-target', 'content');
+        
+        // Add click handler
         link.addEventListener('click', (event) => {
             event.preventDefault();
-            const url = link.getAttribute('href');
-            const targetElementId = link.getAttribute('data-target');
-
-            if (!url || !targetElementId) {
-                console.warn('Link missing href or data-target attribute');
-                return;
-            }
-
-            let resolvedUrl;
-            try {
-                resolvedUrl = new URL(url, window.location.href).href;
-            } catch (e) {
-                resolvedUrl = url;
-            }
-
-            loadContent(resolvedUrl, targetElementId, link);
-            
-            // Close dropdown after selection on mobile
-            const dropdownMenu = document.querySelector('.kanda-dropdown-container .dropdown-menu');
-            const dropdownToggle = document.querySelector('.kanda-dropdown-container .dropdown-toggle');
-            if (dropdownMenu && window.innerWidth <= 992) {
-                dropdownMenu.classList.remove('open');
-                if (dropdownToggle) {
-                    dropdownToggle.setAttribute('aria-expanded', 'false');
-                }
-            }
+            loadContent(chapterUrl, 'content', link);
             
             // Close sidebar on mobile
             if (window.innerWidth <= 992) {
@@ -199,10 +253,92 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
-    });
+        
+        sidebar.appendChild(link);
+    }
+}
+
+// ============================================================
+// Add event listeners to sidebar links AND dropdown links
+// ============================================================
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize sidebar with current Kanda
+    initSidebar();
+    
+    // Sidebar links
+    const sidebarLinks = document.querySelectorAll('.sidebar a[data-target]');
+    // Dropdown menu links (Kanda dropdown)
+    const dropdownLinks = document.querySelectorAll('.dropdown-menu a[data-target], #kanda-dropdown-menu a[data-target]');
+    // All links combined
+    const allLinks = [...sidebarLinks, ...dropdownLinks];
+    
+    if (allLinks.length > 0) {
+        allLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const url = link.getAttribute('href');
+                const targetElementId = link.getAttribute('data-target');
+
+                if (!url || !targetElementId) {
+                    console.warn('Link missing href or data-target attribute');
+                    return;
+                }
+
+                let resolvedUrl;
+                try {
+                    resolvedUrl = new URL(url, window.location.href).href;
+                } catch (e) {
+                    resolvedUrl = url;
+                }
+
+                loadContent(resolvedUrl, targetElementId, link);
+                
+                // Close dropdown after selection on mobile
+                const dropdownMenu = document.querySelector('.kanda-dropdown-container .dropdown-menu');
+                const dropdownToggle = document.querySelector('.kanda-dropdown-container .dropdown-toggle');
+                if (dropdownMenu && window.innerWidth <= 992) {
+                    dropdownMenu.classList.remove('open');
+                    if (dropdownToggle) {
+                        dropdownToggle.setAttribute('aria-expanded', 'false');
+                    }
+                }
+                
+                // Close sidebar on mobile
+                if (window.innerWidth <= 992) {
+                    const sidebar = document.querySelector('.sidebar');
+                    const sidebarToggle = document.querySelector('.chapter-sidebar-toggle, #sidebarToggle, .sidebar-toggle');
+                    if (sidebar) {
+                        sidebar.classList.remove('active');
+                    }
+                    if (sidebarToggle) {
+                        sidebarToggle.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+        });
+    }
+
+    // ============================================================
+    // Auto-load first chapter if no content loaded
+    // ============================================================
+    const contentElement = document.getElementById('content');
+    if (contentElement) {
+        // Check if content already has content loaded
+        const hasContent = contentElement.querySelector('.page, .error-message, .loader-container, img, picture, h1, h2, h3, p');
+        if (!hasContent || contentElement.querySelector('.page') === null) {
+            const currentKanda = getCurrentKandaFile();
+            const kandaInfo = getKandaInfo(currentKanda);
+            const firstChapterUrl = kandaInfo.prefix + kandaInfo.pattern + '1.html';
+            
+            // Load first chapter
+            loadContent(firstChapterUrl, 'content', null);
+        }
+    }
 });
 
+// ============================================================
 // Initialize Kanda dropdown with dynamic loading
+// ============================================================
 function initKandaDropdown() {
     const kandaFiles = [
         { file: "Bala_Srga.html", name: "बालकाण्डः", chapters: 77 },
@@ -243,25 +379,11 @@ function initKandaDropdown() {
                 anchor.setAttribute('data-chapters', item.chapters);
                 anchor.setAttribute('data-kanda', item.file);
                 
-                // Add click handler for loading content
+                // Add click handler - navigate to the Kanda page
                 anchor.addEventListener('click', (event) => {
                     event.preventDefault();
-                    
-                    // Load the content dynamically
-                    loadContent(finalUrl, 'content', anchor);
-                    
-                    // Close the dropdown
-                    const dropdownMenu = document.querySelector('.kanda-dropdown-container .dropdown-menu');
-                    const dropdownToggle = document.querySelector('.kanda-dropdown-container .dropdown-toggle');
-                    if (dropdownMenu) {
-                        dropdownMenu.classList.remove('open');
-                        if (dropdownToggle) {
-                            dropdownToggle.setAttribute('aria-expanded', 'false');
-                        }
-                    }
-                    
-                    // Update sidebar links based on the loaded Kanda
-                    updateSidebarLinks(item.file, prefix, item.chapters);
+                    // Navigate to the Kanda page
+                    window.location.href = finalUrl;
                 });
                 
                 listItem.appendChild(anchor);
@@ -271,7 +393,9 @@ function initKandaDropdown() {
     }
 }
 
+// ============================================================
 // Function to update sidebar links when a Kanda is loaded
+// ============================================================
 function updateSidebarLinks(kandaFile, prefix, totalChapters) {
     const sidebar = document.querySelector('.sidebar');
     if (!sidebar) return;
@@ -284,7 +408,7 @@ function updateSidebarLinks(kandaFile, prefix, totalChapters) {
     
     // Map of Kanda files to their chapter file naming patterns
     const kandaPatterns = {
-        'Bala_Srga.html': { prefix: '../BALAKANDA/', pattern: 'sarga_1' },
+        'Bala_Srga.html': { prefix: '../BALAKANDA/', pattern: 'sarga_' },
         'Ay_Sarga.html': { prefix: '../AYODHYA KANDA/', pattern: 'Asarga_' },
         'Ara_sarga.html': { prefix: '../ARANAYKANDA/', pattern: 'Ar_sarga_' },
         'KIs_Sraga.html': { prefix: '../KISHKINDHAKANDA/', pattern: 'ki_sarga_' },
@@ -309,19 +433,12 @@ function updateSidebarLinks(kandaFile, prefix, totalChapters) {
             'utt_sarga.html': 'उत्तरकाण्डः'
         };
         titleElement.textContent = kandaNames[kandaFile] || 'बालकाण्डः';
-        titleElement.textContent = kandaNames[kandaFile] || 'अयोध्याकाण्डः';
-        titleElement.textContent = kandaNames[kandaFile] || 'अरण्यकाण्डः';
-        titleElement.textContent = kandaNames[kandaFile] || 'किष्किन्धाकाण्डः';
-        titleElement.textContent = kandaNames[kandaFile] || 'सुन्दरकाण्डः';
-        titleElement.textContent = kandaNames[kandaFile] || 'युद्धकाण्डः';
-        titleElement.textContent = kandaNames[kandaFile] || 'उत्तरकाण्डः';
     }
     
     // Generate chapter links
     const basePrefix = kandaInfo.prefix;
     const pattern = kandaInfo.pattern;
     
-    // Add chapter links
     for (let i = 1; i <= totalChapters; i++) {
         const chapterFileName = `${pattern}${i}.html`;
         const chapterUrl = basePrefix + chapterFileName;
@@ -353,6 +470,9 @@ function updateSidebarLinks(kandaFile, prefix, totalChapters) {
     }
 }
 
+// ============================================================
+// Kanda Dropdown Toggle
+// ============================================================
 function initKandaDropdownToggle() {
     const dropdownToggle = document.querySelector('.kanda-dropdown-container .dropdown-toggle');
     const dropdownMenu = document.querySelector('.kanda-dropdown-container .dropdown-menu');
@@ -387,7 +507,9 @@ function initKandaDropdownToggle() {
 initKandaDropdown();
 initKandaDropdownToggle();
 
+// ============================================================
 // Sidebar Controller - Handles sidebar toggle and interaction
+// ============================================================
 document.addEventListener('DOMContentLoaded', function () {
     const sidebar = document.querySelector('.sidebar');
     const content = document.querySelector('.content');
