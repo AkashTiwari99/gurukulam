@@ -13,7 +13,6 @@ class MainApp {
             this.setupTestimonialSlider();
         });
 
-        // Cleanup on page unload
         window.addEventListener('beforeunload', () => {
             if (this.sliderInterval) {
                 clearInterval(this.sliderInterval);
@@ -21,10 +20,8 @@ class MainApp {
         });
     }
 
-    // Highlight current page in navigation
     highlightCurrentPage() {
         const currentPath = window.location.pathname;
-        const currentPage = currentPath.split('/').pop() || 'index.html';
         const navLinks = document.querySelectorAll('.nav-list li a, .navbar ul li a');
 
         navLinks.forEach(link => {
@@ -33,11 +30,8 @@ class MainApp {
             
             const linkPage = href.split('/').pop() || 'index.html';
             
-            // Use endsWith for more robust matching that ignores query params
             if (currentPath.endsWith(linkPage) || currentPath.endsWith('/' + linkPage)) {
                 link.classList.add('current-page');
-
-                // Highlight dropdown parent if applicable
                 const parent = link.closest('.has-dropdown');
                 if (parent) {
                     const parentLink = parent.querySelector('> a');
@@ -49,14 +43,11 @@ class MainApp {
         });
     }
 
-    // Setup contact form with validation
     setupContactForm() {
         const contactForm = document.querySelector('.contact-form');
         if (contactForm) {
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-
-                // Simple validation
                 const name = contactForm.querySelector('#name').value.trim();
                 const email = contactForm.querySelector('#email').value.trim();
                 const message = contactForm.querySelector('#message').value.trim();
@@ -66,27 +57,23 @@ class MainApp {
                     return;
                 }
 
-                // Email validation regex
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(email)) {
                     this.showFormError('Please enter a valid email address.');
                     return;
                 }
 
-                // Simulate form submission
                 this.showFormSubmissionFeedback();
                 contactForm.reset();
             });
         }
     }
 
-    // Setup newsletter form with validation
     setupNewsletterForm() {
         const newsletterForm = document.querySelector('.newsletter-form');
         if (newsletterForm) {
             newsletterForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-
                 const emailInput = newsletterForm.querySelector('input[type="email"]');
                 const email = emailInput.value.trim();
 
@@ -95,14 +82,12 @@ class MainApp {
                     return;
                 }
 
-                // Email validation regex
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(email)) {
                     this.showNewsletterFeedback('Please enter a valid email address.', 'error');
                     return;
                 }
 
-                // Simulate successful subscription
                 this.showNewsletterFeedback('Thank you for subscribing! Check your email for confirmation.', 'success');
                 newsletterForm.reset();
             });
@@ -121,10 +106,8 @@ class MainApp {
 
         const contactSection = document.querySelector('.contact-section');
         if (contactSection) {
-            // Remove any existing feedback
             const existingFeedback = contactSection.querySelector('.form-feedback');
             if (existingFeedback) existingFeedback.remove();
-            
             contactSection.appendChild(feedback);
             setTimeout(() => feedback.remove(), 3500);
         }
@@ -142,10 +125,8 @@ class MainApp {
 
         const contactSection = document.querySelector('.contact-section');
         if (contactSection) {
-            // Remove any existing feedback
             const existingFeedback = contactSection.querySelector('.form-feedback');
             if (existingFeedback) existingFeedback.remove();
-            
             contactSection.appendChild(feedback);
             setTimeout(() => feedback.remove(), 3500);
         }
@@ -163,18 +144,14 @@ class MainApp {
 
         const newsletterSection = document.querySelector('.newsletter');
         if (newsletterSection) {
-            // Remove any existing feedback
             const existingFeedback = newsletterSection.querySelector('.newsletter-feedback');
             if (existingFeedback) existingFeedback.remove();
-            
             newsletterSection.appendChild(feedback);
             setTimeout(() => feedback.remove(), 3500);
         }
     }
 
-    // Setup dropdown behavior
     setupDropdownBehavior() {
-        // Close dropdowns when clicking outside
         document.addEventListener('click', (event) => {
             const dropdowns = document.querySelectorAll('.has-dropdown');
             dropdowns.forEach(dropdown => {
@@ -187,15 +164,14 @@ class MainApp {
                     if (link) {
                         link.setAttribute('aria-expanded', 'false');
                     }
+                    dropdown.classList.remove('active');
                 }
             });
         });
 
-        // Toggle dropdowns on click
         document.querySelectorAll('.has-dropdown > a').forEach(link => {
             link.addEventListener('click', (e) => {
-                // Only prevent default if we are on mobile or if it's a click interaction
-                if (window.innerWidth <= 1024) {
+                if (window.innerWidth <= 992) {
                     e.preventDefault();
                     const dropdown = e.target.closest('.has-dropdown');
                     if (dropdown) {
@@ -212,7 +188,6 @@ class MainApp {
             });
         });
 
-        // Add keyboard navigation support
         document.querySelectorAll('.has-dropdown > a').forEach(link => {
             link.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -223,7 +198,6 @@ class MainApp {
         });
     }
 
-    // Testimonial slider functionality
     setupTestimonialSlider() {
         const slides = document.querySelectorAll('.testimonial-slide');
         const dots = document.querySelectorAll('.dot');
@@ -233,10 +207,8 @@ class MainApp {
         this.currentSlide = 0;
         this.showTestimonial(this.currentSlide);
 
-        // Auto slide
         this.sliderInterval = setInterval(() => this.nextTestimonial(), 5000);
 
-        // Manual controls
         dots.forEach((dot, index) => {
             if (dot) {
                 dot.addEventListener('click', () => {
@@ -275,228 +247,120 @@ class MainApp {
     }
 }
 
-/**
- * @class NavigationController
- * Architectural controller handling modern slide drawer layouts and toggle interactions.
- * Fixes hamburger toggle with proper state management and event handling.
- */
-class NavigationController {
-    constructor() {
-        this.navbar = document.getElementById('navbar');
-        this.hamburger = document.querySelector('.hamburger');
-        this.sidebar = document.querySelector('.sidebar');
-        this.backdrop = document.getElementById('mobileDrawerBackdrop');
-        this.navbarCloseBtn = document.querySelector('.navbar-close');
-        this.isOpen = false;
-        
-        this.init();
+// --- Hamburger Toggle Handler (Standalone) ---
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navbar = document.getElementById('navbar');
+    const backdrop = document.getElementById('mobileDrawerBackdrop');
+    const navbarClose = document.querySelector('.navbar-close');
+
+    // If no backdrop exists, create one
+    let backdropElement = backdrop;
+    if (!backdropElement) {
+        backdropElement = document.createElement('div');
+        backdropElement.className = 'mobile-drawer-backdrop';
+        backdropElement.id = 'mobileDrawerBackdrop';
+        document.body.appendChild(backdropElement);
     }
 
-    /**
-     * Bootstraps interface engines upon validating critical DOM elements.
-     */
-    init() {
-        if (this.navbar && this.hamburger) {
-            this.setupNavbarToggle();
-            this.setupAutoCloseLinks();
-            this.setupOutsideClickCleanup();
-            this.setupCloseButton();
-            this.setupEscapeKey();
-        } else {
-            console.warn('NavigationController: Navbar or Hamburger node elements not resolved.');
-        }
+    if (!hamburger || !navbar) {
+        console.warn('Hamburger or navbar not found');
+        return;
     }
 
-    /**
-     * Enforces explicit visual state cleanups across all interactive DOM branches.
-     */
-    closeMenu() {
-        if (this.hamburger) {
-            this.hamburger.setAttribute('aria-expanded', 'false');
-            this.hamburger.classList.remove('active');
-        }
-        
-        if (this.navbar) {
-            this.navbar.classList.remove('open', 'active');
-        }
-
-        if (this.sidebar) {
-            this.sidebar.classList.remove('open', 'active');
-        }
-
-        if (this.backdrop) {
-            this.backdrop.classList.remove('active');
+    function closeMenu() {
+        navbar.classList.remove('active', 'open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        if (backdropElement) {
+            backdropElement.classList.remove('active');
             document.body.classList.remove('drawer-open');
         }
-
-        this.isOpen = false;
     }
 
-    /**
-     * Opens the menu with proper state updates.
-     */
-    openMenu() {
-        if (this.hamburger) {
-            this.hamburger.setAttribute('aria-expanded', 'true');
-            this.hamburger.classList.add('active');
-        }
-        
-        if (this.navbar) {
-            this.navbar.classList.add('open', 'active');
-        }
-
-        if (this.backdrop) {
-            this.backdrop.classList.add('active');
+    function openMenu() {
+        navbar.classList.add('active', 'open');
+        hamburger.classList.add('active');
+        hamburger.setAttribute('aria-expanded', 'true');
+        if (backdropElement) {
+            backdropElement.classList.add('active');
             document.body.classList.add('drawer-open');
         }
-
-        this.isOpen = true;
     }
 
-    /**
-     * Toggles the menu state.
-     */
-    toggleMenu() {
-        if (this.isOpen) {
-            this.closeMenu();
+    function toggleMenu(e) {
+        if (e) e.stopPropagation();
+        if (navbar.classList.contains('active')) {
+            closeMenu();
         } else {
-            this.openMenu();
+            openMenu();
         }
     }
 
-    /**
-     * Binds mouse click and keyboard event routines onto the trigger button node.
-     */
-    setupNavbarToggle() {
-        if (this.hamburger) {
-            this.hamburger.setAttribute('aria-expanded', 'false');
-            this.hamburger.setAttribute('aria-label', 'Toggle navigation menu');
+    // Remove existing listeners by cloning
+    const newHamburger = hamburger.cloneNode(true);
+    hamburger.parentNode.replaceChild(newHamburger, hamburger);
+    const freshHamburger = document.querySelector('.hamburger');
 
-            this.hamburger.addEventListener('click', (event) => {
-                event.stopPropagation();
-                this.toggleMenu();
-            });
+    // Click event
+    freshHamburger.addEventListener('click', toggleMenu);
 
-            // Accessibility (A11y) Keyboard Framework Support
-            this.hamburger.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.toggleMenu();
-                }
-            });
+    // Keyboard support
+    freshHamburger.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleMenu();
         }
-    }
+    });
 
-    /**
-     * Sets up the close button inside the navbar drawer.
-     */
-    setupCloseButton() {
-        if (this.navbarCloseBtn) {
-            this.navbarCloseBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.closeMenu();
-            });
-
-            this.navbarCloseBtn.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.closeMenu();
-                }
-            });
-        }
-    }
-
-    /**
-     * Closes menu on Escape key press.
-     */
-    setupEscapeKey() {
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.isOpen) {
-                this.closeMenu();
-                // Return focus to hamburger
-                if (this.hamburger) {
-                    this.hamburger.focus();
-                }
-            }
+    // Close button
+    const closeBtn = navbarClose || document.querySelector('.navbar-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            closeMenu();
         });
     }
 
-    /**
-     * Evaluates child tokens down structural lists.
-     * Direct link selections close the menu; interactive parent links (dropdowns) are ignored.
-     */
-    setupAutoCloseLinks() {
-        if (!this.navbar) return;
+    // Backdrop click
+    if (backdropElement) {
+        backdropElement.addEventListener('click', closeMenu);
+    }
+
+    // Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navbar.classList.contains('active')) {
+            closeMenu();
+            freshHamburger.focus();
+        }
+    });
+
+    // Close on resize to desktop
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+            if (window.innerWidth >= 993 && navbar.classList.contains('active')) {
+                closeMenu();
+            }
+        }, 200);
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!navbar.classList.contains('active')) return;
         
-        const menuLinks = this.navbar.querySelectorAll('.nav-list a:not([href="javascript:void(0)"])');
+        const target = e.target;
+        const isInsideNavbar = navbar.contains(target);
+        const isInsideHamburger = freshHamburger.contains(target);
+        const isInsideBackdrop = backdropElement && backdropElement.contains(target);
         
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                // Only close if it's an actual navigation link, not a dropdown toggle
-                if (link.getAttribute('href') && 
-                    link.getAttribute('href') !== 'javascript:void(0)' &&
-                    link.getAttribute('href') !== '#') {
-                    this.closeMenu();
-                }
-            });
-        });
+        if (!isInsideNavbar && !isInsideHamburger && !isInsideBackdrop) {
+            closeMenu();
+        }
+    });
 
-        // Also handle dropdown parent links - prevent closing when toggling dropdown
-        const dropdownLinks = this.navbar.querySelectorAll('.has-dropdown > a[href="javascript:void(0)"]');
-        dropdownLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const parent = link.closest('.has-dropdown');
-                if (parent) {
-                    parent.classList.toggle('active');
-                    const isActive = parent.classList.contains('active');
-                    link.setAttribute('aria-expanded', String(isActive));
-                }
-            });
-        });
-    }
-
-    /**
-     * Layout listener monitoring body elements to auto-dismiss menus on external clicks.
-     */
-    setupOutsideClickCleanup() {
-        document.addEventListener('click', (event) => {
-            if (!this.isOpen) return;
-            
-            const target = event.target;
-            const isClickInsideNavbar = this.navbar && this.navbar.contains(target);
-            const isClickInsideHamburger = this.hamburger && this.hamburger.contains(target);
-            const isClickInsideSidebar = this.sidebar && this.sidebar.contains(target);
-            const isClickInsideBackdrop = this.backdrop && this.backdrop.contains(target);
-
-            // If clicking on backdrop, close menu
-            if (isClickInsideBackdrop) {
-                this.closeMenu();
-                return;
-            }
-
-            // If clicking outside all relevant elements, close menu
-            if (!isClickInsideNavbar && !isClickInsideHamburger && !isClickInsideSidebar) {
-                this.closeMenu();
-            }
-        });
-
-        // Handle window resize - close menu on resize to desktop
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                if (window.innerWidth >= 993 && this.isOpen) {
-                    this.closeMenu();
-                }
-            }, 250);
-        });
-    }
-}
-
-// Instantiate engine onto global runtime lifecycle
-document.addEventListener('DOMContentLoaded', () => {
-    new NavigationController();
+    console.log('Hamburger initialized successfully');
 });
 
 // Initialize the Main App

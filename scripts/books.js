@@ -321,17 +321,6 @@ function updateSidebarLinks(kandaFile, prefix, totalChapters) {
     const basePrefix = kandaInfo.prefix;
     const pattern = kandaInfo.pattern;
     
-    // Determine current path for proper URL resolution
-    const currentPath = window.location.pathname;
-    let pathPrefix = '';
-    if (currentPath.includes('/Books/book_link/')) {
-        pathPrefix = '';
-    } else if (currentPath.includes('/Books/')) {
-        pathPrefix = '';
-    } else {
-        pathPrefix = './Books/';
-    }
-    
     // Add chapter links
     for (let i = 1; i <= totalChapters; i++) {
         const chapterFileName = `${pattern}${i}.html`;
@@ -406,8 +395,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const sidebarToggles = Array.from(document.querySelectorAll('.chapter-sidebar-toggle, #sidebarToggle, .sidebar-toggle'));
     const header = document.querySelector('.header');
     const backdrop = document.getElementById('mobileDrawerBackdrop');
-    const navbar = document.getElementById('navbar');
-    const hamburger = document.querySelector('.hamburger');
 
     if (!sidebar || !content || !header || !mainContainer) return;
 
@@ -430,25 +417,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function closeNavbarDrawer() {
-        if (navbar) {
-            navbar.classList.remove('active', 'open');
-        }
-        if (hamburger) {
-            hamburger.classList.remove('active');
-            hamburger.setAttribute('aria-expanded', 'false');
-        }
-        if (backdrop) {
-            backdrop.classList.remove('active');
-            document.body.classList.remove('drawer-open');
-        }
-    }
-
     function updateBackdrop() {
         if (!backdrop) return;
         const isSidebarOpen = !sidebarCollapsed && isMobile();
-        const isNavbarOpen = navbar && navbar.classList.contains('active');
-        const anyOpen = isSidebarOpen || isNavbarOpen;
+        const anyOpen = isSidebarOpen;
         
         backdrop.classList.toggle('active', anyOpen);
         document.body.classList.toggle('drawer-open', anyOpen);
@@ -465,7 +437,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (!sidebarCollapsed && isMobile()) {
-            closeNavbarDrawer();
             const firstLink = sidebar.querySelector('a');
             if (firstLink) firstLink.focus();
         }
@@ -540,7 +511,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     sidebarCollapsed = true;
                     updateSidebar();
                 }
-                closeNavbarDrawer();
                 updateBackdrop();
             }
         });
@@ -573,10 +543,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 sidebarToggles.forEach(t => t.setAttribute('aria-expanded', 'false'));
                 updateBackdrop();
             }
-            if (navbar && navbar.classList.contains('active')) {
-                closeNavbarDrawer();
-                updateBackdrop();
-            }
         }
     });
 
@@ -587,13 +553,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const target = e.target;
         const isInsideSidebar = sidebar.contains(target);
         const isToggle = sidebarToggles.some(t => t.contains(target));
-        const isInsideNavbar = navbar && navbar.contains(target);
-        const isInsideHamburger = hamburger && hamburger.contains(target);
         const isInsideBackdrop = backdrop && backdrop.contains(target);
 
         if (isInsideBackdrop) return;
 
-        if (!sidebarCollapsed && !isInsideSidebar && !isToggle && !isInsideNavbar && !isInsideHamburger) {
+        if (!sidebarCollapsed && !isInsideSidebar && !isToggle) {
             sidebarCollapsed = true;
             updateSidebar();
             sidebarToggles.forEach(t => t.setAttribute('aria-expanded', 'false'));
@@ -611,25 +575,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     sidebarCollapsed = true;
                     updateSidebar();
                 }
-                if (navbar && navbar.classList.contains('active')) {
-                    closeNavbarDrawer();
-                }
             } else {
                 const savedState = localStorage.getItem('sidebarCollapsed');
                 if (savedState !== null) {
                     sidebarCollapsed = savedState === 'true';
                     updateSidebar();
-                }
-                if (navbar) {
-                    navbar.classList.remove('active', 'open');
-                }
-                if (hamburger) {
-                    hamburger.classList.remove('active');
-                    hamburger.setAttribute('aria-expanded', 'false');
-                }
-                if (backdrop) {
-                    backdrop.classList.remove('active');
-                    document.body.classList.remove('drawer-open');
                 }
             }
             updateContentHeight();
@@ -641,94 +591,4 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize
     updateSidebar();
     updateContentHeight();
-});
-
-// --- Hamburger Toggle Handler ---
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
-    const navbar = document.getElementById('navbar');
-    const backdrop = document.getElementById('mobileDrawerBackdrop');
-    const navbarClose = document.querySelector('.navbar-close');
-
-    if (!hamburger || !navbar) return;
-
-    // Remove existing listeners by cloning
-    const newHamburger = hamburger.cloneNode(true);
-    hamburger.parentNode.replaceChild(newHamburger, hamburger);
-    const freshHamburger = document.querySelector('.hamburger');
-
-    function closeMenu() {
-        navbar.classList.remove('active', 'open');
-        freshHamburger.classList.remove('active');
-        freshHamburger.setAttribute('aria-expanded', 'false');
-        if (backdrop) {
-            backdrop.classList.remove('active');
-            document.body.classList.remove('drawer-open');
-        }
-    }
-
-    function openMenu() {
-        navbar.classList.add('active', 'open');
-        freshHamburger.classList.add('active');
-        freshHamburger.setAttribute('aria-expanded', 'true');
-        if (backdrop) {
-            backdrop.classList.add('active');
-            document.body.classList.add('drawer-open');
-        }
-        // Close sidebar if open on mobile
-        const sidebar = document.querySelector('.sidebar');
-        if (sidebar && sidebar.classList.contains('active')) {
-            const sidebarToggle = document.querySelector('.chapter-sidebar-toggle, #sidebarToggle, .sidebar-toggle');
-            if (sidebarToggle) {
-                sidebarToggle.click();
-            }
-        }
-    }
-
-    freshHamburger.addEventListener('click', function(e) {
-        e.stopPropagation();
-        if (navbar.classList.contains('active')) {
-            closeMenu();
-        } else {
-            openMenu();
-        }
-    });
-
-    if (navbarClose) {
-        navbarClose.addEventListener('click', function(e) {
-            e.stopPropagation();
-            closeMenu();
-        });
-    }
-
-    freshHamburger.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            freshHamburger.click();
-        }
-    });
-
-    // Close on backdrop click
-    if (backdrop) {
-        backdrop.addEventListener('click', closeMenu);
-    }
-
-    // Close on Escape
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && navbar.classList.contains('active')) {
-            closeMenu();
-            freshHamburger.focus();
-        }
-    });
-
-    // Close on resize to desktop
-    let resizeTimeout;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(function() {
-            if (window.innerWidth >= 993 && navbar.classList.contains('active')) {
-                closeMenu();
-            }
-        }, 200);
-    });
 });
