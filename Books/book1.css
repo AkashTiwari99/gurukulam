@@ -5,12 +5,13 @@
     --header-height: 60px;
 }
 
-/* Override body padding to match book header height */
+/* Override body padding */
 body {
     padding-top: 0 !important;
     overflow-x: hidden;
 }
 
+/* Header Styles */
 .header {
     position: sticky;
     top: 0;
@@ -35,6 +36,7 @@ body {
     gap: 1rem;
 }
 
+/* Main Container - FIXED overflow */
 .main-container {
     display: flex;
     flex-direction: row;
@@ -46,11 +48,11 @@ body {
     position: relative;
     transition: margin-left var(--transition-med);
     margin-left: 0;
-    overflow: hidden;
+    overflow: hidden; /* FIXED: Prevents double scrollbars */
     background: linear-gradient(180deg, var(--primary-bg), #f8f9ff);
 }
 
-/* Sidebar Styles */
+/* Sidebar Styles - FIXED overflow */
 .sidebar {
     width: var(--sidebar-width);
     flex: 0 0 var(--sidebar-width);
@@ -59,7 +61,7 @@ body {
     border-right: 2px solid var(--accent-color);
     box-shadow: 0 0 2px rgba(35, 213, 171, 0.2);
     padding: var(--space-md);
-    overflow-y: auto;
+    overflow-y: auto; /* Only sidebar scrolls */
     transition: all var(--transition-med) ease;
     z-index: 1000;
     height: 100%;
@@ -68,6 +70,23 @@ body {
     align-self: flex-start;
     will-change: width;
     border-radius: 0 1rem 1rem 0;
+    /* FIXED: Hide scrollbar but keep functionality */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(35, 213, 171, 0.3) transparent;
+}
+
+/* Webkit scrollbar styling */
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(35, 213, 171, 0.3);
+    border-radius: 99px;
 }
 
 .sidebar h1 {
@@ -128,7 +147,7 @@ body {
     margin-right: var(--space-sm);
 }
 
-/* Collapsed state styles */
+/* Collapsed state */
 .sidebar.collapsed {
     width: var(--sidebar-collapsed-width);
     flex-basis: var(--sidebar-collapsed-width);
@@ -155,7 +174,7 @@ body {
     margin-right: 0;
 }
 
-/* Content Area */
+/* Content Area - FIXED overflow */
 .content {
     flex: 1 1 auto;
     min-width: 0;
@@ -165,11 +184,31 @@ body {
     margin-left: 0;
     min-height: calc(100vh - var(--header-height));
     background-color: #ffffff;
-    overflow-y: auto;
+    overflow-y: auto; /* Only content scrolls */
     transition: margin-left var(--transition-med);
     margin-right: 0;
     box-sizing: border-box;
     box-shadow: inset 1px 0 0 rgba(79, 70, 229, 0.08);
+    /* FIXED: Hide scrollbar but keep functionality */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(79, 70, 229, 0.2) transparent;
+}
+
+.content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: rgba(79, 70, 229, 0.2);
+    border-radius: 99px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+    background: rgba(79, 70, 229, 0.4);
 }
 
 .main-container.sidebar-collapsed {
@@ -183,6 +222,15 @@ body {
     margin: 0 auto var(--space-lg);
     border-radius: var(--border-radius-medium);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* FIXED: Content page wrapper - no extra margins */
+.content .page {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 /* Header adjustments */
@@ -200,7 +248,16 @@ html {
     scroll-padding-top: var(--header-height);
 }
 
-/* Responsive Adjustments */
+/* FIXED: Kanda dropdown positioning */
+.kanda-dropdown-container {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+/* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
     :root {
         --sidebar-width: 240px;
@@ -229,6 +286,9 @@ html {
         background: rgba(79, 70, 229, 0.08);
         cursor: pointer;
         margin-left: auto;
+        border: none;
+        padding: 10px;
+        z-index: 9999;
     }
 
     .hamburger span {
@@ -260,7 +320,7 @@ html {
         height: 100vh;
         background: #ffffff;
         box-shadow: -12px 0 30px rgba(17, 24, 39, 0.2);
-        z-index: 1200;
+        z-index: 9998;
         padding: 5rem 1rem 1rem;
         transition: right 0.3s ease;
     }
@@ -292,16 +352,7 @@ html {
         color: var(--primary-color);
     }
 
-    .main-container {
-        display: flex;
-        flex-direction: row;
-        min-height: calc(100vh - var(--header-height));
-        height: calc(100vh - var(--header-height));
-        margin-top: 0;
-        margin-left: 0;
-        width: 100%;
-    }
-
+    /* FIXED: Mobile sidebar */
     .sidebar {
         display: none;
         width: var(--sidebar-width);
@@ -318,7 +369,7 @@ html {
         overflow-y: auto;
         transform: none;
         transition: left 0.3s ease;
-        z-index: 1000;
+        z-index: 9997;
         box-shadow: 10px 0 30px rgba(0, 0, 0, 0.18);
     }
 
@@ -332,6 +383,7 @@ html {
         padding: 0.7rem 0.85rem;
     }
 
+    /* FIXED: Content full width on mobile */
     .content {
         width: 100%;
         flex: none;
@@ -340,6 +392,8 @@ html {
         margin-left: 0;
         min-height: auto;
         box-shadow: none;
+        overflow-y: visible;
+        height: auto;
     }
 
     .content .page {
@@ -379,7 +433,7 @@ html {
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.3s ease;
-        z-index: 998;
+        z-index: 9996;
     }
 
     .mobile-drawer-backdrop.active {
@@ -403,7 +457,7 @@ html {
     }
 }
 
-/* Tablet-specific content grid */
+/* Tablet-specific */
 @media (min-width: 600px) and (max-width: 1024px) {
     .content {
         display: grid;
@@ -417,7 +471,7 @@ html {
     }
 }
 
-/* Mobile screens - off-canvas sidebar and full-width content */
+/* Mobile screens */
 @media (max-width: 768px) {
     :root {
         --sidebar-width: 280px;
@@ -435,6 +489,7 @@ html {
         height: auto;
         min-height: auto;
         width: 100%;
+        overflow: visible;
     }
 
     .sidebar {
@@ -488,75 +543,6 @@ html {
     }
 }
 
-/* Kanda Dropdown */
-.kanda-dropdown-container {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-toggle {
-    background: var(--primary-color);
-    color: white;
-    padding: var(--space-sm) var(--space-md);
-    border: none;
-    border-radius: var(--border-radius-medium);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-}
-
-.dropdown-toggle:hover {
-    background: var(--primary-dark);
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: var(--light);
-    min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border-radius: var(--border-radius-medium);
-    overflow: hidden;
-}
-
-.dropdown-menu.open {
-    display: block;
-}
-
-.dropdown-toggle[aria-expanded="true"] + .dropdown-menu {
-    display: block;
-}
-
-.dropdown-menu li {
-    list-style: none;
-}
-
-.dropdown-menu a {
-    color: var(--text-dark);
-    padding: var(--space-sm) var(--space-md);
-    text-decoration: none;
-    display: block;
-    transition: all var(--transition-fast);
-    font-family: 'Noto Serif Devanagari', serif;
-}
-
-.dropdown-menu a:hover {
-    background-color: rgba(107, 56, 251, 0.1);
-    color: var(--primary-color);
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
 /* Loader Styles */
 .loader-container {
     display: flex;
@@ -577,13 +563,8 @@ html {
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .error-message {
@@ -651,9 +632,18 @@ html {
     }
 }
 
-/* Fix nested page margin/padding offset issues in the content area */
+/* Fix nested page margin/padding offset issues */
 .content .page {
     margin-left: 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
+}
+
+/* FIXED: Remove any duplicate sidebars that might appear */
+.sidebar .sidebar {
+    display: none !important;
+}
+
+.main-container .sidebar + .sidebar {
+    display: none !important;
 }

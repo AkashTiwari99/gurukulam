@@ -14,7 +14,7 @@ async function loadContent(url, targetElementId, linkElement) {
         contentElement.style.opacity = '1';
         
         if (!isError) {
-            // Remove active class from all links
+            // Remove active class from all sidebar links
             document.querySelectorAll('.sidebar a, .dropdown-menu a').forEach(link => link.classList.remove('active'));
             // Add active class to the clicked link
             if (linkElement) {
@@ -31,12 +31,11 @@ async function loadContent(url, targetElementId, linkElement) {
         }
     };
 
-    // Resolve the URL relative to the current location and use the resolved URL as cache key
+    // Resolve the URL relative to the current location
     let resolvedUrl;
     try {
         resolvedUrl = new URL(url, window.location.href).href;
     } catch (e) {
-        // If URL constructor fails, fall back to original
         resolvedUrl = url;
     }
 
@@ -50,7 +49,6 @@ async function loadContent(url, targetElementId, linkElement) {
     contentElement.style.opacity = '0.5';
 
     try {
-        // Create AbortController for timeout handling (5 seconds)
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 5000);
 
@@ -63,15 +61,33 @@ async function loadContent(url, targetElementId, linkElement) {
 
         const data = await response.text();
 
-        // Parse html to extract only the actual content wrapper (.page) and sanitize scripts
+        // Parse html to extract ONLY the content wrapper (.page)
         const parser = new DOMParser();
         const doc = parser.parseFromString(data, 'text/html');
 
-        // Remove any <script> tags to avoid accidental execution
+        // CRITICAL FIX: Remove ALL script tags
         doc.querySelectorAll('script').forEach(s => s.remove());
 
-        const pageContent = doc.querySelector('.page');
-        const cleanData = pageContent ? pageContent.outerHTML : doc.body.innerHTML;
+        // CRITICAL FIX: Remove header, navbar, sidebar from loaded content
+        // This prevents duplicate headers and sidebars
+        doc.querySelectorAll('.header, header, .sidebar, .main-container > .sidebar, .kanda-dropdown-container, .sidebar-toggle, #sidebarToggle, .chapter-sidebar-toggle').forEach(el => el.remove());
+
+        // Get ONLY the .page content
+        let pageContent = doc.querySelector('.page');
+        
+        // If no .page found, try to get main content
+        if (!pageContent) {
+            pageContent = doc.querySelector('main .content, .content-area, #content');
+        }
+        
+        // If still no content, get body but remove header, nav, sidebar
+        if (!pageContent) {
+            const bodyClone = doc.body.cloneNode(true);
+            bodyClone.querySelectorAll('.header, header, .sidebar, nav, .kanda-dropdown-container, .sidebar-toggle, #sidebarToggle, .chapter-sidebar-toggle, .footer, footer').forEach(el => el.remove());
+            pageContent = bodyClone;
+        }
+
+        const cleanData = pageContent ? pageContent.outerHTML : '<p>Content not found.</p>';
 
         // Cache the successful response
         contentCache.set(resolvedUrl, cleanData);
@@ -101,7 +117,7 @@ async function loadContent(url, targetElementId, linkElement) {
     }
 }
 
-// Add event listeners to sidebar links only
+// Add event listeners to sidebar links
 document.addEventListener('DOMContentLoaded', function() {
     const links = document.querySelectorAll('.sidebar a[data-target], .dropdown-menu a[data-target]');
     if (!links || links.length === 0) return;
@@ -117,7 +133,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Use resolved URL so cache keys are consistent
             let resolvedUrl;
             try {
                 resolvedUrl = new URL(url, window.location.href).href;
@@ -132,7 +147,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Initialize Kanda dropdown
 function initKandaDropdown() {
-    // Define files with their basenames since they all reside in Books/book_link/
     const kandaFiles = [
         { file: "Bala_Srga.html", name: "बालकाण्डः" },
         { file: "Ay_Sarga.html", name: "अयोध्याकाण्डः" },
@@ -147,9 +161,8 @@ function initKandaDropdown() {
     const currentPath = window.location.pathname;
 
     if (dropdownMenu) {
-        dropdownMenu.innerHTML = ''; // Clear existing items
+        dropdownMenu.innerHTML = '';
 
-        // Determine the prefix based on current location
         let prefix = "";
         if (currentPath.includes("/Books/book_link/")) {
             prefix = "";
@@ -189,7 +202,6 @@ function initKandaDropdownToggle() {
         dropdownToggle.setAttribute('aria-expanded', String(expanded));
     });
 
-    // Close dropdown when clicking outside
     document.addEventListener('click', (event) => {
         const container = document.querySelector('.kanda-dropdown-container');
         if (container && !container.contains(event.target)) {
@@ -198,7 +210,6 @@ function initKandaDropdownToggle() {
         }
     });
 
-    // Close dropdown on Escape key
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
             dropdownMenu.classList.remove('open');
@@ -236,7 +247,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize sidebar state
     let sidebarCollapsed = isMobile();
 
-    // Try to get saved state from localStorage (only for desktop)
     if (!isMobile()) {
         const savedState = localStorage.getItem('sidebarCollapsed');
         if (savedState !== null) {
@@ -244,7 +254,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Close navbar drawer (hamburger menu)
     function closeNavbarDrawer() {
         if (navbar) {
             navbar.classList.remove('active', 'open');
@@ -259,7 +268,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Update backdrop visibility
     function updateBackdrop() {
         if (!backdrop) return;
         const isSidebarOpen = !sidebarCollapsed && isMobile();
@@ -270,20 +278,16 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.classList.toggle('drawer-open', anyOpen);
     }
 
-    // Toggle sidebar
     function toggleSidebar() {
         sidebarCollapsed = !sidebarCollapsed;
         updateSidebar();
 
-        // Update aria-expanded on toggles
         sidebarToggles.forEach(t => t.setAttribute('aria-expanded', String(!sidebarCollapsed)));
 
-        // Save state (only for desktop)
         if (!isMobile()) {
             localStorage.setItem('sidebarCollapsed', sidebarCollapsed);
         }
 
-        // When opening on mobile, close navbar drawer and focus first link
         if (!sidebarCollapsed && isMobile()) {
             closeNavbarDrawer();
             const firstLink = sidebar.querySelector('a');
@@ -293,7 +297,6 @@ document.addEventListener('DOMContentLoaded', function () {
         updateBackdrop();
     }
 
-    // Update sidebar state
     function updateSidebar() {
         content.style.marginLeft = '0';
 
@@ -317,7 +320,6 @@ document.addEventListener('DOMContentLoaded', function () {
         updateBackdrop();
     }
 
-    // Adjust content height
     function updateContentHeight() {
         const headerHeight = header.offsetHeight;
         content.style.minHeight = `calc(100vh - ${headerHeight}px)`;
@@ -386,7 +388,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Close sidebar on Escape key (mobile)
+    // Close sidebar on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             if (isMobile() && !sidebarCollapsed) {
@@ -395,7 +397,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 sidebarToggles.forEach(t => t.setAttribute('aria-expanded', 'false'));
                 updateBackdrop();
             }
-            // Also close navbar if open
             if (navbar && navbar.classList.contains('active')) {
                 closeNavbarDrawer();
                 updateBackdrop();
@@ -414,10 +415,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const isInsideHamburger = hamburger && hamburger.contains(target);
         const isInsideBackdrop = backdrop && backdrop.contains(target);
 
-        // If clicking on backdrop, handled above
         if (isInsideBackdrop) return;
 
-        // If clicking outside sidebar and sidebar is open, close it
         if (!sidebarCollapsed && !isInsideSidebar && !isToggle && !isInsideNavbar && !isInsideHamburger) {
             sidebarCollapsed = true;
             updateSidebar();
@@ -436,18 +435,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     sidebarCollapsed = true;
                     updateSidebar();
                 }
-                // Close navbar on resize to mobile
                 if (navbar && navbar.classList.contains('active')) {
                     closeNavbarDrawer();
                 }
             } else {
-                // Restore saved state on desktop
                 const savedState = localStorage.getItem('sidebarCollapsed');
                 if (savedState !== null) {
                     sidebarCollapsed = savedState === 'true';
                     updateSidebar();
                 }
-                // Ensure navbar is visible on desktop
                 if (navbar) {
                     navbar.classList.remove('active', 'open');
                 }
@@ -471,7 +467,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateContentHeight();
 });
 
-// --- Fix: Ensure navbar toggle works with hamburger ---
+// --- Hamburger Toggle Handler ---
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navbar = document.getElementById('navbar');
@@ -480,65 +476,83 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (!hamburger || !navbar) return;
 
-    // Remove any existing click listeners to avoid duplicates
+    // Remove existing listeners by cloning
     const newHamburger = hamburger.cloneNode(true);
     hamburger.parentNode.replaceChild(newHamburger, hamburger);
-
-    // Get the new reference
     const freshHamburger = document.querySelector('.hamburger');
 
-    // Toggle navbar on hamburger click
+    function closeMenu() {
+        navbar.classList.remove('active', 'open');
+        freshHamburger.classList.remove('active');
+        freshHamburger.setAttribute('aria-expanded', 'false');
+        if (backdrop) {
+            backdrop.classList.remove('active');
+            document.body.classList.remove('drawer-open');
+        }
+    }
+
+    function openMenu() {
+        navbar.classList.add('active', 'open');
+        freshHamburger.classList.add('active');
+        freshHamburger.setAttribute('aria-expanded', 'true');
+        if (backdrop) {
+            backdrop.classList.add('active');
+            document.body.classList.add('drawer-open');
+        }
+        // Close sidebar if open on mobile
+        const sidebar = document.querySelector('.sidebar');
+        if (sidebar && sidebar.classList.contains('active')) {
+            const sidebarToggle = document.querySelector('.chapter-sidebar-toggle, #sidebarToggle, .sidebar-toggle');
+            if (sidebarToggle) {
+                sidebarToggle.click();
+            }
+        }
+    }
+
     freshHamburger.addEventListener('click', function(e) {
         e.stopPropagation();
-        const isOpen = navbar.classList.contains('active');
-        
-        if (isOpen) {
-            navbar.classList.remove('active', 'open');
-            freshHamburger.classList.remove('active');
-            freshHamburger.setAttribute('aria-expanded', 'false');
-            if (backdrop) {
-                backdrop.classList.remove('active');
-                document.body.classList.remove('drawer-open');
-            }
+        if (navbar.classList.contains('active')) {
+            closeMenu();
         } else {
-            navbar.classList.add('active', 'open');
-            freshHamburger.classList.add('active');
-            freshHamburger.setAttribute('aria-expanded', 'true');
-            if (backdrop) {
-                backdrop.classList.add('active');
-                document.body.classList.add('drawer-open');
-            }
-            // Close sidebar if open on mobile
-            const sidebar = document.querySelector('.sidebar');
-            if (sidebar && sidebar.classList.contains('active')) {
-                // Close sidebar via its toggle
-                const sidebarToggle = document.querySelector('.chapter-sidebar-toggle, #sidebarToggle, .sidebar-toggle');
-                if (sidebarToggle) {
-                    sidebarToggle.click();
-                }
-            }
+            openMenu();
         }
     });
 
-    // Close navbar with close button
     if (navbarClose) {
         navbarClose.addEventListener('click', function(e) {
             e.stopPropagation();
-            navbar.classList.remove('active', 'open');
-            freshHamburger.classList.remove('active');
-            freshHamburger.setAttribute('aria-expanded', 'false');
-            if (backdrop) {
-                backdrop.classList.remove('active');
-                document.body.classList.remove('drawer-open');
-            }
+            closeMenu();
         });
     }
 
-    // Keyboard support for hamburger
     freshHamburger.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             freshHamburger.click();
         }
+    });
+
+    // Close on backdrop click
+    if (backdrop) {
+        backdrop.addEventListener('click', closeMenu);
+    }
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navbar.classList.contains('active')) {
+            closeMenu();
+            freshHamburger.focus();
+        }
+    });
+
+    // Close on resize to desktop
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+            if (window.innerWidth >= 993 && navbar.classList.contains('active')) {
+                closeMenu();
+            }
+        }, 200);
     });
 });
