@@ -11,7 +11,6 @@ class MainApp {
             this.setupNewsletterForm();
             this.setupDropdownBehavior();
             this.setupTestimonialSlider();
-            this.setupNavbarToggle();
         });
 
         // Cleanup on page unload
@@ -24,7 +23,6 @@ class MainApp {
 
     // Highlight current page in navigation
     highlightCurrentPage() {
-
         const currentPath = window.location.pathname;
         const currentPage = currentPath.split('/').pop() || 'index.html';
         const navLinks = document.querySelectorAll('.nav-list li a, .navbar ul li a');
@@ -275,10 +273,12 @@ class MainApp {
         this.currentSlide = (this.currentSlide - 1 + slides.length) % slides.length;
         this.showTestimonial(this.currentSlide);
     }
+}
 
-    /**
+/**
  * @class NavigationController
  * Architectural controller handling modern slide drawer layouts and toggle interactions.
+ * Fixes hamburger toggle with proper state management and event handling.
  */
 class NavigationController {
     constructor() {
@@ -286,6 +286,8 @@ class NavigationController {
         this.hamburger = document.querySelector('.hamburger');
         this.sidebar = document.querySelector('.sidebar');
         this.backdrop = document.getElementById('mobileDrawerBackdrop');
+        this.navbarCloseBtn = document.querySelector('.navbar-close');
+        this.isOpen = false;
         
         this.init();
     }
@@ -298,8 +300,10 @@ class NavigationController {
             this.setupNavbarToggle();
             this.setupAutoCloseLinks();
             this.setupOutsideClickCleanup();
+            this.setupCloseButton();
+            this.setupEscapeKey();
         } else {
-            console.warn('Initialization aborted: Navbar or Hamburger node elements not resolved.');
+            console.warn('NavigationController: Navbar or Hamburger node elements not resolved.');
         }
     }
 
@@ -307,9 +311,14 @@ class NavigationController {
      * Enforces explicit visual state cleanups across all interactive DOM branches.
      */
     closeMenu() {
-        this.hamburger.setAttribute('aria-expanded', 'false');
-        this.navbar.classList.remove('open', 'active');
-        this.hamburger.classList.remove('active');
+        if (this.hamburger) {
+            this.hamburger.setAttribute('aria-expanded', 'false');
+            this.hamburger.classList.remove('active');
+        }
+        
+        if (this.navbar) {
+            this.navbar.classList.remove('open', 'active');
+        }
 
         if (this.sidebar) {
             this.sidebar.classList.remove('open', 'active');
@@ -319,42 +328,95 @@ class NavigationController {
             this.backdrop.classList.remove('active');
             document.body.classList.remove('drawer-open');
         }
+
+        this.isOpen = false;
+    }
+
+    /**
+     * Opens the menu with proper state updates.
+     */
+    openMenu() {
+        if (this.hamburger) {
+            this.hamburger.setAttribute('aria-expanded', 'true');
+            this.hamburger.classList.add('active');
+        }
+        
+        if (this.navbar) {
+            this.navbar.classList.add('open', 'active');
+        }
+
+        if (this.backdrop) {
+            this.backdrop.classList.add('active');
+            document.body.classList.add('drawer-open');
+        }
+
+        this.isOpen = true;
+    }
+
+    /**
+     * Toggles the menu state.
+     */
+    toggleMenu() {
+        if (this.isOpen) {
+            this.closeMenu();
+        } else {
+            this.openMenu();
+        }
     }
 
     /**
      * Binds mouse click and keyboard event routines onto the trigger button node.
      */
     setupNavbarToggle() {
-        this.hamburger.setAttribute('aria-expanded', 'false');
+        if (this.hamburger) {
+            this.hamburger.setAttribute('aria-expanded', 'false');
+            this.hamburger.setAttribute('aria-label', 'Toggle navigation menu');
 
-        this.hamburger.addEventListener('click', (event) => {
-            event.stopPropagation(); // Halts bubble loops to avoid firing window cleanup sweeps
-            
-            const isExpanded = this.hamburger.getAttribute('aria-expanded') === 'true';
-            const nextState = !isExpanded;
+            this.hamburger.addEventListener('click', (event) => {
+                event.stopPropagation();
+                this.toggleMenu();
+            });
 
-            // Synchronize operational animation token attributes
-            this.navbar.classList.toggle('open', nextState);
-            this.navbar.classList.toggle('active', nextState);
-            this.hamburger.classList.toggle('active', nextState);
-            this.hamburger.setAttribute('aria-expanded', String(nextState));
+            // Accessibility (A11y) Keyboard Framework Support
+            this.hamburger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.toggleMenu();
+                }
+            });
+        }
+    }
 
-            if (this.sidebar) {
-                this.sidebar.classList.toggle('open', nextState);
-                if (!nextState) this.sidebar.classList.remove('active');
-            }
+    /**
+     * Sets up the close button inside the navbar drawer.
+     */
+    setupCloseButton() {
+        if (this.navbarCloseBtn) {
+            this.navbarCloseBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.closeMenu();
+            });
 
-            if (this.backdrop) {
-                this.backdrop.classList.toggle('active', nextState);
-                document.body.classList.toggle('drawer-open', nextState);
-            }
-        });
+            this.navbarCloseBtn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.closeMenu();
+                }
+            });
+        }
+    }
 
-        // Accessibility (A11y) Keyboard Framework Support
-        this.hamburger.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                this.hamburger.click();
+    /**
+     * Closes menu on Escape key press.
+     */
+    setupEscapeKey() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isOpen) {
+                this.closeMenu();
+                // Return focus to hamburger
+                if (this.hamburger) {
+                    this.hamburger.focus();
+                }
             }
         });
     }
@@ -364,15 +426,32 @@ class NavigationController {
      * Direct link selections close the menu; interactive parent links (dropdowns) are ignored.
      */
     setupAutoCloseLinks() {
-        const menuLinks = this.navbar.querySelectorAll('.nav-list a');
+        if (!this.navbar) return;
+        
+        const menuLinks = this.navbar.querySelectorAll('.nav-list a:not([href="javascript:void(0)"])');
         
         menuLinks.forEach(link => {
             link.addEventListener('click', () => {
-                // Safeguard: Dropdown toggles matching javascript:void(0) yield execution loops early
-                if (link.getAttribute('href') === 'javascript:void(0)') {
-                    return;
+                // Only close if it's an actual navigation link, not a dropdown toggle
+                if (link.getAttribute('href') && 
+                    link.getAttribute('href') !== 'javascript:void(0)' &&
+                    link.getAttribute('href') !== '#') {
+                    this.closeMenu();
                 }
-                this.closeMenu();
+            });
+        });
+
+        // Also handle dropdown parent links - prevent closing when toggling dropdown
+        const dropdownLinks = this.navbar.querySelectorAll('.has-dropdown > a[href="javascript:void(0)"]');
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const parent = link.closest('.has-dropdown');
+                if (parent) {
+                    parent.classList.toggle('active');
+                    const isActive = parent.classList.contains('active');
+                    link.setAttribute('aria-expanded', String(isActive));
+                }
             });
         });
     }
@@ -382,14 +461,35 @@ class NavigationController {
      */
     setupOutsideClickCleanup() {
         document.addEventListener('click', (event) => {
+            if (!this.isOpen) return;
+            
             const target = event.target;
-            const isClickInsideNavbar = this.navbar.contains(target);
-            const isClickInsideHamburger = this.hamburger.contains(target);
+            const isClickInsideNavbar = this.navbar && this.navbar.contains(target);
+            const isClickInsideHamburger = this.hamburger && this.hamburger.contains(target);
             const isClickInsideSidebar = this.sidebar && this.sidebar.contains(target);
+            const isClickInsideBackdrop = this.backdrop && this.backdrop.contains(target);
 
+            // If clicking on backdrop, close menu
+            if (isClickInsideBackdrop) {
+                this.closeMenu();
+                return;
+            }
+
+            // If clicking outside all relevant elements, close menu
             if (!isClickInsideNavbar && !isClickInsideHamburger && !isClickInsideSidebar) {
                 this.closeMenu();
             }
+        });
+
+        // Handle window resize - close menu on resize to desktop
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (window.innerWidth >= 993 && this.isOpen) {
+                    this.closeMenu();
+                }
+            }, 250);
         });
     }
 }

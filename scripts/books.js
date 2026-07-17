@@ -46,7 +46,7 @@ async function loadContent(url, targetElementId, linkElement) {
         return;
     }
 
-    contentElement.innerHTML = '<div class="loader"><p>Loading...</p></div>';
+    contentElement.innerHTML = '<div class="loader-container"><div class="loader"></div><p>Loading...</p></div>';
     contentElement.style.opacity = '0.5';
 
     try {
@@ -90,9 +90,11 @@ async function loadContent(url, targetElementId, linkElement) {
         }
         
         const errorHtml = `
-            <div class="error-message" style="padding: 20px; background-color: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px; color: #721c24;">
+            <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
                 <p><strong>Error:</strong> ${errorMessage}</p>
                 <p style="font-size: 0.9em; margin-top: 10px;">If the problem persists, try refreshing the page.</p>
+                <button class="btn btn-primary" onclick="location.reload()" style="margin-top: 10px;">Refresh Page</button>
             </div>
         `;
         runDOMUpdate(errorHtml, true);
@@ -165,6 +167,7 @@ function initKandaDropdown() {
                 const anchor = document.createElement("a");
                 anchor.href = finalUrl;
                 anchor.textContent = item.name;
+                anchor.setAttribute('data-target', 'content');
                 listItem.appendChild(anchor);
                 dropdownMenu.appendChild(listItem);
             }
@@ -180,13 +183,24 @@ function initKandaDropdownToggle() {
 
     dropdownToggle.addEventListener('click', (event) => {
         event.preventDefault();
+        event.stopPropagation();
         dropdownMenu.classList.toggle('open');
         const expanded = dropdownMenu.classList.contains('open');
         dropdownToggle.setAttribute('aria-expanded', String(expanded));
     });
 
+    // Close dropdown when clicking outside
     document.addEventListener('click', (event) => {
-        if (!event.target.closest('.kanda-dropdown-container')) {
+        const container = document.querySelector('.kanda-dropdown-container');
+        if (container && !container.contains(event.target)) {
+            dropdownMenu.classList.remove('open');
+            dropdownToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Close dropdown on Escape key
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
             dropdownMenu.classList.remove('open');
             dropdownToggle.setAttribute('aria-expanded', 'false');
         }
@@ -197,32 +211,21 @@ function initKandaDropdownToggle() {
 initKandaDropdown();
 initKandaDropdownToggle();
 
-// dynamic-sidebar.js logic included
+// Sidebar Controller - Handles sidebar toggle and interaction
 document.addEventListener('DOMContentLoaded', function () {
     const sidebar = document.querySelector('.sidebar');
     const content = document.querySelector('.content');
     const mainContainer = document.querySelector('.main-container');
-    const sidebarToggles = Array.from(document.querySelectorAll('.chapter-sidebar-toggle')) || [];
+    const sidebarToggles = Array.from(document.querySelectorAll('.chapter-sidebar-toggle, #sidebarToggle, .sidebar-toggle'));
     const header = document.querySelector('.header');
+    const backdrop = document.getElementById('mobileDrawerBackdrop');
     const navbar = document.getElementById('navbar');
     const hamburger = document.querySelector('.hamburger');
-    const backdrop = document.getElementById('mobileDrawerBackdrop');
 
     if (!sidebar || !content || !header || !mainContainer) return;
 
-    // If no toggle buttons found, try to create a basic one for mobile
-    if (sidebarToggles.length === 0) {
-        const btn = document.createElement('button');
-        btn.className = 'sidebar-toggle';
-        btn.id = 'sidebarToggle';
-        btn.innerHTML = '<i class="fas fa-bars"></i>';
-        document.body.appendChild(btn);
-        sidebarToggles.push(btn);
-    }
-
+    // Get header height
     const headerHeight = header.offsetHeight;
-
-    // Set CSS variables
     document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
 
     // Mobile detection
@@ -241,24 +244,33 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Close navbar drawer (hamburger menu)
     function closeNavbarDrawer() {
         if (navbar) {
-            navbar.classList.remove('active');
+            navbar.classList.remove('active', 'open');
         }
         if (hamburger) {
             hamburger.classList.remove('active');
             hamburger.setAttribute('aria-expanded', 'false');
         }
+        if (backdrop) {
+            backdrop.classList.remove('active');
+            document.body.classList.remove('drawer-open');
+        }
     }
 
+    // Update backdrop visibility
     function updateBackdrop() {
         if (!backdrop) return;
-        const anyOpen = isMobile() && (!sidebarCollapsed || (navbar && navbar.classList.contains('active')));
+        const isSidebarOpen = !sidebarCollapsed && isMobile();
+        const isNavbarOpen = navbar && navbar.classList.contains('active');
+        const anyOpen = isSidebarOpen || isNavbarOpen;
+        
         backdrop.classList.toggle('active', anyOpen);
         document.body.classList.toggle('drawer-open', anyOpen);
     }
 
-    // Toggle function
+    // Toggle sidebar
     function toggleSidebar() {
         sidebarCollapsed = !sidebarCollapsed;
         updateSidebar();
@@ -271,17 +283,19 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('sidebarCollapsed', sidebarCollapsed);
         }
 
-        // When opening on mobile, focus first link
+        // When opening on mobile, close navbar drawer and focus first link
         if (!sidebarCollapsed && isMobile()) {
             closeNavbarDrawer();
             const firstLink = sidebar.querySelector('a');
             if (firstLink) firstLink.focus();
         }
+        
+        updateBackdrop();
     }
 
     // Update sidebar state
     function updateSidebar() {
-        content.style.marginLeft = '0'; // Clear any direct content margin
+        content.style.marginLeft = '0';
 
         if (isMobile()) {
             if (sidebarCollapsed) {
@@ -291,7 +305,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 sidebar.classList.add('active');
                 mainContainer.classList.add('sidebar-open');
             }
-            updateBackdrop();
         } else {
             if (sidebarCollapsed) {
                 sidebar.classList.add('collapsed');
@@ -300,27 +313,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 sidebar.classList.remove('collapsed');
                 mainContainer.classList.remove('sidebar-collapsed');
             }
-            if (backdrop) {
-                backdrop.classList.remove('active');
-                document.body.classList.remove('drawer-open');
-            }
         }
+        updateBackdrop();
     }
 
     // Adjust content height
     function updateContentHeight() {
+        const headerHeight = header.offsetHeight;
         content.style.minHeight = `calc(100vh - ${headerHeight}px)`;
+        document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
     }
 
-    // Event listeners
+    // Set up sidebar toggle buttons
     sidebarToggles.forEach(btn => {
-        // make the toggle keyboard accessible
         btn.setAttribute('aria-controls', 'sidebar');
         btn.setAttribute('aria-expanded', String(!sidebarCollapsed));
+        
         btn.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             toggleSidebar();
         });
+        
         btn.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -329,28 +343,32 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Close the chapter drawer when a chapter is chosen
+    // Close sidebar when a chapter link is clicked (mobile only)
     sidebar.querySelectorAll('a[data-target]').forEach(link => {
         link.addEventListener('click', () => {
             if (isMobile()) {
                 sidebarCollapsed = true;
                 updateSidebar();
+                updateBackdrop();
             }
         });
     });
 
-    // Close both drawers when backdrop is tapped
+    // Close drawers when backdrop is clicked
     if (backdrop) {
         backdrop.addEventListener('click', () => {
             if (isMobile()) {
-                sidebarCollapsed = true;
-                updateSidebar();
+                if (!sidebarCollapsed) {
+                    sidebarCollapsed = true;
+                    updateSidebar();
+                }
                 closeNavbarDrawer();
+                updateBackdrop();
             }
         });
     }
 
-    // Hover effect for desktop
+    // Desktop hover effect for sidebar
     if (!isMobile()) {
         sidebar.addEventListener('mouseenter', () => {
             if (sidebarCollapsed) {
@@ -368,80 +386,82 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Close sidebar on Escape (mobile)
+    // Close sidebar on Escape key (mobile)
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isMobile() && !sidebarCollapsed) {
-            sidebarCollapsed = true;
-            updateSidebar();
-            sidebarToggles.forEach(t => t.setAttribute('aria-expanded', 'false'));
+        if (e.key === 'Escape') {
+            if (isMobile() && !sidebarCollapsed) {
+                sidebarCollapsed = true;
+                updateSidebar();
+                sidebarToggles.forEach(t => t.setAttribute('aria-expanded', 'false'));
+                updateBackdrop();
+            }
+            // Also close navbar if open
+            if (navbar && navbar.classList.contains('active')) {
+                closeNavbarDrawer();
+                updateBackdrop();
+            }
         }
     });
 
     // Click outside to close on mobile
     document.addEventListener('click', (e) => {
         if (!isMobile()) return;
-        if (sidebarCollapsed) return; // already closed
+        
         const target = e.target;
-        if (!sidebar.contains(target) && !sidebarToggles.some(t => t.contains(target)) && !navbar?.contains(target) && !hamburger?.contains(target)) {
+        const isInsideSidebar = sidebar.contains(target);
+        const isToggle = sidebarToggles.some(t => t.contains(target));
+        const isInsideNavbar = navbar && navbar.contains(target);
+        const isInsideHamburger = hamburger && hamburger.contains(target);
+        const isInsideBackdrop = backdrop && backdrop.contains(target);
+
+        // If clicking on backdrop, handled above
+        if (isInsideBackdrop) return;
+
+        // If clicking outside sidebar and sidebar is open, close it
+        if (!sidebarCollapsed && !isInsideSidebar && !isToggle && !isInsideNavbar && !isInsideHamburger) {
             sidebarCollapsed = true;
             updateSidebar();
             sidebarToggles.forEach(t => t.setAttribute('aria-expanded', 'false'));
+            updateBackdrop();
         }
     });
-    document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.querySelector('.hamburger');
-    const navbar = document.getElementById('navbar');
 
-    if (hamburger && sidebar) {
-        
-        // 1. Centralized Close Routine (State Management Logic)
-        const closeSidebar = () => {
-            hamburger.setAttribute('aria-expanded', 'false');
-            sidebar.classList.remove('open');
-        };
-
-        // 2. Open/Close Toggle Control on Click
-        hamburger.addEventListener('click', (event) => {
-            event.stopPropagation();
-            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-            
-            hamburger.setAttribute('aria-expanded', !isExpanded);
-            sidebar.classList.toggle('open', !isExpanded);
-        });
-
-        // 3. AUTO-CLOSE INTERACTION: Closing when structural menu navigation links are clicked
-        const menuLinks = sidebar.querySelectorAll('a, .menu-item, li'); 
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                closeSidebar(); // Link click hote hi immediate close function command trigger
-            });
-        });
-
-        // 4. Auxiliary UX: Outside window click to close
-        document.addEventListener('click', (event) => {
-            if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
-                closeSidebar();
-            }
-        });
-    }
-});
-
-    // Handle resize
+    // Handle window resize
+    let resizeTimeout;
     function handleResize() {
-        if (isMobile()) {
-            if (!sidebarCollapsed) {
-                sidebarCollapsed = true;
-                updateSidebar();
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            if (isMobile()) {
+                if (!sidebarCollapsed) {
+                    sidebarCollapsed = true;
+                    updateSidebar();
+                }
+                // Close navbar on resize to mobile
+                if (navbar && navbar.classList.contains('active')) {
+                    closeNavbarDrawer();
+                }
+            } else {
+                // Restore saved state on desktop
+                const savedState = localStorage.getItem('sidebarCollapsed');
+                if (savedState !== null) {
+                    sidebarCollapsed = savedState === 'true';
+                    updateSidebar();
+                }
+                // Ensure navbar is visible on desktop
+                if (navbar) {
+                    navbar.classList.remove('active', 'open');
+                }
+                if (hamburger) {
+                    hamburger.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                }
+                if (backdrop) {
+                    backdrop.classList.remove('active');
+                    document.body.classList.remove('drawer-open');
+                }
             }
-        } else {
-            // Restore saved state on desktop
-            const savedState = localStorage.getItem('sidebarCollapsed');
-            if (savedState !== null) {
-                sidebarCollapsed = savedState === 'true';
-                updateSidebar();
-            }
-        }
-        updateContentHeight();
+            updateContentHeight();
+        }, 250);
     }
 
     window.addEventListener('resize', handleResize);
@@ -449,4 +469,76 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize
     updateSidebar();
     updateContentHeight();
+});
+
+// --- Fix: Ensure navbar toggle works with hamburger ---
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navbar = document.getElementById('navbar');
+    const backdrop = document.getElementById('mobileDrawerBackdrop');
+    const navbarClose = document.querySelector('.navbar-close');
+
+    if (!hamburger || !navbar) return;
+
+    // Remove any existing click listeners to avoid duplicates
+    const newHamburger = hamburger.cloneNode(true);
+    hamburger.parentNode.replaceChild(newHamburger, hamburger);
+
+    // Get the new reference
+    const freshHamburger = document.querySelector('.hamburger');
+
+    // Toggle navbar on hamburger click
+    freshHamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isOpen = navbar.classList.contains('active');
+        
+        if (isOpen) {
+            navbar.classList.remove('active', 'open');
+            freshHamburger.classList.remove('active');
+            freshHamburger.setAttribute('aria-expanded', 'false');
+            if (backdrop) {
+                backdrop.classList.remove('active');
+                document.body.classList.remove('drawer-open');
+            }
+        } else {
+            navbar.classList.add('active', 'open');
+            freshHamburger.classList.add('active');
+            freshHamburger.setAttribute('aria-expanded', 'true');
+            if (backdrop) {
+                backdrop.classList.add('active');
+                document.body.classList.add('drawer-open');
+            }
+            // Close sidebar if open on mobile
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar && sidebar.classList.contains('active')) {
+                // Close sidebar via its toggle
+                const sidebarToggle = document.querySelector('.chapter-sidebar-toggle, #sidebarToggle, .sidebar-toggle');
+                if (sidebarToggle) {
+                    sidebarToggle.click();
+                }
+            }
+        }
+    });
+
+    // Close navbar with close button
+    if (navbarClose) {
+        navbarClose.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navbar.classList.remove('active', 'open');
+            freshHamburger.classList.remove('active');
+            freshHamburger.setAttribute('aria-expanded', 'false');
+            if (backdrop) {
+                backdrop.classList.remove('active');
+                document.body.classList.remove('drawer-open');
+            }
+        });
+    }
+
+    // Keyboard support for hamburger
+    freshHamburger.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            freshHamburger.click();
+        }
+    });
 });

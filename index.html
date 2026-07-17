@@ -7,23 +7,20 @@
     <title>Gurukulam | Reviving Ancient Wisdom</title>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/responsive-improvements.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
     <!-- Header -->
     <header class="header">
-        <div class="container header-container">
+        <div class="header-container">
             <!-- Logo -->
-            <div class="logo">
+            <a href="index.html" class="logo">
                 <div class="logo-circle">
                     <span>GURU</span>
                 </div>
@@ -31,24 +28,29 @@
                     <span class="logo-main">Gurukulam</span>
                     <span class="logo-tagline">Reviving Ancient Wisdom</span>
                 </div>
-            </div>
+            </a>
 
-            <!-- Hamburger Menu for Mobile -->
+            <!-- Hamburger Menu for Mobile - ONLY 3 SPANS -->
             <div class="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
-                <span></span>
             </div>
+
             <!-- Navigation -->
             <nav class="navbar" id="navbar" aria-label="Main navigation">
+                <!-- Close button for mobile drawer -->
+                <button class="navbar-close" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+
                 <ul class="nav-list">
                     <li><a href="index.html" class="current-page">Home</a></li>
-                    <li><a href="programs.html">programs</a></li>
+                    <li><a href="programs.html">Programs</a></li>
                     <li><a href="books.html">Books</a></li>
                     <li><a href="Campus.html">Campus</a></li>
                     <li><a href="Gallery/Gallery.html">Gallery</a></li>
-                    <li><a href="keyboard/keybord_01.html">keyboard</a></li>
+                    <li><a href="keyboard/keybord_01.html">Keyboard</a></li>
                     <li class="has-dropdown">
                         <a href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">About <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-content" role="menu">
@@ -62,211 +64,203 @@
             </nav>
         </div>
     </header>
+
     <main>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="overlay"></div>
-        <div class="container hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Ancient Wisdom for Modern Times</h1>
-                <p class="hero-subtitle">Uncover the eternal teachings of the Vedas, Ramayana, and Yoga, offering
-                    guidance for today's challenges.</p>
-                <div class="hero-buttons">
-                    <a href="Sanatan Dharma.html" class="btn btn-primary">Explore Programs</a>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="overlay"></div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Ancient Wisdom for Modern Times</h1>
+                    <p class="hero-subtitle">Uncover the eternal teachings of the Vedas, Ramayana, and Yoga, offering guidance for today's challenges.</p>
+                    <div class="hero-buttons">
+                        <a href="Sanatan Dharma.html" class="btn btn-primary">Explore Programs</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Featured Content -->
-    <section class="features">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Core Teachings</h2>
-                <p>Bridging ancient knowledge with contemporary challenges</p>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="images/card4.jpg" alt="Vedic Wisdom">
-                        <div class="card-badge">Featured</div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Vedic Wisdom</h3>
-                        <p>Explore the ancient scriptures and their practical applications in modern life. Our courses
-                            delve into the philosophical depths of Vedic knowledge.</p>
-                        <a href="Books/book_link/Vedic Wisdom.html" class="btn-link">
-                            Learn More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
+        <!-- Featured Content -->
+        <section class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Core Teachings</h2>
+                    <p>Bridging ancient knowledge with contemporary challenges</p>
                 </div>
-                <div class="card">
-                    <div class="card-image">
-                        <img src="images/card3.jpg" alt="Gurukul System">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="images/card4.jpg" alt="Vedic Wisdom">
+                            <div class="card-badge">Featured</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Vedic Wisdom</h3>
+                            <p>Explore the ancient scriptures and their practical applications in modern life. Our courses delve into the philosophical depths of Vedic knowledge.</p>
+                            <a href="Books/book_link/Vedic Wisdom.html" class="btn-link">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <h3>Gurukul System</h3>
-                        <p>Experience the traditional residential education model that fosters holistic development
-                            through mentor-disciple relationships in a natural environment.</p>
-                        <a href="about.html" class="btn-link">
-                            Discover <i class="fas fa-arrow-right"></i>
-                        </a>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="images/card3.jpg" alt="Gurukul System">
+                        </div>
+                        <div class="card-content">
+                            <h3>Gurukul System</h3>
+                            <p>Experience the traditional residential education model that fosters holistic development through mentor-disciple relationships in a natural environment.</p>
+                            <a href="about.html" class="btn-link">
+                                Discover <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-image">
-                        <img src="images/card2.jpg" alt="Ramayana">
-                    </div>
-                    <div class="card-content">
-                        <h3>Ramayana</h3>
-                        <p>Learn the timeless lessons from the epic Ramayana that offer insights into ethics,
-                            governance, relationships, and personal dharma.</p>
-                        <a href="books.html" class="btn-link">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quote Section -->
-    <section class="quote-section">
-        <div class="container">
-            <div class="quote">
-                <i class="fas fa-quote-left"></i>
-                <blockquote>
-                    The true teacher defends his pupils against his own personal influence.
-                </blockquote>
-                <cite>— Ancient Vedic Wisdom</cite>
-            </div>
-        </div>
-    </section>
-
-    <!-- Programs Preview -->
-    <section class="programs-preview">
-        <div class="container">
-            <div class="section-header">
-                <h2>Featured Programs</h2>
-                <p>Transform your understanding through our specialized courses</p>
-            </div>
-            <div class="programs-grid">
-                <div class="program-card">
-                    <div class="program-icon">
-                        <i class="fas fa-book-open"></i>
-                    </div>
-                    <h3>Sanskrit Studies</h3>
-                    <p>Learn the ancient language that connects us to our roots.</p>
-                    <a href="Sanatan Dharma.html" class="btn-outline">Explore</a>
-                </div>
-                <div class="program-card featured">
-                    <div class="program-icon">
-                        <i class="fas fa-pray"></i>
-                    </div>
-                    <h3>Yoga & Meditation</h3>
-                    <p>Discover inner peace and physical harmony through ancient practices.</p>
-                    <a href="programs.html" class="btn-outline">Explore</a>
-                </div>
-                <div class="program-card">
-                    <div class="program-icon">
-                        <i class="fas fa-om"></i>
-                    </div>
-                    <h3>Vedic Philosophy</h3>
-                    <p>Dive deep into the philosophical aspects of Vedic teachings.</p>
-                    <a href="programs.html" class="btn-outline">Explore</a>
-                </div>
-                <div class="program-card">
-                    <div class="program-icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3>Ayurvedic Living</h3>
-                    <p>Learn holistic approaches to health and wellness.</p>
-                    <a href="programs.html" class="btn-outline">Explore</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2>Student Experiences</h2>
-                <p>Hear from those who have walked the path</p>
-            </div>
-            <div class="testimonial-slider" id="testimonial-slider">
-                <div class="testimonial-slide active">
-                    <div class="testimonial-content">
-                        <p>"The Vedic Studies program transformed my understanding of ancient texts and their
-                            application in modern life."</p>
-                        <div class="testimonial-author">
-                            <img src="images/student 1.jpg" alt="Rahul Sharma">
-                            <div class="author-info">
-                                <h4></h4>
-                                <p>Vedic Studies Graduate</p>
-                            </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="images/card2.jpg" alt="Ramayana">
+                        </div>
+                        <div class="card-content">
+                            <h3>Ramayana</h3>
+                            <p>Learn the timeless lessons from the epic Ramayana that offer insights into ethics, governance, relationships, and personal dharma.</p>
+                            <a href="books.html" class="btn-link">
+                                Read More <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <p>"Learning Sanskrit opened a new world of understanding that no translation could ever
-                            provide."</p>
-                        <div class="testimonial-author">
-                            <img src="images/student 2.jpg" alt="Priya Patel">
-                            <div class="author-info">
-                                <h4></h4>
-                                <p>Sanskrit Program Alumna</p>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="quote-section">
+            <div class="container">
+                <div class="quote">
+                    <i class="fas fa-quote-left"></i>
+                    <blockquote>
+                        The true teacher defends his pupils against his own personal influence.
+                    </blockquote>
+                    <cite>— Ancient Vedic Wisdom</cite>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Preview -->
+        <section class="programs-preview">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Featured Programs</h2>
+                    <p>Transform your understanding through our specialized courses</p>
+                </div>
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3>Sanskrit Studies</h3>
+                        <p>Learn the ancient language that connects us to our roots.</p>
+                        <a href="Sanatan Dharma.html" class="btn-outline">Explore</a>
+                    </div>
+                    <div class="program-card featured">
+                        <div class="program-icon">
+                            <i class="fas fa-pray"></i>
+                        </div>
+                        <h3>Yoga & Meditation</h3>
+                        <p>Discover inner peace and physical harmony through ancient practices.</p>
+                        <a href="programs.html" class="btn-outline">Explore</a>
+                    </div>
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-om"></i>
+                        </div>
+                        <h3>Vedic Philosophy</h3>
+                        <p>Dive deep into the philosophical aspects of Vedic teachings.</p>
+                        <a href="programs.html" class="btn-outline">Explore</a>
+                    </div>
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Ayurvedic Living</h3>
+                        <p>Learn holistic approaches to health and wellness.</p>
+                        <a href="programs.html" class="btn-outline">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Student Experiences</h2>
+                    <p>Hear from those who have walked the path</p>
+                </div>
+                <div class="testimonial-slider" id="testimonial-slider">
+                    <div class="testimonial-slide active">
+                        <div class="testimonial-content">
+                            <p>"The Vedic Studies program transformed my understanding of ancient texts and their application in modern life."</p>
+                            <div class="testimonial-author">
+                                <img src="images/student 1.jpg" alt="Rahul Sharma">
+                                <div class="author-info">
+                                    <h4>Rahul Sharma</h4>
+                                    <p>Vedic Studies Graduate</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <p>"The Gurukul experience taught me discipline and mindfulness that I carry into every aspect
-                            of life."</p>
-                        <div class="testimonial-author">
-                            <img src="images/student 3.jpg" alt="Amit Kumar">
-                            <div class="author-info">
-                                <h4></h4>
-                                <p>Residential Program Student</p>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <p>"Learning Sanskrit opened a new world of understanding that no translation could ever provide."</p>
+                            <div class="testimonial-author">
+                                <img src="images/student 2.jpg" alt="Priya Patel">
+                                <div class="author-info">
+                                    <h4>Priya Patel</h4>
+                                    <p>Sanskrit Program Alumna</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <p>"The Gurukul experience taught me discipline and mindfulness that I carry into every aspect of life."</p>
+                            <div class="testimonial-author">
+                                <img src="images/student 3.jpg" alt="Amit Kumar">
+                                <div class="author-info">
+                                    <h4>Amit Kumar</h4>
+                                    <p>Residential Program Student</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="container">
-            <div class="newsletter-container">
-                <div class="newsletter-content">
-                    <h2>Stay Connected</h2>
-                    <p>Subscribe to our newsletter for updates on courses, events, and wisdom teachings.</p>
+        <!-- Newsletter -->
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-container">
+                    <div class="newsletter-content">
+                        <h2>Stay Connected</h2>
+                        <p>Subscribe to our newsletter for updates on courses, events, and wisdom teachings.</p>
+                    </div>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
                 </div>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Your email address" required>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    
-    </main>
-<footer class="footer">
+    <footer class="footer">
         <div class="container footer-container">
             <div class="footer-bottom">
-                <p>&copy; 2025 Gurukulam. All rights reserved.</p>
+                <p>&copy; 2026-27 Gurukulam. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="scripts/main.js" defer></script>
-    <!-- Correctly reference logo.js within the scripts directory -->
     <script src="scripts/Logo.js" defer></script>
 </body>
 
