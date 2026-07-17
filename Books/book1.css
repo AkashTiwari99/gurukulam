@@ -628,7 +628,7 @@ html {
     #sidebarToggle {
         display: flex !important;
         position: fixed;
-        bottom: 20px;
+        upper: 20px;
         right: 20px;
         z-index: 1100;
         background: var(--gradient-primary);
