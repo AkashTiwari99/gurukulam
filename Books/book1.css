@@ -1,6 +1,6 @@
 /* ===== ENHANCED BOOK PAGE STYLES ===== */
 :root {
-    --sidebar-width: 260px;
+    --sidebar-width: 200px;
     --sidebar-collapsed-width: 70px;
     --header-height: 60px;
 }
@@ -236,7 +236,7 @@ html {
         width: 22px;
         height: 2px;
         background: var(--primary-color);
-        border-radius: 999px;
+        border-radius: 99px;
         transition: all 0.3s ease;
     }
 
