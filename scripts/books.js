@@ -285,11 +285,11 @@ function updateSidebarLinks(kandaFile, prefix, totalChapters) {
     // Map of Kanda files to their chapter file naming patterns
     const kandaPatterns = {
         'Bala_Srga.html': { prefix: '../BALAKANDA/', pattern: 'sarga_1' },
-        'Ay_Sarga.html': { prefix: '../AYODHYAKANDA/', pattern: 'Asarga_' },
+        'Ay_Sarga.html': { prefix: '../AYODHYA KANDA/', pattern: 'Asarga_' },
         'Ara_sarga.html': { prefix: '../ARANAYKANDA/', pattern: 'Ar_sarga_' },
-        'KIs_Sraga.html': { prefix: '../KISHKINDAKANDA/', pattern: 'ki_sarga_' },
+        'KIs_Sraga.html': { prefix: '../KISHKINDHAKANDA/', pattern: 'ki_sarga_' },
         'SU_Sraga.html': { prefix: '../SUNDARAKANDA/', pattern: 'Su_sarga_' },
-        'YU_Sarga.html': { prefix: '../YUDDHAKANDA/', pattern: 'Yu_sarga_' },
+        'YU_Sarga.html': { prefix: '../YUDHAKANDA/', pattern: 'Yu_sarga_' },
         'utt_sarga.html': { prefix: '../UTTARAKANDA/', pattern: 'utt_sarga_' }
     };
     
