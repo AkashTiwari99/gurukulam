@@ -855,7 +855,7 @@ img {
     background-color: var(--primary-dark);
     color: var(--text-light);
     text-align: center;
-    padding: var(--space-md) 0;
+    padding: 6px;
     margin-top: auto;
 }
 
