@@ -4,17 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Gurukulam - Reviving Ancient Wisdom through Vedic Studies, Sanskrit Immersion, Yoga, and Ayurveda.">
-    <title>KIs_Sarga</title>
-    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../../styles/header.css">
+    <meta name="description" content="Gurukulam - Reviving Ancient Wisdom through Vedic Studies, Sanskrit Immersion, Yoga, and Ayurveda.">
+    <title>KISHKINDHAKANDA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="../../styles/global.css">
     <link rel="stylesheet" href="../book1.css">
     <link rel="stylesheet" type="text/css" href="../style.css">
@@ -26,7 +20,7 @@
     <header class="header">
         <div class="header-container">
             <!-- Logo -->
-            <div class="logo">
+            <a href="../../index.html" class="logo">
                 <div class="logo-circle">
                     <span>GURU</span>
                 </div>
@@ -34,22 +28,27 @@
                     <span class="logo-main">Gurukulam</span>
                     <span class="logo-tagline">Reviving Ancient Wisdom</span>
                 </div>
-            </div>
+            </a>
 
-            <!-- Hamburger Menu for Mobile -->
-            <div class="hamburger">
+            <!-- Hamburger Menu for Mobile - ONLY 3 SPANS -->
+            <div class="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
 
             <!-- Navigation -->
-            <nav class="navbar" id="navbar">
+            <nav class="navbar" id="navbar" aria-label="Main navigation">
+                <!-- Close button for mobile drawer -->
+                <button class="navbar-close" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+
                 <ul class="nav-list">
-                    <li><a href="../../index.html" class="current-page">Home</a></li>
+                    <li><a href="../../index.html">Home</a></li>
                     <li class="has-dropdown">
-                        <a href="javascript:void(0)">Programs <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-content">
+                        <a href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">Programs <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content" role="menu">
                             <a href="../../programs.html">Vedic Studies</a>
                             <a href="program2.html">Sanskrit Immersion</a>
                             <a href="program3.html">Yoga & Meditation</a>
@@ -60,8 +59,8 @@
                     <li><a href="../../Campus.html">Campus</a></li>
                     <li><a href="../../Gallery/Gallery.html">Gallery</a></li>
                     <li class="has-dropdown">
-                        <a href="javascript:void(0)">About <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-content">
+                        <a href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content" role="menu">
                             <a href="../../about.html">About Us</a>
                             <a href="mission.html">Our Mission</a>
                             <a href="team.html">Our Team</a>
@@ -81,21 +80,22 @@
                 </ul>
             </div>
         </div>
-        <button class="sidebar-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
     </header>
 
-    <!-- Sidebar Toggle Button (Mobile Only) -->
-    <button class="sidebar-toggle" id="sidebarToggle">
-        <i class="fas fa-bars"></i>
+    <!-- Sidebar Toggle Button (Mobile Only) - SINGLE INSTANCE -->
+    <button class="chapter-sidebar-toggle" id="sidebarToggle" aria-label="Toggle chapter sidebar">
+        <i class="fas fa-bars"></i> Chapters
     </button>
+
+    <!-- Mobile Drawer Backdrop -->
+    <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
 
     <!-- Main Container -->
     <main class="main-container">
         <!-- Sidebar -->
-        <div class="sidebar">
-            <h1>किष्किन्धाकाण्डः</h1>
+        <aside class="sidebar" id="sidebar" role="navigation" aria-label="Chapter navigation">
+            <h1>KISHKINDHAKANDA</h1>
+            <nav>
             <a href="../KISHKINDHAKANDA/ki_sarga_1.html" data-target="content">सर्गः 1</a>
             <a href="../KISHKINDHAKANDA/ki_sarga_2.html" data-target="content">सर्गः 2</a>
             <a href="../KISHKINDHAKANDA/ki_sarga_3.html" data-target="content">सर्गः 3</a>
@@ -164,7 +164,8 @@
             <a href="../KISHKINDHAKANDA/ki_sarga_66.html" data-target="content">सर्गः 66</a>
             <a href="../KISHKINDHAKANDA/ki_sarga_67.html" data-target="content">सर्गः 67</a>
             <!-- Add more links as needed -->
-        </div>
+            </nav>
+        </aside>
         <!-- Content Area -->
         <div class="content" id="content">
             <picture>
@@ -176,16 +177,16 @@
         </div>
     </main>
 
-    <!-- New Footer -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <span>&copy; 2026-27 Gurukulam</span>
         </div>
     </footer>
+
     <!-- JavaScript Files -->
     <script src="../../scripts/books.js" defer></script>
     <script src="../../scripts/main.js" defer></script>
     <script src="../../scripts/Logo.js" defer></script>
 </body>
-
 </html>
