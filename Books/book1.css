@@ -34,6 +34,7 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    position: relative;
 }
 
 /* Main Container - FIXED overflow */
@@ -48,7 +49,7 @@ body {
     position: relative;
     transition: margin-left var(--transition-med);
     margin-left: 0;
-    overflow: hidden; /* FIXED: Prevents double scrollbars */
+    overflow: hidden;
     background: linear-gradient(180deg, var(--primary-bg), #f8f9ff);
 }
 
@@ -61,7 +62,7 @@ body {
     border-right: 2px solid var(--accent-color);
     box-shadow: 0 0 2px rgba(35, 213, 171, 0.2);
     padding: var(--space-md);
-    overflow-y: auto; /* Only sidebar scrolls */
+    overflow-y: auto;
     transition: all var(--transition-med) ease;
     z-index: 1000;
     height: 100%;
@@ -70,7 +71,6 @@ body {
     align-self: flex-start;
     will-change: width;
     border-radius: 0 1rem 1rem 0;
-    /* FIXED: Hide scrollbar but keep functionality */
     scrollbar-width: thin;
     scrollbar-color: rgba(35, 213, 171, 0.3) transparent;
 }
@@ -184,12 +184,11 @@ body {
     margin-left: 0;
     min-height: calc(100vh - var(--header-height));
     background-color: #ffffff;
-    overflow-y: auto; /* Only content scrolls */
+    overflow-y: auto;
     transition: margin-left var(--transition-med);
     margin-right: 0;
     box-sizing: border-box;
     box-shadow: inset 1px 0 0 rgba(79, 70, 229, 0.08);
-    /* FIXED: Hide scrollbar but keep functionality */
     scrollbar-width: thin;
     scrollbar-color: rgba(79, 70, 229, 0.2) transparent;
 }
@@ -248,13 +247,81 @@ html {
     scroll-padding-top: var(--header-height);
 }
 
-/* FIXED: Kanda dropdown positioning */
+/* Kanda dropdown positioning */
 .kanda-dropdown-container {
     position: absolute;
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    background: var(--gradient-primary);
+    color: white;
+    padding: var(--space-sm) var(--space-md);
+    border: none;
+    border-radius: var(--border-radius-medium);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.dropdown-toggle:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.dropdown-toggle i {
+    font-size: 0.8rem;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: var(--light);
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    padding: var(--space-sm) 0;
+}
+
+.dropdown-menu.open {
+    display: block;
+}
+
+.dropdown-menu li {
+    list-style: none;
+}
+
+.dropdown-menu a {
+    color: var(--text-dark);
+    padding: var(--space-sm) var(--space-md);
+    text-decoration: none;
+    display: block;
+    transition: all var(--transition-fast);
+    font-family: 'Noto Serif Devanagari', serif;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgba(107, 56, 251, 0.1);
+    color: var(--primary-color);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -289,6 +356,13 @@ html {
         border: none;
         padding: 10px;
         z-index: 9999;
+        position: fixed;
+        top: 50%;
+        left: 16px;
+        transform: translateY(-50%);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
     }
 
     .hamburger span {
@@ -352,7 +426,29 @@ html {
         color: var(--primary-color);
     }
 
-    /* FIXED: Mobile sidebar */
+    .navbar-close {
+        display: flex !important;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(79, 70, 229, 0.08);
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-dark);
+        transition: background var(--transition-fast);
+    }
+
+    .navbar-close:hover {
+        background: rgba(79, 70, 229, 0.15);
+    }
+
+    /* Mobile sidebar */
     .sidebar {
         display: none;
         width: var(--sidebar-width);
@@ -383,7 +479,7 @@ html {
         padding: 0.7rem 0.85rem;
     }
 
-    /* FIXED: Content full width on mobile */
+    /* Content full width on mobile */
     .content {
         width: 100%;
         flex: none;
@@ -443,6 +539,15 @@ html {
 
     body.drawer-open {
         overflow: hidden;
+    }
+
+    /* Kanda dropdown on mobile */
+    .kanda-dropdown-container {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin-left: auto;
     }
 }
 
@@ -609,9 +714,8 @@ html {
     #sidebarToggle {
         display: flex !important;
         position: fixed;
-        top: 50%;
-        left: 20px; 
-        transform: translateY(-50%); 
+        bottom: 20px;
+        left: 20px;
         z-index: 1100;
         background: var(--gradient-primary, linear-gradient(135deg, #4f46e5, #7c3aed));
         color: white;
@@ -627,7 +731,7 @@ html {
         transition: transform var(--transition-fast, 0.2s), box-shadow var(--transition-fast, 0.2s);
     }
     #sidebarToggle:hover {
-        transform: translateY(-50%) scale(1.1);
+        transform: scale(1.1);
         box-shadow: 0 6px 15px rgba(79, 70, 229, 0.45);
     }
 }
@@ -639,7 +743,7 @@ html {
     padding-right: 0 !important;
 }
 
-/* FIXED: Remove any duplicate sidebars that might appear */
+/* Remove any duplicate sidebars that might appear */
 .sidebar .sidebar {
     display: none !important;
 }
