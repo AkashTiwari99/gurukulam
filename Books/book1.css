@@ -311,7 +311,6 @@ html {
         padding-right: 15px !important;
     }
 
-    /* FIX: Chapter sidebar toggle button */
     .chapter-sidebar-toggle {
         display: flex !important;
         align-items: center;
@@ -352,94 +351,6 @@ html {
 
     body.drawer-open {
         overflow: hidden;
-    }
-}
-
-/* FIX: Tablet Portrait specific */
-@media (min-width: 641px) and (max-width: 1024px) and (orientation: portrait) {
-    .content {
-        padding: 20px !important;
-    }
-
-    .content .page {
-        padding: 20px !important;
-    }
-
-    .sidebar {
-        width: 280px !important;
-    }
-
-    .chapter-sidebar-toggle {
-        bottom: 16px !important;
-        left: 16px !important;
-        padding: 10px 16px !important;
-        font-size: 0.85rem !important;
-        z-index: 1100 !important;
-    }
-
-    #sidebarToggle {
-        bottom: 16px !important;
-        left: 16px !important;
-        width: 48px !important;
-        height: 48px !important;
-        z-index: 1100 !important;
-    }
-}
-
-/* FIX: Mobile Portrait specific */
-@media (max-width: 640px) and (orientation: portrait) {
-    .content {
-        padding: 12px !important;
-    }
-
-    .content .page {
-        padding: 12px !important;
-    }
-
-    .sidebar {
-        width: 280px !important;
-    }
-
-    .chapter-sidebar-toggle {
-        bottom: 12px !important;
-        left: 12px !important;
-        padding: 8px 14px !important;
-        font-size: 0.8rem !important;
-        z-index: 1100 !important;
-    }
-
-    #sidebarToggle {
-        bottom: 12px !important;
-        left: 12px !important;
-        width: 44px !important;
-        height: 44px !important;
-        z-index: 1100 !important;
-        font-size: 1rem !important;
-    }
-}
-
-/* FIX: Tablet Horizontal specific */
-@media (orientation: landscape) and (min-width: 769px) and (max-width: 1024px) {
-    .main-container {
-        height: auto !important;
-        min-height: calc(100vh - var(--header-height)) !important;
-        overflow: visible !important;
-    }
-
-    .content {
-        height: auto !important;
-        min-height: calc(100vh - var(--header-height)) !important;
-        overflow-y: visible !important;
-        padding: 30px !important;
-    }
-
-    .sidebar {
-        height: auto !important;
-        min-height: calc(100vh - var(--header-height)) !important;
-    }
-
-    .content .page {
-        padding: 20px !important;
     }
 }
 
