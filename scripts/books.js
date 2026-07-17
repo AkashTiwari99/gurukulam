@@ -413,3 +413,29 @@ document.addEventListener('DOMContentLoaded', function () {
     updateSidebar();
     updateContentHeight();
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const sidebar = document.getElementById('sidebar');
+
+    if (hamburger && sidebar) {
+        // Core click execution block
+        hamburger.addEventListener('click', (event) => {
+            event.stopPropagation(); // Event bubble block logic
+            
+            // Current boolean check
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            
+            // State synchronization
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+            sidebar.classList.toggle('open', !isExpanded);
+        });
+
+        // Safe UX Logic: Sidebar ke bahar screen par kahin bhi click karne par auto-close system
+        document.addEventListener('click', (event) => {
+            if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+                hamburger.setAttribute('aria-expanded', 'false');
+                sidebar.classList.remove('open');
+            }
+        });
+    }
+});
