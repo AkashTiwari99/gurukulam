@@ -643,12 +643,11 @@ html {
         align-items: center;
         justify-content: center;
         font-size: 1.2rem;
-        transition: all var(--transition-fast, 0.2s);
+        transition: transform var(--transition-fast, 0.2s), box-shadow var(--transition-fast, 0.2s);
     }
-}
-
     #sidebarToggle:hover {
-        transform: scale(1.1);
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 6px 15px rgba(79, 70, 229, 0.45);
     }
 }
 
