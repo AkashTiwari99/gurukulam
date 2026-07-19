@@ -1,4 +1,6 @@
-/* Global Styles */
+/* =================================================================
+   GLOBAL ROOT RESET & VIEWPORT LOCKS
+   ================================================================= */
 :root {
     /* Premium Color Palette */
     --primary-color: #4F46E5;
@@ -96,39 +98,40 @@
     --container-desktop: 1280px;
 }
 
-/* Glassmorphism Utility */
-.glass-panel {
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-backdrop);
-    -webkit-backdrop-filter: var(--glass-backdrop);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-}
-
-/* ===== GENERAL STYLES ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
+/* =================================================================
+   UNIVERSAL CSS ARCHITECTURE RESET
+   ================================================================= */
+html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
     font-family: 'Poppins', sans-serif;
     color: var(--text-dark);
     background-color: var(--light);
     line-height: 1.6;
     font-size: 16px;
-    overflow-x: hidden;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
     min-height: 100vh;
 }
 
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* ---- Component Fluid Layout Blocks ---- */
+header, .global-header, .main-wrapper, .container, main, section, footer, nav, div, article, aside {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Container with max-width for desktop */
 .container {
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
 }
 
 a {
@@ -140,11 +143,16 @@ a {
 img {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
-/* Buttons */
+/* =================================================================
+   BUTTONS
+   ================================================================= */
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: var(--button-padding-desktop);
     font-weight: 500;
     border-radius: var(--border-radius-medium);
@@ -154,15 +162,12 @@ img {
     border: none;
     font-size: 1rem;
     min-height: var(--touch-target-min);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     white-space: nowrap;
 }
 
 .btn-primary {
     background: var(--gradient-primary);
-    color: white;
+    color: white !important;
     box-shadow: 0 4px 12px rgba(107, 56, 251, 0.3);
 }
 
@@ -225,11 +230,11 @@ img {
 }
 
 /* =================================================================
-   HEADER STYLES
+   HEADER STYLES - FULL WIDTH
    ================================================================= */
 .header {
     position: sticky;
-    width: 100%;
+    width: 100% !important;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -248,34 +253,39 @@ img {
 }
 
 .header-container {
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 var(--space-md);
+    width: 100% !important;
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
+    box-sizing: border-box;
 }
 
 /* Logo Styles */
 .logo {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
+    gap: 12px;
     text-decoration: none;
     z-index: 1003;
+    flex-shrink: 0;
 }
 
 .logo-circle {
     width: 45px;
     height: 45px;
+    min-width: 45px;
+    min-height: 45px;
     background: var(--gradient-primary);
     border-radius: var(--border-radius-circle);
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+    flex-shrink: 0;
 }
 
 .logo-circle span {
@@ -288,6 +298,7 @@ img {
 .logo-text {
     display: flex;
     flex-direction: column;
+    line-height: 1.2;
 }
 
 .logo-main {
@@ -310,6 +321,7 @@ img {
 .navbar {
     display: flex;
     align-items: center;
+    z-index: 1002;
 }
 
 .nav-list {
@@ -323,6 +335,7 @@ img {
 
 .nav-list li {
     position: relative;
+    list-style: none;
 }
 
 .nav-list li a {
@@ -390,16 +403,19 @@ img {
 }
 
 /* =================================================================
-   RIGHT SIDE CONTROLS - Kanda + Hamburger
+   RIGHT SIDE CONTROLS
    ================================================================= */
 .header-right-controls {
     display: flex;
     align-items: center;
     gap: 12px;
     z-index: 1003;
+    flex-shrink: 0;
 }
 
-/* Kanda Dropdown */
+/* =================================================================
+   KANDA DROPDOWN
+   ================================================================= */
 .kanda-dropdown-container {
     position: relative;
     z-index: 10;
@@ -467,7 +483,7 @@ img {
 }
 
 /* =================================================================
-   HAMBURGER ENGINE - RIGHT SIDE
+   HAMBURGER ENGINE - FLOATING WINDOW TRIGGER
    ================================================================= */
 .hamburger {
     display: none;
@@ -504,7 +520,6 @@ img {
     transform-origin: center;
 }
 
-/* Morphing to "X" when active */
 .hamburger.active span:nth-child(1) {
     transform: translateY(7.5px) rotate(45deg);
 }
@@ -517,16 +532,11 @@ img {
 }
 
 /* =================================================================
-   MOBILE RESPONSIVE: TABLET & PHONES
+   MOBILE & TABLET RESPONSIVE - FLOATING NAVBAR WINDOW
    ================================================================= */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
     
-    /* ---- Right Side Controls on Mobile ---- */
-    .header-right-controls {
-        gap: 8px;
-    }
-
-    /* ---- Hamburger Trigger - Right Side ---- */
+    /* ---- Show Hamburger ---- */
     .hamburger {
         display: flex !important;
         position: relative !important;
@@ -545,44 +555,45 @@ img {
         margin-left: 0;
     }
 
-    /* ---- Mobile Drawer - Slide from RIGHT ---- */
+    /* ---- FLOATING NAVBAR WINDOW - Slides from RIGHT ---- */
     .navbar {
         position: fixed !important;
-        top: 0;
-        right: -320px !important;
+        top: 0 !important;
+        right: -380px !important;
         left: auto !important;
-        width: 300px !important;
+        width: 340px !important;
         max-width: 85vw !important;
         height: 100vh !important;
-        background-color: #ffffff !important;
-        padding: 80px var(--space-lg, 24px) var(--space-xl, 32px) !important;
-        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.15) !important;
+        background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%) !important;
+        padding: 80px 28px 40px 28px !important;
+        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.15) !important;
         flex-direction: column !important;
         align-items: flex-start !important;
         z-index: 9998 !important;
         overflow-y: auto !important;
         visibility: hidden !important;
-        transition: right var(--transition-med, 0.3s) cubic-bezier(0.4, 0, 0.2, 1),
-                    visibility var(--transition-med, 0.3s) ease-in-out !important;
+        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                    visibility 0.35s ease-in-out !important;
         transform: none !important;
         will-change: right !important;
         display: flex !important;
-        border-radius: 12px 0 0 12px !important;
+        border-radius: 16px 0 0 16px !important;
+        border-left: 3px solid var(--primary-color) !important;
     }
 
-    /* Open state - slide in from right */
+    /* ---- Open State - Slide in from right ---- */
     .navbar.active,
     .navbar.open {
         visibility: visible !important;
         right: 0 !important;
     }
 
-    /* ---- Close Button inside Drawer ---- */
+    /* ---- Close Button inside Floating Window ---- */
     .navbar-close {
         display: flex !important;
         position: absolute !important;
-        top: 16px !important;
-        left: 16px !important;
+        top: 18px !important;
+        left: 18px !important;
         right: auto !important;
         width: 40px !important;
         height: 40px !important;
@@ -594,68 +605,116 @@ img {
         align-items: center !important;
         justify-content: center !important;
         color: var(--text-dark) !important;
-        transition: background var(--transition-fast) !important;
+        transition: all var(--transition-fast) !important;
     }
 
     .navbar-close:hover {
         background: rgba(79, 70, 229, 0.15) !important;
+        transform: rotate(90deg) !important;
     }
 
-    /* ---- Nav List in Mobile ---- */
+    .navbar-close i {
+        font-size: 1.2rem !important;
+    }
+
+    /* ---- Floating Window Header ---- */
+    .navbar-header {
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        margin-bottom: 24px !important;
+        padding-bottom: 16px !important;
+        border-bottom: 2px solid rgba(79, 70, 229, 0.1) !important;
+        width: 100% !important;
+    }
+
+    .navbar-header .mini-logo {
+        width: 36px !important;
+        height: 36px !important;
+        background: var(--gradient-primary) !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: white !important;
+        font-weight: 700 !important;
+        font-size: 12px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .navbar-header .mini-title {
+        font-size: 1.1rem !important;
+        font-weight: 600 !important;
+        color: var(--text-dark) !important;
+    }
+
+    /* ---- Nav List in Floating Window ---- */
     .nav-list {
         flex-direction: column !important;
         width: 100% !important;
-        align-items: flex-start !important;
-        gap: var(--space-sm, 12px) !important;
+        align-items: stretch !important;
+        gap: 4px !important;
         display: flex !important;
-        margin-top: var(--space-md) !important;
+        margin-top: 0 !important;
         padding: 0 !important;
+        flex: 1 !important;
     }
 
     .nav-list li {
         width: 100% !important;
         list-style: none !important;
+        margin: 0 !important;
     }
 
     .nav-list li a {
         display: flex !important;
-        padding: 12px 0 !important;
-        font-size: 1.1rem !important;
+        padding: 14px 16px !important;
+        font-size: 1.05rem !important;
         width: 100% !important;
         justify-content: space-between !important;
         align-items: center !important;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+        border-radius: 12px !important;
         color: var(--text-dark) !important;
         font-weight: 500 !important;
         background: transparent !important;
+        transition: all var(--transition-fast) !important;
+        border: none !important;
+    }
+
+    .nav-list li a:hover {
+        background: rgba(79, 70, 229, 0.06) !important;
+        color: var(--primary-color) !important;
+        padding-left: 20px !important;
     }
 
     .nav-list li a i {
         font-size: 0.8rem !important;
-        opacity: 0.6 !important;
+        opacity: 0.5 !important;
+        transition: transform var(--transition-fast) !important;
     }
 
-    .nav-list li a:hover {
+    .nav-list li a.current-page {
+        background: rgba(79, 70, 229, 0.08) !important;
         color: var(--primary-color) !important;
-        background: transparent !important;
+        font-weight: 600 !important;
     }
 
-    /* ---- Dropdown inside Mobile ---- */
+    /* ---- Dropdown inside Floating Window ---- */
     .has-dropdown .dropdown-content {
         position: static !important;
-        background-color: transparent !important;
+        background-color: rgba(79, 70, 229, 0.04) !important;
         box-shadow: none !important;
         max-height: 0 !important;
         opacity: 0 !important;
         visibility: hidden !important;
         overflow: hidden !important;
-        transition: max-height var(--transition-med, 0.25s) ease-in-out,
-                    opacity var(--transition-med, 0.25s) linear,
-                    padding var(--transition-med, 0.25s) ease-in-out !important;
+        transition: max-height 0.3s ease-in-out,
+                    opacity 0.3s linear,
+                    padding 0.3s ease-in-out !important;
         padding: 0 !important;
-        margin-left: var(--space-md, 16px) !important;
-        border-left: 2px solid var(--primary-light, #7c3aed) !important;
-        border-radius: 0 !important;
+        margin-left: 8px !important;
+        border-left: 3px solid var(--primary-color) !important;
+        border-radius: 0 8px 8px 0 !important;
         display: block !important;
         min-width: auto !important;
     }
@@ -664,7 +723,7 @@ img {
         max-height: 400px !important;
         opacity: 1 !important;
         visibility: visible !important;
-        padding: var(--space-sm, 8px) 0 !important;
+        padding: 6px 0 !important;
         display: block !important;
     }
 
@@ -679,22 +738,53 @@ img {
         border-bottom: none !important;
         color: var(--text-medium) !important;
         border-left: none !important;
+        border-radius: 8px !important;
+        margin: 2px 8px !important;
     }
 
     .dropdown-content a:hover {
         color: var(--primary-color) !important;
-        background: rgba(79, 70, 229, 0.05) !important;
-        border-radius: var(--border-radius-small) !important;
+        background: rgba(79, 70, 229, 0.06) !important;
     }
 
-    /* ---- Mobile Drawer Backdrop ---- */
+    /* ---- Floating Window Footer ---- */
+    .navbar-footer {
+        margin-top: auto !important;
+        padding-top: 16px !important;
+        border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        gap: 16px !important;
+    }
+
+    .navbar-footer .social-icon {
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: 50% !important;
+        background: rgba(79, 70, 229, 0.06) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: var(--text-medium) !important;
+        transition: all var(--transition-fast) !important;
+        font-size: 0.9rem !important;
+    }
+
+    .navbar-footer .social-icon:hover {
+        background: var(--primary-color) !important;
+        color: white !important;
+        transform: translateY(-2px) !important;
+    }
+
+    /* ---- Backdrop ---- */
     .mobile-drawer-backdrop {
         position: fixed !important;
         inset: 0 !important;
         background: rgba(17, 24, 39, 0.45) !important;
         opacity: 0 !important;
         pointer-events: none !important;
-        transition: opacity 0.3s ease !important;
+        transition: opacity 0.35s ease !important;
         z-index: 9997 !important;
     }
 
@@ -708,13 +798,13 @@ img {
     }
 
     /* ---- Kanda Dropdown on Mobile ---- */
+    .kanda-dropdown-container .dropdown-toggle span {
+        display: none;
+    }
+
     .kanda-dropdown-container .dropdown-toggle {
         padding: 8px 12px;
         font-size: 0.85rem;
-    }
-
-    .kanda-dropdown-container .dropdown-toggle span {
-        display: none;
     }
 
     .kanda-dropdown-container .dropdown-menu {
@@ -725,9 +815,145 @@ img {
 }
 
 /* =================================================================
-   DESKTOP RESET
+   TABLET PORTRAIT SPECIFIC (641px - 1024px)
    ================================================================= */
-@media (min-width: 993px) {
+@media (min-width: 641px) and (max-width: 1024px) and (orientation: portrait) {
+    .navbar {
+        width: 360px !important;
+        max-width: 80vw !important;
+        padding: 80px 32px 40px 32px !important;
+    }
+
+    .nav-list li a {
+        padding: 16px 18px !important;
+        font-size: 1.1rem !important;
+    }
+
+    .kanda-dropdown-container .dropdown-toggle span {
+        display: inline;
+    }
+
+    .kanda-dropdown-container .dropdown-toggle {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+    }
+}
+
+/* =================================================================
+   MOBILE PORTRAIT SPECIFIC (max-width: 640px)
+   ================================================================= */
+@media (max-width: 640px) and (orientation: portrait) {
+    .navbar {
+        width: 300px !important;
+        max-width: 85vw !important;
+        padding: 70px 20px 30px 20px !important;
+        border-radius: 12px 0 0 12px !important;
+    }
+
+    .nav-list li a {
+        padding: 12px 14px !important;
+        font-size: 1rem !important;
+    }
+
+    .navbar-close {
+        top: 14px !important;
+        left: 14px !important;
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 1rem !important;
+    }
+
+    .navbar-header .mini-title {
+        font-size: 1rem !important;
+    }
+
+    .navbar-header .mini-logo {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 10px !important;
+    }
+
+    .hamburger {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        padding: 8px !important;
+    }
+
+    .hamburger span {
+        width: 18px !important;
+        height: 2px !important;
+    }
+
+    .kanda-dropdown-container .dropdown-toggle span {
+        display: none !important;
+    }
+
+    .kanda-dropdown-container .dropdown-toggle {
+        padding: 6px 10px !important;
+        font-size: 0.8rem !important;
+    }
+
+    .navbar-footer .social-icon {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 0.8rem !important;
+    }
+
+    .logo-tagline {
+        display: none !important;
+    }
+
+    .logo-main {
+        font-size: 1.1rem !important;
+    }
+
+    .logo-circle {
+        width: 34px !important;
+        height: 34px !important;
+        min-width: 34px !important;
+        min-height: 34px !important;
+    }
+
+    .logo-circle span {
+        font-size: 10px !important;
+    }
+
+    .logo {
+        gap: 8px !important;
+    }
+}
+
+/* =================================================================
+   TABLET HORIZONTAL / LANDSCAPE
+   ================================================================= */
+@media (orientation: landscape) and (max-width: 1024px) {
+    .navbar {
+        width: 340px !important;
+        max-width: 70vw !important;
+        padding: 70px 28px 30px 28px !important;
+    }
+
+    .nav-list li a {
+        padding: 12px 16px !important;
+        font-size: 1rem !important;
+    }
+
+    .kanda-dropdown-container .dropdown-toggle span {
+        display: none;
+    }
+
+    .kanda-dropdown-container .dropdown-toggle {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+/* =================================================================
+   DESKTOP RESET (min-width: 1025px)
+   ================================================================= */
+@media (min-width: 1025px) {
     .hamburger {
         display: none !important;
     }
@@ -748,9 +974,18 @@ img {
         overflow-y: visible !important;
         z-index: auto !important;
         border-radius: 0 !important;
+        border-left: none !important;
     }
     
     .navbar-close {
+        display: none !important;
+    }
+
+    .navbar-header {
+        display: none !important;
+    }
+
+    .navbar-footer {
         display: none !important;
     }
 
@@ -816,6 +1051,7 @@ img {
     border: 1px solid rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .card:hover {
@@ -872,7 +1108,7 @@ img {
    ================================================================= */
 .footer {
     position: relative;
-    width: 100%;
+    width: 100% !important;
     background-color: var(--primary-dark);
     color: var(--text-light);
     text-align: center;
@@ -886,53 +1122,28 @@ img {
 }
 
 /* =================================================================
-   RESPONSIVE BREAKPOINTS
+   RESPONSIVE BREAKPOINTS - ADDITIONAL
    ================================================================= */
-@media (max-width: 640px) {
-    .btn { padding: var(--button-padding-mobile); font-size: 0.95rem; width: 100%; }
-    .btn-outline { padding: 10px 20px; }
-    .logo-main { font-size: 1rem; }
-    .logo-circle { width: 40px; height: 40px; }
-    .logo-circle span { font-size: 12px; }
-    body { font-size: 15px; }
-    .container { padding: 0 var(--space-md); }
-    input[type="text"], input[type="email"], input[type="password"], textarea { font-size: 16px; padding: 14px 16px; }
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-    .btn { padding: 12px 24px; }
-    .container { padding: 0 var(--space-lg); }
-}
-
-@media (min-width: 1025px) {
-    .container { padding: 0 var(--space-lg); }
-}
-
-@media (min-width: 1441px) {
-    .btn { padding: 14px 32px; }
-}
-
 @media (max-width: 480px) {
     .logo-main {
-        font-size: 1.2rem;
+        font-size: 1rem !important;
     }
     .header-container {
-        padding: 0 var(--space-sm);
+        padding: 0 10px !important;
     }
     .container {
-        padding: 0 var(--space-sm);
-    }
-    input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    textarea,
-    select {
-        font-size: 16px;
-        min-height: 44px;
+        padding: 0 10px !important;
     }
     .btn {
-        width: 100%;
-        padding: 12px 16px;
+        width: 100% !important;
+        padding: 10px 14px !important;
+        font-size: 0.9rem !important;
+    }
+    .hero-title {
+        font-size: 1.6rem !important;
+    }
+    .hero-subtitle {
+        font-size: 0.9rem !important;
     }
 }
 
