@@ -131,7 +131,6 @@ header, .global-header, .main-wrapper, .container, main, section, footer, nav, d
 main {
     position: relative;
     z-index: 1;
-    padding-top: var(--header-height);
 }
 
 /* Container with max-width for desktop */
@@ -176,15 +175,18 @@ img {
     background: var(--gradient-primary);
     color: white !important;
     box-shadow: 0 4px 12px rgba(107, 56, 251, 0.3);
+    cursor: pointer;
 }
 
 .btn-primary:hover {
     box-shadow: 0 6px 16px rgba(107, 56, 251, 0.5);
     transform: translateY(-2px);
+    cursor: pointer;
 }
 
 .btn-primary:active {
     transform: translateY(0);
+    cursor: pointer;
 }
 
 .btn-secondary {
@@ -193,11 +195,13 @@ img {
     backdrop-filter: blur(10px);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
 }
 
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
+    cursor: pointer;
 }
 
 .btn-outline {
@@ -207,12 +211,14 @@ img {
     padding: 10px 24px;
     border-radius: var(--border-radius-medium);
     transition: all var(--transition-fast);
+    cursor: pointer;
 }
 
 .btn-outline:hover {
     background: var(--primary-color);
     color: white;
     transform: translateY(-2px);
+    cursor: pointer;
 }
 
 .btn-link {
@@ -254,17 +260,20 @@ img {
     box-shadow: var(--shadow-sm);
     display: flex;
     align-items: center;
+    justify-content: space-between;
     flex-wrap: nowrap;
+    gap: 24px;
+    padding: 0 32px;
 }
 
 /* =================================================================
    Z-INDEX HIERARCHY STANDARDIZATION
    ================================================================= */
-/* Normal content: z-index: 1 */
-/* Header / Sticky Navbar: z-index: 100 */
-/* Dropdowns & Floating Controls: z-index: 500 */
-/* Mobile Navigation Drawer & Backdrop: z-index: 1000 */
-/* Modal Player / Toast Notifications: z-index: 9999 */
+/* Normal content / Cards: z-index: 1 */
+/* Floating reader controls / Tooltips: z-index: 10 */
+/* Sticky Header: z-index: 100 */
+/* Nav Dropdowns: z-index: 500 */
+/* Audio Modal Player: z-index: 9999 */
 
 .header.scrolled {
     height: 70px;
@@ -357,13 +366,14 @@ img {
     display: flex;
     align-items: center;
     z-index: auto;
+    gap: 32px;
 }
 
 .nav-list {
     display: flex;
     list-style: none;
     align-items: center;
-    gap: 20px;
+    gap: 8px;
     margin: 0;
     padding: 0;
 }
@@ -377,12 +387,14 @@ img {
     color: var(--text-medium);
     font-weight: 500;
     font-size: 0.95rem;
-    padding: 8px 12px;
+    padding: 10px 16px;
     border-radius: var(--border-radius-small);
     transition: all var(--transition-fast);
     position: relative;
     display: flex;
     align-items: center;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .nav-list li a i {
@@ -404,13 +416,13 @@ img {
 
 .has-dropdown .dropdown-content {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 8px);
     left: 0;
     background-color: var(--light);
     border-radius: var(--border-radius-medium);
     box-shadow: var(--shadow);
     padding: var(--space-sm) 0;
-    min-width: 200px;
+    min-width: 220px;
     max-width: 100%;
     opacity: 0;
     visibility: hidden;
@@ -418,24 +430,29 @@ img {
     z-index: 500;
     max-height: 200px;
     overflow-y: auto;
+    pointer-events: none;
 }
 
-.has-dropdown:hover .dropdown-content {
+.has-dropdown:hover .dropdown-content,
+.has-dropdown.active .dropdown-content {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
 }
 
 .dropdown-content a {
     display: block;
-    padding: var(--space-xs) var(--space-md);
+    padding: 10px 20px;
     color: var(--text-medium);
     transition: all var(--transition-fast);
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .dropdown-content a:hover {
-    background-color: rgba(107, 56, 251, 0.05);
+    background-color: rgba(107, 56, 251, 0.08);
     color: var(--primary-color);
-    padding-left: var(--space-lg);
+    padding-left: 24px;
 }
 
 /* =================================================================
@@ -1016,6 +1033,7 @@ img {
         z-index: auto !important;
         border-radius: 0 !important;
         border-left: none !important;
+        gap: 32px !important;
     }
     
     .navbar-close {
@@ -1032,13 +1050,13 @@ img {
 
     .nav-list {
         flex-direction: row !important;
-        gap: 20px !important;
+        gap: 8px !important;
         margin-top: 0 !important;
     }
 
     .nav-list li a {
         border-bottom: none !important;
-        padding: 8px 12px !important;
+        padding: 10px 16px !important;
     }
 
     .has-dropdown .dropdown-content {
@@ -1053,18 +1071,21 @@ img {
         background-color: var(--light) !important;
         border-radius: var(--border-radius-medium) !important;
         box-shadow: var(--shadow) !important;
+        pointer-events: none !important;
     }
 
     .has-dropdown:hover .dropdown-content {
         visibility: visible !important;
         opacity: 1 !important;
         display: block !important;
+        pointer-events: auto !important;
     }
 
     .has-dropdown.active .dropdown-content {
         max-height: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
+        pointer-events: none !important;
     }
 
     .has-dropdown:hover > a i {
@@ -1077,6 +1098,60 @@ img {
 
     .kanda-dropdown-container .dropdown-toggle span {
         display: inline;
+    }
+}
+
+/* =================================================================
+   DESKTOP LARGE SCREENS (>1200px)
+   ================================================================= */
+@media (min-width: 1201px) {
+    .header {
+        padding: 0 48px;
+        gap: 32px;
+    }
+
+    .header-container {
+        max-width: 1400px !important;
+    }
+
+    .nav-list {
+        gap: 12px;
+    }
+
+    .nav-list li a {
+        padding: 12px 20px !important;
+        font-size: 1rem !important;
+    }
+
+    .container {
+        max-width: 1400px !important;
+    }
+}
+
+/* =================================================================
+   DESKTOP XL SCREENS (>1440px)
+   ================================================================= */
+@media (min-width: 1441px) {
+    .header {
+        padding: 0 64px;
+        gap: 48px;
+    }
+
+    .header-container {
+        max-width: 1600px !important;
+    }
+
+    .container {
+        max-width: 1600px !important;
+    }
+
+    .nav-list {
+        gap: 16px;
+    }
+
+    .nav-list li a {
+        padding: 14px 24px !important;
+        font-size: 1.05rem !important;
     }
 }
 

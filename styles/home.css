@@ -544,29 +544,109 @@
     .hero {
         min-height: 80vh;
         padding: 80px 30px;
+        max-width: 100%;
+        overflow: hidden;
     }
 
     .hero-title {
-        font-size: 3.5rem !important;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        max-width: 100%;
+        word-break: break-word;
     }
 
     .hero-subtitle {
-        font-size: 1.25rem !important;
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        max-width: 100%;
+        word-break: break-word;
     }
 
     .card-container {
-        grid-template-columns: repeat(3, 1fr) !important;
+        grid-template-columns: repeat(3, 1fr);
         gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
     .programs-grid {
-        grid-template-columns: repeat(4, 1fr) !important;
+        grid-template-columns: repeat(4, 1fr);
         gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
     .hero-buttons .btn {
         padding: 14px 32px;
         font-size: 1.05rem;
+        cursor: pointer;
+        pointer-events: auto;
+    }
+
+    .section-header h2 {
+        font-size: 2.5rem;
+    }
+
+    .section-header p {
+        font-size: 1.125rem;
+    }
+}
+
+/* Desktop Large Screens (>1200px) */
+@media (min-width: 1201px) {
+    .hero {
+        padding: 100px 40px;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    }
+
+    .card-container {
+        max-width: 1400px;
+        gap: 40px;
+    }
+
+    .programs-grid {
+        max-width: 1400px;
+        gap: 40px;
+    }
+}
+
+/* Desktop XL Screens (>1440px) */
+@media (min-width: 1441px) {
+    .hero {
+        padding: 120px 48px;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    .hero-title {
+        font-size: clamp(3rem, 5vw, 4.5rem);
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    }
+
+    .card-container {
+        max-width: 1600px;
+        gap: 48px;
+    }
+
+    .programs-grid {
+        max-width: 1600px;
+        gap: 48px;
+    }
+
+    .section-header h2 {
+        font-size: 3rem;
+    }
+
+    .section-header p {
+        font-size: 1.25rem;
     }
 }
 
