@@ -127,6 +127,13 @@ header, .global-header, .main-wrapper, .container, main, section, footer, nav, d
     box-sizing: border-box !important;
 }
 
+/* Prevent main content from hiding under sticky header */
+main {
+    position: relative;
+    z-index: 1;
+    padding-top: var(--header-height);
+}
+
 /* Container with max-width for desktop */
 .container {
     max-width: 1200px !important;
@@ -182,6 +189,7 @@ img {
 
 .btn-secondary {
     background: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -237,15 +245,26 @@ img {
     width: 100% !important;
     top: 0;
     left: 0;
-    z-index: 1000;
-    height: 80px;
+    z-index: 100;
+    height: clamp(60px, 10vw, 80px);
     transition: all var(--transition-med);
     background-color: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow-sm);
     display: flex;
     align-items: center;
+    flex-wrap: nowrap;
 }
+
+/* =================================================================
+   Z-INDEX HIERARCHY STANDARDIZATION
+   ================================================================= */
+/* Normal content: z-index: 1 */
+/* Header / Sticky Navbar: z-index: 100 */
+/* Dropdowns & Floating Controls: z-index: 500 */
+/* Mobile Navigation Drawer & Backdrop: z-index: 1000 */
+/* Modal Player / Toast Notifications: z-index: 9999 */
 
 .header.scrolled {
     height: 70px;
@@ -257,11 +276,13 @@ img {
     max-width: 1280px !important;
     margin: 0 auto !important;
     padding: 0 20px !important;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 16px !important;
     position: relative;
     box-sizing: border-box;
+    flex-wrap: nowrap !important;
 }
 
 /* Logo Styles */
@@ -270,8 +291,18 @@ img {
     align-items: center;
     gap: 12px;
     text-decoration: none;
-    z-index: 1003;
+    z-index: auto;
     flex-shrink: 0;
+    max-width: 100%;
+    flex-wrap: nowrap !important;
+}
+
+.logo-main,
+.logo-tagline {
+    max-width: 100%;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: nowrap;
 }
 
 .logo-circle {
@@ -302,17 +333,21 @@ img {
 }
 
 .logo-main {
-    font-size: 1.4rem;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
     font-weight: 700;
     color: var(--text-dark);
     line-height: 1.1;
     letter-spacing: -0.5px;
+    max-width: 100%;
+    word-break: break-word;
 }
 
 .logo-tagline {
-    font-size: 0.7rem;
+    font-size: clamp(0.6rem, 1.5vw, 0.7rem);
     color: var(--text-medium);
     font-weight: 500;
+    max-width: 100%;
+    word-break: break-word;
 }
 
 /* =================================================================
@@ -321,7 +356,7 @@ img {
 .navbar {
     display: flex;
     align-items: center;
-    z-index: 1002;
+    z-index: auto;
 }
 
 .nav-list {
@@ -376,10 +411,11 @@ img {
     box-shadow: var(--shadow);
     padding: var(--space-sm) 0;
     min-width: 200px;
+    max-width: 100%;
     opacity: 0;
     visibility: hidden;
     transition: all var(--transition-med);
-    z-index: 1001;
+    z-index: 500;
     max-height: 200px;
     overflow-y: auto;
 }
@@ -409,8 +445,9 @@ img {
     display: flex;
     align-items: center;
     gap: 12px;
-    z-index: 1003;
+    z-index: auto;
     flex-shrink: 0;
+    max-width: 100%;
 }
 
 /* =================================================================
@@ -418,7 +455,7 @@ img {
    ================================================================= */
 .kanda-dropdown-container {
     position: relative;
-    z-index: 10;
+    z-index: auto;
 }
 
 .kanda-dropdown-container .dropdown-toggle {
@@ -452,8 +489,9 @@ img {
     top: 100%;
     background-color: var(--light);
     min-width: 200px;
+    max-width: 100%;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1001;
+    z-index: 500;
     border-radius: var(--border-radius-medium);
     overflow: hidden;
     padding: var(--space-sm) 0;
@@ -498,11 +536,13 @@ img {
     background: rgba(255, 255, 255, 0.95);
     border: none;
     padding: 10px;
-    z-index: 9999;
+    z-index: 1000;
     position: relative;
     transition: background var(--transition-fast);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+    flex-shrink: 0;
 }
 
 .hamburger:hover {
@@ -548,9 +588,10 @@ img {
         min-width: 44px;
         align-items: center;
         justify-content: center;
-        z-index: 9999;
+        z-index: 1001;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         background: rgba(255, 255, 255, 0.95);
+        -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         margin-left: 0;
     }
@@ -569,7 +610,7 @@ img {
         box-shadow: -8px 0 40px rgba(0, 0, 0, 0.15) !important;
         flex-direction: column !important;
         align-items: flex-start !important;
-        z-index: 9998 !important;
+        z-index: 1000 !important;
         overflow-y: auto !important;
         visibility: hidden !important;
         transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1),
@@ -785,7 +826,7 @@ img {
         opacity: 0 !important;
         pointer-events: none !important;
         transition: opacity 0.35s ease !important;
-        z-index: 9997 !important;
+        z-index: 1000 !important;
     }
 
     .mobile-drawer-backdrop.active {
@@ -1130,14 +1171,7 @@ img {
     }
     .header-container {
         padding: 0 10px !important;
-    }
-    .container {
-        padding: 0 10px !important;
-    }
-    .btn {
-        width: 100% !important;
-        padding: 10px 14px !important;
-        font-size: 0.9rem !important;
+        gap: 12px;
     }
     .hero-title {
         font-size: 1.6rem !important;
