@@ -1,4 +1,4 @@
-// ============================================================
+i// ============================================================
 // SHARED CONSTANTS - Kanda Data
 // Used by books.js and any other module that needs Kanda info
 // ============================================================
@@ -46,7 +46,7 @@ const KANDA_DATA = [
     {
         file: 'YU_Sarga.html',
         name: 'युद्धकाण्डः',
-        chapters: 128,
+        chapters: 129,
         prefix: '../YUDHAKANDA/',
         pattern: 'Yu_sarga_'
     },
