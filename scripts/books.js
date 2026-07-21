@@ -1,7 +1,16 @@
+// ============================================================
+// books.js - Dynamic Book Content Loader & Sidebar Manager
+// Depends on scripts/constants.js (loaded first) for KANDA_DATA
+// ============================================================
+
 // Content cache to avoid repeated fetches
 const contentCache = new Map();
+// Track active AbortController to cancel stale requests
+let activeFetchController = null;
 
+// ============================================================
 // Function to load content dynamically
+// ============================================================
 async function loadContent(url, targetElementId, linkElement) {
     const contentElement = document.getElementById(targetElementId);
     if (!contentElement) {
@@ -12,7 +21,7 @@ async function loadContent(url, targetElementId, linkElement) {
     const updateDOM = (htmlContent, isError = false) => {
         contentElement.innerHTML = htmlContent;
         contentElement.style.opacity = '1';
-        
+
         if (!isError) {
             // Remove active class from all sidebar links and dropdown links
             document.querySelectorAll('.sidebar a, .dropdown-menu a, #kanda-dropdown-menu a').forEach(link => {
@@ -22,7 +31,7 @@ async function loadContent(url, targetElementId, linkElement) {
             if (linkElement) {
                 linkElement.classList.add('active');
             }
-            
+
             // Update sidebar title based on the loaded content
             updateSidebarTitle(url);
         }
@@ -50,14 +59,28 @@ async function loadContent(url, targetElementId, linkElement) {
         return;
     }
 
+    // Show loading state
     contentElement.innerHTML = '<div class="loader-container"><div class="loader"></div><p>Loading...</p></div>';
     contentElement.style.opacity = '0.5';
 
+    // Cancel any previous in-flight request
+    if (activeFetchController) {
+        activeFetchController.abort();
+    }
+
+    const controller = new AbortController();
+    activeFetchController = controller;
+
     try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 5000);
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
 
         const response = await fetch(url, { signal: controller.signal });
+
+        // If this request was superseded, bail out silently
+        if (activeFetchController !== controller) {
+            return;
+        }
+
         clearTimeout(timeoutId);
 
         if (!response.ok) {
@@ -74,20 +97,23 @@ async function loadContent(url, targetElementId, linkElement) {
         doc.querySelectorAll('script').forEach(s => s.remove());
 
         // Remove header, navbar, sidebar from loaded content
-        doc.querySelectorAll('.header, header, .sidebar, .main-container > .sidebar, .kanda-dropdown-container, .sidebar-toggle, #sidebarToggle, .chapter-sidebar-toggle, .footer, footer').forEach(el => el.remove());
+        const removeSelectors = '.header, header, .sidebar, .main-container > .sidebar, ' +
+            '.kanda-dropdown-container, .sidebar-toggle, #sidebarToggle, ' +
+            '.chapter-sidebar-toggle, .footer, footer';
+        doc.querySelectorAll(removeSelectors).forEach(el => el.remove());
 
         // Get ONLY the .page content
         let pageContent = doc.querySelector('.page');
-        
+
         // If no .page found, try to get main content
         if (!pageContent) {
             pageContent = doc.querySelector('main .content, .content-area, #content');
         }
-        
+
         // If still no content, get body but remove header, nav, sidebar
         if (!pageContent) {
             const bodyClone = doc.body.cloneNode(true);
-            bodyClone.querySelectorAll('.header, header, .sidebar, nav, .kanda-dropdown-container, .sidebar-toggle, #sidebarToggle, .chapter-sidebar-toggle, .footer, footer').forEach(el => el.remove());
+            bodyClone.querySelectorAll(removeSelectors + ', nav').forEach(el => el.remove());
             pageContent = bodyClone;
         }
 
@@ -96,19 +122,29 @@ async function loadContent(url, targetElementId, linkElement) {
         // Cache the successful response
         contentCache.set(resolvedUrl, cleanData);
 
+        // If this request was superseded, bail out
+        if (activeFetchController !== controller) {
+            return;
+        }
+
         runDOMUpdate(cleanData);
     } catch (error) {
+        // If this request was superseded, bail out silently
+        if (activeFetchController !== controller) {
+            return;
+        }
+
         console.error('Content loading error:', error);
-        
+
         let errorMessage = 'Unable to load content. ';
         if (error.name === 'AbortError') {
-            errorMessage += 'The request took too long. Please check your connection and try again.';
+            errorMessage += 'The request took too long or was cancelled. Please check your connection and try again.';
         } else if (error instanceof TypeError) {
             errorMessage += 'Network error. Please check your internet connection.';
         } else {
             errorMessage += error.message || 'Please try again later.';
         }
-        
+
         const errorHtml = `
             <div class="error-message">
                 <i class="fas fa-exclamation-circle"></i>
@@ -118,274 +154,124 @@ async function loadContent(url, targetElementId, linkElement) {
             </div>
         `;
         runDOMUpdate(errorHtml, true);
+    } finally {
+        if (activeFetchController === controller) {
+            activeFetchController = null;
+        }
     }
 }
 
-// Function to update sidebar title based on loaded content
+// ============================================================
+// Function to update sidebar title based on loaded content URL
+// ============================================================
 function updateSidebarTitle(url) {
     const sidebarTitle = document.querySelector('.sidebar h1');
     if (!sidebarTitle) return;
-    
-    // Map URLs to Kanda names
-    const kandaMap = {
-        'Bala_Srga.html': 'बालकाण्डः',
-        'Ay_Sarga.html': 'अयोध्याकाण्डः',
-        'Ara_sarga.html': 'अरण्यकाण्डः',
-        'KIs_Sraga.html': 'किष्किन्धाकाण्डः',
-        'SU_Sraga.html': 'सुन्दरकाण्डः',
-        'YU_Sarga.html': 'युद्धकाण्डः',
-        'utt_sarga.html': 'उत्तरकाण्डः'
-    };
-    
-    // Extract filename from URL
+
+    // Extract filename from URL and look up the kanda name
     const fileName = url.split('/').pop();
-    const kandaName = kandaMap[fileName];
-    
+    const kandaName = getKandaName(fileName);
     if (kandaName) {
         sidebarTitle.textContent = kandaName;
     }
 }
 
 // ============================================================
-// Function to get current Kanda file from URL
-// ============================================================
-function getCurrentKandaFile() {
-    const currentPath = window.location.pathname;
-    const fileName = currentPath.split('/').pop();
-    
-    const kandaFiles = ['Bala_Srga.html', 'Ay_Sarga.html', 'Ara_sarga.html', 'KIs_Sraga.html', 'SU_Sraga.html', 'YU_Sarga.html', 'utt_sarga.html'];
-    
-    if (kandaFiles.includes(fileName)) {
-        return fileName;
-    }
-    return 'Bala_Srga.html'; // Default
-}
-
-// ============================================================
-// Function to get chapter count for a Kanda
-// ============================================================
-function getChapterCount(kandaFile) {
-    const chapterCounts = {
-        'Bala_Srga.html': 77,
-        'Ay_Sarga.html': 119,
-        'Ara_sarga.html': 75,
-        'KIs_Sraga.html': 67,
-        'SU_Sraga.html': 68,
-        'YU_Sarga.html': 128,
-        'utt_sarga.html': 111
-    };
-    return chapterCounts[kandaFile] || 77;
-}
-
-// ============================================================
-// Function to get Kanda prefix and pattern
-// ============================================================
-function getKandaInfo(kandaFile) {
-    const kandaPatterns = {
-        'Bala_Srga.html': { prefix: '../BALAKANDA/', pattern: 'sarga_' },
-        'Ay_Sarga.html': { prefix: '../AYODHYA KANDA/', pattern: 'Asarga_' },
-        'Ara_sarga.html': { prefix: '../ARANAYKANDA/', pattern: 'Ar_sarga_' },
-        'KIs_Sraga.html': { prefix: '../KISHKINDHAKANDA/', pattern: 'ki_sarga_' },
-        'SU_Sraga.html': { prefix: '../SUNDARAKANDA/', pattern: 'Su_sarga_' },
-        'YU_Sarga.html': { prefix: '../YUDHAKANDA/', pattern: 'Yu_sarga_' },
-        'utt_sarga.html': { prefix: '../UTTARAKANDA/', pattern: 'utt_sarga_' }
-    };
-    return kandaPatterns[kandaFile] || kandaPatterns['Bala_Srga.html'];
-}
-
-// ============================================================
-// Function to initialize sidebar with current Kanda
+// Function to initialize sidebar with current Kanda chapters
 // ============================================================
 function initSidebar() {
     const sidebar = document.querySelector('.sidebar');
     if (!sidebar) return;
-    
+
     const currentKanda = getCurrentKandaFile();
     const chapterCount = getChapterCount(currentKanda);
     const kandaInfo = getKandaInfo(currentKanda);
-    
+
     // Update title
     const titleElement = sidebar.querySelector('h1');
     if (titleElement) {
-        const kandaNames = {
-            'Bala_Srga.html': 'बालकाण्डः',
-            'Ay_Sarga.html': 'अयोध्याकाण्डः',
-            'Ara_sarga.html': 'अरण्यकाण्डः',
-            'KIs_Sraga.html': 'किष्किन्धाकाण्डः',
-            'SU_Sraga.html': 'सुन्दरकाण्डः',
-            'YU_Sarga.html': 'युद्धकाण्डः',
-            'utt_sarga.html': 'उत्तरकाण्डः'
-        };
-        titleElement.textContent = kandaNames[currentKanda] || 'बालकाण्डः';
+        titleElement.textContent = getKandaName(currentKanda);
     }
-    
+
     // Remove existing links
     const existingLinks = sidebar.querySelectorAll('a[data-target]');
     existingLinks.forEach(link => link.remove());
-    
+
     // Generate chapter links
     const basePrefix = kandaInfo.prefix;
     const pattern = kandaInfo.pattern;
-    
+
     for (let i = 1; i <= chapterCount; i++) {
         const chapterFileName = `${pattern}${i}.html`;
         const chapterUrl = basePrefix + chapterFileName;
-        
+
         const link = document.createElement('a');
         link.href = chapterUrl;
         link.textContent = `सर्गः ${i}`;
         link.setAttribute('data-target', 'content');
-        
+
         // Add click handler
         link.addEventListener('click', (event) => {
             event.preventDefault();
             loadContent(chapterUrl, 'content', link);
-            
+
             // Close sidebar on mobile
             if (window.innerWidth <= 992) {
-                const sidebar = document.querySelector('.sidebar');
+                const sidebarEl = document.querySelector('.sidebar');
                 const sidebarToggle = document.querySelector('.chapter-sidebar-toggle, #sidebarToggle, .sidebar-toggle');
-                if (sidebar) {
-                    sidebar.classList.remove('active');
+                if (sidebarEl) {
+                    sidebarEl.classList.remove('active');
                 }
                 if (sidebarToggle) {
                     sidebarToggle.setAttribute('aria-expanded', 'false');
                 }
             }
         });
-        
+
         sidebar.appendChild(link);
     }
 }
 
 // ============================================================
-// Add event listeners to sidebar links AND dropdown links
-// ============================================================
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize sidebar with current Kanda
-    initSidebar();
-    
-    // Sidebar links
-    const sidebarLinks = document.querySelectorAll('.sidebar a[data-target]');
-    // Dropdown menu links (Kanda dropdown)
-    const dropdownLinks = document.querySelectorAll('.dropdown-menu a[data-target], #kanda-dropdown-menu a[data-target]');
-    // All links combined
-    const allLinks = [...sidebarLinks, ...dropdownLinks];
-    
-    if (allLinks.length > 0) {
-        allLinks.forEach(link => {
-            link.addEventListener('click', (event) => {
-                event.preventDefault();
-                const url = link.getAttribute('href');
-                const targetElementId = link.getAttribute('data-target');
-
-                if (!url || !targetElementId) {
-                    console.warn('Link missing href or data-target attribute');
-                    return;
-                }
-
-                let resolvedUrl;
-                try {
-                    resolvedUrl = new URL(url, window.location.href).href;
-                } catch (e) {
-                    resolvedUrl = url;
-                }
-
-                loadContent(resolvedUrl, targetElementId, link);
-                
-                // Close dropdown after selection on mobile
-                const dropdownMenu = document.querySelector('.kanda-dropdown-container .dropdown-menu');
-                const dropdownToggle = document.querySelector('.kanda-dropdown-container .dropdown-toggle');
-                if (dropdownMenu && window.innerWidth <= 992) {
-                    dropdownMenu.classList.remove('open');
-                    if (dropdownToggle) {
-                        dropdownToggle.setAttribute('aria-expanded', 'false');
-                    }
-                }
-                
-                // Close sidebar on mobile
-                if (window.innerWidth <= 992) {
-                    const sidebar = document.querySelector('.sidebar');
-                    const sidebarToggle = document.querySelector('.chapter-sidebar-toggle, #sidebarToggle, .sidebar-toggle');
-                    if (sidebar) {
-                        sidebar.classList.remove('active');
-                    }
-                    if (sidebarToggle) {
-                        sidebarToggle.setAttribute('aria-expanded', 'false');
-                    }
-                }
-            });
-        });
-    }
-
-    // ============================================================
-    // Auto-load first chapter if no content loaded
-    // ============================================================
-    const contentElement = document.getElementById('content');
-    if (contentElement) {
-        // Check if content already has content loaded
-        const hasContent = contentElement.querySelector('.page, .error-message, .loader-container, img, picture, h1, h2, h3, p');
-        if (!hasContent || contentElement.querySelector('.page') === null) {
-            const currentKanda = getCurrentKandaFile();
-            const kandaInfo = getKandaInfo(currentKanda);
-            const firstChapterUrl = kandaInfo.prefix + kandaInfo.pattern + '1.html';
-            
-            // Load first chapter
-            loadContent(firstChapterUrl, 'content', null);
-        }
-    }
-});
-
-// ============================================================
 // Initialize Kanda dropdown with dynamic loading
 // ============================================================
 function initKandaDropdown() {
-    const kandaFiles = [
-        { file: "Bala_Srga.html", name: "बालकाण्डः", chapters: 77 },
-        { file: "Ay_Sarga.html", name: "अयोध्याकाण्डः", chapters: 119 },
-        { file: "Ara_sarga.html", name: "अरण्यकाण्डः", chapters: 75 },
-        { file: "KIs_Sraga.html", name: "किष्किन्धाकाण्डः", chapters: 67 },
-        { file: "SU_Sraga.html", name: "सुन्दरकाण्डः", chapters: 68 },
-        { file: "YU_Sarga.html", name: "युद्धकाण्डः", chapters: 128 },
-        { file: "utt_sarga.html", name: "उत्तरकाण्डः", chapters: 111 }
-    ];
-
-    const dropdownMenu = document.getElementById("kanda-dropdown-menu");
+    const dropdownMenu = document.getElementById('kanda-dropdown-menu');
     const currentPath = window.location.pathname;
 
     if (dropdownMenu) {
         dropdownMenu.innerHTML = '';
 
         // Determine the prefix based on current location
-        let prefix = "";
-        if (currentPath.includes("/Books/book_link/")) {
-            prefix = "";
-        } else if (currentPath.includes("/Books/")) {
-            prefix = "book_link/";
+        let prefix = '';
+        if (currentPath.includes('/Books/book_link/')) {
+            prefix = '';
+        } else if (currentPath.includes('/Books/')) {
+            prefix = 'book_link/';
         } else {
-            prefix = "./Books/book_link/";
+            prefix = './Books/book_link/';
         }
 
-        kandaFiles.forEach(item => {
+        KANDA_DATA.forEach(item => {
             const finalUrl = prefix + item.file;
 
             // Don't show current page in dropdown
             if (!currentPath.endsWith(item.file)) {
-                const listItem = document.createElement("li");
-                const anchor = document.createElement("a");
+                const listItem = document.createElement('li');
+                const anchor = document.createElement('a');
                 anchor.href = finalUrl;
                 anchor.textContent = item.name;
                 anchor.setAttribute('data-target', 'content');
                 anchor.setAttribute('data-chapters', item.chapters);
                 anchor.setAttribute('data-kanda', item.file);
-                
+
                 // Add click handler - navigate to the Kanda page
                 anchor.addEventListener('click', (event) => {
                     event.preventDefault();
                     // Navigate to the Kanda page
                     window.location.href = finalUrl;
                 });
-                
+
                 listItem.appendChild(anchor);
                 dropdownMenu.appendChild(listItem);
             }
@@ -399,73 +285,53 @@ function initKandaDropdown() {
 function updateSidebarLinks(kandaFile, prefix, totalChapters) {
     const sidebar = document.querySelector('.sidebar');
     if (!sidebar) return;
-    
+
     // Get all existing sidebar links except the title
     const existingLinks = sidebar.querySelectorAll('a[data-target]');
-    
+
     // Remove existing links (keep the title)
     existingLinks.forEach(link => link.remove());
-    
-    // Map of Kanda files to their chapter file naming patterns
-    const kandaPatterns = {
-        'Bala_Srga.html': { prefix: '../BALAKANDA/', pattern: 'sarga_' },
-        'Ay_Sarga.html': { prefix: '../AYODHYA KANDA/', pattern: 'Asarga_' },
-        'Ara_sarga.html': { prefix: '../ARANAYKANDA/', pattern: 'Ar_sarga_' },
-        'KIs_Sraga.html': { prefix: '../KISHKINDHAKANDA/', pattern: 'ki_sarga_' },
-        'SU_Sraga.html': { prefix: '../SUNDARAKANDA/', pattern: 'Su_sarga_' },
-        'YU_Sarga.html': { prefix: '../YUDHAKANDA/', pattern: 'Yu_sarga_' },
-        'utt_sarga.html': { prefix: '../UTTARAKANDA/', pattern: 'utt_sarga_' }
-    };
-    
-    const kandaInfo = kandaPatterns[kandaFile];
+
+    const kandaInfo = getKandaInfo(kandaFile);
     if (!kandaInfo) return;
-    
+
     // Update the sidebar title
     const titleElement = sidebar.querySelector('h1');
     if (titleElement) {
-        const kandaNames = {
-            'Bala_Srga.html': 'बालकाण्डः',
-            'Ay_Sarga.html': 'अयोध्याकाण्डः',
-            'Ara_sarga.html': 'अरण्यकाण्डः',
-            'KIs_Sraga.html': 'किष्किन्धाकाण्डः',
-            'SU_Sraga.html': 'सुन्दरकाण्डः',
-            'YU_Sarga.html': 'युद्धकाण्डः',
-            'utt_sarga.html': 'उत्तरकाण्डः'
-        };
-        titleElement.textContent = kandaNames[kandaFile] || 'बालकाण्डः';
+        titleElement.textContent = getKandaName(kandaFile);
     }
-    
+
     // Generate chapter links
     const basePrefix = kandaInfo.prefix;
     const pattern = kandaInfo.pattern;
-    
+
     for (let i = 1; i <= totalChapters; i++) {
         const chapterFileName = `${pattern}${i}.html`;
         const chapterUrl = basePrefix + chapterFileName;
-        
+
         const link = document.createElement('a');
         link.href = chapterUrl;
         link.textContent = `सर्गः ${i}`;
         link.setAttribute('data-target', 'content');
-        
+
         // Add click handler for chapter loading
         link.addEventListener('click', (event) => {
             event.preventDefault();
             loadContent(chapterUrl, 'content', link);
-            
+
             // Close sidebar on mobile
             if (window.innerWidth <= 992) {
-                const sidebar = document.querySelector('.sidebar');
+                const sidebarEl = document.querySelector('.sidebar');
                 const sidebarToggle = document.querySelector('.chapter-sidebar-toggle, #sidebarToggle, .sidebar-toggle');
-                if (sidebar) {
-                    sidebar.classList.remove('active');
+                if (sidebarEl) {
+                    sidebarEl.classList.remove('active');
                 }
                 if (sidebarToggle) {
                     sidebarToggle.setAttribute('aria-expanded', 'false');
                 }
             }
         });
-        
+
         sidebar.appendChild(link);
     }
 }
@@ -503,14 +369,10 @@ function initKandaDropdownToggle() {
     });
 }
 
-// Call the function to initialize the dropdown
-initKandaDropdown();
-initKandaDropdownToggle();
-
 // ============================================================
 // Sidebar Controller - Handles sidebar toggle and interaction
 // ============================================================
-document.addEventListener('DOMContentLoaded', function () {
+function initSidebarController() {
     const sidebar = document.querySelector('.sidebar');
     const content = document.querySelector('.content');
     const mainContainer = document.querySelector('.main-container');
@@ -543,7 +405,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!backdrop) return;
         const isSidebarOpen = !sidebarCollapsed && isMobile();
         const anyOpen = isSidebarOpen;
-        
+
         backdrop.classList.toggle('active', anyOpen);
         document.body.classList.toggle('drawer-open', anyOpen);
     }
@@ -562,7 +424,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const firstLink = sidebar.querySelector('a');
             if (firstLink) firstLink.focus();
         }
-        
+
         updateBackdrop();
     }
 
@@ -590,22 +452,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateContentHeight() {
-        const headerHeight = header.offsetHeight;
-        content.style.minHeight = `calc(100vh - ${headerHeight}px)`;
-        document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+        const hHeight = header.offsetHeight;
+        content.style.minHeight = `calc(100vh - ${hHeight}px)`;
+        document.documentElement.style.setProperty('--header-height', `${hHeight}px`);
     }
 
     // Set up sidebar toggle buttons
     sidebarToggles.forEach(btn => {
         btn.setAttribute('aria-controls', 'sidebar');
         btn.setAttribute('aria-expanded', String(!sidebarCollapsed));
-        
+
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             toggleSidebar();
         });
-        
+
         btn.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -671,7 +533,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Click outside to close on mobile
     document.addEventListener('click', (e) => {
         if (!isMobile()) return;
-        
+
         const target = e.target;
         const isInsideSidebar = sidebar.contains(target);
         const isToggle = sidebarToggles.some(t => t.contains(target));
@@ -713,4 +575,93 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize
     updateSidebar();
     updateContentHeight();
+}
+
+// ============================================================
+// Add event listeners to sidebar links AND dropdown links
+// ============================================================
+document.addEventListener('DOMContentLoaded', function () {
+    // First ensure constants are available
+    if (typeof KANDA_DATA === 'undefined') {
+        console.error('constants.js must be loaded before books.js');
+        return;
+    }
+
+    // Initialize sidebar with current Kanda
+    initSidebar();
+
+    // Sidebar links
+    const sidebarLinks = document.querySelectorAll('.sidebar a[data-target]');
+    // Dropdown menu links (Kanda dropdown)
+    const dropdownLinks = document.querySelectorAll('.dropdown-menu a[data-target], #kanda-dropdown-menu a[data-target]');
+    // All links combined
+    const allLinks = [...sidebarLinks, ...dropdownLinks];
+
+    if (allLinks.length > 0) {
+        allLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const url = link.getAttribute('href');
+                const targetElementId = link.getAttribute('data-target');
+
+                if (!url || !targetElementId) {
+                    console.warn('Link missing href or data-target attribute');
+                    return;
+                }
+
+                let resolvedUrl;
+                try {
+                    resolvedUrl = new URL(url, window.location.href).href;
+                } catch (e) {
+                    resolvedUrl = url;
+                }
+
+                loadContent(resolvedUrl, targetElementId, link);
+
+                // Close dropdown after selection on mobile
+                const dropdownMenu = document.querySelector('.kanda-dropdown-container .dropdown-menu');
+                const dropdownToggle = document.querySelector('.kanda-dropdown-container .dropdown-toggle');
+                if (dropdownMenu && window.innerWidth <= 992) {
+                    dropdownMenu.classList.remove('open');
+                    if (dropdownToggle) {
+                        dropdownToggle.setAttribute('aria-expanded', 'false');
+                    }
+                }
+
+                // Close sidebar on mobile
+                if (window.innerWidth <= 992) {
+                    const sidebarEl = document.querySelector('.sidebar');
+                    const sidebarToggle = document.querySelector('.chapter-sidebar-toggle, #sidebarToggle, .sidebar-toggle');
+                    if (sidebarEl) {
+                        sidebarEl.classList.remove('active');
+                    }
+                    if (sidebarToggle) {
+                        sidebarToggle.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+        });
+    }
+
+    // Auto-load first chapter if no content loaded
+    const contentElement = document.getElementById('content');
+    if (contentElement) {
+        // Check if content already has content loaded
+        const hasContent = contentElement.querySelector('.page, .error-message, .loader-container, img, picture, h1, h2, h3, p');
+        if (!hasContent || contentElement.querySelector('.page') === null) {
+            const currentKanda = getCurrentKandaFile();
+            const kandaInfo = getKandaInfo(currentKanda);
+            const firstChapterUrl = kandaInfo.prefix + kandaInfo.pattern + '1.html';
+
+            // Load first chapter
+            loadContent(firstChapterUrl, 'content', null);
+        }
+    }
+
+    // Initialize Kanda dropdown & toggle
+    initKandaDropdown();
+    initKandaDropdownToggle();
+
+    // Initialize Sidebar Controller
+    initSidebarController();
 });

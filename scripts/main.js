@@ -1,23 +1,35 @@
+// ============================================================
 // Enhanced Main Application Module
+// ============================================================
 class MainApp {
     constructor() {
+        this.sliderInterval = null;
+        this.currentSlide = 0;
         this.init();
     }
 
     init() {
-        document.addEventListener('DOMContentLoaded', () => {
-            this.highlightCurrentPage();
-            this.setupContactForm();
-            this.setupNewsletterForm();
-            this.setupDropdownBehavior();
-            this.setupTestimonialSlider();
-        });
+        // Use DOMContentLoaded if not already ready, else fire immediately
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.onReady());
+        } else {
+            this.onReady();
+        }
 
+        // Clean up on unload
         window.addEventListener('beforeunload', () => {
             if (this.sliderInterval) {
                 clearInterval(this.sliderInterval);
             }
         });
+    }
+
+    onReady() {
+        this.highlightCurrentPage();
+        this.setupContactForm();
+        this.setupNewsletterForm();
+        this.setupDropdownBehavior();
+        this.setupTestimonialSlider();
     }
 
     highlightCurrentPage() {
@@ -27,9 +39,9 @@ class MainApp {
         navLinks.forEach(link => {
             const href = link.getAttribute('href');
             if (!href || href.startsWith('javascript:')) return;
-            
+
             const linkPage = href.split('/').pop() || 'index.html';
-            
+
             if (currentPath.endsWith(linkPage) || currentPath.endsWith('/' + linkPage)) {
                 link.classList.add('current-page');
                 const parent = link.closest('.has-dropdown');
@@ -48,9 +60,15 @@ class MainApp {
         if (contactForm) {
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const name = contactForm.querySelector('#name').value.trim();
-                const email = contactForm.querySelector('#email').value.trim();
-                const message = contactForm.querySelector('#message').value.trim();
+                const nameInput = contactForm.querySelector('#name');
+                const emailInput = contactForm.querySelector('#email');
+                const messageInput = contactForm.querySelector('#message');
+
+                if (!nameInput || !emailInput || !messageInput) return;
+
+                const name = nameInput.value.trim();
+                const email = emailInput.value.trim();
+                const message = messageInput.value.trim();
 
                 if (!name || !email || !message) {
                     this.showFormError('Please fill in all required fields.');
@@ -75,6 +93,8 @@ class MainApp {
             newsletterForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const emailInput = newsletterForm.querySelector('input[type="email"]');
+                if (!emailInput) return;
+
                 const email = emailInput.value.trim();
 
                 if (!email) {
@@ -152,14 +172,14 @@ class MainApp {
     }
 
     setupDropdownBehavior() {
-        document.addEventListener('click', (event) => {
+        const handleDocumentClick = (event) => {
             const dropdowns = document.querySelectorAll('.has-dropdown');
             dropdowns.forEach(dropdown => {
                 if (!dropdown.contains(event.target)) {
                     const content = dropdown.querySelector('.dropdown-content');
                     const link = dropdown.querySelector('> a');
                     if (content) {
-                        content.style.display = 'none';
+                        content.style.display = '';
                     }
                     if (link) {
                         link.setAttribute('aria-expanded', 'false');
@@ -167,10 +187,13 @@ class MainApp {
                     dropdown.classList.remove('active');
                 }
             });
-        });
+        };
 
+        document.addEventListener('click', handleDocumentClick);
+
+        // Toggle dropdown on link click (mobile behavior)
         document.querySelectorAll('.has-dropdown > a').forEach(link => {
-            link.addEventListener('click', (e) => {
+            const clickHandler = (e) => {
                 if (window.innerWidth <= 992) {
                     e.preventDefault();
                     const dropdown = e.target.closest('.has-dropdown');
@@ -178,17 +201,17 @@ class MainApp {
                         dropdown.classList.toggle('active');
                         const content = dropdown.querySelector('.dropdown-content');
                         const isExpanded = link.getAttribute('aria-expanded') === 'true';
-                        
+
                         if (content) {
                             content.style.display = isExpanded ? 'none' : 'block';
                         }
                         link.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
                     }
                 }
-            });
-        });
+            };
 
-        document.querySelectorAll('.has-dropdown > a').forEach(link => {
+            link.addEventListener('click', clickHandler);
+
             link.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -207,6 +230,10 @@ class MainApp {
         this.currentSlide = 0;
         this.showTestimonial(this.currentSlide);
 
+        // Clear any existing interval before starting a new one
+        if (this.sliderInterval) {
+            clearInterval(this.sliderInterval);
+        }
         this.sliderInterval = setInterval(() => this.nextTestimonial(), 5000);
 
         dots.forEach((dot, index) => {
@@ -236,12 +263,14 @@ class MainApp {
 
     nextTestimonial() {
         const slides = document.querySelectorAll('.testimonial-slide');
+        if (slides.length === 0) return;
         this.currentSlide = (this.currentSlide + 1) % slides.length;
         this.showTestimonial(this.currentSlide);
     }
 
     prevTestimonial() {
         const slides = document.querySelectorAll('.testimonial-slide');
+        if (slides.length === 0) return;
         this.currentSlide = (this.currentSlide - 1 + slides.length) % slides.length;
         this.showTestimonial(this.currentSlide);
     }
@@ -253,15 +282,17 @@ class MainApp {
 // ============================================================
 class ViewportRealignmentController {
     constructor() {
+        this.resizeTimer = null;
         this.init();
     }
 
     init() {
-        // Bind viewport orientation change listener
-        window.addEventListener('resize', () => this.evaluateViewportConstraints());
-        window.addEventListener('orientationchange', () => this.evaluateViewportConstraints());
-        
-        // Initial execution trace
+        const handler = () => this.evaluateViewportConstraints();
+
+        window.addEventListener('resize', handler);
+        window.addEventListener('orientationchange', handler);
+
+        // Initial check
         this.evaluateViewportConstraints();
     }
 
@@ -270,10 +301,9 @@ class ViewportRealignmentController {
      */
     evaluateViewportConstraints() {
         const width = window.innerWidth;
-        const isLandscape = window.matchMedia("(orientation: landscape)").matches;
 
-        // Force reset active side elements if dynamic dimensions conflict
-        if (width > 992 || isLandscape) {
+        // Force reset active side elements if we're past the mobile breakpoint
+        if (width > 992) {
             const navbar = document.getElementById('navbar');
             const hamburger = document.querySelector('.hamburger');
             const backdrop = document.getElementById('mobileDrawerBackdrop');
@@ -291,13 +321,18 @@ class ViewportRealignmentController {
 // ============================================================
 // HAMBURGER TOGGLE HANDLER
 // ============================================================
-document.addEventListener('DOMContentLoaded', function() {
+function initHamburger() {
     const hamburger = document.querySelector('.hamburger');
     const navbar = document.getElementById('navbar');
     const backdrop = document.getElementById('mobileDrawerBackdrop');
     const navbarClose = document.querySelector('.navbar-close');
 
-    // If no backdrop exists, create one
+    if (!hamburger || !navbar) {
+        console.warn('Hamburger or navbar not found');
+        return;
+    }
+
+    // Create backdrop if missing
     let backdropElement = backdrop;
     if (!backdropElement) {
         backdropElement = document.createElement('div');
@@ -306,33 +341,26 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.appendChild(backdropElement);
     }
 
-    if (!hamburger || !navbar) {
-        console.warn('Hamburger or navbar not found');
-        return;
-    }
-
     function closeMenu() {
         navbar.classList.remove('active', 'open');
         hamburger.classList.remove('active');
         hamburger.setAttribute('aria-expanded', 'false');
-        if (backdropElement) {
-            backdropElement.classList.remove('active');
-            document.body.classList.remove('drawer-open');
-        }
+        backdropElement.classList.remove('active');
+        document.body.classList.remove('drawer-open');
     }
 
     function openMenu() {
         navbar.classList.add('active', 'open');
         hamburger.classList.add('active');
         hamburger.setAttribute('aria-expanded', 'true');
-        if (backdropElement) {
-            backdropElement.classList.add('active');
-            document.body.classList.add('drawer-open');
-        }
+        backdropElement.classList.add('active');
+        document.body.classList.add('drawer-open');
     }
 
     function toggleMenu(e) {
-        if (e) e.stopPropagation();
+        if (e) {
+            e.stopPropagation();
+        }
         if (navbar.classList.contains('active')) {
             closeMenu();
         } else {
@@ -340,76 +368,80 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Remove existing listeners by cloning
-    const newHamburger = hamburger.cloneNode(true);
-    hamburger.parentNode.replaceChild(newHamburger, hamburger);
-    const freshHamburger = document.querySelector('.hamburger');
+    // Instead of cloneNode (which loses listeners), use a clean approach:
+    // Remove any existing listeners by using fresh event listeners
+    // and tracking state via data attribute.
 
     // Click event
-    freshHamburger.addEventListener('click', toggleMenu);
+    hamburger.addEventListener('click', toggleMenu);
 
     // Keyboard support
-    freshHamburger.addEventListener('keydown', function(e) {
+    hamburger.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            toggleMenu();
+            toggleMenu(e);
         }
     });
 
-    // Close button
+    // Close button handler
     const closeBtn = navbarClose || document.querySelector('.navbar-close');
     if (closeBtn) {
-        closeBtn.addEventListener('click', function(e) {
+        closeBtn.addEventListener('click', function (e) {
             e.stopPropagation();
             closeMenu();
         });
     }
 
-    // Backdrop click
-    if (backdropElement) {
-        backdropElement.addEventListener('click', closeMenu);
-    }
+    // Backdrop click to close
+    backdropElement.addEventListener('click', function () {
+        closeMenu();
+    });
 
-    // Escape key
-    document.addEventListener('keydown', function(e) {
+    // Escape key handler
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && navbar.classList.contains('active')) {
             closeMenu();
-            freshHamburger.focus();
+            hamburger.focus();
         }
     });
 
     // Close on resize to desktop
     let resizeTimeout;
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', function () {
         clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(function() {
+        resizeTimeout = setTimeout(function () {
             if (window.innerWidth >= 993 && navbar.classList.contains('active')) {
                 closeMenu();
             }
         }, 200);
     });
 
-    // Close when clicking outside
-    document.addEventListener('click', function(e) {
+    // Close when clicking outside the navbar or hamburger
+    document.addEventListener('click', function (e) {
         if (!navbar.classList.contains('active')) return;
-        
+
         const target = e.target;
         const isInsideNavbar = navbar.contains(target);
-        const isInsideHamburger = freshHamburger.contains(target);
-        const isInsideBackdrop = backdropElement && backdropElement.contains(target);
-        
-        if (!isInsideNavbar && !isInsideHamburger && !isInsideBackdrop) {
+        const isHamburgerClick = hamburger.contains(target);
+
+        if (!isInsideNavbar && !isHamburgerClick) {
             closeMenu();
         }
     });
 
     console.log('Hamburger initialized successfully');
-});
+}
 
 // ============================================================
-// GLOBAL INVOCATION
+// GLOBAL INVOCATION (runs after DOMContentLoaded)
 // ============================================================
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
+    // Initialize hamburger first (no dependency)
+    initHamburger();
+
+    // Initialize viewport controller
     new ViewportRealignmentController();
+
+    // Initialize main app
     new MainApp();
 });
