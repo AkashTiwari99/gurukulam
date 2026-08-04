@@ -416,7 +416,7 @@ img {
 
 .has-dropdown .dropdown-content {
     position: absolute;
-    top: calc(100% + 8px);
+    top: 100%;
     left: 0;
     background-color: var(--light);
     border-radius: var(--border-radius-medium);
@@ -843,7 +843,7 @@ img {
         opacity: 0 !important;
         pointer-events: none !important;
         transition: opacity 0.35s ease !important;
-        z-index: 1000 !important;
+        z-index: 999 !important;
     }
 
     .mobile-drawer-backdrop.active {

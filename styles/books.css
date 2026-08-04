@@ -189,8 +189,8 @@
    RESPONSIVE - BOOKS PAGE
    ================================================================= */
 
-/* Mobile Portrait */
-@media (max-width: 640px) and (orientation: portrait) {
+/* Mobile */
+@media (max-width: 640px) {
     .hero {
         height: 30vh;
         padding: 40px 15px;
@@ -231,8 +231,8 @@
     }
 }
 
-/* Tablet Portrait */
-@media (min-width: 641px) and (max-width: 1024px) and (orientation: portrait) {
+/* Tablet */
+@media (min-width: 641px) and (max-width: 1024px) {
     .hero {
         height: 35vh;
         padding: 50px 20px;

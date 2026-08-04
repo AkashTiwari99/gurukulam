@@ -265,10 +265,10 @@ html {
         display: none;
         width: var(--sidebar-width);
         flex: 0 0 var(--sidebar-width);
-        height: 100%;
+        height: calc(100vh - var(--header-height));
         max-height: none;
         position: fixed;
-        top: 0;
+        top: var(--header-height);
         left: -100%;
         border-right: 2px solid var(--accent-color);
         border-bottom: none;
@@ -351,13 +351,17 @@ html {
         pointer-events: auto;
     }
 
+    .main-container.sidebar-open {
+        overflow: hidden;
+    }
+
     body.drawer-open {
         overflow: hidden;
     }
 }
 
 /* ---- Tablet Portrait Specific ---- */
-@media (min-width: 641px) and (max-width: 1024px) and (orientation: portrait) {
+@media (min-width: 641px) and (max-width: 1024px) {
     .content {
         padding: 20px !important;
     }
@@ -388,7 +392,7 @@ html {
 }
 
 /* ---- Mobile Portrait Specific ---- */
-@media (max-width: 640px) and (orientation: portrait) {
+@media (max-width: 640px) {
     .content {
         padding: 12px !important;
     }

@@ -176,6 +176,25 @@ function updateSidebarTitle(url) {
     }
 }
 
+function closeMobileSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const backdrop = document.getElementById('mobileDrawerBackdrop');
+    const toggles = Array.from(document.querySelectorAll('.chapter-sidebar-toggle, #sidebarToggle, .sidebar-toggle'));
+    const mainContainer = document.querySelector('.main-container');
+
+    if (sidebar) {
+        sidebar.classList.remove('active');
+    }
+    if (backdrop) {
+        backdrop.classList.remove('active');
+    }
+    if (mainContainer) {
+        mainContainer.classList.remove('sidebar-open');
+    }
+    toggles.forEach(toggle => toggle.setAttribute('aria-expanded', 'false'));
+    document.body.classList.remove('drawer-open');
+}
+
 // ============================================================
 // Function to initialize sidebar with current Kanda chapters
 // ============================================================
@@ -197,6 +216,8 @@ function initSidebar() {
     const existingLinks = sidebar.querySelectorAll('a[data-target]');
     existingLinks.forEach(link => link.remove());
 
+    const chapterList = sidebar.querySelector('#chapter-list') || sidebar;
+
     // Generate chapter links
     const basePrefix = kandaInfo.prefix;
     const pattern = kandaInfo.pattern;
@@ -210,25 +231,7 @@ function initSidebar() {
         link.textContent = `सर्गः ${i}`;
         link.setAttribute('data-target', 'content');
 
-        // Add click handler
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            loadContent(chapterUrl, 'content', link);
-
-            // Close sidebar on mobile
-            if (window.innerWidth <= 992) {
-                const sidebarEl = document.querySelector('.sidebar');
-                const sidebarToggle = document.querySelector('.chapter-sidebar-toggle, #sidebarToggle, .sidebar-toggle');
-                if (sidebarEl) {
-                    sidebarEl.classList.remove('active');
-                }
-                if (sidebarToggle) {
-                    sidebarToggle.setAttribute('aria-expanded', 'false');
-                }
-            }
-        });
-
-        sidebar.appendChild(link);
+        chapterList.appendChild(link);
     }
 }
 
@@ -301,6 +304,8 @@ function updateSidebarLinks(kandaFile, prefix, totalChapters) {
         titleElement.textContent = getKandaName(kandaFile);
     }
 
+    const chapterList = sidebar.querySelector('#chapter-list') || sidebar;
+
     // Generate chapter links
     const basePrefix = kandaInfo.prefix;
     const pattern = kandaInfo.pattern;
@@ -314,26 +319,40 @@ function updateSidebarLinks(kandaFile, prefix, totalChapters) {
         link.textContent = `सर्गः ${i}`;
         link.setAttribute('data-target', 'content');
 
-        // Add click handler for chapter loading
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            loadContent(chapterUrl, 'content', link);
-
-            // Close sidebar on mobile
-            if (window.innerWidth <= 992) {
-                const sidebarEl = document.querySelector('.sidebar');
-                const sidebarToggle = document.querySelector('.chapter-sidebar-toggle, #sidebarToggle, .sidebar-toggle');
-                if (sidebarEl) {
-                    sidebarEl.classList.remove('active');
-                }
-                if (sidebarToggle) {
-                    sidebarToggle.setAttribute('aria-expanded', 'false');
-                }
-            }
-        });
-
-        sidebar.appendChild(link);
+        chapterList.appendChild(link);
     }
+}
+
+function initChapterListDelegation() {
+    const chapterList = document.getElementById('chapter-list') || document.querySelector('.sidebar');
+    if (!chapterList) return;
+
+    chapterList.addEventListener('click', (event) => {
+        const anchor = event.target.closest('a[data-target]');
+        if (!anchor || !chapterList.contains(anchor)) return;
+
+        event.preventDefault();
+
+        const url = anchor.getAttribute('href');
+        const targetElementId = anchor.getAttribute('data-target');
+        if (!url || !targetElementId) return;
+
+        let resolvedUrl;
+        try {
+            resolvedUrl = new URL(url, window.location.href).href;
+        } catch (e) {
+            resolvedUrl = url;
+        }
+
+        loadContent(resolvedUrl, targetElementId, anchor);
+
+        document.querySelectorAll('.sidebar a[data-target]').forEach(link => link.classList.remove('active'));
+        anchor.classList.add('active');
+
+        if (window.matchMedia('(max-width: 992px)').matches) {
+            closeMobileSidebar();
+        }
+    });
 }
 
 // ============================================================
@@ -476,17 +495,6 @@ function initSidebarController() {
         });
     });
 
-    // Close sidebar when a chapter link is clicked (mobile only)
-    sidebar.querySelectorAll('a[data-target]').forEach(link => {
-        link.addEventListener('click', () => {
-            if (isMobile()) {
-                sidebarCollapsed = true;
-                updateSidebar();
-                updateBackdrop();
-            }
-        });
-    });
-
     // Close drawers when backdrop is clicked
     if (backdrop) {
         backdrop.addEventListener('click', () => {
@@ -590,15 +598,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize sidebar with current Kanda
     initSidebar();
 
-    // Sidebar links
-    const sidebarLinks = document.querySelectorAll('.sidebar a[data-target]');
     // Dropdown menu links (Kanda dropdown)
-    const dropdownLinks = document.querySelectorAll('.dropdown-menu a[data-target], #kanda-dropdown-menu a[data-target]');
-    // All links combined
-    const allLinks = [...sidebarLinks, ...dropdownLinks];
+    const dropdownLinks = document.querySelectorAll('.kanda-dropdown-container .dropdown-menu a[data-target], #kanda-dropdown-menu a[data-target]');
 
-    if (allLinks.length > 0) {
-        allLinks.forEach(link => {
+    if (dropdownLinks.length > 0) {
+        dropdownLinks.forEach(link => {
             link.addEventListener('click', (event) => {
                 event.preventDefault();
                 const url = link.getAttribute('href');
@@ -618,7 +622,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 loadContent(resolvedUrl, targetElementId, link);
 
-                // Close dropdown after selection on mobile
                 const dropdownMenu = document.querySelector('.kanda-dropdown-container .dropdown-menu');
                 const dropdownToggle = document.querySelector('.kanda-dropdown-container .dropdown-toggle');
                 if (dropdownMenu && window.innerWidth <= 992) {
@@ -627,21 +630,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         dropdownToggle.setAttribute('aria-expanded', 'false');
                     }
                 }
-
-                // Close sidebar on mobile
-                if (window.innerWidth <= 992) {
-                    const sidebarEl = document.querySelector('.sidebar');
-                    const sidebarToggle = document.querySelector('.chapter-sidebar-toggle, #sidebarToggle, .sidebar-toggle');
-                    if (sidebarEl) {
-                        sidebarEl.classList.remove('active');
-                    }
-                    if (sidebarToggle) {
-                        sidebarToggle.setAttribute('aria-expanded', 'false');
-                    }
-                }
             });
         });
     }
+
+    initChapterListDelegation();
 
     // Auto-load first chapter if no content loaded
     const contentElement = document.getElementById('content');
