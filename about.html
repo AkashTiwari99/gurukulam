@@ -43,17 +43,17 @@
             <nav class="navbar" id="navbar" aria-label="Main navigation">
                 <ul class="nav-list">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="programs.html">programs</a></li>
+                    <li><a href="programs.html">Programs</a></li>
                     <li><a href="books.html">Books</a></li>
                     <li><a href="Campus.html">Campus</a></li>
                     <li><a href="Gallery/Gallery.html">Gallery</a></li>
-                    <li><a href="keyboard/keyboard_01.html">keyboard</a></li>
+                    <li><a href="keyboard/keyboard_01.html">Keyboard</a></li>
                     <li class="has-dropdown">
-                        <a href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">About <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-content">
-                            <a href="about.html" class="current-page">About Us</a>
-                            <a href="Sanatan Dharma_Vision & Mission.html">Our Mission</a>
-                            <a href="team.html">Our Team</a>
+                        <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-dropdown">About <i class="fas fa-chevron-down"></i></button>
+                        <div id="about-dropdown" class="dropdown-content" role="menu">
+                            <a href="about.html" role="menuitem" class="current-page" aria-current="page">About Us</a>
+                            <a href="Sanatan Dharma_Vision & Mission.html" role="menuitem">Our Mission</a>
+                            <a href="team.html" role="menuitem">Our Team</a>
                         </div>
                     </li>
                     <li><a href="contact.html">Contact</a></li>
@@ -61,29 +61,30 @@
             </nav>
         </div>
     </header>
+
     <main>
-    <!-- About Section -->
-    <section class="about">
-        <div class="container">
-            <h2>About Gurukulam</h2>
-            <p>Gurukulam is dedicated to reviving the ancient Vedic education system for modern times. We offer programs
-                in Vedic Studies, Yoga, Sanskrit, and more.</p>
-            <img src="images/card1.jpg" alt="Gurukul System">
-            <h3>Our Mission</h3>
-            <p>To preserve and propagate the timeless wisdom of the Vedas and ancient Indian traditions.</p>
-        </div>
-    </section>
+        <!-- About Section -->
+        <section class="about">
+            <div class="container">
+                <h2>About Gurukulam</h2>
+                <p>Gurukulam is dedicated to reviving the ancient Vedic education system for modern times. We offer programs
+                    in Vedic Studies, Yoga, Sanskrit, and more.</p>
+                <img src="images/card1.jpg" alt="Gurukul System">
+                <h3>Our Mission</h3>
+                <p>To preserve and propagate the timeless wisdom of the Vedas and ancient Indian traditions.</p>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    
-    </main>
-<footer class="footer">
+    <footer class="footer">
         <div class="container">
             <p>&copy; 2026 Gurukulam. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="scripts/main.js" defer></script>
+    <script src="scripts/Logo.js" defer></script>
 </body>
 
 </html>

@@ -1,9 +1,5 @@
 // DOM Elements (queried once; may be null on pages that don't include the gallery)
 const galleryGrid = document.getElementById("gallery-grid");
-const uploadForm = document.getElementById("upload-form");
-const fileInput = document.getElementById("file-input");
-const deleteBtn = document.getElementById("delete-btn");
-const downloadBtn = document.getElementById("download-btn");
 const showPhotosBtn = document.getElementById("show-photos");
 const showVideosBtn = document.getElementById("show-videos");
 
@@ -85,56 +81,8 @@ function initGallery() {
         });
     }
 
-    // Upload Form Submission
-    if (uploadForm && fileInput) {
-        uploadForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const files = fileInput.files;
-            if (files && files.length > 0) {
-                Array.from(files).forEach((file) => {
-                    const reader = new FileReader();
-                    reader.onload = (ev) => {
-                        galleryItems.push({ url: ev.target.result, type: file.type });
-                        renderGallery(galleryItems);
-                    };
-                    reader.readAsDataURL(file);
-                });
-            }
-        });
-    }
-
-    // Delete Selected Items
-    if (deleteBtn) {
-        deleteBtn.addEventListener("click", () => {
-            // Remove by descending index so earlier splices don't affect later indexes
-            selectedItems
-                .map(i => Number(i))
-                .sort((a, b) => b - a)
-                .forEach((index) => {
-                    if (index >= 0 && index < galleryItems.length) {
-                        galleryItems.splice(index, 1);
-                    }
-                });
-            selectedItems = [];
-            renderGallery(galleryItems);
-        });
-    }
-
-    // Download Selected Items
-    if (downloadBtn) {
-        downloadBtn.addEventListener("click", () => {
-            selectedItems.forEach((index) => {
-                const item = galleryItems[Number(index)];
-                if (!item) return;
-                const link = document.createElement("a");
-                link.href = item.url;
-                link.download = item.url.split("/").pop();
-                document.body.appendChild(link);
-                link.click();
-                link.remove();
-            });
-        });
-    }
+    // Note: Upload, delete, and download functionality requires
+    // corresponding form elements and buttons to be added to the HTML
 }
 
 // Run init on DOMContentLoaded to ensure elements exist
