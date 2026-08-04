@@ -20,6 +20,7 @@ body {
     z-index: 1200;
     min-height: var(--header-height);
     background: rgba(255, 255, 255, 0.96);
+    -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
     box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
     border-bottom: 1px solid rgba(79, 70, 229, 0.1);
@@ -71,8 +72,6 @@ body {
     align-self: flex-start;
     will-change: width;
     border-radius: 0 1rem 1rem 0;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(35, 213, 171, 0.3) transparent;
 }
 
 /* Webkit scrollbar styling */
@@ -189,8 +188,6 @@ body {
     margin-right: 0;
     box-sizing: border-box;
     box-shadow: inset 1px 0 0 rgba(79, 70, 229, 0.08);
-    scrollbar-width: thin;
-    scrollbar-color: rgba(79, 70, 229, 0.2) transparent;
 }
 
 .content::-webkit-scrollbar {
@@ -298,7 +295,6 @@ html {
         padding: 15px;
         margin-right: 0;
         margin-left: 0;
-        min-height: auto;
         box-shadow: none;
         overflow-y: visible;
         height: auto;
@@ -489,7 +485,6 @@ html {
         display: flex;
         flex-direction: column;
         height: auto;
-        min-height: auto;
         width: 100%;
         overflow: visible;
     }
@@ -532,7 +527,6 @@ html {
         height: auto;
         padding: 15px;
         display: block;
-        min-height: auto;
         overflow-y: visible;
         box-shadow: none;
     }

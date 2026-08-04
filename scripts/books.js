@@ -173,12 +173,11 @@ function updateSidebarTitle(url) {
     const sidebarTitle = document.querySelector('.sidebar h1');
     if (!sidebarTitle) return;
 
-    // Extract filename from URL and look up the kanda name
     const fileName = url.split('/').pop();
-    const kandaName = getKandaName(fileName);
-    if (kandaName) {
-        sidebarTitle.textContent = kandaName;
-    }
+    const isKandaPage = KANDA_FILES.includes(fileName);
+    const kandaName = isKandaPage ? getKandaName(fileName) : getKandaName(getCurrentKandaFile());
+
+    sidebarTitle.textContent = kandaName;
 }
 
 function closeMobileSidebar() {
@@ -443,7 +442,10 @@ function initSidebarController() {
         if (!sidebarCollapsed) {
             sidebarCollapsed = true;
             updateSidebar();
-            sidebarToggles.forEach(t => t.setAttribute('aria-expanded', 'false'));
+            sidebarToggles.forEach(t => {
+                t.setAttribute('aria-expanded', 'false');
+                t.classList.remove('active');
+            });
         }
         updateBackdrop();
     }
@@ -454,7 +456,10 @@ function initSidebarController() {
         sidebarCollapsed = !sidebarCollapsed;
         updateSidebar();
 
-        sidebarToggles.forEach(t => t.setAttribute('aria-expanded', String(!sidebarCollapsed)));
+        sidebarToggles.forEach(t => {
+            t.setAttribute('aria-expanded', String(!sidebarCollapsed));
+            t.classList.toggle('active', !sidebarCollapsed);
+        });
 
         if (!isMobile()) {
             localStorage.setItem('sidebarCollapsed', sidebarCollapsed);
@@ -647,9 +652,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Auto-load first chapter if no content loaded
     const contentElement = document.getElementById('content');
     if (contentElement) {
-        // Check if content already has content loaded
-        const hasContent = contentElement.querySelector('.page, .error-message, .loader-container, img, picture, h1, h2, h3, p');
-        if (!hasContent || contentElement.querySelector('.page') === null) {
+        const hasChapterContent = contentElement.querySelector('.page, .error-message, .loader-container');
+        if (!hasChapterContent) {
             const currentKanda = getCurrentKandaFile();
             const kandaInfo = getKandaInfo(currentKanda);
             const firstChapterUrl = kandaInfo.prefix + kandaInfo.pattern + '1.html';
