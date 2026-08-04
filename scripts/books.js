@@ -611,9 +611,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize sidebar with current Kanda
     initSidebar();
 
-    // Dropdown menu links (Kanda dropdown)
-    const dropdownLinks = document.querySelectorAll('.kanda-dropdown-container .dropdown-menu a[data-target], #kanda-dropdown-menu a[data-target]');
+    initChapterListDelegation();
 
+    // Initialize Kanda dropdown after the menu is populated
+    initKandaDropdown();
+    initKandaDropdownToggle();
+
+    const dropdownLinks = document.querySelectorAll('.kanda-dropdown-container .dropdown-menu a[data-target], #kanda-dropdown-menu a[data-target]');
     if (dropdownLinks.length > 0) {
         dropdownLinks.forEach(link => {
             link.addEventListener('click', (event) => {
@@ -646,8 +650,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
-
-    initChapterListDelegation();
 
     // Auto-load first chapter if no content loaded
     const contentElement = document.getElementById('content');

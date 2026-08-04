@@ -4,17 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ancient Wisdom Library</title>
+    <meta name="description" content="Explore the Ancient Wisdom Library - Digital collection of timeless Vedic texts, Ramayana, and ancient knowledge preserved for the digital age.">
+    <meta name="keywords" content="ancient wisdom, Vedic texts, Ramayana, digital library, Sanskrit, Hindu philosophy">
+    <meta name="author" content="Gurukulam">
+    <title>Ancient Wisdom Library - Gurukulam</title>
+    
+    <!-- Preconnect for external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- DNS prefetch for PDFs -->
+    <link rel="dns-prefetch" href="Books/Books.pdf">
+    
+    <!-- Fonts - optimized weights only -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/books.css">
     <link rel="stylesheet" href="styles/responsive-improvements.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
 <body>
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Header -->
     <header class="header">
         <div class="header-container">
@@ -32,30 +51,35 @@
             <!-- Navigation -->
             <nav class="navbar" id="navbar" aria-label="Main navigation">
                 <!-- Close button for mobile drawer -->
-                <button class="navbar-close" aria-label="Close menu">
-                    <i class="fas fa-times"></i>
+                <button class="navbar-close" aria-label="Close menu" type="button">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                    <span class="sr-only">Close</span>
                 </button>
 
                 <ul class="nav-list">
                     <li><a href="index.html">Home</a></li>
                     <li class="has-dropdown">
-                        <a href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">Programs <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-content" role="menu">
-                            <a href="programs.html">Vedic Studies</a>
-                            <a href="programs.html">Sanskrit Immersion</a>
-                            <a href="programs.html">Yoga & Meditation</a>
-                            <a href="programs.html">Ayurveda Basics</a>
+                        <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="programs-dropdown" class="dropdown-toggle">
+                            Programs <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div id="programs-dropdown" class="dropdown-content" role="menu" aria-label="Programs submenu">
+                            <a href="programs.html" role="menuitem">Vedic Studies</a>
+                            <a href="programs.html" role="menuitem">Sanskrit Immersion</a>
+                            <a href="programs.html" role="menuitem">Yoga & Meditation</a>
+                            <a href="programs.html" role="menuitem">Ayurveda Basics</a>
                         </div>
                     </li>
-                    <li><a href="books.html" class="current-page">Books</a></li>
+                    <li><a href="books.html" class="current-page" aria-current="page">Books</a></li>
                     <li><a href="Campus.html">Campus</a></li>
                     <li><a href="Gallery/Gallery.html">Gallery</a></li>
                     <li class="has-dropdown">
-                        <a href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">About <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-content" role="menu">
-                            <a href="about.html">About Us</a>
-                            <a href="Sanatan Dharma_Vision & Mission.html">Our Mission</a>
-                            <a href="team.html">Our Team</a>
+                        <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-dropdown" class="dropdown-toggle">
+                            About <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div id="about-dropdown" class="dropdown-content" role="menu" aria-label="About submenu">
+                            <a href="about.html" role="menuitem">About Us</a>
+                            <a href="Sanatan Dharma_Vision & Mission.html" role="menuitem">Our Mission</a>
+                            <a href="team.html" role="menuitem">Our Team</a>
                         </div>
                     </li>
                     <li><a href="contact.html">Contact</a></li>
@@ -65,17 +89,18 @@
             <!-- Right Side Controls: Hamburger -->
             <div class="header-right-controls">
                 <!-- Hamburger Menu for Mobile -->
-                <div class="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navbar" type="button">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="sr-only">Menu</span>
+                </button>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main>
+    <main id="main-content">
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
@@ -89,114 +114,114 @@
             <h2 class="section-title">Digital Library</h2>
             <p class="section-desc">Dive into the profound knowledge of ancient texts beautifully preserved for the digital age</p>
 
-            <div class="book-grid">
+            <div class="book-grid" role="list" aria-label="Available books">
                 <!-- Ramayana Book Card -->
-                <div class="book-card">
+                <article class="book-card" role="listitem">
                     <div class="book-cover">
                         <i class="fas fa-book"></i>
                     </div>
                     <div class="book-info">
                         <h3>Ramayana</h3>
                         <p>The epic tale of Lord Rama</p>
-                        <a href="Books/book_link/Bala_Srga.html" class="book-btn">Read Now</a>
+                        <a href="Books/book_link/Bala_Srga.html" class="book-btn" target="_self">Read Now</a>
                     </div>
-                </div>
+                </article>
 
                 <!-- Shloka Mala 1 -->
-                <div class="book-card">
+                <article class="book-card" role="listitem">
                     <div class="book-cover">
                         <i class="fas fa-lightbulb"></i>
                     </div>
                     <div class="book-info">
                         <h3>Shloka Mala 1</h3>
                         <p>Good values of Ramayana</p>
-                        <a href="Books/Shlok mala/shlok_mala_1.html" class="book-btn">Read Now</a>
+                        <a href="Books/Shlok mala/shlok_mala_1.html" class="book-btn" target="_self">Read Now</a>
                     </div>
-                </div>
+                </article>
 
                 <!-- Shloka Mala 2 -->
-                <div class="book-card">
+                <article class="book-card" role="listitem">
                     <div class="book-cover">
                         <i class="fas fa-book-open"></i>
                     </div>
                     <div class="book-info">
-                        <h3>Shloka Mala_2</h3>
+                        <h3>Shloka Mala 2</h3>
                         <p>Good values of Ramayana</p>
-                        <a href="Books/Shlok mala/shlok_mala_2.html" class="book-btn">Read Now</a>
+                        <a href="Books/Shlok mala/shlok_mala_2.html" class="book-btn" target="_self">Read Now</a>
                     </div>
-                </div>
+                </article>
 
                 <!-- Reviving Vedic Knowledge -->
-                <div class="book-card">
+                <article class="book-card" role="listitem">
                     <div class="book-cover">
                         <i class="fas fa-scroll"></i>
                     </div>
                     <div class="book-info">
                         <h3>Reviving Vedic Knowledge</h3>
                         <p>A guide to ancient wisdom</p>
-                        <a href="Books/Books.pdf/REVIVING%20VEDIC%20KNOWLEDGE.pdf" class="book-btn">Read Now</a>
+                        <a href="Books/Books.pdf/REVIVING%20VEDIC%20KNOWLEDGE.pdf" class="book-btn" target="_blank" rel="noopener noreferrer">Read Now</a>
                     </div>
-                </div>
+                </article>
 
                 <!-- Ancient Educational Structures -->
-                <div class="book-card">
+                <article class="book-card" role="listitem">
                     <div class="book-cover">
                         <i class="fas fa-university"></i>
                     </div>
                     <div class="book-info">
                         <h3>Ancient Educational Structures</h3>
                         <p>Learning systems of the past</p>
-                        <a href="Books/Books.pdf/Ancient%20Educational%20Structures.pdf" class="book-btn">Read Now</a>
+                        <a href="Books/Books.pdf/Ancient%20Educational%20Structures.pdf" class="book-btn" target="_blank" rel="noopener noreferrer">Read Now</a>
                     </div>
-                </div>
+                </article>
 
                 <!-- Social Entrepreneurship -->
-                <div class="book-card">
+                <article class="book-card" role="listitem">
                     <div class="book-cover">
                         <i class="fas fa-hands-helping"></i>
                     </div>
                     <div class="book-info">
                         <h3>Social Entrepreneurship with Vedic Wisdom</h3>
                         <p>Ancient principles for modern business</p>
-                        <a href="Books/Books.pdf/Social%20entrepreneurship%20with%20vedic%20wisdom.pdf" class="book-btn">Read Now</a>
+                        <a href="Books/Books.pdf/Social%20entrepreneurship%20with%20vedic%20wisdom.pdf" class="book-btn" target="_blank" rel="noopener noreferrer">Read Now</a>
                     </div>
-                </div>
+                </article>
 
                 <!-- The Wisdom of the Hindus -->
-                <div class="book-card">
+                <article class="book-card" role="listitem">
                     <div class="book-cover">
                         <i class="fas fa-om"></i>
                     </div>
                     <div class="book-info">
                         <h3>The Wisdom of the Hindus</h3>
                         <p>Exploring Hindu philosophy</p>
-                        <a href="Books/Books.pdf/The%20wisdom%20of%20the%20Hindus.pdf" class="book-btn">Read Now</a>
+                        <a href="Books/Books.pdf/The%20wisdom%20of%20the%20Hindus.pdf" class="book-btn" target="_blank" rel="noopener noreferrer">Read Now</a>
                     </div>
-                </div>
+                </article>
 
                 <!-- Vedic Wisdom -->
-                <div class="book-card">
+                <article class="book-card" role="listitem">
                     <div class="book-cover">
                         <i class="fas fa-star-of-david"></i>
                     </div>
                     <div class="book-info">
                         <h3>Vedic Wisdom</h3>
                         <p>Foundations of Vedic knowledge</p>
-                        <a href="Books/Books.pdf/Vedic%20Wisdom.pdf" class="book-btn">Read Now</a>
+                        <a href="Books/Books.pdf/Vedic%20Wisdom.pdf" class="book-btn" target="_blank" rel="noopener noreferrer">Read Now</a>
                     </div>
-                </div>
+                </article>
 
                 <!-- Vedic Wisdom 2 -->
-                <div class="book-card">
+                <article class="book-card" role="listitem">
                     <div class="book-cover">
                         <i class="fas fa-dharmachakra"></i>
                     </div>
                     <div class="book-info">
                         <h3>Vedic Wisdom 2</h3>
                         <p>Advanced exploration of Vedic knowledge</p>
-                        <a href="Books/Books.pdf/VEDIC%20WISDOM%202.pdf" class="book-btn">Read Now</a>
+                        <a href="Books/Books.pdf/VEDIC%20WISDOM%202.pdf" class="book-btn" target="_blank" rel="noopener noreferrer">Read Now</a>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
     </main>
@@ -235,10 +260,10 @@
                 <div class="footer-section">
                     <h4>Connect With Us</h4>
                     <div class="social-icons">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon" aria-label="Facebook" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" class="social-icon" aria-label="Twitter" rel="noopener noreferrer"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" class="social-icon" aria-label="YouTube" rel="noopener noreferrer"><i class="fab fa-youtube" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>

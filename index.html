@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gurukulam | Reviving Ancient Wisdom</title>
+    <meta name="description" content="Gurukulam - Reviving Ancient Wisdom. Explore Vedic teachings, Sanskrit studies, Yoga, and traditional education rooted in the Gurukul system.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,10 +13,27 @@
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/responsive-improvements.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px 16px;
+            z-index: 10000;
+            text-decoration: none;
+            transition: top 0.3s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+    </style>
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Header -->
     <header class="header">
         <div class="header-container">
@@ -34,7 +52,7 @@
             <nav class="navbar" id="navbar" aria-label="Main navigation">
                 <!-- Close button for mobile drawer -->
                 <button class="navbar-close" aria-label="Close menu">
-                    <i class="fas fa-times"></i>
+                    <i class="fas fa-times" aria-hidden="true"></i>
                 </button>
 
                 <ul class="nav-list">
@@ -45,11 +63,11 @@
                     <li><a href="Gallery/Gallery.html">Gallery</a></li>
                     <li><a href="keyboard/keyboard_01.html">Keyboard</a></li>
                     <li class="has-dropdown">
-                        <a href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">About <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-content" role="menu">
-                            <a href="about.html">About Us</a>
-                            <a href="Sanatan Dharma_Vision & Mission.html">Our Mission</a>
-                            <a href="team.html">Our Team</a>
+                        <button aria-haspopup="true" aria-expanded="false" aria-controls="about-dropdown">About <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+                        <div class="dropdown-content" id="about-dropdown" role="menu">
+                            <a href="about.html" role="menuitem">About Us</a>
+                            <a href="Sanatan Dharma_Vision & Mission.html" role="menuitem">Our Mission</a>
+                            <a href="team.html" role="menuitem">Our Team</a>
                         </div>
                     </li>
                     <li><a href="contact.html">Contact</a></li>
@@ -59,16 +77,16 @@
             <!-- Right Side Controls: Hamburger -->
             <div class="header-right-controls">
                 <!-- Hamburger Menu for Mobile -->
-                <div class="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </div>
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <!-- Hero Section -->
         <section class="hero">
             <div class="overlay"></div>
@@ -93,7 +111,7 @@
                 <div class="card-container">
                     <div class="card">
                         <div class="card-image">
-                            <img src="images/card4.jpg" alt="Vedic Wisdom">
+                            <img src="images/card4.jpg" alt="Vedic Wisdom" loading="lazy" decoding="async">
                             <div class="card-badge">Featured</div>
                         </div>
                         <div class="card-content">
@@ -106,7 +124,7 @@
                     </div>
                     <div class="card">
                         <div class="card-image">
-                            <img src="images/card3.jpg" alt="Gurukul System">
+                            <img src="images/card3.jpg" alt="Gurukul System" loading="lazy" decoding="async">
                         </div>
                         <div class="card-content">
                             <h3>Gurukul System</h3>
@@ -118,7 +136,7 @@
                     </div>
                     <div class="card">
                         <div class="card-image">
-                            <img src="images/card2.jpg" alt="Ramayana">
+                            <img src="images/card2.jpg" alt="Ramayana" loading="lazy" decoding="async">
                         </div>
                         <div class="card-content">
                             <h3>Ramayana</h3>
@@ -136,11 +154,11 @@
         <section class="quote-section">
             <div class="container">
                 <div class="quote">
-                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-left" aria-hidden="true"></i>
                     <blockquote>
                         The true teacher defends his pupils against his own personal influence.
                     </blockquote>
-                    <cite>— Ancient Vedic Wisdom</cite>
+                    <p class="quote-attribution">— Ancient Vedic Wisdom</p>
                 </div>
             </div>
         </section>
@@ -155,7 +173,7 @@
                 <div class="programs-grid">
                     <div class="program-card">
                         <div class="program-icon">
-                            <i class="fas fa-book-open"></i>
+                            <i class="fas fa-book-open" aria-hidden="true"></i>
                         </div>
                         <h3>Sanskrit Studies</h3>
                         <p>Learn the ancient language that connects us to our roots.</p>
@@ -163,7 +181,7 @@
                     </div>
                     <div class="program-card featured">
                         <div class="program-icon">
-                            <i class="fas fa-pray"></i>
+                            <i class="fas fa-pray" aria-hidden="true"></i>
                         </div>
                         <h3>Yoga & Meditation</h3>
                         <p>Discover inner peace and physical harmony through ancient practices.</p>
@@ -171,7 +189,7 @@
                     </div>
                     <div class="program-card">
                         <div class="program-icon">
-                            <i class="fas fa-om"></i>
+                            <i class="fas fa-om" aria-hidden="true"></i>
                         </div>
                         <h3>Vedic Philosophy</h3>
                         <p>Dive deep into the philosophical aspects of Vedic teachings.</p>
@@ -179,7 +197,7 @@
                     </div>
                     <div class="program-card">
                         <div class="program-icon">
-                            <i class="fas fa-seedling"></i>
+                            <i class="fas fa-seedling" aria-hidden="true"></i>
                         </div>
                         <h3>Ayurvedic Living</h3>
                         <p>Learn holistic approaches to health and wellness.</p>
@@ -201,7 +219,7 @@
                         <div class="testimonial-content">
                             <p>"The Vedic Studies program transformed my understanding of ancient texts and their application in modern life."</p>
                             <div class="testimonial-author">
-                                <img src="images/student 1.jpg" alt="Rahul Sharma">
+                                <img src="images/student 1.jpg" alt="Rahul Sharma" loading="lazy" decoding="async">
                                 <div class="author-info">
                                     <h4>Rahul Sharma</h4>
                                     <p>Vedic Studies Graduate</p>
@@ -213,7 +231,7 @@
                         <div class="testimonial-content">
                             <p>"Learning Sanskrit opened a new world of understanding that no translation could ever provide."</p>
                             <div class="testimonial-author">
-                                <img src="images/student 2.jpg" alt="Priya Patel">
+                                <img src="images/student 2.jpg" alt="Priya Patel" loading="lazy" decoding="async">
                                 <div class="author-info">
                                     <h4>Priya Patel</h4>
                                     <p>Sanskrit Program Alumna</p>
@@ -225,7 +243,7 @@
                         <div class="testimonial-content">
                             <p>"The Gurukul experience taught me discipline and mindfulness that I carry into every aspect of life."</p>
                             <div class="testimonial-author">
-                                <img src="images/student 3.jpg" alt="Amit Kumar">
+                                <img src="images/student 3.jpg" alt="Amit Kumar" loading="lazy" decoding="async">
                                 <div class="author-info">
                                     <h4>Amit Kumar</h4>
                                     <p>Residential Program Student</p>
@@ -236,9 +254,9 @@
                 </div>
                 <!-- Testimonial Navigation Dots -->
                 <div class="testimonial-dots">
-                    <span class="dot active" data-index="0"></span>
-                    <span class="dot" data-index="1"></span>
-                    <span class="dot" data-index="2"></span>
+                    <button class="dot active" data-index="0" aria-label="Testimonial 1"></button>
+                    <button class="dot" data-index="1" aria-label="Testimonial 2"></button>
+                    <button class="dot" data-index="2" aria-label="Testimonial 3"></button>
                 </div>
             </div>
         </section>
@@ -252,7 +270,7 @@
                         <p>Subscribe to our newsletter for updates on courses, events, and wisdom teachings.</p>
                     </div>
                     <form class="newsletter-form">
-                        <input type="email" placeholder="Your email address" required>
+                        <input type="email" aria-label="Email address for newsletter" placeholder="Your email address" required>
                         <button type="submit" class="btn btn-primary">Subscribe</button>
                     </form>
                 </div>
