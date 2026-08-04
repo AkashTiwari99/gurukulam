@@ -33,23 +33,34 @@ class MainApp {
     }
 
     highlightCurrentPage() {
-        const currentPath = window.location.pathname;
-        const navLinks = document.querySelectorAll('.nav-list li a, .navbar ul li a');
+        const currentPath = window.location.pathname.replace(/\\/g, '/');
+        const navItems = document.querySelectorAll('.nav-list li a, .nav-list li button');
 
-        navLinks.forEach(link => {
-            const href = link.getAttribute('href');
+        navItems.forEach(item => {
+            if (item.tagName.toLowerCase() !== 'a') return;
+
+            const href = item.getAttribute('href');
             if (!href || href.startsWith('javascript:')) return;
 
-            const linkPage = href.split('/').pop() || 'index.html';
+            let resolvedHref = href;
+            try {
+                resolvedHref = new URL(href, window.location.href).pathname;
+            } catch (e) {
+                resolvedHref = href;
+            }
 
-            if (currentPath.endsWith(linkPage) || currentPath.endsWith('/' + linkPage)) {
-                link.classList.add('current-page');
-                const parent = link.closest('.has-dropdown');
-                if (parent) {
-                    const parentLink = parent.querySelector('> a');
-                    if (parentLink) {
-                        parentLink.classList.add('current-page');
+            if (resolvedHref === currentPath || currentPath.endsWith(resolvedHref)) {
+                item.classList.add('current-page');
+                item.setAttribute('aria-current', 'page');
+
+                const parentDropdown = item.closest('.has-dropdown');
+                if (parentDropdown) {
+                    const trigger = parentDropdown.querySelector('> button, > a, .dropdown-toggle');
+                    if (trigger) {
+                        trigger.classList.add('current-page');
+                        trigger.setAttribute('aria-expanded', 'true');
                     }
+                    parentDropdown.classList.add('active');
                 }
             }
         });
@@ -177,12 +188,12 @@ class MainApp {
             dropdowns.forEach(dropdown => {
                 if (!dropdown.contains(event.target)) {
                     const content = dropdown.querySelector('.dropdown-content');
-                    const link = dropdown.querySelector('> a');
+                    const trigger = dropdown.querySelector('> button, > a');
                     if (content) {
                         content.style.display = '';
                     }
-                    if (link) {
-                        link.setAttribute('aria-expanded', 'false');
+                    if (trigger) {
+                        trigger.setAttribute('aria-expanded', 'false');
                     }
                     dropdown.classList.remove('active');
                 }
@@ -191,8 +202,8 @@ class MainApp {
 
         document.addEventListener('click', handleDocumentClick);
 
-        // Toggle dropdown on link click (mobile behavior)
-        document.querySelectorAll('.has-dropdown > a').forEach(link => {
+        // Toggle dropdown on link or button click (mobile behavior)
+        document.querySelectorAll('.has-dropdown > a, .has-dropdown > button').forEach(trigger => {
             const clickHandler = (e) => {
                 if (window.innerWidth <= 992) {
                     e.preventDefault();
@@ -200,22 +211,22 @@ class MainApp {
                     if (dropdown) {
                         dropdown.classList.toggle('active');
                         const content = dropdown.querySelector('.dropdown-content');
-                        const isExpanded = link.getAttribute('aria-expanded') === 'true';
+                        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
 
                         if (content) {
                             content.style.display = isExpanded ? 'none' : 'block';
                         }
-                        link.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
+                        trigger.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
                     }
                 }
             };
 
-            link.addEventListener('click', clickHandler);
+            trigger.addEventListener('click', clickHandler);
 
-            link.addEventListener('keydown', (e) => {
+            trigger.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    link.click();
+                    trigger.click();
                 }
             });
         });

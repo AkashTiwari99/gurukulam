@@ -44,14 +44,14 @@
             <nav class="navbar" id="navbar" aria-label="Main navigation">
                 <ul class="nav-list">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="programs.html">programs</a></li>
+                    <li><a href="programs.html">Programs</a></li>
                     <li><a href="books.html">Books</a></li>
-                    <li><a href="Campus.html" class="current-page">Campus</a></li>
+                    <li><a href="Campus.html" class="current-page" aria-current="page">Campus</a></li>
                     <li><a href="Gallery/Gallery.html">Gallery</a></li>
-                    <li><a href="keyboard/keyboard_01.html">keyboard</a></li>
+                    <li><a href="keyboard/keyboard_01.html">Keyboard</a></li>
                     <li class="has-dropdown">
-                        <a href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">About <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-content">
+                        <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-dropdown">About <i class="fas fa-chevron-down"></i></button>
+                        <div id="about-dropdown" class="dropdown-content">
                             <a href="about.html">About Us</a>
                             <a href="Sanatan Dharma_Vision & Mission.html">Our Mission</a>
                             <a href="team.html">Our Team</a>
@@ -312,9 +312,10 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    
+    
     </main>
-    <footer class="footer">
+<footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-about">

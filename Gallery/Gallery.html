@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
 
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/Gallery.css">
@@ -43,8 +44,8 @@
                 <ul class="nav-list">
                     <li><a href="../index.html">Home</a></li>
                     <li class="has-dropdown">
-                        <a href="javascript:void(0)">Programs <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-content">
+                        <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="programs-dropdown">Programs <i class="fas fa-chevron-down"></i></button>
+                        <div id="programs-dropdown" class="dropdown-content">
                             <a href="../programs.html">Vedic Studies</a>
                             <a href="../programs.html">Sanskrit Immersion</a>
                             <a href="../programs.html">Yoga & Meditation</a>
@@ -53,10 +54,10 @@
                     </li>
                     <li><a href="../books.html">Books</a></li>
                     <li><a href="../Campus.html">Campus</a></li>
-                    <li><a href="Gallery.html" class="current-page">Gallery</a></li>
+                    <li><a href="Gallery.html" class="current-page" aria-current="page">Gallery</a></li>
                     <li class="has-dropdown">
-                        <a href="javascript:void(0)">About <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-content">
+                        <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-dropdown">About <i class="fas fa-chevron-down"></i></button>
+                        <div id="about-dropdown" class="dropdown-content">
                             <a href="../about.html">About Us</a>
                             <a href="../Sanatan Dharma_Vision & Mission.html">Our Mission</a>
                             <a href="../team.html">Our Team</a>
@@ -93,7 +94,9 @@
 
     
     </main>
-<script src="../scripts/Gallery.js" defer></script>
+    <script src="../scripts/main.js" defer></script>
+    <script src="../scripts/Logo.js" defer></script>
+    <script src="../scripts/Gallery.js" defer></script>
 </body>
 
 </html>
