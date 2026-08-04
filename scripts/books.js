@@ -8,6 +8,11 @@ const contentCache = new Map();
 // Track active AbortController to cancel stale requests
 let activeFetchController = null;
 
+// Shared breakpoint used for mobile drawer behavior
+const MOBILE_DRAWER_BREAKPOINT = 1024;
+const MOBILE_DRAWER_MEDIA_QUERY = `(max-width: ${MOBILE_DRAWER_BREAKPOINT}px)`;
+let mobileDrawerControllerClose = null;
+
 // ============================================================
 // Function to load content dynamically
 // ============================================================
@@ -177,6 +182,11 @@ function updateSidebarTitle(url) {
 }
 
 function closeMobileSidebar() {
+    if (typeof mobileDrawerControllerClose === 'function') {
+        mobileDrawerControllerClose();
+        return;
+    }
+
     const sidebar = document.querySelector('.sidebar');
     const backdrop = document.getElementById('mobileDrawerBackdrop');
     const toggles = Array.from(document.querySelectorAll('.chapter-sidebar-toggle, #sidebarToggle, .sidebar-toggle'));
@@ -349,7 +359,7 @@ function initChapterListDelegation() {
         document.querySelectorAll('.sidebar a[data-target]').forEach(link => link.classList.remove('active'));
         anchor.classList.add('active');
 
-        if (window.matchMedia('(max-width: 992px)').matches) {
+        if (window.matchMedia(MOBILE_DRAWER_MEDIA_QUERY).matches) {
             closeMobileSidebar();
         }
     });
@@ -407,7 +417,7 @@ function initSidebarController() {
 
     // Mobile detection
     function isMobile() {
-        return window.matchMedia('(max-width: 992px)').matches;
+        return window.matchMedia(MOBILE_DRAWER_MEDIA_QUERY).matches;
     }
 
     // Initialize sidebar state
@@ -428,6 +438,17 @@ function initSidebarController() {
         backdrop.classList.toggle('active', anyOpen);
         document.body.classList.toggle('drawer-open', anyOpen);
     }
+
+    function closeSidebarController() {
+        if (!sidebarCollapsed) {
+            sidebarCollapsed = true;
+            updateSidebar();
+            sidebarToggles.forEach(t => t.setAttribute('aria-expanded', 'false'));
+        }
+        updateBackdrop();
+    }
+
+    mobileDrawerControllerClose = closeSidebarController;
 
     function toggleSidebar() {
         sidebarCollapsed = !sidebarCollapsed;
@@ -499,11 +520,7 @@ function initSidebarController() {
     if (backdrop) {
         backdrop.addEventListener('click', () => {
             if (isMobile()) {
-                if (!sidebarCollapsed) {
-                    sidebarCollapsed = true;
-                    updateSidebar();
-                }
-                updateBackdrop();
+                closeSidebarController();
             }
         });
     }
@@ -529,11 +546,8 @@ function initSidebarController() {
     // Close sidebar on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            if (isMobile() && !sidebarCollapsed) {
-                sidebarCollapsed = true;
-                updateSidebar();
-                sidebarToggles.forEach(t => t.setAttribute('aria-expanded', 'false'));
-                updateBackdrop();
+            if (isMobile()) {
+                closeSidebarController();
             }
         }
     });
@@ -550,10 +564,7 @@ function initSidebarController() {
         if (isInsideBackdrop) return;
 
         if (!sidebarCollapsed && !isInsideSidebar && !isToggle) {
-            sidebarCollapsed = true;
-            updateSidebar();
-            sidebarToggles.forEach(t => t.setAttribute('aria-expanded', 'false'));
-            updateBackdrop();
+            closeSidebarController();
         }
     });
 
@@ -563,10 +574,7 @@ function initSidebarController() {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             if (isMobile()) {
-                if (!sidebarCollapsed) {
-                    sidebarCollapsed = true;
-                    updateSidebar();
-                }
+                closeSidebarController();
             } else {
                 const savedState = localStorage.getItem('sidebarCollapsed');
                 if (savedState !== null) {
@@ -624,7 +632,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const dropdownMenu = document.querySelector('.kanda-dropdown-container .dropdown-menu');
                 const dropdownToggle = document.querySelector('.kanda-dropdown-container .dropdown-toggle');
-                if (dropdownMenu && window.innerWidth <= 992) {
+                if (dropdownMenu && window.matchMedia(MOBILE_DRAWER_MEDIA_QUERY).matches) {
                     dropdownMenu.classList.remove('open');
                     if (dropdownToggle) {
                         dropdownToggle.setAttribute('aria-expanded', 'false');
