@@ -472,11 +472,17 @@ img {
    ================================================================= */
 .kanda-dropdown-container {
     position: relative;
-    z-index: auto;
+    z-index: 1030;
 }
 
 .kanda-dropdown-container .dropdown-toggle {
+    position: relative;
+    z-index: 1040;
     background: var(--gradient-primary);
+    min-width: 120px;
+    text-align: left;
+    white-space: nowrap;
+    pointer-events: auto;
     color: white;
     padding: 8px 16px;
     border: none;
@@ -508,7 +514,7 @@ img {
     min-width: 200px;
     max-width: 100%;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 500;
+    z-index: 1050;
     border-radius: var(--border-radius-medium);
     overflow: hidden;
     padding: var(--space-sm) 0;
@@ -516,7 +522,7 @@ img {
 }
 
 .kanda-dropdown-container .dropdown-menu.open {
-    display: block;
+    display: block !important;
 }
 
 .kanda-dropdown-container .dropdown-menu li {
