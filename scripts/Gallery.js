@@ -7,7 +7,7 @@ const showVideosBtn = document.getElementById("show-videos");
 let selectedItems = [];
 
 let galleryItems = [
-    { url: "../images/BG Recitation _0.jpg", type: "image/jpeg" },
+    { url: "../images/BG%20Recitation%20_0.jpg", type: "image/jpeg" },
     { url: "../images/card1.jpg", type: "image/jpeg" },
     { url: "../images/card2.jpg", type: "image/jpeg" },
     { url: "../images/card3.jpg", type: "image/jpeg" },
@@ -75,6 +75,8 @@ function initGallery() {
 
     if (showVideosBtn) {
         showVideosBtn.addEventListener("click", () => {
+            const hasVideos = galleryItems.some(item => item.type && item.type.startsWith("video"));
+            if (!hasVideos) return;
             filterGallery("video");
             showVideosBtn.classList.add("active");
             if (showPhotosBtn) showPhotosBtn.classList.remove("active");
