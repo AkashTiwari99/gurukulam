@@ -1,0 +1,60 @@
+{
+  "timestamp": "2026-11-12T18:27:35.052Z",
+  "environment": {
+    "nodeVersion": "v26.13.1",
+    "platform": "win32",
+    "baseUrl": "http://localhost:3000",
+    "dataDir": "C:\\AKASH_TIWARI\\new_work\\gurukulam\\data",
+    "dryRun": false,
+    "executionTime": "2026-11-12T18:27:35.052Z"
+  },
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 3,
+    "passRate": "100.0%",
+    "tierSummary": {
+      "tier1": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "durationMs": 0
+      },
+      "tier2": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "durationMs": 2
+      },
+      "tier3": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "durationMs": 0
+      },
+      "tier4": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "durationMs": 0
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "T2-THEME-05",
+      "tier": 2,
+      "feature": "Typography & Theme",
+      "name": "Theme color contrast definitions in styles/global.css meet WCAG AA standards (>= 4.5:1)",
+      "status": "PASS",
+      "durationMs": 2,
+      "error": null
+    }
+  ]
+}

@@ -168,6 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 mainBtn.className = 'vowel-main-btn';
                 mainBtn.textContent = vowel.devanagari;
                 mainBtn.title = `${vowel.roman} - ${vowel.devanagari}`;
+                mainBtn.setAttribute('aria-label', `${vowel.roman} - ${vowel.devanagari}`);
                 mainBtn.addEventListener('click', () => insertText(vowel.devanagari));
                 
                 vowelKey.appendChild(mainBtn);
@@ -180,6 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     matraBtn.className = 'matra-btn';
                     matraBtn.textContent = vowel.matra;
                     matraBtn.title = `Matra for ${vowel.roman}`;
+                    matraBtn.setAttribute('aria-label', `Matra for ${vowel.roman}`);
                     matraBtn.addEventListener('click', () => insertText(vowel.matra));
                     
                     matraContainer.appendChild(matraBtn);
@@ -199,6 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 key.className = 'key';
                 key.textContent = consonant.devanagari;
                 key.title = `${consonant.roman} - ${consonant.devanagari}`;
+                key.setAttribute('aria-label', `${consonant.roman} - ${consonant.devanagari}`);
                 key.addEventListener('click', () => insertText(consonant.devanagari));
                 
                 consonantsGroup.appendChild(key);
@@ -214,6 +217,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 key.className = 'key';
                 key.textContent = char.devanagari;
                 key.title = `${char.title} - ${char.roman}`;
+                key.setAttribute('aria-label', `${char.title} - ${char.roman}`);
                 key.addEventListener('click', () => insertText(char.devanagari));
                 
                 specialGroup.appendChild(key);
@@ -229,6 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 key.className = 'key accent-key';
                 key.textContent = diacritic.char;
                 key.title = diacritic.title;
+                key.setAttribute('aria-label', diacritic.title);
                 key.addEventListener('click', () => insertText(diacritic.char));
                 
                 vedicGroup.appendChild(key);
@@ -244,6 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 key.className = 'key';
                 key.textContent = item.char;
                 key.title = item.title;
+                key.setAttribute('aria-label', item.title);
                 key.addEventListener('click', () => insertText(item.char));
                 
                 // Special styling for superscript numbers
@@ -267,6 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 numberBtn.className = 'number-btn';
                 numberBtn.textContent = number.devanagari;
                 numberBtn.title = `${number.roman} - ${number.devanagari}`;
+                numberBtn.setAttribute('aria-label', `Number ${number.roman} - ${number.devanagari}`);
                 numberBtn.addEventListener('click', () => insertText(number.devanagari));
                 
                 numberContainer.appendChild(numberBtn);

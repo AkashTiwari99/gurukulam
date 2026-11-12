@@ -24,8 +24,10 @@
         const modal = document.createElement('div');
         modal.className = 'audio-player-modal';
         modal.id = 'shlokAudioPlayer';
+        modal.setAttribute('role', 'region');
+        modal.setAttribute('aria-label', 'Floating Shlok Audio Player');
         modal.innerHTML = `
-            <button class="modal-play-btn" id="modalPlayBtn">▶</button>
+            <button class="modal-play-btn" id="modalPlayBtn" aria-label="Play shlok audio" type="button">▶</button>
             <div class="modal-info">
                 <div class="modal-title" id="modalTitle">Select a Shlok</div>
                 <div class="modal-progress">
@@ -36,16 +38,16 @@
                     <span id="modalDuration">0:00</span>
                 </div>
                 <div class="modal-controls">
-                    <button class="modal-speed-btn" id="modalSpeedBtn">1.0x</button>
+                    <button class="modal-speed-btn" id="modalSpeedBtn" aria-label="Playback speed" type="button">1.0x</button>
                     <div class="modal-autoplay">
-                        <input type="number" id="modalAutoStart" min="1" max="120" placeholder="Start" />
-                        <input type="number" id="modalAutoEnd" min="1" max="120" placeholder="End" />
-                        <button id="modalAutoBtn" class="modal-auto-btn">Auto</button>
-                        <button id="modalStopAutoBtn" class="modal-stop-btn" style="display:none">Stop</button>
+                        <input type="number" id="modalAutoStart" min="1" max="120" placeholder="Start" aria-label="Auto-play start shlok" />
+                        <input type="number" id="modalAutoEnd" min="1" max="120" placeholder="End" aria-label="Auto-play end shlok" />
+                        <button id="modalAutoBtn" class="modal-auto-btn" aria-label="Start auto-play" type="button">Auto</button>
+                        <button id="modalStopAutoBtn" class="modal-stop-btn" style="display:none" aria-label="Stop auto-play" type="button">Stop</button>
                     </div>
                 </div>
             </div>
-            <button class="modal-close" id="modalCloseBtn">✕</button>
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close audio player" type="button">✕</button>
         `;
         document.body.appendChild(modal);
         return modal;
@@ -117,10 +119,12 @@
             audio.addEventListener('play', () => {
                 if (playBtn) {
                     playBtn.textContent = '⏸';
+                    playBtn.setAttribute('aria-label', 'Pause shlok audio');
                     playBtn.classList.add('playing');
                 }
                 if (currentButton) {
                     currentButton.textContent = '⏸';
+                    currentButton.setAttribute('aria-label', `Pause Shlok ${currentShlokNumber || ''}`);
                     currentButton.classList.add('playing');
                 }
                 isPlaying = true;
@@ -128,10 +132,12 @@
             audio.addEventListener('pause', () => {
                 if (playBtn) {
                     playBtn.textContent = '▶';
+                    playBtn.setAttribute('aria-label', 'Play shlok audio');
                     playBtn.classList.remove('playing');
                 }
                 if (currentButton) {
                     currentButton.textContent = '▶';
+                    currentButton.setAttribute('aria-label', `Play Shlok ${currentShlokNumber || ''}`);
                     currentButton.classList.remove('playing');
                 }
                 isPlaying = false;
@@ -151,6 +157,7 @@
         const playBtn = document.getElementById('modalPlayBtn');
         if (playBtn) {
             playBtn.textContent = '▶';
+            playBtn.setAttribute('aria-label', 'Play shlok audio');
             playBtn.classList.remove('playing');
         }
         if (currentButton) {

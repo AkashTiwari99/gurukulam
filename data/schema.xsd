@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <!-- Root element -->
+  <xs:element name="gurukulam" type="GurukulamType"/>
+
+  <xs:complexType name="GurukulamType">
+    <xs:sequence>
+      <xs:element name="metadata" type="MetadataType"/>
+      <xs:element name="pages" type="PagesType"/>
+      <xs:element name="shlok_mala" type="ShlokMalaContainerType"/>
+      <xs:element name="ramayana" type="RamayanaType"/>
+    </xs:sequence>
+    <xs:attribute name="version" type="xs:string" use="required"/>
+    <xs:attribute name="generated_at" type="xs:string" use="required"/>
+    <xs:attribute name="total_files" type="xs:integer" use="required"/>
+    <xs:attribute name="total_verses" type="xs:integer" use="required"/>
+  </xs:complexType>
+
+  <!-- Metadata -->
+  <xs:complexType name="MetadataType">
+    <xs:sequence>
+      <xs:element name="title" type="xs:string"/>
+      <xs:element name="tagline" type="xs:string"/>
+      <xs:element name="description" type="xs:string"/>
+      <xs:element name="version" type="xs:string"/>
+      <xs:element name="lastMigrated" type="xs:string"/>
+      <xs:element name="totalRamayanaVerses" type="xs:integer"/>
+      <xs:element name="totalShlokMalaVerses" type="xs:integer"/>
+      <xs:element name="totalHtmlFilesMigrated" type="xs:integer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Pages -->
+  <xs:complexType name="PagesType">
+    <xs:sequence>
+      <xs:element name="page" type="PageType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PageType">
+    <xs:sequence>
+      <xs:element name="title" type="xs:string"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="raw_content" type="xs:string"/>
+      <xs:element name="sections" type="SectionsType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="slug" type="xs:string" use="required"/>
+    <xs:attribute name="route" type="xs:string" use="required"/>
+    <xs:attribute name="source_file" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="SectionsType">
+    <xs:sequence>
+      <xs:element name="section" type="SectionType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SectionType">
+    <xs:sequence>
+      <xs:element name="heading" type="xs:string" minOccurs="0"/>
+      <xs:element name="raw_text" type="xs:string"/>
+      <xs:element name="text" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <!-- Shlok Mala -->
+  <xs:complexType name="ShlokMalaContainerType">
+    <xs:sequence>
+      <xs:element name="mala" type="MalaType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MalaType">
+    <xs:sequence>
+      <xs:element name="title" type="xs:string"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="shlokas" type="ShlokasType"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:integer" use="required"/>
+    <xs:attribute name="title" type="xs:string" use="required"/>
+    <xs:attribute name="source_file" type="xs:string" use="required"/>
+    <xs:attribute name="total_shlokas" type="xs:integer" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ShlokasType">
+    <xs:sequence>
+      <xs:element name="shloka" type="ShlokaType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ShlokaType">
+    <xs:sequence>
+      <xs:element name="thematic_heading" type="xs:string" minOccurs="0"/>
+      <xs:element name="raw_text" type="xs:string"/>
+      <xs:element name="text" type="xs:string"/>
+      <xs:element name="sanskrit" type="xs:string"/>
+      <xs:element name="hindi" type="xs:string" minOccurs="0"/>
+      <xs:element name="english" type="xs:string" minOccurs="0"/>
+      <xs:element name="audio_src" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="number" type="xs:integer" use="required"/>
+  </xs:complexType>
+
+  <!-- Ramayana -->
+  <xs:complexType name="RamayanaType">
+    <xs:sequence>
+      <xs:element name="kanda" type="KandaType" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="total_kandas" type="xs:integer" use="required"/>
+    <xs:attribute name="total_sargas" type="xs:integer" use="required"/>
+    <xs:attribute name="total_verses" type="xs:integer" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="KandaType">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="devanagari" type="xs:string"/>
+      <xs:element name="mangala" type="MangalaType" minOccurs="0"/>
+      <xs:element name="sargas" type="SargasType"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="number" type="xs:integer" use="required"/>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="devanagari" type="xs:string" use="required"/>
+    <xs:attribute name="total_sargas" type="xs:integer" use="required"/>
+    <xs:attribute name="total_verses" type="xs:integer" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="MangalaType">
+    <xs:sequence>
+      <xs:element name="title" type="xs:string"/>
+      <xs:element name="verses" type="VersesType"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="source_file" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="SargasType">
+    <xs:sequence>
+      <xs:element name="sarga" type="SargaType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SargaType">
+    <xs:sequence>
+      <xs:element name="title" type="xs:string"/>
+      <xs:element name="verses" type="VersesType"/>
+      <xs:element name="colophon" type="ColophonType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="number" type="xs:integer" use="required"/>
+    <xs:attribute name="source_file" type="xs:string" use="required"/>
+    <xs:attribute name="verse_count" type="xs:integer" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="VersesType">
+    <xs:sequence>
+      <xs:element name="verse" type="VerseType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="VerseType">
+    <xs:sequence>
+      <xs:element name="raw_text" type="xs:string"/>
+      <xs:element name="text" type="xs:string"/>
+      <xs:element name="commentary" type="CommentaryType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="number" type="xs:integer" use="required"/>
+    <xs:attribute name="uvacha" type="xs:string" use="required"/>
+    <xs:attribute name="padanta_index" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="CommentaryType">
+    <xs:sequence>
+      <xs:element name="raw_text" type="xs:string"/>
+      <xs:element name="text" type="xs:string"/>
+      <xs:element name="quotes" type="QuotesType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="author" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="QuotesType">
+    <xs:sequence>
+      <xs:element name="quote" type="xs:string" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ColophonType">
+    <xs:sequence>
+      <xs:element name="raw_text" type="xs:string"/>
+      <xs:element name="text" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

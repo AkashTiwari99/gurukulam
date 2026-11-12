@@ -1,0 +1,5210 @@
+{
+  ".github/workflows/ci.yml": {
+    "mtime": 1794498430.7791255,
+    "seen": 1794500875.4178653,
+    "ast_hash": "cc1be41290adf635fd1500e46ad59ae8",
+    "semantic_hash": ""
+  },
+  ".vscode/settings.json": {
+    "mtime": 1794498430.7791255,
+    "seen": 1794500875.4178653,
+    "ast_hash": "95d019e9641c23c83f170072bf10b416",
+    "semantic_hash": ""
+  },
+  "keyboard/script/Character_data.js": {
+    "mtime": 1794498432.1914763,
+    "seen": 1794500875.4178653,
+    "ast_hash": "abea915808b0490bdab0c2d343423f57",
+    "semantic_hash": ""
+  },
+  "keyboard/script/keyboard.js": {
+    "mtime": 1794502361.3682961,
+    "seen": 1794502432.9073596,
+    "ast_hash": "f18f5f54cf1f308747cb252e3ef2fb48",
+    "semantic_hash": ""
+  },
+  "scripts/Gallery.js": {
+    "mtime": 1794498432.1968567,
+    "seen": 1794500875.4178653,
+    "ast_hash": "be631bdaca2ad2aeb227b145f773f9eb",
+    "semantic_hash": ""
+  },
+  "scripts/Logo.js": {
+    "mtime": 1794498432.1978605,
+    "seen": 1794500875.4178653,
+    "ast_hash": "ac5dc94ffb0f7f2fbf2dfeea26c9de41",
+    "semantic_hash": ""
+  },
+  "scripts/books.js": {
+    "mtime": 1794498432.1988568,
+    "seen": 1794500875.4178653,
+    "ast_hash": "107fef45f0aeb87bd8efa93b150394c9",
+    "semantic_hash": ""
+  },
+  "scripts/constants.js": {
+    "mtime": 1794498432.1988568,
+    "seen": 1794500875.4178653,
+    "ast_hash": "29448d58d7c9538c2398430abf024433",
+    "semantic_hash": ""
+  },
+  "scripts/main.js": {
+    "mtime": 1794498432.1998684,
+    "seen": 1794500875.4178653,
+    "ast_hash": "896e7910644acd38550cd81d7f1e2ab5",
+    "semantic_hash": ""
+  },
+  "scripts/shlok-audio-player.js": {
+    "mtime": 1794502264.602105,
+    "seen": 1794502432.9073596,
+    "ast_hash": "e1bcbe05ea8007b0453b8d8e4c1a77f0",
+    "semantic_hash": ""
+  },
+  "tools/audit_css.py": {
+    "mtime": 1794498432.2140987,
+    "seen": 1794500875.4178653,
+    "ast_hash": "e789975fb64eadc4e4c8bc8c377d8390",
+    "semantic_hash": ""
+  },
+  "tools/check_assets.py": {
+    "mtime": 1794498432.2140987,
+    "seen": 1794500875.4178653,
+    "ast_hash": "88e72a5066133024325529e14ca6414d",
+    "semantic_hash": ""
+  },
+  "tools/fix_chapter_html.py": {
+    "mtime": 1794498432.2151055,
+    "seen": 1794500875.4178653,
+    "ast_hash": "31e1f2d7e43ab510b97e01b64354f755",
+    "semantic_hash": ""
+  },
+  "tools/fix_chapter_html_v2.py": {
+    "mtime": 1794498432.2161005,
+    "seen": 1794500875.4178653,
+    "ast_hash": "dd1c73b3cb8f8879d57f1fdb05cccb8f",
+    "semantic_hash": ""
+  },
+  "tools/fix_chapter_html_v3.py": {
+    "mtime": 1794498432.2170956,
+    "seen": 1794500875.4178653,
+    "ast_hash": "561546956f1f0de5125d3a6fdcea9aa6",
+    "semantic_hash": ""
+  },
+  "tools/fix_chapter_html_v4.py": {
+    "mtime": 1794498432.2170956,
+    "seen": 1794500875.4178653,
+    "ast_hash": "1d29749889fb60cfec1563939a5ff116",
+    "semantic_hash": ""
+  },
+  "tools/fix_yuddha_kanda.py": {
+    "mtime": 1794498432.2180967,
+    "seen": 1794500875.4178653,
+    "ast_hash": "f77d20cee1c3201a9a070c33668dae10",
+    "semantic_hash": ""
+  },
+  "tools/normalize_assets.py": {
+    "mtime": 1794498432.219097,
+    "seen": 1794500875.4178653,
+    "ast_hash": "756ac2b07e34ea45a624a00de9691897",
+    "semantic_hash": ""
+  },
+  ".github/PULL_REQUEST_TEMPLATE.md": {
+    "mtime": 1794498430.7791255,
+    "seen": 1794500875.4178653,
+    "ast_hash": "1b157507aef941e87ef91ee1cd6bf9fb",
+    "semantic_hash": ""
+  },
+  ".github/agents/gurukulam-static-site.agent.md": {
+    "mtime": 1794498430.7791255,
+    "seen": 1794500875.4178653,
+    "ast_hash": "c1f0e55e3d31001ba70e19f3cdef3908",
+    "semantic_hash": ""
+  },
+  ".github/copilot-instructions.md": {
+    "mtime": 1794498430.7791255,
+    "seen": 1794500875.4178653,
+    "ast_hash": "0166a560a0dfa70cddcda4aec8528f69",
+    "semantic_hash": ""
+  },
+  "AUDIT_REPORT.md": {
+    "mtime": 1794502415.4612644,
+    "seen": 1794502432.9073596,
+    "ast_hash": "60e57cd50085013253432a7119b6f0cf",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_1.html": {
+    "mtime": 1794498430.789536,
+    "seen": 1794500875.4178653,
+    "ast_hash": "51b0296db7cf7060bfc8ba3f21312e9b",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_10.html": {
+    "mtime": 1794498430.789536,
+    "seen": 1794500875.4178653,
+    "ast_hash": "09bf54c138ce83ff400b77a59ef012ee",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_11.html": {
+    "mtime": 1794498430.793517,
+    "seen": 1794500875.4178653,
+    "ast_hash": "74004d8d681c7880c06a1982cb9b9000",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_12.html": {
+    "mtime": 1794498430.7955294,
+    "seen": 1794500875.4178653,
+    "ast_hash": "0a957b17656afc68b63eca48ec45ef5c",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_13.html": {
+    "mtime": 1794498430.7965202,
+    "seen": 1794500875.4178653,
+    "ast_hash": "95c62e6e0b901c5daa70b1d25e6efb33",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_14.html": {
+    "mtime": 1794498430.7965202,
+    "seen": 1794500875.4178653,
+    "ast_hash": "09da60da79445e12d156b19d1c27e74a",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_15.html": {
+    "mtime": 1794498430.7965202,
+    "seen": 1794500875.4178653,
+    "ast_hash": "5e2b7dd16fde9ca4c5ce9b0ae6f7fe0b",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_16.html": {
+    "mtime": 1794498430.7965202,
+    "seen": 1794500875.4178653,
+    "ast_hash": "c5b1603f867482d437faa899f226d7d0",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_17.html": {
+    "mtime": 1794498430.7965202,
+    "seen": 1794500875.4178653,
+    "ast_hash": "dc04072ac68799753d788ff5a57aa543",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_18.html": {
+    "mtime": 1794498430.8021722,
+    "seen": 1794500875.4178653,
+    "ast_hash": "36e608ff5b981c6d0038792c76186d11",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_19.html": {
+    "mtime": 1794498430.8021722,
+    "seen": 1794500875.4178653,
+    "ast_hash": "4dd3c2c526a4e44803870da98a83b28b",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_2.html": {
+    "mtime": 1794498430.8021722,
+    "seen": 1794500875.4178653,
+    "ast_hash": "1297a0141c0144f1286590e69718caf2",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_20.html": {
+    "mtime": 1794498430.8021722,
+    "seen": 1794500875.4178653,
+    "ast_hash": "2b9348cb767adb87c6cec144c8cc7b15",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_21.html": {
+    "mtime": 1794498430.8021722,
+    "seen": 1794500875.4178653,
+    "ast_hash": "35e322f6122f0c102dff807ee800d6ff",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_22.html": {
+    "mtime": 1794498430.8021722,
+    "seen": 1794500875.4178653,
+    "ast_hash": "fe30ef5cfc25affabe0877f2aab0df4e",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_23.html": {
+    "mtime": 1794498430.8066163,
+    "seen": 1794500875.4178653,
+    "ast_hash": "dbe0ea92d3340bdf13ae723f1a3ab250",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_24.html": {
+    "mtime": 1794498430.8066163,
+    "seen": 1794500875.4178653,
+    "ast_hash": "ee6b29198df26f10af5e5844e7bac43f",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_25.html": {
+    "mtime": 1794498430.8066163,
+    "seen": 1794500875.4178653,
+    "ast_hash": "ca66b22e5541d386923c3216e7615acc",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_26.html": {
+    "mtime": 1794498430.8066163,
+    "seen": 1794500875.4178653,
+    "ast_hash": "94a0442a9466a10e5b310bcd00911736",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_27.html": {
+    "mtime": 1794498430.8102274,
+    "seen": 1794500875.4178653,
+    "ast_hash": "f47bdf21b8ff5b491d66207eee13a49e",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_28.html": {
+    "mtime": 1794498430.8112411,
+    "seen": 1794500875.4178653,
+    "ast_hash": "ee042c1259f7c8544d4a26cf398f2b88",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_29.html": {
+    "mtime": 1794498430.8128765,
+    "seen": 1794500875.4178653,
+    "ast_hash": "99114e483ce966671b23c03a94a15b42",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_3.html": {
+    "mtime": 1794498430.8128765,
+    "seen": 1794500875.4178653,
+    "ast_hash": "4d92834ed0b95de16cefee311e9702cf",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_30.html": {
+    "mtime": 1794498430.8128765,
+    "seen": 1794500875.4178653,
+    "ast_hash": "4ebc776c4c3c6c0e4d4bc4e93e2b4992",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_31.html": {
+    "mtime": 1794498430.8128765,
+    "seen": 1794500875.4178653,
+    "ast_hash": "fbbf11c5bd1d574d38e4de317aad4820",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_32.html": {
+    "mtime": 1794498430.8128765,
+    "seen": 1794500875.4178653,
+    "ast_hash": "4234e4f4bb817a66bf8633540b182b86",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_33.html": {
+    "mtime": 1794498430.8128765,
+    "seen": 1794500875.4178653,
+    "ast_hash": "2fb303585d32fa254ee7cf8b3cd4326a",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_34.html": {
+    "mtime": 1794498430.8128765,
+    "seen": 1794500875.4178653,
+    "ast_hash": "fcedbb38702875369f7c6c5faf7c3a8c",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_35.html": {
+    "mtime": 1794498430.8128765,
+    "seen": 1794500875.4178653,
+    "ast_hash": "577a829ee3d1f709bf80dab080dd6c35",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_36.html": {
+    "mtime": 1794498430.820047,
+    "seen": 1794500875.4178653,
+    "ast_hash": "aee90e5442846c1756b2893080d2d2cd",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_37.html": {
+    "mtime": 1794498430.820047,
+    "seen": 1794500875.4178653,
+    "ast_hash": "d7338f44e5ffd5517f213ff169090997",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_38.html": {
+    "mtime": 1794498430.820047,
+    "seen": 1794500875.4178653,
+    "ast_hash": "3a9f14ab03763510160bce87786572df",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_39.html": {
+    "mtime": 1794498430.822068,
+    "seen": 1794500875.4178653,
+    "ast_hash": "ae234fae7de13633f05d090eff80a132",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_4.html": {
+    "mtime": 1794498430.822068,
+    "seen": 1794500875.4178653,
+    "ast_hash": "8edd62dfcae128043c08861a4b6cd694",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_40.html": {
+    "mtime": 1794498430.822068,
+    "seen": 1794500875.4178653,
+    "ast_hash": "5f3805e695981ec7102b5c4041423c10",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_41.html": {
+    "mtime": 1794498430.822068,
+    "seen": 1794500875.4178653,
+    "ast_hash": "0d338b901d044a489279eb22c726834a",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_42.html": {
+    "mtime": 1794498430.822068,
+    "seen": 1794500875.4178653,
+    "ast_hash": "8d1d628aee94435cbae0bdb8f229e434",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_43.html": {
+    "mtime": 1794498430.822068,
+    "seen": 1794500875.4178653,
+    "ast_hash": "84eb888d44d127df2782bbba918635ba",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_44.html": {
+    "mtime": 1794498430.826721,
+    "seen": 1794500875.4178653,
+    "ast_hash": "5cdae605f495778283145f343193a76b",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_45.html": {
+    "mtime": 1794498430.8277316,
+    "seen": 1794500875.4178653,
+    "ast_hash": "0114ff45dd245805cac1916a3765b819",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_46.html": {
+    "mtime": 1794498430.8287303,
+    "seen": 1794500875.4178653,
+    "ast_hash": "bc952f80994f1264b3fceb27157ec20c",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_47.html": {
+    "mtime": 1794498430.8287303,
+    "seen": 1794500875.4178653,
+    "ast_hash": "e2f57d6bb2258201ed95447f7aa81f10",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_48.html": {
+    "mtime": 1794498430.8287303,
+    "seen": 1794500875.4178653,
+    "ast_hash": "4dae95072af5709df0ffb218bc6a3554",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_49.html": {
+    "mtime": 1794498430.8287303,
+    "seen": 1794500875.4178653,
+    "ast_hash": "d87cd558f61955049e254a328d9bc3b1",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_5.html": {
+    "mtime": 1794498430.8287303,
+    "seen": 1794500875.4178653,
+    "ast_hash": "192e18d154c2ac8e48ca62f320f82302",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_50.html": {
+    "mtime": 1794498430.8331003,
+    "seen": 1794500875.4178653,
+    "ast_hash": "bafbc3c2f50b112b6f511b4b9bb3acf1",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_51.html": {
+    "mtime": 1794498430.8331003,
+    "seen": 1794500875.4178653,
+    "ast_hash": "ec1d127822fa86ecdcb479e7923078f7",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_52.html": {
+    "mtime": 1794498430.8331003,
+    "seen": 1794500875.4178653,
+    "ast_hash": "ee777a73619512a8a24a7054bef31181",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_53.html": {
+    "mtime": 1794498430.8354375,
+    "seen": 1794500875.4178653,
+    "ast_hash": "f5a155e051f081f771cdf119a699561b",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_54.html": {
+    "mtime": 1794498430.8354375,
+    "seen": 1794500875.4178653,
+    "ast_hash": "677bba897e0e23f2107e2f5df431d8da",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_55.html": {
+    "mtime": 1794498430.8354375,
+    "seen": 1794500875.4178653,
+    "ast_hash": "a7c8aa67a4028b193998c338f212ab93",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_56.html": {
+    "mtime": 1794498430.8354375,
+    "seen": 1794500875.4178653,
+    "ast_hash": "ef8f048544e95acfe3970fcc9f6a5f2a",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_57.html": {
+    "mtime": 1794498430.8354375,
+    "seen": 1794500875.4178653,
+    "ast_hash": "1fa381f7fe19222a800063da30cdbabe",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_58.html": {
+    "mtime": 1794498430.8354375,
+    "seen": 1794500875.4178653,
+    "ast_hash": "80f2df54cffb93c6e3d6189fd695ffa2",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_59.html": {
+    "mtime": 1794498430.8354375,
+    "seen": 1794500875.4178653,
+    "ast_hash": "c22bd1826550f856d6507691efe23225",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_6.html": {
+    "mtime": 1794498430.8354375,
+    "seen": 1794500875.4178653,
+    "ast_hash": "45fc37d32524892798aab273bc1010c8",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_60.html": {
+    "mtime": 1794498430.8410418,
+    "seen": 1794500875.4178653,
+    "ast_hash": "54165ade0016614b3f66160036f57f31",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_61.html": {
+    "mtime": 1794498430.8410418,
+    "seen": 1794500875.4178653,
+    "ast_hash": "0b0d2bf6233705feae1463d362e31177",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_62.html": {
+    "mtime": 1794498430.8410418,
+    "seen": 1794500875.4178653,
+    "ast_hash": "ed53a0a627d6f11df27301a4cb8a94d2",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_63.html": {
+    "mtime": 1794498430.8433435,
+    "seen": 1794500875.4178653,
+    "ast_hash": "a4c16bffc037a0f9be27a23b7cae2f0a",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_64.html": {
+    "mtime": 1794498430.8452525,
+    "seen": 1794500875.4178653,
+    "ast_hash": "1a6faf907926d1bff806047583915339",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_65.html": {
+    "mtime": 1794498430.8452525,
+    "seen": 1794500875.4178653,
+    "ast_hash": "57d075ccb01e992549a94a06d9a93642",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_66.html": {
+    "mtime": 1794498430.8452525,
+    "seen": 1794500875.4178653,
+    "ast_hash": "87ce4641bac613184c3f454a8ec57cd1",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_67.html": {
+    "mtime": 1794498430.8479755,
+    "seen": 1794500875.4178653,
+    "ast_hash": "8e08b610f0dde599bf80af8512cb0302",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_68.html": {
+    "mtime": 1794498430.8479755,
+    "seen": 1794500875.4178653,
+    "ast_hash": "92668bdbcd670799b57a45e896d3aae6",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_69.html": {
+    "mtime": 1794498430.8479755,
+    "seen": 1794500875.4178653,
+    "ast_hash": "6992dcc8c80a514d8414a87bb2242200",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_7.html": {
+    "mtime": 1794498430.8479755,
+    "seen": 1794500875.4178653,
+    "ast_hash": "678784c5f9acf9618d5e048711241144",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_70.html": {
+    "mtime": 1794498430.8479755,
+    "seen": 1794500875.4178653,
+    "ast_hash": "b389afc2bf1e9a3e812fa9a7179c560a",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_71.html": {
+    "mtime": 1794498430.851289,
+    "seen": 1794500875.4178653,
+    "ast_hash": "a295f27eb361448c5a306dfaf59eff52",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_72.html": {
+    "mtime": 1794498430.851289,
+    "seen": 1794500875.4178653,
+    "ast_hash": "e69d63e9fb044403e57e55729cdd6ab5",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_73.html": {
+    "mtime": 1794498430.851289,
+    "seen": 1794500875.4178653,
+    "ast_hash": "6e3a87dbe8181b554b2a12840534e32d",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_74.html": {
+    "mtime": 1794498430.8534782,
+    "seen": 1794500875.4178653,
+    "ast_hash": "32dbfb0ef9ea6cf1b0098b9327595a5e",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_75.html": {
+    "mtime": 1794498430.8534782,
+    "seen": 1794500875.4178653,
+    "ast_hash": "974f9da818c6b873f15a4eaece90da43",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_8.html": {
+    "mtime": 1794498430.8534782,
+    "seen": 1794500875.4178653,
+    "ast_hash": "7b2c58430207db3c09809f5e179ae55c",
+    "semantic_hash": ""
+  },
+  "Books/ARANAYKANDA/Ar_sarga_9.html": {
+    "mtime": 1794498430.8534782,
+    "seen": 1794500875.4178653,
+    "ast_hash": "e8761172d56ce62d72a2ff5e44320179",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_1.html": {
+    "mtime": 1794498430.8560715,
+    "seen": 1794500875.4178653,
+    "ast_hash": "5d0bc79d54dcd2bbd234678547b97d8f",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_10.html": {
+    "mtime": 1794498430.8560715,
+    "seen": 1794500875.4178653,
+    "ast_hash": "8c8ea4ae4a7aefbc9f61a108035b8d8c",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_100.html": {
+    "mtime": 1794498430.8585784,
+    "seen": 1794500875.4178653,
+    "ast_hash": "775d5a708493d12472cfd32ea477fd82",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_101.html": {
+    "mtime": 1794498430.8585784,
+    "seen": 1794500875.4178653,
+    "ast_hash": "f005120e96916e09d1d106bd81cbe8b6",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_102.html": {
+    "mtime": 1794498430.860071,
+    "seen": 1794500875.4178653,
+    "ast_hash": "b11559c620daf38aca23fa0f09a40ec5",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_103.html": {
+    "mtime": 1794498430.861084,
+    "seen": 1794500875.4178653,
+    "ast_hash": "6f6d82e609879dfc335c1dd0237a8757",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_104.html": {
+    "mtime": 1794498430.8620813,
+    "seen": 1794500875.4178653,
+    "ast_hash": "b3d4b12573f0ce5f9c44d5396a02c20c",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_105.html": {
+    "mtime": 1794498430.8620813,
+    "seen": 1794500875.4178653,
+    "ast_hash": "ac8f0861e70252ffcc977ffb847c4b24",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_106.html": {
+    "mtime": 1794498430.8620813,
+    "seen": 1794500875.4178653,
+    "ast_hash": "d3d6837d94c1ad091fb3726c864b3b54",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_107.html": {
+    "mtime": 1794498430.8620813,
+    "seen": 1794500875.4178653,
+    "ast_hash": "6eb2809117828bdbbaf3d9b9eb496c5e",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_108.html": {
+    "mtime": 1794498430.865899,
+    "seen": 1794500875.4178653,
+    "ast_hash": "14d47b260ff287bb3348dc254fd4e4b4",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_109.html": {
+    "mtime": 1794498430.865899,
+    "seen": 1794500875.4178653,
+    "ast_hash": "cb747ee41cde3cf5080a9bf3d3603993",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_11.html": {
+    "mtime": 1794498430.865899,
+    "seen": 1794500875.4178653,
+    "ast_hash": "bb70923529c0823beae5cb6af9446164",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_110.html": {
+    "mtime": 1794498430.865899,
+    "seen": 1794500875.4178653,
+    "ast_hash": "0afdd92898a49455770c7e9f13564147",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_111.html": {
+    "mtime": 1794498430.86893,
+    "seen": 1794500875.4178653,
+    "ast_hash": "39e95cb39cd125749c21944450b1eaac",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_112.html": {
+    "mtime": 1794498430.86893,
+    "seen": 1794500875.4178653,
+    "ast_hash": "4d06f720300f8d21c39d7465e865d1cd",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_113.html": {
+    "mtime": 1794498430.86893,
+    "seen": 1794500875.4178653,
+    "ast_hash": "0d8bc7b049505a00ac5f6e8cdbd9bba8",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_114.html": {
+    "mtime": 1794498430.8712816,
+    "seen": 1794500875.4178653,
+    "ast_hash": "9530067290a1ad0f1aab741893f81d74",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_115.html": {
+    "mtime": 1794498430.8712816,
+    "seen": 1794500875.4178653,
+    "ast_hash": "d448185a046ec99b252b5a9552f6883a",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_116.html": {
+    "mtime": 1794498430.8712816,
+    "seen": 1794500875.4178653,
+    "ast_hash": "4f06719a8e528e8f9eccee3467314794",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_117.html": {
+    "mtime": 1794498430.8712816,
+    "seen": 1794500875.4178653,
+    "ast_hash": "c84cc67f79704c241396eba48022c9ec",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_118.html": {
+    "mtime": 1794498430.8712816,
+    "seen": 1794500875.4178653,
+    "ast_hash": "d504a5698503d913bfa9ce1effa22bf7",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_119.html": {
+    "mtime": 1794498430.8712816,
+    "seen": 1794500875.4178653,
+    "ast_hash": "ce5f9eaf2bbf4bfb856d29715dc83e18",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_12.html": {
+    "mtime": 1794498430.877563,
+    "seen": 1794500875.4178653,
+    "ast_hash": "670ab5ba9666d9b470e080e6415f3f49",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_13.html": {
+    "mtime": 1794498430.8786216,
+    "seen": 1794500875.4178653,
+    "ast_hash": "55742a1b73e0cd166906d87f203f6722",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_14.html": {
+    "mtime": 1794498430.8796244,
+    "seen": 1794500875.4178653,
+    "ast_hash": "1a2bdc985061b59378c861904654de28",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_15.html": {
+    "mtime": 1794498430.8806221,
+    "seen": 1794500875.4178653,
+    "ast_hash": "d74bff8a5cf81b9b4f24c34339323fb9",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_16.html": {
+    "mtime": 1794498430.8815355,
+    "seen": 1794500875.4178653,
+    "ast_hash": "e9a9ff050e1f49658da71655b369013b",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_17.html": {
+    "mtime": 1794498430.8815355,
+    "seen": 1794500875.4178653,
+    "ast_hash": "4d8e42976c371f93db9c962c556739d0",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_18.html": {
+    "mtime": 1794498430.8825421,
+    "seen": 1794500875.4178653,
+    "ast_hash": "90d91e68d82d53a4bedffc54d5aa02cd",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_19.html": {
+    "mtime": 1794498430.883542,
+    "seen": 1794500875.4178653,
+    "ast_hash": "edaac6210a5e6d7c2996393102ee02ef",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_2.html": {
+    "mtime": 1794498430.884691,
+    "seen": 1794500875.4178653,
+    "ast_hash": "1c5bdf238bbcbd17e7a68c47980cb008",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_20.html": {
+    "mtime": 1794498430.8857024,
+    "seen": 1794500875.4178653,
+    "ast_hash": "e174a886bb17da3766727c5c9b2d0b96",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_21.html": {
+    "mtime": 1794498430.8857024,
+    "seen": 1794500875.4178653,
+    "ast_hash": "8caa933fb900cca0e9d02d98efd063cc",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_22.html": {
+    "mtime": 1794498430.8866963,
+    "seen": 1794500875.4178653,
+    "ast_hash": "442bd34629d273a2b862c7faf6781b08",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_23.html": {
+    "mtime": 1794498430.8880978,
+    "seen": 1794500875.4178653,
+    "ast_hash": "ca9882a748ae5888d11b266cc6b6f74b",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_24.html": {
+    "mtime": 1794498430.8891134,
+    "seen": 1794500875.4178653,
+    "ast_hash": "96c3da4d59fb5ccf15c6353d0dde35fe",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_25.html": {
+    "mtime": 1794498430.8891134,
+    "seen": 1794500875.4178653,
+    "ast_hash": "d00ffeebc05a9b81e2b5bc91ab1666a1",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_26.html": {
+    "mtime": 1794498430.890104,
+    "seen": 1794500875.4178653,
+    "ast_hash": "a9a640e45b391e39e4d6f83795f6e426",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_27.html": {
+    "mtime": 1794498430.8911035,
+    "seen": 1794500875.4178653,
+    "ast_hash": "8614907ee0622444f9f628d09dd968af",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_28.html": {
+    "mtime": 1794498430.8921056,
+    "seen": 1794500875.4178653,
+    "ast_hash": "10ebaaa2f294d3a13c907ec7515157ac",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_29.html": {
+    "mtime": 1794498430.8936403,
+    "seen": 1794500875.4178653,
+    "ast_hash": "8ff08601db4a36f1a76b484732674ed3",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_3.html": {
+    "mtime": 1794498430.8946848,
+    "seen": 1794500875.4178653,
+    "ast_hash": "68f3a5c9c77a31183c119cc7b7108a94",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_30.html": {
+    "mtime": 1794498430.8956845,
+    "seen": 1794500875.4178653,
+    "ast_hash": "0aa5e0e916f5a5ad52942672de7bc59d",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_31.html": {
+    "mtime": 1794498430.896685,
+    "seen": 1794500875.4178653,
+    "ast_hash": "8de7105a76a84dc70d16dd43cf8a3753",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_32.html": {
+    "mtime": 1794498430.897684,
+    "seen": 1794500875.4178653,
+    "ast_hash": "2336f9e4a59ede7729b6f6f85da1cbc1",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_33.html": {
+    "mtime": 1794498430.897684,
+    "seen": 1794500875.4178653,
+    "ast_hash": "923ebdcd447524113c4f4c06ee00df33",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_34.html": {
+    "mtime": 1794498430.898685,
+    "seen": 1794500875.4178653,
+    "ast_hash": "4bc5f12dd3fd8c374ea05f6aa2d9ea7b",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_35.html": {
+    "mtime": 1794498430.899684,
+    "seen": 1794500875.4178653,
+    "ast_hash": "8de0d4ca39a3426ab1603142b7111b99",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_36.html": {
+    "mtime": 1794498430.9006844,
+    "seen": 1794500875.4178653,
+    "ast_hash": "fed110550958b35f16f74bf11150a1f5",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_37.html": {
+    "mtime": 1794498430.9016848,
+    "seen": 1794500875.4178653,
+    "ast_hash": "31f2e17eac71fafb228a99983d1bcf77",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_38.html": {
+    "mtime": 1794498430.9016848,
+    "seen": 1794500875.4178653,
+    "ast_hash": "5e93fa09a9a5c70b9458e39aefc7688f",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_39.html": {
+    "mtime": 1794498430.9026842,
+    "seen": 1794500875.4178653,
+    "ast_hash": "4349dd8cf3e4e702ee9856f666f60c73",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_4.html": {
+    "mtime": 1794498430.903684,
+    "seen": 1794500875.4178653,
+    "ast_hash": "94012f442806d3ee540e8544b0cb8ac7",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_40.html": {
+    "mtime": 1794498430.9046848,
+    "seen": 1794500875.4178653,
+    "ast_hash": "bf13b959ef5485011f0b962c47b863af",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_41.html": {
+    "mtime": 1794498430.9046848,
+    "seen": 1794500875.4178653,
+    "ast_hash": "19f810232441bc5f777129a7c89f4e53",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_42.html": {
+    "mtime": 1794498430.905692,
+    "seen": 1794500875.4178653,
+    "ast_hash": "2664b7e3034f33e96e838745c45aab2f",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_43.html": {
+    "mtime": 1794498430.9070735,
+    "seen": 1794500875.4178653,
+    "ast_hash": "0cd1dcdaf6b16bd731592af03cd417a4",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_44.html": {
+    "mtime": 1794498430.9080791,
+    "seen": 1794500875.4178653,
+    "ast_hash": "4c0465014891e6bbf5376a6a07e6fa85",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_45.html": {
+    "mtime": 1794498430.9080791,
+    "seen": 1794500875.4178653,
+    "ast_hash": "f8cecbcb33fa62c8933cf408a36f6f9c",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_46.html": {
+    "mtime": 1794498430.909988,
+    "seen": 1794500875.4178653,
+    "ast_hash": "39ea2e15b609825dfe764e576d04846e",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_47.html": {
+    "mtime": 1794498430.909988,
+    "seen": 1794500875.4178653,
+    "ast_hash": "9bdd1ff9d34fc6132bdc99c9960c7ca5",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_48.html": {
+    "mtime": 1794498430.909988,
+    "seen": 1794500875.4178653,
+    "ast_hash": "cc73b799646eb6f415b2d7017cb4bfa5",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_49.html": {
+    "mtime": 1794498430.909988,
+    "seen": 1794500875.4178653,
+    "ast_hash": "f59458e6bb99d2e09eefd31af5421087",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_5.html": {
+    "mtime": 1794498430.912949,
+    "seen": 1794500875.4178653,
+    "ast_hash": "61bb9e697b954de15d1d37d4f3842a5c",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_50.html": {
+    "mtime": 1794498430.912949,
+    "seen": 1794500875.4178653,
+    "ast_hash": "56c22c17f9e994b1ba31dd10b42508ec",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_51.html": {
+    "mtime": 1794498430.912949,
+    "seen": 1794500875.4178653,
+    "ast_hash": "0c85c91ae09f7e785b7713cbb6bc18a3",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_52.html": {
+    "mtime": 1794498430.912949,
+    "seen": 1794500875.4178653,
+    "ast_hash": "b346682c2e4d52979fa8b2d1f4445956",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_53.html": {
+    "mtime": 1794498430.912949,
+    "seen": 1794500875.4178653,
+    "ast_hash": "500dd6a859daa4016b65210c68026a80",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_54.html": {
+    "mtime": 1794498430.912949,
+    "seen": 1794500875.4178653,
+    "ast_hash": "bc22ac45716fe8568e0ac09d048c7dac",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_55.html": {
+    "mtime": 1794498430.912949,
+    "seen": 1794500875.4178653,
+    "ast_hash": "aa69889084fa8ebd6d88c789a420ff12",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_56.html": {
+    "mtime": 1794498430.912949,
+    "seen": 1794500875.4178653,
+    "ast_hash": "090c296a5870ccee86ed9d27afb57a4c",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_57.html": {
+    "mtime": 1794498430.9204462,
+    "seen": 1794500875.4178653,
+    "ast_hash": "0523aa329296630b2eee4caf4e75217b",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_58.html": {
+    "mtime": 1794498430.9204462,
+    "seen": 1794500875.4178653,
+    "ast_hash": "c46de24d01199b745c33849e6341c1a4",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_59.html": {
+    "mtime": 1794498430.9204462,
+    "seen": 1794500875.4178653,
+    "ast_hash": "c3a5abd41a79cee4a9eef7754da787ac",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_6.html": {
+    "mtime": 1794498430.9204462,
+    "seen": 1794500875.4178653,
+    "ast_hash": "89a24d3614c989eb8525a3f8e32f92e5",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_60.html": {
+    "mtime": 1794498430.9204462,
+    "seen": 1794500875.4178653,
+    "ast_hash": "430451387a19244c3e81ee40c407bb7f",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_61.html": {
+    "mtime": 1794498430.9247198,
+    "seen": 1794500875.4178653,
+    "ast_hash": "747ffba43664080a94cbed9b94fe7ce2",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_62.html": {
+    "mtime": 1794498430.9247198,
+    "seen": 1794500875.4178653,
+    "ast_hash": "3d31c73063b5322f54f3c415ed934a74",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_63.html": {
+    "mtime": 1794498430.9247198,
+    "seen": 1794500875.4178653,
+    "ast_hash": "b19e6f1c9b58aeebd7b709d5bc87020a",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_64.html": {
+    "mtime": 1794498430.9247198,
+    "seen": 1794500875.4178653,
+    "ast_hash": "2989caf8e282375a49ac167e3e705569",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_65.html": {
+    "mtime": 1794498430.9247198,
+    "seen": 1794500875.4178653,
+    "ast_hash": "15852ae94c15e8001bd07c42cec4719a",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_66.html": {
+    "mtime": 1794498430.9247198,
+    "seen": 1794500875.4178653,
+    "ast_hash": "a702971fdbc04c39c720bf101aadbff5",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_67.html": {
+    "mtime": 1794498430.9247198,
+    "seen": 1794500875.4178653,
+    "ast_hash": "01213594e502de9453a92784e20810b9",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_68.html": {
+    "mtime": 1794498430.9247198,
+    "seen": 1794500875.4178653,
+    "ast_hash": "21afb0aac4c43e6d7f0cb3df9427e2ac",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_69.html": {
+    "mtime": 1794498430.9317324,
+    "seen": 1794500875.4178653,
+    "ast_hash": "39c535a6ac817af4f229150d60e69287",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_7.html": {
+    "mtime": 1794498430.9317324,
+    "seen": 1794500875.4178653,
+    "ast_hash": "a1aee91ed4faf18a4f0396fb7922556d",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_70.html": {
+    "mtime": 1794498430.9339657,
+    "seen": 1794500875.4178653,
+    "ast_hash": "78a8ba24ea622d007924e9455ac6462d",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_71.html": {
+    "mtime": 1794498430.9339657,
+    "seen": 1794500875.4178653,
+    "ast_hash": "1770261af40e19e8411f9a3c28dc05db",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_72.html": {
+    "mtime": 1794498430.9339657,
+    "seen": 1794500875.4178653,
+    "ast_hash": "835a351f98c6e3c76cb1ea079fa83c33",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_73.html": {
+    "mtime": 1794498430.9339657,
+    "seen": 1794500875.4178653,
+    "ast_hash": "cf2a809e737c4a92a9478a224a8a73c7",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_74.html": {
+    "mtime": 1794498430.937129,
+    "seen": 1794500875.4178653,
+    "ast_hash": "6b1db764b282a45a775403aade3ee7cd",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_75.html": {
+    "mtime": 1794498430.937129,
+    "seen": 1794500875.4178653,
+    "ast_hash": "8d16fd7c045b343a4ba59330bbd25a75",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_76.html": {
+    "mtime": 1794498430.937129,
+    "seen": 1794500875.4178653,
+    "ast_hash": "8254ecf991e5691f696a21760269a398",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_77.html": {
+    "mtime": 1794498430.9404392,
+    "seen": 1794500875.4178653,
+    "ast_hash": "41ce527d15f0e53306baf1731e55ee03",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_78.html": {
+    "mtime": 1794498430.9404392,
+    "seen": 1794500875.4178653,
+    "ast_hash": "2b27eccafd58b6e956405367a4ec5ab6",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_79.html": {
+    "mtime": 1794498430.9404392,
+    "seen": 1794500875.4188626,
+    "ast_hash": "30b33f27305a873d710cedc6bba0136e",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_8.html": {
+    "mtime": 1794498430.9433036,
+    "seen": 1794500875.4188626,
+    "ast_hash": "502999d5940471938748766294de16bb",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_80.html": {
+    "mtime": 1794498430.9433036,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d6b87c0a4d62c53d25d905de51b24b0b",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_81.html": {
+    "mtime": 1794498430.9433036,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ea51018a0ebda708531bf8d8d4cdbbd7",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_82.html": {
+    "mtime": 1794498430.9433036,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6d202ae9bdba9192ba91a9dcac06dbc7",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_83.html": {
+    "mtime": 1794498430.9433036,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f64343956bc2df436c720c992ce3e4f2",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_84.html": {
+    "mtime": 1794498430.9433036,
+    "seen": 1794500875.4188626,
+    "ast_hash": "145b39235d09ffdc72bcc0aa80eeec84",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_85.html": {
+    "mtime": 1794498430.9433036,
+    "seen": 1794500875.4188626,
+    "ast_hash": "df57a8738bba85fe9e68a5455d168f6a",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_86.html": {
+    "mtime": 1794498430.9433036,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b00a64a63244c7b49a4557a3b1bb9b5f",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_87.html": {
+    "mtime": 1794498430.9433036,
+    "seen": 1794500875.4188626,
+    "ast_hash": "8be310d8f44832b96382d356e3e05852",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_88.html": {
+    "mtime": 1794498430.951859,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4b0cab5e9fcf4a669b5fecac32d9e1cb",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_89.html": {
+    "mtime": 1794498430.951859,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e906c781f5f53f9ab9af50e04c7f7ff8",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_9.html": {
+    "mtime": 1794498430.951859,
+    "seen": 1794500875.4188626,
+    "ast_hash": "5e2d397f2645bdb98ff109a12a748932",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_90.html": {
+    "mtime": 1794498430.951859,
+    "seen": 1794500875.4188626,
+    "ast_hash": "45ca22b4cd901858ba4adfae9c5d80ca",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_91.html": {
+    "mtime": 1794498430.9563136,
+    "seen": 1794500875.4188626,
+    "ast_hash": "93c13e610c0a4b43bd7d62350e572eea",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_92.html": {
+    "mtime": 1794498430.9573543,
+    "seen": 1794500875.4188626,
+    "ast_hash": "233e56811846aa81aa5894100ad45548",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_93.html": {
+    "mtime": 1794498430.9573543,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7d5bcc7efeff1d8cf4271e92bfcf1f6c",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_94.html": {
+    "mtime": 1794498430.958876,
+    "seen": 1794500875.4188626,
+    "ast_hash": "52134289379629b161667f01c1a0b10b",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_95.html": {
+    "mtime": 1794498430.959882,
+    "seen": 1794500875.4188626,
+    "ast_hash": "24616c2c44611099125c62cfc23c4dcb",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_96.html": {
+    "mtime": 1794498430.9613624,
+    "seen": 1794500875.4188626,
+    "ast_hash": "301f852ef8ca613bfbad8b671109a7ef",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_97.html": {
+    "mtime": 1794498430.9618452,
+    "seen": 1794500875.4188626,
+    "ast_hash": "56c54b49cad324cc942b60c57aec6a12",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_98.html": {
+    "mtime": 1794498430.9628532,
+    "seen": 1794500875.4188626,
+    "ast_hash": "072dca3675841d9b9cddfa25b782ed08",
+    "semantic_hash": ""
+  },
+  "Books/AYODHYA KANDA/Asarga_99.html": {
+    "mtime": 1794498430.9637432,
+    "seen": 1794500875.4188626,
+    "ast_hash": "02ad92ccb79e9ac620570554f11a3d72",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/mangala shloka.html": {
+    "mtime": 1794498430.9647493,
+    "seen": 1794500875.4188626,
+    "ast_hash": "64b6be9baad0c4d0d860174cf06acf10",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_1.html": {
+    "mtime": 1794498430.9657493,
+    "seen": 1794500875.4188626,
+    "ast_hash": "68f44a9863409e56037aedc34b5a0919",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_10.html": {
+    "mtime": 1794498430.9672797,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3e79b45a09da68fbad4ecb2153ab0597",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_11.html": {
+    "mtime": 1794498430.9672797,
+    "seen": 1794500875.4188626,
+    "ast_hash": "8005d1a668854ef7548dcb37f046ec31",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_12.html": {
+    "mtime": 1794498430.9682863,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e4a9390a833705cb0e5bd18b55c1135e",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_13.html": {
+    "mtime": 1794498430.9692857,
+    "seen": 1794500875.4188626,
+    "ast_hash": "344e2649732c52034e6bf175007eb553",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_14.html": {
+    "mtime": 1794498430.9702854,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2797dfd2236e988dd7ce1671cf9de411",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_15.html": {
+    "mtime": 1794498430.9712863,
+    "seen": 1794500875.4188626,
+    "ast_hash": "836604efc5fc8287a74c7cc5bb87ae49",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_16.html": {
+    "mtime": 1794498430.9722865,
+    "seen": 1794500875.4188626,
+    "ast_hash": "5120a7966dc3096745c678e2f2a1df14",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_17.html": {
+    "mtime": 1794498430.973286,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c29eefea2442c26f48fcb191033767f1",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_18.html": {
+    "mtime": 1794498430.974245,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3b8d982b85f863fe3f8c65a7add6e3d1",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_19.html": {
+    "mtime": 1794498430.9752522,
+    "seen": 1794500875.4188626,
+    "ast_hash": "409c1dd224481ab3baffba1382db80f5",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_2.html": {
+    "mtime": 1794498430.9762504,
+    "seen": 1794500875.4188626,
+    "ast_hash": "22d8cfc3ecf6637aca190c0975426e75",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_20.html": {
+    "mtime": 1794498430.9772637,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d9066844e37b9244255b66e6fad609ce",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_21.html": {
+    "mtime": 1794498430.978436,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7a4646bdcc4a153e5f06fd03b42bd765",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_22.html": {
+    "mtime": 1794498430.979445,
+    "seen": 1794500875.4188626,
+    "ast_hash": "8f9dd18e9b6c177f1a2f59bb81305587",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_23.html": {
+    "mtime": 1794498430.9804509,
+    "seen": 1794500875.4188626,
+    "ast_hash": "fb42669ed3145f134f8a2513294debb4",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_24.html": {
+    "mtime": 1794498430.9814446,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c7acbbb5572f3bb9d5e295ef48179be9",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_25.html": {
+    "mtime": 1794498430.982444,
+    "seen": 1794500875.4188626,
+    "ast_hash": "35732b47aee0a1a7a3c96ae0d808fea2",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_26.html": {
+    "mtime": 1794498430.983446,
+    "seen": 1794500875.4188626,
+    "ast_hash": "88751360c2fd919990a2357c1148d00f",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_27.html": {
+    "mtime": 1794498430.983446,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7b9eca8a08b73e95940327a135a33780",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_28.html": {
+    "mtime": 1794498430.9844658,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d379bf7a55a0c406c21170203bd6e332",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_29.html": {
+    "mtime": 1794498430.9854443,
+    "seen": 1794500875.4188626,
+    "ast_hash": "da1438c3fe036b79c717a10b31693d13",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_3.html": {
+    "mtime": 1794498430.9864438,
+    "seen": 1794500875.4188626,
+    "ast_hash": "03e0b64801aff9b20d88aa9c88842c46",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_30.html": {
+    "mtime": 1794498430.9874437,
+    "seen": 1794500875.4188626,
+    "ast_hash": "59a430ec68deeeb8318a93c5de4756f0",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_31.html": {
+    "mtime": 1794498430.9884431,
+    "seen": 1794500875.4188626,
+    "ast_hash": "78ee769df5ba43078d39842c4c8b99dd",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_32.html": {
+    "mtime": 1794498430.9884431,
+    "seen": 1794500875.4188626,
+    "ast_hash": "68212da71f20b26234d21b7fc41f0351",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_33.html": {
+    "mtime": 1794498430.9894447,
+    "seen": 1794500875.4188626,
+    "ast_hash": "914c1d544c93f574cb841766d4e886bd",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_34.html": {
+    "mtime": 1794498430.9904442,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0a7d74293572ccc6e838224b3c2cd7b1",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_35.html": {
+    "mtime": 1794498430.9912186,
+    "seen": 1794500875.4188626,
+    "ast_hash": "36f65ba9c5aae64c4752231ce6f758a4",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_36.html": {
+    "mtime": 1794498430.9912186,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d2de2c215a99907c9eadcfeb5cea6347",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_37.html": {
+    "mtime": 1794498430.9922245,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4f32357234ffc5af48c2c2b4400dddff",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_38.html": {
+    "mtime": 1794498430.993225,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6c701add9d081fccce0fb3046c65c287",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_39.html": {
+    "mtime": 1794498430.9948854,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e6ee37623d137ca6ce3233e869f51ef5",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_4.html": {
+    "mtime": 1794498430.995697,
+    "seen": 1794500875.4188626,
+    "ast_hash": "80534673ee7e599abf0faa0671b3714e",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_40.html": {
+    "mtime": 1794498430.9967098,
+    "seen": 1794500875.4188626,
+    "ast_hash": "548c0a08bd5d5357ec701fbc2480d019",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_41.html": {
+    "mtime": 1794498430.9981916,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e1d94cb931ed3294043bf2a284b3c921",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_42.html": {
+    "mtime": 1794498430.999199,
+    "seen": 1794500875.4188626,
+    "ast_hash": "aa85c9ee33d87110e6cd2a6db6eaed05",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_43.html": {
+    "mtime": 1794498431.0002027,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0c653fd05a59c90d9bc1d1444ab47663",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_44.html": {
+    "mtime": 1794498431.0002027,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f4e48ea4481920c0f8aa08e4c1787409",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_45.html": {
+    "mtime": 1794498431.0012124,
+    "seen": 1794500875.4188626,
+    "ast_hash": "078b21e2b439442e8675beeffd819cf4",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_46.html": {
+    "mtime": 1794498431.002197,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ea36b4726d36965fd5b2d24788088598",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_47.html": {
+    "mtime": 1794498431.003199,
+    "seen": 1794500875.4188626,
+    "ast_hash": "468b49445dabe6b3a39d270b84cabc03",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_48.html": {
+    "mtime": 1794498431.004199,
+    "seen": 1794500875.4188626,
+    "ast_hash": "522a2e834a88cb886a2a59ed972ca825",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_49.html": {
+    "mtime": 1794498431.0052028,
+    "seen": 1794500875.4188626,
+    "ast_hash": "64ed6bfe2896fdef5686f6c41543e3e4",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_5.html": {
+    "mtime": 1794498431.006199,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9fe5d742d9f0bf5c3f3ee9d3e8976934",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_50.html": {
+    "mtime": 1794498431.0072093,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2a58e8faeb85c25e7aa725d07f4d1bf7",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_51.html": {
+    "mtime": 1794498431.0072093,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c9854ddd24db50ef49da7146917df310",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_52.html": {
+    "mtime": 1794498431.008198,
+    "seen": 1794500875.4188626,
+    "ast_hash": "64d8a1df12920899544b4d57b3a74029",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_53.html": {
+    "mtime": 1794498431.009346,
+    "seen": 1794500875.4188626,
+    "ast_hash": "de7ddb63dae2045ba24c6b6e36b60ab6",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_54.html": {
+    "mtime": 1794498431.009346,
+    "seen": 1794500875.4188626,
+    "ast_hash": "341050b3b7b0cf8e0ef53a4bb5b0f950",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_55.html": {
+    "mtime": 1794498431.01136,
+    "seen": 1794500875.4188626,
+    "ast_hash": "10f30ce2b0b36e6180dedeb932d5e25a",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_56.html": {
+    "mtime": 1794498431.01201,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1381b98f6091ef35cc814d9f4b93591b",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_57.html": {
+    "mtime": 1794498431.014019,
+    "seen": 1794500875.4188626,
+    "ast_hash": "200291d3303b868819859273a01475c8",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_58.html": {
+    "mtime": 1794498431.0151756,
+    "seen": 1794500875.4188626,
+    "ast_hash": "01d1142b182628ad502420f91b1edff8",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_59.html": {
+    "mtime": 1794498431.0151756,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7cf71e3a1c112661b44270b2b37dd437",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_6.html": {
+    "mtime": 1794498431.016183,
+    "seen": 1794500875.4188626,
+    "ast_hash": "51a01632e53e5c0134403e900b7cf776",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_60.html": {
+    "mtime": 1794498431.0171828,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d60bba26cd69e8a6b4ad05e64d857015",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_61.html": {
+    "mtime": 1794498431.018182,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0b80b67797940d2fa811b3a15123488a",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_62.html": {
+    "mtime": 1794498431.0191855,
+    "seen": 1794500875.4188626,
+    "ast_hash": "5a06cc08fb5bb9dc9f739946d057fab3",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_63.html": {
+    "mtime": 1794498431.0191855,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e6657d30229b5b0d5338eaa34f6abd97",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_64.html": {
+    "mtime": 1794498431.0201864,
+    "seen": 1794500875.4188626,
+    "ast_hash": "58ca7d6abde6a9468d0360147445a3ff",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_65.html": {
+    "mtime": 1794498431.0211856,
+    "seen": 1794500875.4188626,
+    "ast_hash": "250edf4cfa2bdb2ee4e8891ce263d5ab",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_66.html": {
+    "mtime": 1794498431.0221827,
+    "seen": 1794500875.4188626,
+    "ast_hash": "07a29ae3e2528cf134ab8d8de4e2b780",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_67.html": {
+    "mtime": 1794498431.0221827,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1f4ec800499667a9ae4f98193610baef",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_68.html": {
+    "mtime": 1794498431.0231829,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a4e03a8fdeda8f84c8ccd5ea628686c4",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_69.html": {
+    "mtime": 1794498431.0241818,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b9ae92313be66dbe570dc457b355c719",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_7.html": {
+    "mtime": 1794498431.0251884,
+    "seen": 1794500875.4188626,
+    "ast_hash": "de7267af9f18c76cc27a8faea5ab2ae8",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_70.html": {
+    "mtime": 1794498431.0251884,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ba6b213e4ed8c0e6f0562976c9e46968",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_71.html": {
+    "mtime": 1794498431.0261822,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0235e6e5a921313a99c014e9c8195a9b",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_72.html": {
+    "mtime": 1794498431.0277085,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b4baa81b0c7f4bc8610cd06960efd45b",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_73.html": {
+    "mtime": 1794498431.029215,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1262535ed10e85474f2ffec019a3c34c",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_74.html": {
+    "mtime": 1794498431.0301921,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ce2600a552514342f5abcc99cf6c9179",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_75.html": {
+    "mtime": 1794498431.0301921,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c8e77d3bcf37d1585aa42ce70cf7e240",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_76.html": {
+    "mtime": 1794498431.0317101,
+    "seen": 1794500875.4188626,
+    "ast_hash": "534a8f7a157628ab56cff4867606ec18",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_77.html": {
+    "mtime": 1794498431.0317101,
+    "seen": 1794500875.4188626,
+    "ast_hash": "cfcd301de808250cf598599b0b1cfbd2",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_8.html": {
+    "mtime": 1794498431.0327172,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2336aa859dd77838558abd05114c0e39",
+    "semantic_hash": ""
+  },
+  "Books/BALAKANDA/sarga_9.html": {
+    "mtime": 1794498431.0337164,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f04f30951b0f413f82da0a0573944806",
+    "semantic_hash": ""
+  },
+  "Books/Books.pdf/Vedic Wisdom in the 21st Century.txt": {
+    "mtime": 1794498431.142284,
+    "seen": 1794500875.4188626,
+    "ast_hash": "05d58559a0329f105e941288a715c5f8",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_1.html": {
+    "mtime": 1794498431.204707,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2ba69464c600068c6b16389c59d9a95d",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_10.html": {
+    "mtime": 1794498431.2067266,
+    "seen": 1794500875.4188626,
+    "ast_hash": "457c393d8fb4581f462acb508eb4c0ec",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_11.html": {
+    "mtime": 1794498431.2067266,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1aad42b5f07237232c89fe96689da8e6",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_12.html": {
+    "mtime": 1794498431.2067266,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4de9eeabd1104b48fa0bf505edea03b7",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_13.html": {
+    "mtime": 1794498431.2067266,
+    "seen": 1794500875.4188626,
+    "ast_hash": "60be75fa9923efe1264ff8d219454167",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_14.html": {
+    "mtime": 1794498431.2099729,
+    "seen": 1794500875.4188626,
+    "ast_hash": "00ebb5a5497f52f2bd70bbe5d45f1285",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_15.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c0220c8393ee3b612302864923797041",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_16.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4d7dce976fbd9c48dcd3d8f3705a4eb9",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_17.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c22f6656e15959744ff9f59a1d73aa50",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_18.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ece592c567a33236ad35786c41336dcc",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_19.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e9ee058298e42d13945939d20ad7395f",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_2.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "bfdc47c6979761831a8d640a48688ea7",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_20.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6810c6d1c68cce16c936eecccc41a9db",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_21.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b7b344efa91209e10eec54be5540b472",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_22.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "76ee430689d538e87152908eb4ad73cf",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_23.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c3230d50f92106533bb533835bead650",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_24.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7ee0f0ff3b701a3f1de129b0db27f454",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_25.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "5d648246a9cc2397e6120fc4507606f1",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_26.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d1e206d7abeda794cf7ec22cae3cf34a",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_27.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6d0803a38d71d71603a3afb8dc86e84b",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_28.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a02ec9d47ad4fcf22a19d53b66b85a76",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_29.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "cfd4f664b5e192b05fe49d7db5c1c705",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_3.html": {
+    "mtime": 1794498431.2111237,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1742289bd7ea29ff6acbe56624660e33",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_30.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "75dde879b0478005bb8b385e935a2fbb",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_31.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d3d44f84d042561897e5866ba74919e9",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_32.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a32cc5d25341df6afe53314f2a050270",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_33.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "597ed2772dabb03dda5c9c30f3182650",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_34.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e9374a4fcc8327348dabb07eb25e7090",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_35.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "8f2d75e242d8e65b625a2df8124ca987",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_36.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "21662562b6b058cfc8ec01829d3cddc5",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_37.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b92ca744f0533cf661778c0ddbcd5421",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_38.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "96cab66b9e23111c9be74148f303e805",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_39.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7315ea604a203b100bfe2f64b56cf609",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_4.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2efd453e67d4ba241c1d9b461f81904a",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_40.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "07a9bd544d913a583900d5030998b077",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_41.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "788e468b307624de43dbe4a88ad96fe0",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_42.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b5e47dc21d10a63c6adb35809be50909",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_43.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "01d9bae55deaab50e3432e6321f1560f",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_44.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "47b311d82646c268afcba25ede751254",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_45.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f19ae5e11abd2847e9a44b0beeca4a74",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_46.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "981aa2978f5371cbd654564a691fcceb",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_47.html": {
+    "mtime": 1794498431.225675,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2fe3fe6d28ccf98820e9830dc47e1323",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_48.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4683e6dd8653acda4d0ce44c6df1b840",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_49.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "cdd2a4e3b1aef8f6fdebb3d7342b3039",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_5.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "932bc65d78fff1b84723fe88299c57ff",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_50.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "acd77785d43d80363d00a3031d3a7cff",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_51.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2b7182f105c7d7bbca806af597dbd344",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_52.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e98e0746557d73547c065ad36eedb95c",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_53.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d3293934366b10d39aabfa248acd9d0e",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_54.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3033eba3f05dec63c026d4d3c2b78a5c",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_55.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9d18a978e92130ac7d83b8e0b96e31ac",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_56.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3bbcef8bbf29e75231b539e5b7040c07",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_57.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9fd063f51369ae3cd1b374fd193063e9",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_58.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3efb1a130f00f37865354a07fe2a13a9",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_59.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c2d24a7316e020b796aa7272daad3cb7",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_6.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "95bd58528caa4efd78cf1044037c9567",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_60.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "af62aa7374df48b95eec4b728d790813",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_61.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "834200599e78c7328a03e6bc30ad174b",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_62.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "696edd778d2c31382ba8d7c4ff0450e7",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_63.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3b08460e0ae1b83bec1cdf7cfe5384aa",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_64.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "046db35474dc7d43e23cfed5dafc7f48",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_65.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2283c989e31edf5336150beef322f35a",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_66.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2157ede262d01302136b43c316e7240e",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_67.html": {
+    "mtime": 1794498431.241627,
+    "seen": 1794500875.4188626,
+    "ast_hash": "cc7a7ee0d8ea28ef5666471023c50d81",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_7.html": {
+    "mtime": 1794498431.2574725,
+    "seen": 1794500875.4188626,
+    "ast_hash": "25c641f732253c13f9bb1f40da1b0253",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_8.html": {
+    "mtime": 1794498431.2574725,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a46d77f96886c2af6d61bff147c55901",
+    "semantic_hash": ""
+  },
+  "Books/KISHKINDHAKANDA/ki_sarga_9.html": {
+    "mtime": 1794498431.2594857,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e2d5cb9d2896853f69a327abf34292be",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_1.html": {
+    "mtime": 1794498431.2594857,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c127ce2d3a22b67829cde249a068e927",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_10.html": {
+    "mtime": 1794498431.2594857,
+    "seen": 1794500875.4188626,
+    "ast_hash": "63f0e99d5ffb438a7561a62b8a4e5166",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_11.html": {
+    "mtime": 1794498431.2594857,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9d9ca2155b61305fa47ef848fb06713e",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_12.html": {
+    "mtime": 1794498431.2594857,
+    "seen": 1794500875.4188626,
+    "ast_hash": "16ff23b37cd8ef04efbcb51115f468ce",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_13.html": {
+    "mtime": 1794498431.2594857,
+    "seen": 1794500875.4188626,
+    "ast_hash": "910723e9b65566b646284cde386ab57c",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_14.html": {
+    "mtime": 1794498431.2594857,
+    "seen": 1794500875.4188626,
+    "ast_hash": "83ea97a4edb2090919a62bde905207fe",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_15.html": {
+    "mtime": 1794498431.2594857,
+    "seen": 1794500875.4188626,
+    "ast_hash": "076e5bf6725d6b55b56667c9cd9ea32c",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_16.html": {
+    "mtime": 1794498431.2594857,
+    "seen": 1794500875.4188626,
+    "ast_hash": "bb0e858d6d6fde6c328e8b779874cefc",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_17.html": {
+    "mtime": 1794498431.2594857,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ceafc427f3904633d440d1efed11fb20",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_18.html": {
+    "mtime": 1794498431.2594857,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ef4edbe11e280959cc80a8a1dd313b78",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_19.html": {
+    "mtime": 1794498431.2594857,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4e94b056e32717381b99a8151d60b77c",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_2.html": {
+    "mtime": 1794498431.2594857,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2762f3247878177d777dbf28baab74a9",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_20.html": {
+    "mtime": 1794498431.2594857,
+    "seen": 1794500875.4188626,
+    "ast_hash": "52556c6b2e40687a5d777c7d316e1bd3",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_21.html": {
+    "mtime": 1794498431.2594857,
+    "seen": 1794500875.4188626,
+    "ast_hash": "dc868d1c7f98c0ebcf25438eea8e3bbe",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_22.html": {
+    "mtime": 1794498431.273924,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6e62d1d56cd5b000d483b20e2a40ea41",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_23.html": {
+    "mtime": 1794498431.273924,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6974583bbe92ad488dc03132a9751c98",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_24.html": {
+    "mtime": 1794498431.275682,
+    "seen": 1794500875.4188626,
+    "ast_hash": "227d0bd11df5ee23066ba004c06b2f54",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_25.html": {
+    "mtime": 1794498431.275682,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6ec37aa881385ebe96fdcc0a78d4d0ef",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_26.html": {
+    "mtime": 1794498431.275682,
+    "seen": 1794500875.4188626,
+    "ast_hash": "89534341413f7cb940038bfdcc424d0e",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_27.html": {
+    "mtime": 1794498431.2783074,
+    "seen": 1794500875.4188626,
+    "ast_hash": "91d9ffec65cc78fd73bafba398172e1d",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_28.html": {
+    "mtime": 1794498431.2783074,
+    "seen": 1794500875.4188626,
+    "ast_hash": "8fc75362fae642e64c0b17ad4fa1837a",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_29.html": {
+    "mtime": 1794498431.2783074,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7fe2d314e4077fff4fe11a9cedf6fc5f",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_3.html": {
+    "mtime": 1794498431.2783074,
+    "seen": 1794500875.4188626,
+    "ast_hash": "be62e65fcc2d19a0e73d5d61db4023b4",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_30.html": {
+    "mtime": 1794498431.2809215,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3c808512be85979af1415289cb076e44",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_31.html": {
+    "mtime": 1794498431.2809215,
+    "seen": 1794500875.4188626,
+    "ast_hash": "39b68ea61e0afca43ec7d110f1f2ff21",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_32.html": {
+    "mtime": 1794498431.282928,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3465751d9b4eb4cc9d788fdc9f87572a",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_33.html": {
+    "mtime": 1794498431.282928,
+    "seen": 1794500875.4188626,
+    "ast_hash": "10e3dc1ae1ae7da25b2523558e9da2a0",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_34.html": {
+    "mtime": 1794498431.2849352,
+    "seen": 1794500875.4188626,
+    "ast_hash": "aad5747b95e180e86bc03f4f57e7b081",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_35.html": {
+    "mtime": 1794498431.2849352,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d14738535506ccf8b786f450537db553",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_36.html": {
+    "mtime": 1794498431.2849352,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e109ebd5e543e791cb88711454e90588",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_37.html": {
+    "mtime": 1794498431.2849352,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7e4b2010e11995733947f77ca5062798",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_38.html": {
+    "mtime": 1794498431.2849352,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3333607a3f87bd6d987d60cc010165b1",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_39.html": {
+    "mtime": 1794498431.289275,
+    "seen": 1794500875.4188626,
+    "ast_hash": "dab20dced4df68e42df421c9957b1221",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_4.html": {
+    "mtime": 1794498431.289275,
+    "seen": 1794500875.4188626,
+    "ast_hash": "08be2189f91c7dbe2dc5de066d126d98",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_40.html": {
+    "mtime": 1794498431.2912068,
+    "seen": 1794500875.4188626,
+    "ast_hash": "db2ee62cf8b3bb659cd7e3527a4e9eb0",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_41.html": {
+    "mtime": 1794498431.2912068,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ff2ffcfdcdb2daf23b542c8b00fae783",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_42.html": {
+    "mtime": 1794498431.2912068,
+    "seen": 1794500875.4188626,
+    "ast_hash": "8b21b28a5d4bff8a1c1dee45d02132ab",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_43.html": {
+    "mtime": 1794498431.2912068,
+    "seen": 1794500875.4188626,
+    "ast_hash": "47160381b60d1280b91620381deb9b26",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_44.html": {
+    "mtime": 1794498431.2912068,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c8d5601f680302821290e51807fa56bd",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_45.html": {
+    "mtime": 1794498431.2912068,
+    "seen": 1794500875.4188626,
+    "ast_hash": "44094c9c1abe9cf6af5a89b17e7128d6",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_46.html": {
+    "mtime": 1794498431.2912068,
+    "seen": 1794500875.4188626,
+    "ast_hash": "aae109352bd57f66d5744553f5f99f39",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_47.html": {
+    "mtime": 1794498431.2912068,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2674e937c70b5b69d8820bf98a5b2ff7",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_48.html": {
+    "mtime": 1794498431.2912068,
+    "seen": 1794500875.4188626,
+    "ast_hash": "16c179fdd0deedd68eb6d786f1ef5795",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_49.html": {
+    "mtime": 1794498431.2912068,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9430cfb1247656e45ffae6adfcec8ce6",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_5.html": {
+    "mtime": 1794498431.2990773,
+    "seen": 1794500875.4188626,
+    "ast_hash": "96f39dd424d687e6ab61238d7fae1032",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_50.html": {
+    "mtime": 1794498431.2990773,
+    "seen": 1794500875.4188626,
+    "ast_hash": "8366490338b508c3b84a199b9b95fa18",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_51.html": {
+    "mtime": 1794498431.2990773,
+    "seen": 1794500875.4188626,
+    "ast_hash": "554a1e919f336d50f41b7b93df697201",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_52.html": {
+    "mtime": 1794498431.3020916,
+    "seen": 1794500875.4188626,
+    "ast_hash": "91051b4774c983b6bbc059ffbfadf6db",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_53.html": {
+    "mtime": 1794498431.3020916,
+    "seen": 1794500875.4188626,
+    "ast_hash": "13f333c047d820913b04543625d3c464",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_54.html": {
+    "mtime": 1794498431.3020916,
+    "seen": 1794500875.4188626,
+    "ast_hash": "02040c2df27f2d9ffd0ad59eb1822f25",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_55.html": {
+    "mtime": 1794498431.3020916,
+    "seen": 1794500875.4188626,
+    "ast_hash": "fe100dceab37e928424a4763c83d97b9",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_56.html": {
+    "mtime": 1794498431.305389,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d4d134433eec39d2ba80ad02e47c38ad",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_57.html": {
+    "mtime": 1794498431.305389,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7101d413377dbb166db11bade9894619",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_58.html": {
+    "mtime": 1794498431.3075001,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ab67d49e6e788c32609d267965ade8ab",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_59.html": {
+    "mtime": 1794498431.3075001,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0e87a789ee763c3804a61691e2548181",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_6.html": {
+    "mtime": 1794498431.3075001,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f3b18ed46711e1d311b9e09eba0181ad",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_60.html": {
+    "mtime": 1794498431.3075001,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4866454baed5a0cb7539241fed04d3f5",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_61.html": {
+    "mtime": 1794498431.3075001,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6fdf615f4c11236b5b69f4c49e010025",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_62.html": {
+    "mtime": 1794498431.3075001,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e9fb3b67867b0effb05da84bf3d947b3",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_63.html": {
+    "mtime": 1794498431.3075001,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3e71afbe6ba26608cb67b77b86736547",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_64.html": {
+    "mtime": 1794498431.3075001,
+    "seen": 1794500875.4188626,
+    "ast_hash": "056cd395942e0aeb2aa4d99fb489838a",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_65.html": {
+    "mtime": 1794498431.3075001,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a04d8c32428761b35e6e6e098e237df3",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_66.html": {
+    "mtime": 1794498431.3075001,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d9d80eb11f4025b11b9c3eedd6bfdd80",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_67.html": {
+    "mtime": 1794498431.3075001,
+    "seen": 1794500875.4188626,
+    "ast_hash": "572cf6f35914f16116f9df53a948fcd3",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_68.html": {
+    "mtime": 1794498431.3075001,
+    "seen": 1794500875.4188626,
+    "ast_hash": "43c70e8de3280089ba65ccd5c331c873",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_7.html": {
+    "mtime": 1794498431.3075001,
+    "seen": 1794500875.4188626,
+    "ast_hash": "bdcecb6bbdc972b1f79171e24d378dde",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_8.html": {
+    "mtime": 1794498431.3075001,
+    "seen": 1794500875.4188626,
+    "ast_hash": "8354c2675dc87bb147a3652974f56569",
+    "semantic_hash": ""
+  },
+  "Books/SUNDARAKANDA/Su_sarga_9.html": {
+    "mtime": 1794498431.3075001,
+    "seen": 1794500875.4188626,
+    "ast_hash": "58354865c10cc1d92d2d6a17beb4147c",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/shlok_mala_1.html": {
+    "mtime": 1794498431.6757493,
+    "seen": 1794500875.4188626,
+    "ast_hash": "463edfffcf7b98dc50eac9e958e9f1d0",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/shlok_mala_2.html": {
+    "mtime": 1794498431.679767,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d4cef751e6ce4a69b4cf70e67a1c0040",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_1.html": {
+    "mtime": 1794498431.6818,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a26ddd399ca6d3502dbf970825749528",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_10.html": {
+    "mtime": 1794498431.6818,
+    "seen": 1794500875.4188626,
+    "ast_hash": "76764d5f28d378432e246691c825f779",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_100.html": {
+    "mtime": 1794498431.6838078,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a9ed4157506d540f3980588f30e6c0c5",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_101.html": {
+    "mtime": 1794498431.6838078,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c7c058fb4275d01280935360cda23c08",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_102.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2e7e55a78b7fdf83d888d9325238703e",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_103.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b75d382284fdec53d1ff86394c33e789",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_104.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2576df08109517bc4d5259b28f774efb",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_105.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e1f1810c7dca1ff10e6e79d15c511a97",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_106.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "54499f5123fc80f277dbb4282d746012",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_107.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6f0a7e58ba3066948f74c2d0e7588483",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_108.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "fc33ea87a7148e7deaf6571bb26da5a1",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_109.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c37a32039ff18575cac20e10cf8cd03f",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_11.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2159b37a57516c9de8d6d928ee42af4d",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_110.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ab00d14af2b81ab42b2bcbf5cca21c34",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_111.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "50843d025a71844feb50a3ab3d101868",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_12.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d31f6f93e5c274ef0ea8066eda941170",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_13.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "dd160b4ba24848776cbb17494ebe2fb8",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_14.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9b87d88849f3a5c3aee8ec931f774897",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_15.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6bea801f11ee0937cb2c43cc7eed8d48",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_16.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "baa06bd1406c2bba2bf5a5e08502f3d3",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_17.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6d77dac232c6c170f1e0ced9edf947ba",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_18.html": {
+    "mtime": 1794498431.685562,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3822d283b93b5a8a376c8dceb0690084",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_19.html": {
+    "mtime": 1794498431.7016914,
+    "seen": 1794500875.4188626,
+    "ast_hash": "35587bf9405765d75c473238aaf15188",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_2.html": {
+    "mtime": 1794498431.7035599,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a30ea80e0ef76ff2a4997f9e517351a6",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_20.html": {
+    "mtime": 1794498431.7035599,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a51aa68ac1a5455efecf987fca262e91",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_21.html": {
+    "mtime": 1794498431.7055695,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1670286c29e22b57161427256993f1fe",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_22.html": {
+    "mtime": 1794498431.7055695,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4abe6d6c635216c8078837a645b10a34",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_23.html": {
+    "mtime": 1794498431.7075772,
+    "seen": 1794500875.4188626,
+    "ast_hash": "fe7ddbdca9edd9b9bc3947c2936fedb0",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_24.html": {
+    "mtime": 1794498431.7075772,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b30bca7b63738d09a04bd50d5533d3e2",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_25.html": {
+    "mtime": 1794498431.7075772,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2865950453689f352256fc5e3fbce8fe",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_26.html": {
+    "mtime": 1794498431.7108483,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f4985b5655955d2dab1fff5a88456aad",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_27.html": {
+    "mtime": 1794498431.7108483,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ef295f7e11361a5a1bb660c68cc0864c",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_28.html": {
+    "mtime": 1794498431.7128544,
+    "seen": 1794500875.4188626,
+    "ast_hash": "936ce3327f25d4e07a0d684c3272d3c0",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_29.html": {
+    "mtime": 1794498431.7128544,
+    "seen": 1794500875.4188626,
+    "ast_hash": "68ae6e1c91aff6adf2148486b3263c5b",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_3.html": {
+    "mtime": 1794498431.7128544,
+    "seen": 1794500875.4188626,
+    "ast_hash": "03b00d1b42795c400dc23b656a2159e6",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_30.html": {
+    "mtime": 1794498431.7128544,
+    "seen": 1794500875.4188626,
+    "ast_hash": "42bc1ac3a16f3b57bf7c0b911ed1a439",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_31.html": {
+    "mtime": 1794498431.7128544,
+    "seen": 1794500875.4188626,
+    "ast_hash": "92ab555bf9062e10d7c5a402e2cbb7ab",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_32.html": {
+    "mtime": 1794498431.7176452,
+    "seen": 1794500875.4188626,
+    "ast_hash": "cbcce2398f9c94a68489736b2c90850d",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_33.html": {
+    "mtime": 1794498431.7176452,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2024fdd01ad77fd48f509e35cfd02604",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_34.html": {
+    "mtime": 1794498431.719654,
+    "seen": 1794500875.4188626,
+    "ast_hash": "28d3a980edd3597d8ade87bd0924ed90",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_35.html": {
+    "mtime": 1794498431.719654,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b99d0ba84af405a213e5110a4b0ac1e4",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_36.html": {
+    "mtime": 1794498431.719654,
+    "seen": 1794500875.4188626,
+    "ast_hash": "80612a735f5ba4c7eb45c97f45968782",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_37.html": {
+    "mtime": 1794498431.7216618,
+    "seen": 1794500875.4188626,
+    "ast_hash": "17eb322ec540a266f1cb13397515b6f5",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_38.html": {
+    "mtime": 1794498431.7216618,
+    "seen": 1794500875.4188626,
+    "ast_hash": "bdcddaedb037cda2099a8585bf7a3ee5",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_39.html": {
+    "mtime": 1794498431.7216618,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e5c1779062862db1ac0e82f27cebd471",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_4.html": {
+    "mtime": 1794498431.7236688,
+    "seen": 1794500875.4188626,
+    "ast_hash": "5b1b35458306932beb8fcf0586f6251f",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_40.html": {
+    "mtime": 1794498431.7236688,
+    "seen": 1794500875.4188626,
+    "ast_hash": "746bc3936611bea3f974a7e76fe86687",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_41.html": {
+    "mtime": 1794498431.7236688,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f1bebd56cb927d269646975fad457733",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_42.html": {
+    "mtime": 1794498431.7256963,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1aef2ca829560a859f93cfedb71405b1",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_43.html": {
+    "mtime": 1794498431.7256963,
+    "seen": 1794500875.4188626,
+    "ast_hash": "77b2ae0ed20d3db9c06ff48e4d74b6d3",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_44.html": {
+    "mtime": 1794498431.7277052,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f76c97dc74ddc1074f75faa6d980bc4a",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_45.html": {
+    "mtime": 1794498431.7277052,
+    "seen": 1794500875.4188626,
+    "ast_hash": "858dabf5afe1dbdf12c205e650b40581",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_46.html": {
+    "mtime": 1794498431.7277052,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2b67dd80e2801cb33f11d4269b9e0899",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_47.html": {
+    "mtime": 1794498431.7308564,
+    "seen": 1794500875.4188626,
+    "ast_hash": "72b35234723e2f3707511b3ac7af39ef",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_48.html": {
+    "mtime": 1794498431.7308564,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0879574d2ab8ea9e9907065b3d0f5485",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_49.html": {
+    "mtime": 1794498431.7308564,
+    "seen": 1794500875.4188626,
+    "ast_hash": "5acd042e1af4ffea2bcfa6ffb6aa94cb",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_5.html": {
+    "mtime": 1794498431.73331,
+    "seen": 1794500875.4188626,
+    "ast_hash": "454c3dfa48bb0b38a09d06f788073ff0",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_50.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a9fc40920f0820f10b8011b0e81359e3",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_51.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ca4a21ad735ad79d611cf0709ffe1138",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_52.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3405db571910e82fe1e9a414d6d2c47c",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_53.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d6da8dcedadb5fd29505acde34b79bc7",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_54.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6380a930df0694c36d27de3628401200",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_55.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "5738da1a393fa7994a9a76b3cefd0f25",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_56.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c6ad274991aa246f26a7489aec9bc756",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_57.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "8ed7f73f19950f48dad52ab328da779e",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_58.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0a1c9d3c803862502b18a68e97e49ff5",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_59.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3c3d36a5fe8d4c0747c6c2273e43f561",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_6.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "8d847a4e5c2d9964b2ca55b1d0a9ae3c",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_60.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0738f86943b9c5a020eef379df123372",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_61.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2e646e5ad91c234432f53518e59ab8b4",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_62.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "8be4f64346164f27cbb6f0a4b6425743",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_63.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "175812688a2c5c0d4b50da7553c43945",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_64.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "777813224c82e6cad8d56049edc29318",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_65.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "01620c1f42eec52f7c3517048edaa856",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_66.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6b2718d82c38e64d8708d8ec02003aab",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_67.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "941226330f35a7c3938b7aa1cb97ca5e",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_68.html": {
+    "mtime": 1794498431.7338862,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3a761eac4be9b50d66aafdfa6a189e4d",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_69.html": {
+    "mtime": 1794498431.7490265,
+    "seen": 1794500875.4188626,
+    "ast_hash": "91db937b1e38167fe751d5acf91000a8",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_7.html": {
+    "mtime": 1794498431.7490265,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c65b90674a2f9beb9c497b8c44d02615",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_70.html": {
+    "mtime": 1794498431.7490265,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d06eb369811d54d905f6ea7866af69c4",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_71.html": {
+    "mtime": 1794498431.7490265,
+    "seen": 1794500875.4188626,
+    "ast_hash": "05b753e6d9007aff2fa6789c5c8441f8",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_72.html": {
+    "mtime": 1794498431.7490265,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b5185383ad6b9632c2c00f5f0f5bd9bf",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_73.html": {
+    "mtime": 1794498431.7490265,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ea5ccdd55edd9c717da6689c34696285",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_74.html": {
+    "mtime": 1794498431.7490265,
+    "seen": 1794500875.4188626,
+    "ast_hash": "13d7f8afb13418cd06b10f4b7d64cb14",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_75.html": {
+    "mtime": 1794498431.7490265,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a5796821c6bfb422a962fed791f5bb93",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_76.html": {
+    "mtime": 1794498431.7490265,
+    "seen": 1794500875.4188626,
+    "ast_hash": "292df6bc717d936c4ec5239aefa908e7",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_77.html": {
+    "mtime": 1794498431.7490265,
+    "seen": 1794500875.4188626,
+    "ast_hash": "79718fed555e785889e221491f0c6d53",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_78.html": {
+    "mtime": 1794498431.7490265,
+    "seen": 1794500875.4188626,
+    "ast_hash": "926eda3ac7c36ee7c939108759c83190",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_79.html": {
+    "mtime": 1794498431.7490265,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0f9a6de197445f30acd5abe306a81f59",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_8.html": {
+    "mtime": 1794498431.7490265,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a96eb11ac30afbb3b3ffedf7032892bd",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_80.html": {
+    "mtime": 1794498431.759701,
+    "seen": 1794500875.4188626,
+    "ast_hash": "63743a23838a0c8bf9298dba50e8872f",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_81.html": {
+    "mtime": 1794498431.759701,
+    "seen": 1794500875.4188626,
+    "ast_hash": "bb297bdca92900b0160c073e2c97a321",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_82.html": {
+    "mtime": 1794498431.759701,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a39ef7f83cbe8eb61412116edce826d8",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_83.html": {
+    "mtime": 1794498431.759701,
+    "seen": 1794500875.4188626,
+    "ast_hash": "df56004381ed14a4f4a52dc9c0007adc",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_84.html": {
+    "mtime": 1794498431.7629025,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3e2f8fd5c0dd39dd31e45a22ce92a111",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_85.html": {
+    "mtime": 1794498431.7629025,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c1ee5204f3697d105206edb038293679",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_86.html": {
+    "mtime": 1794498431.7629025,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0a570e59552bc2adf23a62906b55216a",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_87.html": {
+    "mtime": 1794498431.76491,
+    "seen": 1794500875.4188626,
+    "ast_hash": "67470e364e7f8d821a6706806f58edab",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_88.html": {
+    "mtime": 1794498431.76491,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6f78f32fc1c8832322ebf4be4c14842c",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_89.html": {
+    "mtime": 1794498431.7669346,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2b500b2f7203e8d2c28dbc6551922105",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_9.html": {
+    "mtime": 1794498431.7669346,
+    "seen": 1794500875.4188626,
+    "ast_hash": "27a5793f7e78dc4a3174bfe4c83482c8",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_90.html": {
+    "mtime": 1794498431.7669346,
+    "seen": 1794500875.4188626,
+    "ast_hash": "5e52c948d6cb786e75a5ade0aaeed079",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_91.html": {
+    "mtime": 1794498431.7689416,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a7ca17b5b192c59e207e185ee117bcf7",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_92.html": {
+    "mtime": 1794498431.7689416,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c396720222849b0825ccb722d0547ba1",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_93.html": {
+    "mtime": 1794498431.7689416,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c5fd38970f7a06062ec867d25961414f",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_94.html": {
+    "mtime": 1794498431.7689416,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6345bcfd2e28be371c5418ef97a3aabf",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_95.html": {
+    "mtime": 1794498431.7689416,
+    "seen": 1794500875.4188626,
+    "ast_hash": "088fbb1b093ab3a58696627270ef7b81",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_96.html": {
+    "mtime": 1794498431.7689416,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d296b1f5eb1634ccd10452db185bd162",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_97.html": {
+    "mtime": 1794498431.7689416,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a5dd36b6661022fd68ec467d10a10bb1",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_98.html": {
+    "mtime": 1794498431.7689416,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ed53798b68ce2263de528d9c436808aa",
+    "semantic_hash": ""
+  },
+  "Books/UTTARAKANDA/utt_sarga_99.html": {
+    "mtime": 1794498431.7689416,
+    "seen": 1794500875.4188626,
+    "ast_hash": "dc3a7cbc54e0b559dce4c81927941288",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_1.html": {
+    "mtime": 1794498431.7689416,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2fd888df8d8cff9bc87517b73e2ad896",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_10.html": {
+    "mtime": 1794498431.7689416,
+    "seen": 1794500875.4188626,
+    "ast_hash": "79470b2566b456b85c4ee29a96f46110",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_100.html": {
+    "mtime": 1794498431.7689416,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ddcab1d0094f1d2ee9e128e8d8289ea1",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_101.html": {
+    "mtime": 1794498431.7689416,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d73a93691a18ad6aec2ca6e56247d42b",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_102.html": {
+    "mtime": 1794498431.7689416,
+    "seen": 1794500875.4188626,
+    "ast_hash": "58363385d4a52de52d188bfcbe2d0471",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_103.html": {
+    "mtime": 1794498431.7689416,
+    "seen": 1794500875.4188626,
+    "ast_hash": "49f7d813ab4b364d04e4587f4abc3f09",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_104.html": {
+    "mtime": 1794498431.7689416,
+    "seen": 1794500875.4188626,
+    "ast_hash": "5b01bd04e6cde60a60b87d73f4570255",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_105.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "db0c078672e331dc2540f7dfa117ad30",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_106.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "947c2ccf53e9782116ea0f93c9de46a6",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_107.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b63fa458e720a72992a4b091836290ee",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_108.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d968e3b3c6da5a7f7752ac283ad3d997",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_109.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "699b820aeeb9b14a987b08589d149dae",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_11.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "257ec1860f4ce3d6c2f5546ba6caf757",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_110.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7b59f8e4386e5ee21df7980ac3444f13",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_111.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2a130ec88327ff3fb74dfa8c49c0a0c0",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_112.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "709198ffbe8717461f92e63c8ae42217",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_113.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b7fabab231c1071fe0e06f544bcaa56e",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_114.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "44210f1c676a4169769a3cbca84e489b",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_115.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "59020ff1556cb78a46af537a5b183619",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_116.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "38c6e473ae1c22a50fc4138e222fb4ca",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_117.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "bc909454fac0cc447c0871114fb893c7",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_118.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e6a654af7b7f7e6c18197f59dc4c02cd",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_119.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b617a45f8791e2839bb476c2206e887f",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_12.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "aa8f5ba77b76c165f4e6844aa454e8fc",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_120.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c07d5612fa0b5710652acbbd4cbaf748",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_121.html": {
+    "mtime": 1794498431.7806146,
+    "seen": 1794500875.4188626,
+    "ast_hash": "14cb254d2ada9b060bec40f26c89b69c",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_122.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ff4fa67f726d9c58b24581baacf446d8",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_123.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "04b74f6e67b52cb22a3bc6d4f9128298",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_124.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a0cae4269866524ecc069c0a5c7ed79f",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_125.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d2e1fbe93ea7b9099fcb8235c62b9d06",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_126.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7495567f2cec629e79d628e28379be8a",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_127.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3208e224343ad23587da263b061557d2",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_128.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "78e619a4f40b4b7597fbba688e16b431",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_13.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "fc50d12a7366e800ff014ca134904ee0",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_14.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "dfb0b871b8aeecea420fa4e0c6c3c633",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_15.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a99f475b400127835742d065905f0375",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_16.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b8a3b21df9a05750b7aeb1a8fbf950ad",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_17.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e3df6b6fd2d0499c914c3f56b92636e7",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_18.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0a1c854e51ea2341195122f3c84039f4",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_19.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "74026152222e92367fac34d3b6742f8d",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_2.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6bad5b76a2de34d556893307068a6296",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_20.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "51aec915170cdc59d03126bfe4dc3d68",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_21.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "58f9c45fd943b05bebbc7ee6f470a54c",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_22.html": {
+    "mtime": 1794498431.7964387,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d573dd979ae1a947afd040aaf2a3bf02",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_23.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1daef0a5d43e93637ad28a6f2581c865",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_24.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "939995c094a747ae7286051b5371cfca",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_25.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f990cb5dae4cda48b09f378c253a47ce",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_26.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6e59870ae2f78ff9019b7b9b2e22b841",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_27.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4d7d13ab0cb8834110ee2cdad2b758f9",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_28.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4ea6d9b6938f62ba01fdaae9bc8625e2",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_29.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4c6e1c1c8bcd5e37db8608af1ca2eb61",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_3.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9254416fe909dbf9580686b4cbe5950d",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_30.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "28bfb84e60298431755fb277ae4afad1",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_31.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2127ec07f0b25083c7e7fe6cd0cc6a05",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_32.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d68e73e5ab4acc62e9a25993028e8134",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_33.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "21d206fd9ee4b5043ed797b846b0285c",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_34.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4c4ffff5f44d5bd3b78ecf21e65e9cb3",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_35.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e4c16dbf42dd074357ed134394a128f9",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_36.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b66039eb6dc97bf4bca3186db223f33f",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_37.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d2b4025d0cd1850fad6e79cdf248a88b",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_38.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3985821674aa46634048565463be7f63",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_39.html": {
+    "mtime": 1794498431.8125482,
+    "seen": 1794500875.4188626,
+    "ast_hash": "141533962fd01023542f53e11ea4eb09",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_4.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9b6e81060a1e9c0b911d8df19f89c0eb",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_40.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0c513015d414d398fc1b7b1a62297918",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_41.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "aa37b9f2030b8bb8906d64907cda136b",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_42.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3bda6bdfc97e38eb9d6eaa65bb163774",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_43.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "18ddf82204ab85f5b37815933ebf1354",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_44.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3f4931de65b2db97f3092cba10a61f04",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_45.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "8b26fb7b6088411f6ac5625da41409a5",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_46.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "648a20ee827221aea97e84fc9d8d9f0c",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_47.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e1041237e023a77c3b9a6d3655a8ec4b",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_48.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "bfb7995936f0ad28bac648287d957c85",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_49.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "5d9fbe171d32b035caa4b061cf735ab4",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_5.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "19570264150edc8d67f489204fb44570",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_50.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6dd6eac17f07f9a5584ff036f737df1b",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_51.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "fcc1a27f5fcefa192d02f56392e907cb",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_52.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6f6d51fe0f389813eac3fb61af499c8c",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_53.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "583cec7884bf70b8a70d969959a65d33",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_54.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "42730152acc12255ee808178f01d6cd5",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_55.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "dbae0c7f86b8dc8c4f3668b8e73f73af",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_56.html": {
+    "mtime": 1794498431.8282301,
+    "seen": 1794500875.4188626,
+    "ast_hash": "88334670260d1ba7cd90ac94a7db49a9",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_57.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "045e16c4a22dfa501ec1cb178687572b",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_58.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "948b8c39f757946231880c06d5c16815",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_59.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a6a5fbbc4e81450685d776ae55c6d2c5",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_6.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f6c14dff56614fa3530fe48729309b91",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_60.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b197b55db139d14a86292c7eb4e772e7",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_61.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "057ce15f86e6e44c636169645ae6e7ac",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_62.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1be78c5d36152c92d9de81c526fee71b",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_63.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0f8fc7ff8197d25a957fe4cfdfc68f44",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_64.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f8db84060cf309258c8e1e5ee0dd9d50",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_65.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "33fa66658dcbee5d4626ea7856194500",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_66.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4383c27c793dad2f65e8a8ca3b36cc05",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_67.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "024fd2e6998dbfd496b2e952f80fa2df",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_68.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1d48685fd8c596d31b056ecc71cb46f3",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_69.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ff4bde73c3899540aa1d60983bbe4689",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_7.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d7bb63c16a1e847aa633fc8a3f29fbc3",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_70.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b20c03f0d3736c67a560bb39c7444662",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_71.html": {
+    "mtime": 1794498431.8440218,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2e735820f46792fe59149d400aee84d2",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_72.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "416d6fbd0dd02ae1e64b39e7b077f102",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_73.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "41d7e31afea498cd33d6f6a62227bfee",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_74.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b3631b4add6c11b1b4a31620126e2072",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_75.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b01360a62e4a1a7422577e4c4d3e8e47",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_76.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "24c0d51fd22352939578516c354f85f8",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_77.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4fb3e53e173045f28a77e9979b0210e7",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_78.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d8a37190a416d347ca6c9c126b121601",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_79.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9e25baacd882ec841749a8782b1f6a20",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_8.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6e0e492f6186e5d1b4f5bfa548ed25b4",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_80.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "12a5f63e31602ca62d6a63348311b2c8",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_81.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0a09f1a210356060abb1507f0bd86844",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_82.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "774ddd624cfb48314419f1233bac73c4",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_83.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9d58289692119cc61bf6554d5a0ad4b6",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_84.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ccec5d721212d8b2064a7893209735be",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_85.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f8f859c5eaf08d4455ab9c5e185c8db3",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_86.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f6718754ffb1256528d235dd6999ab8d",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_87.html": {
+    "mtime": 1794498431.8598113,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e9ebee2b62f6196f415fea0e53f2dc5a",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_88.html": {
+    "mtime": 1794498431.875583,
+    "seen": 1794500875.4188626,
+    "ast_hash": "5bdfc0eb4ac1d0bfb4809617b0660a18",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_89.html": {
+    "mtime": 1794498431.875583,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e23b913d42fe19fd04bdf07aa79f5f9f",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_9.html": {
+    "mtime": 1794498431.875583,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ede2d2724c41ed6ddffa61c6820074e0",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_90.html": {
+    "mtime": 1794498431.875583,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6644550ad9724adef9b1edddd58008f4",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_91.html": {
+    "mtime": 1794498431.879555,
+    "seen": 1794500875.4188626,
+    "ast_hash": "100e9e243569f7a3c29c1ea3a93a2b15",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_92.html": {
+    "mtime": 1794498431.879555,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7ec914686f66b96facb2edb3f3db602f",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_93.html": {
+    "mtime": 1794498431.879555,
+    "seen": 1794500875.4188626,
+    "ast_hash": "fc60b7be42aa0f286f4367ff157e77c9",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_94.html": {
+    "mtime": 1794498431.879555,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4515199f792fb7eab55a8eda9e3a7b65",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_95.html": {
+    "mtime": 1794498431.879555,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c0e11945f406b0084fd40a297a3d8b30",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_96.html": {
+    "mtime": 1794498431.879555,
+    "seen": 1794500875.4188626,
+    "ast_hash": "88b46d25c40557f594f4df03c9ddb1a7",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_97.html": {
+    "mtime": 1794498431.879555,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d9df54719223281c010182b381c0845b",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_98.html": {
+    "mtime": 1794498431.879555,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ea4f6e6acb1ecdb35c8aa92a5e980585",
+    "semantic_hash": ""
+  },
+  "Books/YUDHAKANDA/Yu_sarga_99.html": {
+    "mtime": 1794498431.879555,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1dc5bfc4b18f732bc4baa0165a55d892",
+    "semantic_hash": ""
+  },
+  "Books/book_link/Ara_sarga.html": {
+    "mtime": 1794498431.879555,
+    "seen": 1794500875.4188626,
+    "ast_hash": "813cd5149aad949c16eed671351842a7",
+    "semantic_hash": ""
+  },
+  "Books/book_link/Ay_Sarga.html": {
+    "mtime": 1794498431.879555,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9c681315138083c5611efde3446180e4",
+    "semantic_hash": ""
+  },
+  "Books/book_link/Bala_Srga.html": {
+    "mtime": 1794498431.8913274,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3e94a6238fdcd8a0cefc9ff448e78d9e",
+    "semantic_hash": ""
+  },
+  "Books/book_link/KIs_Sraga.html": {
+    "mtime": 1794498431.8913274,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ac1065da5dcf1fcef3249132ac0972f7",
+    "semantic_hash": ""
+  },
+  "Books/book_link/SU_Sraga.html": {
+    "mtime": 1794498431.8913274,
+    "seen": 1794500875.4188626,
+    "ast_hash": "496be5c738245994c02b862a69143942",
+    "semantic_hash": ""
+  },
+  "Books/book_link/Vedic Wisdom.html": {
+    "mtime": 1794498431.8913274,
+    "seen": 1794500875.4188626,
+    "ast_hash": "8b02758fe051dd538368a26b272f98c8",
+    "semantic_hash": ""
+  },
+  "Books/book_link/YU_Sarga.html": {
+    "mtime": 1794498431.8913274,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0b69a3f81f9aa60b17cae84d0a0c7d14",
+    "semantic_hash": ""
+  },
+  "Books/book_link/utt_sarga.html": {
+    "mtime": 1794498431.8913274,
+    "seen": 1794500875.4188626,
+    "ast_hash": "885f6d821357d5e398e2cd5718722bc8",
+    "semantic_hash": ""
+  },
+  "CONTRIBUTING.md": {
+    "mtime": 1794498431.8913274,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a599cc59b28137c0b38ce1b32381b449",
+    "semantic_hash": ""
+  },
+  "Campus.html": {
+    "mtime": 1794502168.3457646,
+    "seen": 1794502432.9083648,
+    "ast_hash": "6a2733ef12dcf0dd44cabe81f8cb0165",
+    "semantic_hash": ""
+  },
+  "Gallery/Gallery.html": {
+    "mtime": 1794498431.8913274,
+    "seen": 1794500875.4188626,
+    "ast_hash": "bfc69033e421c9c78f88524afe0ab2fc",
+    "semantic_hash": ""
+  },
+  "Gallery/admin.html": {
+    "mtime": 1794498431.8913274,
+    "seen": 1794500875.4188626,
+    "ast_hash": "73106dca52895ce57ceb426db8bbef53",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1794498431.8913274,
+    "seen": 1794500875.4188626,
+    "ast_hash": "496c530cb2b790b9e4404e35a0adef1e",
+    "semantic_hash": ""
+  },
+  "RESPONSIVE-IMPROVEMENTS.md": {
+    "mtime": 1794498431.8913274,
+    "seen": 1794500875.4188626,
+    "ast_hash": "23b35baaca6b5532606eec7d65c05162",
+    "semantic_hash": ""
+  },
+  "RESPONSIVE-QUICK-REFERENCE.md": {
+    "mtime": 1794498431.8913274,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b611455424919086d8e6b0530bcd2d19",
+    "semantic_hash": ""
+  },
+  "Sanatan Dharma.html": {
+    "mtime": 1794502372.1199348,
+    "seen": 1794502432.9083648,
+    "ast_hash": "b24190faa312f802eee59c9f9b0fa17f",
+    "semantic_hash": ""
+  },
+  "Sanatan Dharma_Vision & Mission.html": {
+    "mtime": 1794498431.8913274,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ca7b2cc9eca7ededfb7c1b6f4edf7ee7",
+    "semantic_hash": ""
+  },
+  "about.html": {
+    "mtime": 1794502093.9057193,
+    "seen": 1794502432.9083648,
+    "ast_hash": "693cf117213d6ab8bfaf0278a2e6bd1d",
+    "semantic_hash": ""
+  },
+  "books.html": {
+    "mtime": 1794498432.037743,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7a2d61ab9d2792006a9b704d225a9406",
+    "semantic_hash": ""
+  },
+  "contact.html": {
+    "mtime": 1794502077.7831626,
+    "seen": 1794502432.9083648,
+    "ast_hash": "092c7e96f6869cf8b92d8b0f0b7f6f09",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1794498432.1762364,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7b9601de73a90b50c74c84586748697c",
+    "semantic_hash": ""
+  },
+  "keyboard/keyboard_01.html": {
+    "mtime": 1794502198.2520092,
+    "seen": 1794502432.9083648,
+    "ast_hash": "95ec16691ca64bdd8b57451e265a1d73",
+    "semantic_hash": ""
+  },
+  "meta-tags-template.html": {
+    "mtime": 1794498432.1943395,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b393aaeb1ddd86b5120a2c849e268ada",
+    "semantic_hash": ""
+  },
+  "programs.html": {
+    "mtime": 1794502123.2596328,
+    "seen": 1794502432.9083648,
+    "ast_hash": "338b7bb056936bc27b5bb2527115c0b3",
+    "semantic_hash": ""
+  },
+  "team.html": {
+    "mtime": 1794502142.982707,
+    "seen": 1794502432.9083648,
+    "ast_hash": "126cb8e5c6229ee4fa80b4f1ca490325",
+    "semantic_hash": ""
+  },
+  "Books/Books.pdf/Ancient Educational Structures.pdf": {
+    "mtime": 1794498431.0378025,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2f19858aa4fd543f470d5441a3034d29",
+    "semantic_hash": ""
+  },
+  "Books/Books.pdf/REVIVING VEDIC KNOWLEDGE.pdf": {
+    "mtime": 1794498431.0438073,
+    "seen": 1794500875.4188626,
+    "ast_hash": "fd522096a8d50d5c8110714091397f69",
+    "semantic_hash": ""
+  },
+  "Books/Books.pdf/Social entrepreneurship with vedic wisdom.pdf": {
+    "mtime": 1794498431.0470622,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3f4629e0bb679ffec617a200a03558dd",
+    "semantic_hash": ""
+  },
+  "Books/Books.pdf/The wisdom of the Hindus.pdf": {
+    "mtime": 1794498431.139282,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b5ca2ed71bd0627ece8feb1fd73a2eb6",
+    "semantic_hash": ""
+  },
+  "Books/Books.pdf/VEDIC WISDOM 2.pdf": {
+    "mtime": 1794498431.1412835,
+    "seen": 1794500875.4188626,
+    "ast_hash": "66fa3647470736a2bc4b8b5672a7e78a",
+    "semantic_hash": ""
+  },
+  "Books/Books.pdf/Vedic Wisdom.pdf": {
+    "mtime": 1794498431.1782472,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a2b31a5fb14cfd4364d3920809c9ae6c",
+    "semantic_hash": ""
+  },
+  "Books/Books.pdf/\u092a\u094d\u0930\u0925\u092e \u0936\u094d\u0932\u094b\u0915 \u092e\u093e\u0932\u093e.pdf": {
+    "mtime": 1794498431.1960235,
+    "seen": 1794500875.4188626,
+    "ast_hash": "665944718e4eb6f79adceb565ad2140c",
+    "semantic_hash": ""
+  },
+  "assets/BG Recitation _0.jpg": {
+    "mtime": 1794498431.8913274,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f2346e3b0c69562f641e7effb4f63a37",
+    "semantic_hash": ""
+  },
+  "assets/Hinduscriptures.jpg": {
+    "mtime": 1794498431.8913274,
+    "seen": 1794500875.4188626,
+    "ast_hash": "161996a5b39dbec98bf17daacc5ba0f8",
+    "semantic_hash": ""
+  },
+  "assets/card1.jpg": {
+    "mtime": 1794498431.9072154,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1ce01ae8c6acbbcc7866573aff09a6bf",
+    "semantic_hash": ""
+  },
+  "assets/card2.jpg": {
+    "mtime": 1794498431.9072154,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a2f6c5c51644b3c298fca5c8d5a146f0",
+    "semantic_hash": ""
+  },
+  "assets/card3.jpg": {
+    "mtime": 1794498431.9072154,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6c35fac4d7ca293ea0c87308010b625f",
+    "semantic_hash": ""
+  },
+  "assets/card4.jpg": {
+    "mtime": 1794498431.9072154,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2184fc6524fcd41709f17a51b8dbfb15",
+    "semantic_hash": ""
+  },
+  "assets/card5.jpg": {
+    "mtime": 1794498431.9072154,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ee891e272f032c7c6c6fb1384587c6c8",
+    "semantic_hash": ""
+  },
+  "assets/card6.jpg": {
+    "mtime": 1794498431.9072154,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0d2faf714b18140b71ce865032c7a732",
+    "semantic_hash": ""
+  },
+  "assets/fire 2.jpg": {
+    "mtime": 1794498431.9072154,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d50897364c99bce7f88f067a15e50753",
+    "semantic_hash": ""
+  },
+  "assets/fire 3.jpg": {
+    "mtime": 1794498431.938917,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0df76975bfb09ea42e5026c52c3f19bc",
+    "semantic_hash": ""
+  },
+  "assets/fire 4.jpg": {
+    "mtime": 1794498431.9871027,
+    "seen": 1794500875.4188626,
+    "ast_hash": "af5c6b85797d1fdff7e79a7f21fede1b",
+    "semantic_hash": ""
+  },
+  "assets/fire 5.jpg": {
+    "mtime": 1794498431.9871027,
+    "seen": 1794500875.4188626,
+    "ast_hash": "52ad024aa6d672cde8a12ad469c87569",
+    "semantic_hash": ""
+  },
+  "assets/fire.jpg": {
+    "mtime": 1794498432.0187118,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f1b71f14ea1de31918acf0e5080e42bf",
+    "semantic_hash": ""
+  },
+  "assets/fire_2.jpg": {
+    "mtime": 1794498432.0187118,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b406aef88e72e357fec7beb08f4ad47f",
+    "semantic_hash": ""
+  },
+  "assets/student 1.jpg": {
+    "mtime": 1794498432.0187118,
+    "seen": 1794500875.4188626,
+    "ast_hash": "5da040016d80aa2197a13defc170a976",
+    "semantic_hash": ""
+  },
+  "assets/student 2.jpg": {
+    "mtime": 1794498432.0187118,
+    "seen": 1794500875.4188626,
+    "ast_hash": "dc1e7071d90d6e285e7fe27297ee5385",
+    "semantic_hash": ""
+  },
+  "assets/student 3.jpg": {
+    "mtime": 1794498432.0187118,
+    "seen": 1794500875.4188626,
+    "ast_hash": "cb4e3d6e45a9339a0ae48443d0ee21b1",
+    "semantic_hash": ""
+  },
+  "assets/student 4.jpg": {
+    "mtime": 1794498432.034856,
+    "seen": 1794500875.4188626,
+    "ast_hash": "eb96d5df1ca808f590eb9c2ad66a41c4",
+    "semantic_hash": ""
+  },
+  "assets/vision of education.jpg": {
+    "mtime": 1794498432.037743,
+    "seen": 1794500875.4188626,
+    "ast_hash": "32d4c64ac767c24d1a2b3265315dfdc9",
+    "semantic_hash": ""
+  },
+  "images/BG Recitation _0.jpg": {
+    "mtime": 1794498432.0423906,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f2346e3b0c69562f641e7effb4f63a37",
+    "semantic_hash": ""
+  },
+  "images/Hinduscriptures.jpg": {
+    "mtime": 1794498432.0423906,
+    "seen": 1794500875.4188626,
+    "ast_hash": "161996a5b39dbec98bf17daacc5ba0f8",
+    "semantic_hash": ""
+  },
+  "images/card1.jpg": {
+    "mtime": 1794498432.0423906,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1ce01ae8c6acbbcc7866573aff09a6bf",
+    "semantic_hash": ""
+  },
+  "images/card2.jpg": {
+    "mtime": 1794498432.0459058,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a2f6c5c51644b3c298fca5c8d5a146f0",
+    "semantic_hash": ""
+  },
+  "images/card3.jpg": {
+    "mtime": 1794498432.0459058,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6c35fac4d7ca293ea0c87308010b625f",
+    "semantic_hash": ""
+  },
+  "images/card4.jpg": {
+    "mtime": 1794498432.0459058,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2184fc6524fcd41709f17a51b8dbfb15",
+    "semantic_hash": ""
+  },
+  "images/card5.jpg": {
+    "mtime": 1794498432.0459058,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ee891e272f032c7c6c6fb1384587c6c8",
+    "semantic_hash": ""
+  },
+  "images/card6-1080.webp": {
+    "mtime": 1794498432.0492446,
+    "seen": 1794500875.4188626,
+    "ast_hash": "55965f039ebf04ace02dde6694d458d5",
+    "semantic_hash": ""
+  },
+  "images/card6-540.webp": {
+    "mtime": 1794498432.0492446,
+    "seen": 1794500875.4188626,
+    "ast_hash": "03d2539a4161a27830aad202ff81a780",
+    "semantic_hash": ""
+  },
+  "images/card6.jpg": {
+    "mtime": 1794498432.050751,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0d2faf714b18140b71ce865032c7a732",
+    "semantic_hash": ""
+  },
+  "images/fire 2.jpg": {
+    "mtime": 1794498432.0567698,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d50897364c99bce7f88f067a15e50753",
+    "semantic_hash": ""
+  },
+  "images/fire 3.jpg": {
+    "mtime": 1794498432.0820458,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0df76975bfb09ea42e5026c52c3f19bc",
+    "semantic_hash": ""
+  },
+  "images/fire 4.jpg": {
+    "mtime": 1794498432.1245637,
+    "seen": 1794500875.4188626,
+    "ast_hash": "af5c6b85797d1fdff7e79a7f21fede1b",
+    "semantic_hash": ""
+  },
+  "images/fire 5.jpg": {
+    "mtime": 1794498432.1285918,
+    "seen": 1794500875.4188626,
+    "ast_hash": "52ad024aa6d672cde8a12ad469c87569",
+    "semantic_hash": ""
+  },
+  "images/fire.jpg": {
+    "mtime": 1794498432.1598105,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f1b71f14ea1de31918acf0e5080e42bf",
+    "semantic_hash": ""
+  },
+  "images/fire.webp": {
+    "mtime": 1794498432.1598105,
+    "seen": 1794500875.4188626,
+    "ast_hash": "dc94505939f433af15095b3e877e096a",
+    "semantic_hash": ""
+  },
+  "images/fire_2.jpg": {
+    "mtime": 1794498432.1598105,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b406aef88e72e357fec7beb08f4ad47f",
+    "semantic_hash": ""
+  },
+  "images/fire_2_opt.webp": {
+    "mtime": 1794498432.1598105,
+    "seen": 1794500875.4188626,
+    "ast_hash": "044f84ac20a521a6e2c14b64d1ca5285",
+    "semantic_hash": ""
+  },
+  "images/fire_2_opt_wide.webp": {
+    "mtime": 1794498432.1598105,
+    "seen": 1794500875.4188626,
+    "ast_hash": "67a5d32316e75ecc1d42796a30b8a19a",
+    "semantic_hash": ""
+  },
+  "images/fire_3_opt.webp": {
+    "mtime": 1794498432.1740746,
+    "seen": 1794500875.4188626,
+    "ast_hash": "8f415f711afdd8c134183836edb7d1db",
+    "semantic_hash": ""
+  },
+  "images/student 1.jpg": {
+    "mtime": 1794498432.1740746,
+    "seen": 1794500875.4188626,
+    "ast_hash": "5da040016d80aa2197a13defc170a976",
+    "semantic_hash": ""
+  },
+  "images/student 2.jpg": {
+    "mtime": 1794498432.1762364,
+    "seen": 1794500875.4188626,
+    "ast_hash": "dc1e7071d90d6e285e7fe27297ee5385",
+    "semantic_hash": ""
+  },
+  "images/student 3.jpg": {
+    "mtime": 1794498432.1762364,
+    "seen": 1794500875.4188626,
+    "ast_hash": "cb4e3d6e45a9339a0ae48443d0ee21b1",
+    "semantic_hash": ""
+  },
+  "images/student 4.jpg": {
+    "mtime": 1794498432.1762364,
+    "seen": 1794500875.4188626,
+    "ast_hash": "eb96d5df1ca808f590eb9c2ad66a41c4",
+    "semantic_hash": ""
+  },
+  "images/vision of education.jpg": {
+    "mtime": 1794498432.1762364,
+    "seen": 1794500875.4188626,
+    "ast_hash": "32d4c64ac767c24d1a2b3265315dfdc9",
+    "semantic_hash": ""
+  },
+  "images/vision_of_education.webp": {
+    "mtime": 1794498432.1762364,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1f5e9abc0d2dc0c1bf3ec5f6b6143ed1",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_1.m4a": {
+    "mtime": 1794498431.321347,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ad5cff61a34cca1180eea826c5903043",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_10.m4a": {
+    "mtime": 1794498431.321347,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9daa6bf7553a9a9b58b980dc70895f7e",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_100.m4a": {
+    "mtime": 1794498431.321347,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9fa5f37da682ac1399d8c8619aa35aaf",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_101.m4a": {
+    "mtime": 1794498431.321347,
+    "seen": 1794500875.4188626,
+    "ast_hash": "957c9235d92f363be0c347b8f0806e14",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_102.m4a": {
+    "mtime": 1794498431.321347,
+    "seen": 1794500875.4188626,
+    "ast_hash": "09339c2b8a97eefa060635c5c3142341",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_103.m4a": {
+    "mtime": 1794498431.321347,
+    "seen": 1794500875.4188626,
+    "ast_hash": "72d69b495aae4cb9f4e5c2bf03032bed",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_104.m4a": {
+    "mtime": 1794498431.3373883,
+    "seen": 1794500875.4188626,
+    "ast_hash": "483719133dd81bffba7f9ed9b527609a",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_105.m4a": {
+    "mtime": 1794498431.3373883,
+    "seen": 1794500875.4188626,
+    "ast_hash": "5a2677276273514672aefaa7c161b811",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_106.m4a": {
+    "mtime": 1794498431.3373883,
+    "seen": 1794500875.4188626,
+    "ast_hash": "cb0d147f52385078157d51b5257ddc00",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_107.m4a": {
+    "mtime": 1794498431.3373883,
+    "seen": 1794500875.4188626,
+    "ast_hash": "50d2c0ed93f00696fddcfb62e8cc9f07",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_108.m4a": {
+    "mtime": 1794498431.3373883,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6be5fd77ebd37b57052016c995009b68",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_109.m4a": {
+    "mtime": 1794498431.3534718,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c283a4c0b1bc32d2587f1e4deb874ffd",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_11.m4a": {
+    "mtime": 1794498431.3534718,
+    "seen": 1794500875.4188626,
+    "ast_hash": "471dcbcfe5591c328beaa586a02480d7",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_110.m4a": {
+    "mtime": 1794498431.3595738,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a2f86b476b2864c2edc56ad4c133c848",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_111.m4a": {
+    "mtime": 1794498431.3595738,
+    "seen": 1794500875.4188626,
+    "ast_hash": "19ec0ef6007fc084f72423d47f40d85e",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_112.m4a": {
+    "mtime": 1794498431.3595738,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6ddbfe32bdbd6924862f1a52be501f89",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_113.m4a": {
+    "mtime": 1794498431.3595738,
+    "seen": 1794500875.4188626,
+    "ast_hash": "89485919d50e6fa9cbd66931d0f01552",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_114.m4a": {
+    "mtime": 1794498431.3694508,
+    "seen": 1794500875.4188626,
+    "ast_hash": "90e09bee5050c7e98a4da2d06389af62",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_115.m4a": {
+    "mtime": 1794498431.3694508,
+    "seen": 1794500875.4188626,
+    "ast_hash": "fa9a1df41bfa4d99d61383f3b2adc396",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_116.m4a": {
+    "mtime": 1794498431.3694508,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d8ddcef64e8773c39bd5be8af8d5b817",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_117.m4a": {
+    "mtime": 1794498431.3694508,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6ea141e5040353f115f8ad9541f19ec3",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_118.m4a": {
+    "mtime": 1794498431.3694508,
+    "seen": 1794500875.4188626,
+    "ast_hash": "eb50616d9cb7ce4239d3d7a03dabef45",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_119.m4a": {
+    "mtime": 1794498431.3694508,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7894b03e2104bd45c4a2ab5993408d79",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_12.m4a": {
+    "mtime": 1794498431.3853307,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c569202826fd60d4d3e1cc4cde57624a",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_120.m4a": {
+    "mtime": 1794498431.3853307,
+    "seen": 1794500875.4188626,
+    "ast_hash": "cd9ab57bd3883ad19ca82165e433b295",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_13.m4a": {
+    "mtime": 1794498431.3853307,
+    "seen": 1794500875.4188626,
+    "ast_hash": "dee1b2bceaf7b47beb9c234f55638d7a",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_14.m4a": {
+    "mtime": 1794498431.3853307,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c517836bd27f707c61271a91230015e4",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_15.m4a": {
+    "mtime": 1794498431.3853307,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9a648d8fa3229a00b8927d712bd7c415",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_16.m4a": {
+    "mtime": 1794498431.3853307,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a26cc8f9fc5cba9900a64cf7c132f960",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_17.m4a": {
+    "mtime": 1794498431.401464,
+    "seen": 1794500875.4188626,
+    "ast_hash": "abc98f4b125cc6af1ba31d065b2966d3",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_18.m4a": {
+    "mtime": 1794498431.401464,
+    "seen": 1794500875.4188626,
+    "ast_hash": "477dee1b840fc82b1afec7a4b1e46115",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_19.m4a": {
+    "mtime": 1794498431.401464,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a357d0342598794360eadaedeacf3b94",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_2.m4a": {
+    "mtime": 1794498431.401464,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6a834492fd3f121688d929fd6934f5f3",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_20.m4a": {
+    "mtime": 1794498431.401464,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b3004e6e6fee5c779fac869af7dbbfec",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_21.m4a": {
+    "mtime": 1794498431.401464,
+    "seen": 1794500875.4188626,
+    "ast_hash": "63387982cfe387f27df15c197f49868a",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_22.m4a": {
+    "mtime": 1794498431.4173706,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a8f8928ba74d3b9c80f6b85c700d5b07",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_23.m4a": {
+    "mtime": 1794498431.4173706,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a28a068ba1b46f47956538ec8c05b409",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_24.m4a": {
+    "mtime": 1794498431.4173706,
+    "seen": 1794500875.4188626,
+    "ast_hash": "fa41428d45bae08489201b75d13fcec6",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_25.m4a": {
+    "mtime": 1794498431.4173706,
+    "seen": 1794500875.4188626,
+    "ast_hash": "60d98d653c5deea5d14762cbc8358739",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_26.m4a": {
+    "mtime": 1794498431.4173706,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7b74e5e1a36c7578a9abbf37a50f21f9",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_27.m4a": {
+    "mtime": 1794498431.433155,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9afa69071c4b428fbe817427ebbd715e",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_28.m4a": {
+    "mtime": 1794498431.433155,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7588a08175627c38f7f17b6151126f5d",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_29.m4a": {
+    "mtime": 1794498431.433155,
+    "seen": 1794500875.4188626,
+    "ast_hash": "17eb16c775f3a0edee8670582a7c7638",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_3.m4a": {
+    "mtime": 1794498431.433155,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f1a58fb8b543403c579ef25424b40a5e",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_30.m4a": {
+    "mtime": 1794498431.433155,
+    "seen": 1794500875.4188626,
+    "ast_hash": "8627e7259b9a92a8ab5c9cc4a218fb94",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_31.m4a": {
+    "mtime": 1794498431.449102,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0fd442f69a8f08177d60804cee568680",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_32.m4a": {
+    "mtime": 1794498431.4531207,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1b5e92cc04284ff7d95ffdbb2b6b74d9",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_33.m4a": {
+    "mtime": 1794498431.457155,
+    "seen": 1794500875.4188626,
+    "ast_hash": "d8492d608b5ac781ae317de7efdeaf66",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_34.m4a": {
+    "mtime": 1794498431.4597085,
+    "seen": 1794500875.4188626,
+    "ast_hash": "20adcdf16f6ddb49d50684de64bb3fad",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_35.m4a": {
+    "mtime": 1794498431.464805,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9ef3e202d3dbaea5712196816b232399",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_36.m4a": {
+    "mtime": 1794498431.468851,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6365fc8a1a835a3f5019d4bab0e8f011",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_37.m4a": {
+    "mtime": 1794498431.4715345,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3e0e556a839adb1345dcbd59c18f77f0",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_38.m4a": {
+    "mtime": 1794498431.4715345,
+    "seen": 1794500875.4188626,
+    "ast_hash": "20414d85d1ce9c28cf0e6c1851fcc919",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_39.m4a": {
+    "mtime": 1794498431.4715345,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c1a0ae4d4b6911f2f139887d198d3c4e",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_4.m4a": {
+    "mtime": 1794498431.4806197,
+    "seen": 1794500875.4188626,
+    "ast_hash": "7077b59267757162af25bc8e45124238",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_40.m4a": {
+    "mtime": 1794498431.4867442,
+    "seen": 1794500875.4188626,
+    "ast_hash": "266fc250251a831b429afee5e963fc72",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_41.m4a": {
+    "mtime": 1794498431.4900117,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f5cf1b1103939bb92f331d1c9f00c261",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_42.m4a": {
+    "mtime": 1794498431.4900117,
+    "seen": 1794500875.4188626,
+    "ast_hash": "83cf5f32b5c71a53819bbf59bf58d3c2",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_43.m4a": {
+    "mtime": 1794498431.4900117,
+    "seen": 1794500875.4188626,
+    "ast_hash": "de84bb7e357afce51319ca6dbe1d442e",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_44.m4a": {
+    "mtime": 1794498431.4962645,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ccbbb5cad79558616db7957d2d4611dc",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_45.m4a": {
+    "mtime": 1794498431.4962645,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3f1111c04fa4ffa5c7458b6970db5d7c",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_46.m4a": {
+    "mtime": 1794498431.4962645,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3d28a89384b1317142284b5931e03fb0",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_47.m4a": {
+    "mtime": 1794498431.4962645,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6f594791028152850419992984733689",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_48.m4a": {
+    "mtime": 1794498431.507077,
+    "seen": 1794500875.4188626,
+    "ast_hash": "64be034b931f055335c5fcb3839d941e",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_49.m4a": {
+    "mtime": 1794498431.512894,
+    "seen": 1794500875.4188626,
+    "ast_hash": "5e923f999ff46568a6b53ba6c053a0a4",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_5.m4a": {
+    "mtime": 1794498431.512894,
+    "seen": 1794500875.4188626,
+    "ast_hash": "26b811c96d0da8d08c5b145b7559a7fa",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_50.m4a": {
+    "mtime": 1794498431.512894,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a526a1fb734f0970ee25d0fa0500d8e8",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_51.m4a": {
+    "mtime": 1794498431.512894,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4fcd2f0d5320b7eef0df3d17b47f272f",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_52.m4a": {
+    "mtime": 1794498431.512894,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c02d23644b3a93a9bee03244ac68a50c",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_53.m4a": {
+    "mtime": 1794498431.5279691,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e7caf394fed1ed29304bb9b4bc7df8dc",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_54.m4a": {
+    "mtime": 1794498431.5279691,
+    "seen": 1794500875.4188626,
+    "ast_hash": "da403898f9e952098c49b62ba6aff225",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_55.m4a": {
+    "mtime": 1794498431.5279691,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ccbfed7c94b6b0f55461d5eddc83ffe0",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_56.m4a": {
+    "mtime": 1794498431.5279691,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6fc86122a77ce29b618d23aa6d7404aa",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_57.m4a": {
+    "mtime": 1794498431.5279691,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e1f4d3cc03424285b1f40d51c3643f32",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_58.m4a": {
+    "mtime": 1794498431.5279691,
+    "seen": 1794500875.4188626,
+    "ast_hash": "6a1af3726716d216fbfdd45b243113ed",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_59.m4a": {
+    "mtime": 1794498431.5437884,
+    "seen": 1794500875.4188626,
+    "ast_hash": "55615ec263f825fc98a22ec460452242",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_6.m4a": {
+    "mtime": 1794498431.5437884,
+    "seen": 1794500875.4188626,
+    "ast_hash": "00e4bebaf831fff1675bae416079b337",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_60.m4a": {
+    "mtime": 1794498431.5437884,
+    "seen": 1794500875.4188626,
+    "ast_hash": "85d3f399568cd8a8c435a4ed8fcd0ea7",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_61.m4a": {
+    "mtime": 1794498431.5437884,
+    "seen": 1794500875.4188626,
+    "ast_hash": "e7e3fe04bfd2351a66a9ef4663a092c3",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_62.m4a": {
+    "mtime": 1794498431.5437884,
+    "seen": 1794500875.4188626,
+    "ast_hash": "ffc60110b0efb58eac12bbccf4e6ef9b",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_63.m4a": {
+    "mtime": 1794498431.5437884,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f95cac3b62dc396b27edc1f59baf8a4d",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_64.m4a": {
+    "mtime": 1794498431.5437884,
+    "seen": 1794500875.4188626,
+    "ast_hash": "24e00ca8bddaa1c743c064710fc63c19",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_65.m4a": {
+    "mtime": 1794498431.5596132,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b0744dcb024488ddd96e0d52e33a2406",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_66.m4a": {
+    "mtime": 1794498431.5596132,
+    "seen": 1794500875.4188626,
+    "ast_hash": "eff176cc8d8461bea01031c7689c374a",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_67.m4a": {
+    "mtime": 1794498431.5596132,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9e8dc758b049a0f5a8959a35c6af62e6",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_68.m4a": {
+    "mtime": 1794498431.5596132,
+    "seen": 1794500875.4188626,
+    "ast_hash": "73127c66344a8442a04e545cd2eb54be",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_69.m4a": {
+    "mtime": 1794498431.5596132,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a2e0d68a87f19edfe5ae51ffe329c38c",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_7.m4a": {
+    "mtime": 1794498431.5752697,
+    "seen": 1794500875.4188626,
+    "ast_hash": "164e996a7f69b6963994819e6d53e0dc",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_70.m4a": {
+    "mtime": 1794498431.5752697,
+    "seen": 1794500875.4188626,
+    "ast_hash": "58f7000377a748077c03319c6451afb6",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_71.m4a": {
+    "mtime": 1794498431.5752697,
+    "seen": 1794500875.4188626,
+    "ast_hash": "8314a4db70b31ab6a3f568790bdd91a0",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_72.m4a": {
+    "mtime": 1794498431.5752697,
+    "seen": 1794500875.4188626,
+    "ast_hash": "bbb06d3cf7fc45e4208e13abab1575f9",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_73.m4a": {
+    "mtime": 1794498431.5752697,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2e285f96b506b1435eab1666b1cb8c14",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_74.m4a": {
+    "mtime": 1794498431.5909512,
+    "seen": 1794500875.4188626,
+    "ast_hash": "4d59859a70f5c45c7daaa7362a232650",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_75.m4a": {
+    "mtime": 1794498431.5909512,
+    "seen": 1794500875.4188626,
+    "ast_hash": "bca142b96aeb2b3a90e5c758b23cad0b",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_76.m4a": {
+    "mtime": 1794498431.5909512,
+    "seen": 1794500875.4188626,
+    "ast_hash": "758020f24ec29f63850bfd682a0976d7",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_77.m4a": {
+    "mtime": 1794498431.5909512,
+    "seen": 1794500875.4188626,
+    "ast_hash": "0c51a3076c00694b4b490ac562c12ff6",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_78.m4a": {
+    "mtime": 1794498431.5909512,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3a9927cfab82024cde2220e987a18583",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_79.m4a": {
+    "mtime": 1794498431.5909512,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3d4f0d5229cbf121c89a0b1d7a893a9f",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_8.m4a": {
+    "mtime": 1794498431.6066945,
+    "seen": 1794500875.4188626,
+    "ast_hash": "c659d7c7418af39ff5a7022e416339cc",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_80.m4a": {
+    "mtime": 1794498431.6066945,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f2969b22daa7176c6b509516e6f953d2",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_81.m4a": {
+    "mtime": 1794498431.6066945,
+    "seen": 1794500875.4188626,
+    "ast_hash": "74bec92916a2cf534cda6b745226f1ca",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_82.m4a": {
+    "mtime": 1794498431.6066945,
+    "seen": 1794500875.4188626,
+    "ast_hash": "546f615953803555fcc481b1eea3af83",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_83.m4a": {
+    "mtime": 1794498431.6066945,
+    "seen": 1794500875.4188626,
+    "ast_hash": "23cf3933dda87ae844f8192e29a129c9",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_84.m4a": {
+    "mtime": 1794498431.6066945,
+    "seen": 1794500875.4188626,
+    "ast_hash": "f8e87de96758f4e88fe0df0d0f68838c",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_85.m4a": {
+    "mtime": 1794498431.6224263,
+    "seen": 1794500875.4188626,
+    "ast_hash": "b0b159bca06178944834333dc907362f",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_86.m4a": {
+    "mtime": 1794498431.6224263,
+    "seen": 1794500875.4188626,
+    "ast_hash": "79baf0825033ab2914da137230812ee8",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_87.m4a": {
+    "mtime": 1794498431.6224263,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1de8a1fb69ddc7dfc463f7391d83ae41",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_88.m4a": {
+    "mtime": 1794498431.6224263,
+    "seen": 1794500875.4188626,
+    "ast_hash": "a29f6dc3b71cf96361252449a6c79caf",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_89.m4a": {
+    "mtime": 1794498431.6224263,
+    "seen": 1794500875.4188626,
+    "ast_hash": "72bd550ef2e176601e05a482171223b7",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_9.m4a": {
+    "mtime": 1794498431.6224263,
+    "seen": 1794500875.4188626,
+    "ast_hash": "794714f6dbdbfe6c442e92baca96b971",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_90.m4a": {
+    "mtime": 1794498431.6380727,
+    "seen": 1794500875.4188626,
+    "ast_hash": "1d905e1ed73827d37f5f24de3c02c02e",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_91.m4a": {
+    "mtime": 1794498431.6380727,
+    "seen": 1794500875.4188626,
+    "ast_hash": "2304d6ecc3919cbe83414fe2f5b59cbe",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_92.m4a": {
+    "mtime": 1794498431.6380727,
+    "seen": 1794500875.4188626,
+    "ast_hash": "3707a789f95d39c133d3abf890f74187",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_93.m4a": {
+    "mtime": 1794498431.650623,
+    "seen": 1794500875.4188626,
+    "ast_hash": "9b25aec40813167ea10cd85f8e8dea6b",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_94.m4a": {
+    "mtime": 1794498431.6541357,
+    "seen": 1794500875.4188626,
+    "ast_hash": "38046571b4a21b8f1cee2e77d2d24b42",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_95.m4a": {
+    "mtime": 1794498431.6581519,
+    "seen": 1794500875.4188626,
+    "ast_hash": "81ecde1d4f29ae6fff85e12e801f2377",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_96.m4a": {
+    "mtime": 1794498431.6616783,
+    "seen": 1794500875.419863,
+    "ast_hash": "298be8896035d81b2e33c2bfbc375e4c",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_97.m4a": {
+    "mtime": 1794498431.6656928,
+    "seen": 1794500875.419863,
+    "ast_hash": "5e2f824ccc7c0625b3f4de9d27046dd7",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_98.m4a": {
+    "mtime": 1794498431.6697092,
+    "seen": 1794500875.419863,
+    "ast_hash": "8b17ed7af71e30a25665bd0709f657d6",
+    "semantic_hash": ""
+  },
+  "Books/Shlok mala/Shlok_audio/shlok_99.m4a": {
+    "mtime": 1794498431.67374,
+    "seen": 1794500875.419863,
+    "ast_hash": "f51c0a5d62597d47ef0b3a5a550dce0d",
+    "semantic_hash": ""
+  }
+}
