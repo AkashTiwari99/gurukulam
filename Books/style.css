@@ -17,14 +17,19 @@ body {
     font-weight: 600;
     font-optical-sizing: auto;
     font-style: normal;
-    padding: left 100px;
+    padding-left: 100px;
     padding-right: var(--page-padding);
 }
 
 .content .page {
+<<<<<<< HEAD
     margin-left: 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
+=======
+    margin-left: 200px;
+    padding-left: 50px;
+>>>>>>> 3420198 (Fix all 20 audit issues across static site and gurukulam-next, clean dead assets, optimize LCP/a11y)
 }
 
 .vyakhya {

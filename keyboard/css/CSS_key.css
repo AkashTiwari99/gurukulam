@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @font-face {
     font-family: 'Siddhanta';
-    src: url('font/AdishilaSanVedic.ttf') format('truetype');
+    src: url('../font/AdishilaSanVedic.ttf') format('truetype');
     font-display: swap;
 }
 
@@ -66,6 +66,11 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
 body {
   font-family: 'Inter', 'Siddhanta', 'Segoe UI', system-ui, -apple-system, sans-serif;
   background: var(--background-color);
@@ -78,6 +83,23 @@ body {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   line-height: 1.6;
   overflow-x: hidden;
+  overflow-x: clip;
+}
+
+button:focus-visible,
+a:focus-visible,
+textarea:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.text-input-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-color);
 }
 
 .container {
@@ -205,7 +227,8 @@ body {
   border-radius: var(--border-radius-lg);
   font-size: 20px;
   font-family: 'Siddhanta', 'Inter', monospace;
-  resize: vertical, horizontal;
+  resize: both;
+  max-width: 100%;
   background: var(--key-bg);
   color: var(--character-color); /* Use character color variable */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -215,34 +238,39 @@ body {
 }
 
 #text-input:focus {
-  outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), var(--shadow-md);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15), var(--shadow-md);
   background: var(--key-bg);
 }
-/* Additional CSS fixes for drag functionality - Add these to your CSS file */
 
+/* Keyboard container sits cleanly below controls by default; becomes fixed when dragged */
 .keyboard-container {
-  position: fixed;
-  bottom: 30px;
-  left: 30px;
-  width: 380px;
-  height: 400px;
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  margin: 24px auto 0;
+  height: auto;
+  max-height: 460px;
   background: var(--glass-bg);
   backdrop-filter: var(--backdrop-blur);
   border: 1px solid var(--glass-border);
   border-radius: var(--border-radius-xl);
   padding: 0;
   box-shadow: var(--shadow-xl);
-  z-index: 1000;
+  z-index: 100;
   user-select: none;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: auto;
   resize: both;
-  min-width: 320px;
+  min-width: 300px;
   min-height: 280px;
-  /* Ensure draggable positioning works */
-  transform: none !important; /* Override any transforms that might interfere */
+  transform: none !important;
+}
+
+.keyboard-container.is-floating {
+  position: fixed;
+  margin: 0;
+  z-index: 1000;
 }
 
 /* When dragging starts, we need to ensure the element can be positioned correctly */
@@ -254,7 +282,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 20px;
+  padding: 16px 20px;
   background: var(--background-gradient);
   color: white;
   border-radius: var(--border-radius-xl) var(--border-radius-xl) 0 0;
@@ -264,6 +292,7 @@ body {
   user-select: none;
   position: relative;
   overflow: hidden;
+  touch-action: none;
 }
 
 .keyboard-header:active {
@@ -277,23 +306,23 @@ body {
 
 .keyboard-header .section-toggle-container {
   pointer-events: auto; /* Re-enable pointer events for toggle buttons */
+  touch-action: manipulation;
 }
 
 .keyboard-header .section-toggle-container * {
   pointer-events: auto; /* Re-enable pointer events for toggle button children */
+  touch-action: manipulation;
 }
 
 /* Mobile responsiveness for dragging */
 @media (max-width: 768px) {
   .keyboard-container {
-    width: calc(100% - 20px);
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     border-radius: var(--border-radius-lg);
     max-height: 60vh;
-    /* Ensure mobile dragging works properly */
-    touch-action: none; /* Prevent default touch behaviors during drag */
+    resize: none;
   }
   
   .keyboard-header {
@@ -721,52 +750,30 @@ body {
   background: linear-gradient(135deg, var(--error-color), #dc2626);
 }
 
-#theme-toggle {
-  position: fixed;
-  top: 30px;
-  right: 30px;
-  padding: 12px 20px;
-  background: var(--background-gradient);
-  color: white;
-  border: none;
-  border-radius: var(--border-radius-lg);
-  cursor: pointer;
-  z-index: 1001;
-  font-weight: 500;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--shadow-md);
-  backdrop-filter: var(--backdrop-blur);
-}
-
-#theme-toggle:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: var(--shadow-lg);
-}
-
-#theme-toggle:active {
-  transform: translateY(0) scale(1);
-}
-
+#theme-toggle,
 #toggle-keyboard {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  padding: 12px 20px;
+  position: static;
+  padding: 10px 18px;
   background: var(--background-gradient);
   color: white;
   border: none;
-  border-radius: var(--border-radius-lg);
+  border-radius: var(--border-radius-md);
   cursor: pointer;
-  z-index: 999;
+  font-size: 14px;
   font-weight: 500;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--shadow-md);
-  backdrop-filter: var(--backdrop-blur);
+  box-shadow: var(--shadow-sm);
 }
 
+#theme-toggle:hover,
 #toggle-keyboard:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+#theme-toggle:active,
+#toggle-keyboard:active {
+  transform: translateY(0);
 }
 /* Section toggle buttons */
 .section-toggle-container {
@@ -830,123 +837,19 @@ body {
     gap: 12px;
     margin-bottom: 20px;
     justify-content: center;
-}
-
-/* Instructions toggle button styling */
-#toggle-instructions {
-    padding: 10px 20px;
-    border: none;
-    border-radius: var(--border-radius-md);
-    background: var(--key-bg);
-    color: var(--text-color);
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border-color);
-}
-
-#toggle-instructions:hover {
-    background: var(--key-hover);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
-
-/* Instructions panel */
-.instructions {
-    position: relative;
-    background: var(--key-bg);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
-    padding: 24px;
-    margin: 20px 0;
-    box-shadow: var(--shadow-md);
-}
-
-.instructions.hidden {
-    display: none;
-}
-
-.instructions h3 {
-    margin-top: 0;
-    color: var(--primary-color);
-    font-size: 1.2rem;
-    margin-bottom: 16px;
-    text-align: center;
-}
-
-.instructions ul {
-    padding-left: 20px;
-    margin-bottom: 0;
-}
-
-.instructions li {
-    margin-bottom: 10px;
-    line-height: 1.5;
-}
-
-.instructions li:last-child {
-    margin-bottom: 0;
-}
-
-.instructions code {
-    background: var(--key-hover);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.9em;
-}
-
-.close-instructions {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: var(--text-light);
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.close-instructions:hover {
-    background: var(--key-hover);
-    color: var(--text-color);
-}
-
-/* Dark mode adjustments for instructions */
-[data-theme="dark"] .instructions {
-    background: var(--key-bg);
-    border-color: var(--border-color);
-}
-
-[data-theme="dark"] .instructions code {
-    background: var(--key-hover);
-}
-
-/*  instructions toggle container styles since we moved the button */
-.instructions-toggle-container {
-    display: none;
 }
 
 /* Mobile responsiveness for section toggles */
 @media (max-width: 768px) {
     .section-toggle-container {
-        gap: 4px;
+        gap: 6px;
         padding: 6px;
     }
     
     .section-toggle-btn {
-        padding: 4px 6px;
-        font-size: 10px;
+        padding: 6px 8px;
+        font-size: 11px;
     }
 }
 /* Animations */
@@ -977,20 +880,16 @@ body {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .container {
-    padding: 15px;
+    padding: 16px;
+  }
+
+  .header {
+    margin-bottom: 24px;
   }
   
   .header h1 {
-    font-size: 2.5rem;
-  }
-  
-  .keyboard-container {
-    width: calc(100% - 20px);
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    border-radius: var(--border-radius-lg);
-    max-height: 60vh;
+    font-size: 2rem;
+    line-height: 1.2;
   }
   
   .key, .vowel-key {
@@ -1008,20 +907,17 @@ body {
   
   #text-input {
     font-size: 18px;
-    min-height: 150px;
-    padding: 20px;
+    min-height: 140px;
+    padding: 16px;
   }
-  
-  #theme-toggle, #toggle-keyboard {
-    top: 15px;
-    right: 15px;
-    bottom: auto;
-    padding: 10px 16px;
-    font-size: 14px;
+
+  .controls {
+    gap: 10px;
   }
-  
-  #toggle-keyboard {
-    top: 60px;
+
+  .controls button {
+    padding: 10px 14px;
+    flex: 1 1 calc(50% - 10px);
   }
   
   #notification {
@@ -1034,7 +930,17 @@ body {
 
 @media (max-width: 480px) {
   .header h1 {
-    font-size: 2rem;
+    font-size: 1.75rem;
+  }
+
+  .section-toggles-above {
+    gap: 8px;
+  }
+
+  #theme-toggle,
+  #toggle-keyboard {
+    padding: 10px 14px;
+    font-size: 13px;
   }
   
   .key-group {
@@ -1066,15 +972,4 @@ body {
 [data-theme="dark"] .accent-key:hover {
   background: linear-gradient(135deg, #f59e0b, #d97706);
   color: white;
-}
-
-[data-theme="dark"] .devanagari-example {
-  color: #f8fafc;
-}
-
-/* Ensure all text elements use appropriate colors */
-[data-theme="dark"] .instructions,
-[data-theme="dark"] .instructions li,
-[data-theme="dark"] .instructions code {
-  color: #cbd5e1;
 }

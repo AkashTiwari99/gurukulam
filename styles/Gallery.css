@@ -1,46 +1,60 @@
 
-/* Gallery Section */
+/* Gallery Layout */
+#gallery,
 .gallery-section {
-    padding: 4rem 2rem;
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
+    padding: 1.5rem 1rem 3rem;
 }
 
+#gallery h1,
+#gallery h2,
+.gallery-section h1,
 .gallery-section h2 {
     text-align: center;
-    font-size: clamp(1.5rem, 4.5vw, 2.5rem);
-    margin-bottom: 2rem;
-    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    color: var(--text-dark, #111827);
 }
 
-/* Gallery Grid */
+#gallery .gallery-grid,
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+    gap: 1.25rem;
+    width: 100%;
 }
 
-/* Gallery Item */
 .gallery-item {
     position: relative;
-    border-radius: var(--border-radius-medium, 12px);
     overflow: hidden;
-    background-color: var(--white);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    transition: transform var(--transition-fast, 0.2s) ease, box-shadow var(--transition-fast, 0.2s) ease;
-}
-
-.gallery-item:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    border-radius: var(--border-radius-medium, 12px);
+    background-color: var(--white, #ffffff);
+    box-shadow: var(--shadow, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+    aspect-ratio: 4 / 3;
 }
 
 .gallery-item img,
 .gallery-item video {
     width: 100%;
-    height: 220px;
+    height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform var(--transition-med, 0.3s ease);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.03);
+}
+
+.gallery-empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem 1.5rem;
+    color: var(--text-medium, #4B5563);
+    font-size: 1.1rem;
+    background-color: var(--white, #ffffff);
+    border-radius: var(--border-radius-medium, 12px);
+    box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.05));
 }
 
 /* Gallery Item Checkbox */
@@ -48,7 +62,7 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 2;
+    z-index: 1;
     width: 20px;
     height: 20px;
     cursor: pointer;
@@ -58,25 +72,27 @@
 .filter-buttons {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin: 20px 0;
+    padding: 0 1rem;
 }
 
 .filter-buttons button {
     padding: 10px 20px;
-    background-color: var(--gallery-button-bg);
-    color: var(--white);
+    background-color: var(--gallery-button-bg, #333333);
+    color: var(--white, #ffffff);
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color var(--transition-fast);
+    transition: background-color var(--transition-fast, 0.2s ease);
 }
 
 .filter-buttons button:hover {
-    background-color: var(--gallery-button-hover);
+    background-color: var(--gallery-button-hover, #555555);
 }
 
 .filter-buttons button.active {
-    background-color: var(--gallery-active);
+    background-color: var(--gallery-active, #6C5CE7);
 }

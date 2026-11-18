@@ -11,9 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const spaceBtn = document.getElementById('space-btn');
     const themeToggle = document.getElementById('theme-toggle');
     const notification = document.getElementById('notification');
-    const toggleInstructionsBtn = document.getElementById('toggle-instructions');
-    const closeInstructionsBtn = document.getElementById('close-instructions');
-    const instructions = document.getElementById('instructions');
     
     // Keyboard section elements
     const vowelsGroup = document.getElementById('vowels-group');
@@ -57,24 +54,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Show default section
         showSection('vowels');
-        
-        // Initialize keyboard position
-        initializeKeyboardPosition();
-    }
-    
-    // Initialize keyboard position
-    function initializeKeyboardPosition() {
-        // Convert from bottom/left positioning to top/left positioning
-        const rect = keyboardContainer.getBoundingClientRect();
-        keyboardContainer.style.position = 'fixed';
-        keyboardContainer.style.top = rect.top + 'px';
-        keyboardContainer.style.left = rect.left + 'px';
-        keyboardContainer.style.bottom = 'auto';
     }
     
     // Create section toggle buttons in keyboard header
     function createSectionToggles() {
         const keyboardHeader = document.querySelector('.keyboard-header');
+        if (!keyboardHeader) return;
         const toggleContainer = document.createElement('div');
         toggleContainer.className = 'section-toggle-container';
         
@@ -89,10 +74,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         sections.forEach(section => {
             const toggleBtn = document.createElement('button');
+            toggleBtn.type = 'button';
             toggleBtn.className = 'section-toggle-btn';
             toggleBtn.dataset.section = section.id;
-            toggleBtn.innerHTML = `${section.icon} ${section.name}`;
+            toggleBtn.textContent = `${section.icon} ${section.name}`;
             toggleBtn.title = `Show ${section.name} section`;
+            toggleBtn.setAttribute('aria-pressed', 'false');
             toggleBtn.addEventListener('click', () => showSection(section.id));
             
             toggleContainer.appendChild(toggleBtn);
@@ -114,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Remove active class from all buttons
         document.querySelectorAll('.section-toggle-btn').forEach(btn => {
             btn.classList.remove('active');
+            btn.setAttribute('aria-pressed', 'false');
         });
         
         // Show selected section
@@ -142,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const activeBtn = document.querySelector(`.section-toggle-btn[data-section="${sectionId}"]`);
         if (activeBtn) {
             activeBtn.classList.add('active');
+            activeBtn.setAttribute('aria-pressed', 'true');
         }
         
         activeSection = sectionId;
@@ -313,65 +302,49 @@ document.addEventListener('DOMContentLoaded', function() {
         // Toggle theme
         themeToggle.addEventListener('click', toggleTheme);
         
-        // Toggle instructions
-        if (toggleInstructionsBtn) {
-            toggleInstructionsBtn.addEventListener('click', toggleInstructions);
-        }
-        
-        // Close instructions
-        if (closeInstructionsBtn) {
-            closeInstructionsBtn.addEventListener('click', hideInstructions);
-        }
-        
         // Handle keyboard shortcuts
         textInput.addEventListener('keydown', handleKeyboardShortcuts);
-    }
-    
-    // Toggle instructions visibility
-    function toggleInstructions() {
-        if (instructions) {
-            instructions.classList.toggle('hidden');
-            
-            if (instructions.classList.contains('hidden')) {
-                toggleInstructionsBtn.textContent = '📋 Keyboard Shortcuts';
-            } else {
-                toggleInstructionsBtn.textContent = '📋 Hide Shortcuts';
-            }
-        }
-    }
-    
-    // Hide instructions
-    function hideInstructions() {
-        if (instructions) {
-            instructions.classList.add('hidden');
-            toggleInstructionsBtn.textContent = '📋 Keyboard Shortcuts';
-        }
     }
     
     // Toggle keyboard visibility
     function toggleKeyboardVisibility() {
         const keyboard = document.querySelector('.keyboard-container');
-        keyboard.classList.toggle('hidden');
-        
-        if (keyboard.classList.contains('hidden')) {
-            toggleKeyboardBtn.textContent = '⌨️ Show Keyboard';
-        } else {
-            toggleKeyboardBtn.textContent = '⌨️ Hide Keyboard';
-        }
+        if (!keyboard) return;
+        const isHidden = keyboard.classList.toggle('hidden');
+        toggleKeyboardBtn.setAttribute('aria-expanded', String(!isHidden));
+        toggleKeyboardBtn.textContent = isHidden ? '⌨️ Show Keyboard' : '⌨️ Hide Keyboard';
     }
     
-    // Copy text to clipboard
-    function copyText() {
-        if (textInput.value.trim() === '') {
+    // Copy text to clipboard (Clipboard API with execCommand fallback)
+    async function copyText() {
+        const value = textInput.value;
+        if (value.trim() === '') {
             showNotification('Text area is empty', 'error');
             return;
         }
-        
-        textInput.select();
-        document.execCommand('copy');
-        
-        // Show notification
-        showNotification('Text copied to clipboard!', 'success');
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            try {
+                await navigator.clipboard.writeText(value);
+                showNotification('Text copied to clipboard!', 'success');
+                return;
+            } catch (_) {
+                // Fall back to legacy copy below
+            }
+        }
+
+        try {
+            textInput.focus();
+            textInput.select();
+            const copied = document.execCommand('copy');
+            if (copied) {
+                showNotification('Text copied to clipboard!', 'success');
+            } else {
+                showNotification('Unable to copy text. Please copy manually.', 'error');
+            }
+        } catch (_) {
+            showNotification('Unable to copy text. Please copy manually.', 'error');
+        }
     }
     
     // Clear text area
@@ -460,127 +433,91 @@ document.addEventListener('DOMContentLoaded', function() {
         // Handle other special cases as needed
     }
     
-    // Make element draggable - FIXED VERSION
+    // Make element draggable via unified Pointer Events (mouse + touch + pen)
     function makeDraggable(element) {
+        const header = element ? element.querySelector('.keyboard-header') : null;
+        if (!header) return;
+
         let isDragging = false;
-        let startX, startY, initialX, initialY;
-        
-        const header = element.querySelector('.keyboard-header');
-        
-        if (!header) return; // Safety check
-        
-        // Mouse events
-        header.addEventListener('mousedown', startDrag);
-        document.addEventListener('mousemove', drag);
-        document.addEventListener('mouseup', stopDrag);
-        
-        // Touch events for mobile support
-        header.addEventListener('touchstart', startDragTouch, { passive: false });
-        document.addEventListener('touchmove', dragTouch, { passive: false });
-        document.addEventListener('touchend', stopDrag);
-        
-        function startDrag(e) {
+        let activePointerId = null;
+        let startX = 0;
+        let startY = 0;
+        let initialX = 0;
+        let initialY = 0;
+
+        header.addEventListener('pointerdown', (e) => {
+            // Do not hijack taps/clicks on section toggle buttons
+            if (e.target.closest('.section-toggle-container, button')) {
+                return;
+            }
+            if (e.pointerType === 'mouse' && e.button !== 0) {
+                return;
+            }
+
             isDragging = true;
+            activePointerId = e.pointerId;
             startX = e.clientX;
             startY = e.clientY;
-            
+
             const rect = element.getBoundingClientRect();
             initialX = rect.left;
             initialY = rect.top;
-            
-            // Change cursor style
+
+            element.classList.add('is-floating', 'dragging');
+            element.style.left = `${initialX}px`;
+            element.style.top = `${initialY}px`;
+            element.style.width = `${rect.width}px`;
+            element.style.bottom = 'auto';
+            element.style.right = 'auto';
+
+            if (header.setPointerCapture) {
+                header.setPointerCapture(e.pointerId);
+            }
             header.style.cursor = 'grabbing';
-            
-            // Prevent text selection while dragging
             e.preventDefault();
-        }
-        
-        function startDragTouch(e) {
-            isDragging = true;
-            const touch = e.touches[0];
-            startX = touch.clientX;
-            startY = touch.clientY;
-            
-            const rect = element.getBoundingClientRect();
-            initialX = rect.left;
-            initialY = rect.top;
-            
-            // Change cursor style
-            header.style.cursor = 'grabbing';
-            
-            // Prevent default behavior
+        });
+
+        header.addEventListener('pointermove', (e) => {
+            if (!isDragging || e.pointerId !== activePointerId) return;
+
             e.preventDefault();
-        }
-        
-        function drag(e) {
-            if (!isDragging) return;
-            
-            e.preventDefault();
-            
+
             const dx = e.clientX - startX;
             const dy = e.clientY - startY;
-            
-            // Calculate new position
-            let newX = initialX + dx;
-            let newY = initialY + dy;
-            
-            // Get viewport dimensions
+
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
             const elementWidth = element.offsetWidth;
             const elementHeight = element.offsetHeight;
-            
-            // Constrain to viewport with some padding
-            const padding = 20;
-            newX = Math.max(padding, Math.min(newX, viewportWidth - elementWidth - padding));
-            newY = Math.max(padding, Math.min(newY, viewportHeight - elementHeight - padding));
-            
-            // Apply new position
+
+            const padding = 10;
+            const maxX = Math.max(padding, viewportWidth - elementWidth - padding);
+            const maxY = Math.max(padding, viewportHeight - elementHeight - padding);
+
+            const newX = Math.max(padding, Math.min(initialX + dx, maxX));
+            const newY = Math.max(padding, Math.min(initialY + dy, maxY));
+
             element.style.left = `${newX}px`;
             element.style.top = `${newY}px`;
-            element.style.bottom = 'auto'; // Remove bottom positioning
-            element.style.right = 'auto';  // Remove right positioning
-        }
-        
-        function dragTouch(e) {
-            if (!isDragging) return;
-            
-            e.preventDefault();
-            
-            const touch = e.touches[0];
-            const dx = touch.clientX - startX;
-            const dy = touch.clientY - startY;
-            
-            // Calculate new position
-            let newX = initialX + dx;
-            let newY = initialY + dy;
-            
-            // Get viewport dimensions
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
-            const elementWidth = element.offsetWidth;
-            const elementHeight = element.offsetHeight;
-            
-            // Constrain to viewport with some padding
-            const padding = 20;
-            newX = Math.max(padding, Math.min(newX, viewportWidth - elementWidth - padding));
-            newY = Math.max(padding, Math.min(newY, viewportHeight - elementHeight - padding));
-            
-            // Apply new position
-            element.style.left = `${newX}px`;
-            element.style.top = `${newY}px`;
-            element.style.bottom = 'auto'; // Remove bottom positioning
-            element.style.right = 'auto';  // Remove right positioning
-        }
-        
-        function stopDrag() {
-            if (isDragging) {
-                isDragging = false;
-                header.style.cursor = 'grab';
+        });
+
+        function stopDrag(e) {
+            if (!isDragging || (e.pointerId !== undefined && e.pointerId !== activePointerId)) return;
+            isDragging = false;
+            if (header.releasePointerCapture && activePointerId !== null) {
+                try {
+                    header.releasePointerCapture(activePointerId);
+                } catch (_) {
+                    // Pointer capture may already be released
+                }
             }
+            activePointerId = null;
+            element.classList.remove('dragging');
+            header.style.cursor = 'grab';
         }
-        
-        // Set initial cursor style
+
+        header.addEventListener('pointerup', stopDrag);
+        header.addEventListener('pointercancel', stopDrag);
         header.style.cursor = 'grab';
     }
     

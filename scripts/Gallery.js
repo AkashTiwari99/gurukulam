@@ -1,91 +1,164 @@
-// DOM Elements (queried once; may be null on pages that don't include the gallery)
+// DOM Elements
 const galleryGrid = document.getElementById("gallery-grid");
+const uploadForm = document.getElementById("upload-form");
+const fileInput = document.getElementById("file-input");
+const deleteBtn = document.getElementById("delete-btn");
+const downloadBtn = document.getElementById("download-btn");
 const showPhotosBtn = document.getElementById("show-photos");
 const showVideosBtn = document.getElementById("show-videos");
 
-// Array to store selected items
-let selectedItems = [];
+const isAdminMode = Boolean(deleteBtn);
+
+// Track selected items by object reference to avoid index-shift bugs on multi-delete
+const selectedItems = new Set();
+let activeFilter = "all";
 
 let galleryItems = [
-    { url: "../images/BG%20Recitation%20_0.jpg", type: "image/jpeg" },
-    { url: "../images/card1.jpg", type: "image/jpeg" },
-    { url: "../images/card2.jpg", type: "image/jpeg" },
-    { url: "../images/card3.jpg", type: "image/jpeg" },
-    { url: "../images/card4.jpg", type: "image/jpeg" },
-    { url: "../images/card5.jpg", type: "image/jpeg" },
-    { url: "../images/card6-1080.webp", type: "image/webp" },
-    { url: "../images/fire.webp", type: "image/webp" }
+    { url: "../images/BG Recitation _0.jpg", type: "image/jpeg", alt: "Bhagavad Gita recitation at Gurukulam" },
+    { url: "../images/card1.jpg", type: "image/jpeg", alt: "Gurukulam campus activity 1" },
+    { url: "../images/card2.jpg", type: "image/jpeg", alt: "Gurukulam campus activity 2" },
+    { url: "../images/card3.jpg", type: "image/jpeg", alt: "Gurukulam campus activity 3" },
+    { url: "../images/card4.jpg", type: "image/jpeg", alt: "Gurukulam campus activity 4" },
+    { url: "../images/card5.jpg", type: "image/jpeg", alt: "Gurukulam campus activity 5" },
+    { url: "../images/card6-1080.webp", type: "image/webp", alt: "Gurukulam learning session" },
+    { url: "../images/fire.webp", type: "image/webp", alt: "Sacred yajna fire ceremony at Gurukulam" }
 ];
 
-// Render gallery items into the DOM
+// Return items matching the current filter
+function getFilteredItems(filter = activeFilter) {
+    if (filter === "all") return galleryItems;
+    return galleryItems.filter((item) => item.type.startsWith(filter));
+}
+
+// Function to render gallery items safely with DOM APIs
 function renderGallery(items) {
     if (!galleryGrid) return;
-    galleryGrid.innerHTML = ""; // Clear the gallery
+
+    galleryGrid.textContent = "";
+
+    if (items.length === 0) {
+        const emptyState = document.createElement("p");
+        emptyState.className = "gallery-empty-state";
+        emptyState.textContent = activeFilter === "video"
+            ? "No videos available yet."
+            : "No gallery items available yet.";
+        galleryGrid.appendChild(emptyState);
+        return;
+    }
+
     items.forEach((item, index) => {
         const galleryItem = document.createElement("div");
-        galleryItem.classList.add("gallery-item");
+        galleryItem.className = "gallery-item";
 
-        const mediaElement = item.type && item.type.startsWith("image")
-            ? `<img src="${item.url}" alt="Gallery Image">`
-            : `<video controls><source src="${item.url}" type="${item.type}"></video>`;
+        if (item.type.startsWith("image")) {
+            const img = document.createElement("img");
+            img.src = item.url;
+            img.alt = item.alt || `Gurukulam gallery photo ${index + 1}`;
+            img.width = 400;
+            img.height = 300;
+            img.loading = "lazy";
+            img.decoding = "async";
+            galleryItem.appendChild(img);
+        } else {
+            const video = document.createElement("video");
+            video.controls = true;
+            video.preload = "metadata";
+            const source = document.createElement("source");
+            source.src = item.url;
+            source.type = item.type;
+            video.appendChild(source);
+            galleryItem.appendChild(video);
+        }
 
-        // Add checkbox for selecting items
-        galleryItem.innerHTML = `
-            ${mediaElement}
-            <input type="checkbox" class="select-checkbox" data-index="${index}">
-        `;
+        // Only render selection checkboxes in admin mode (when deleteBtn exists)
+        if (isAdminMode) {
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.className = "select-checkbox";
+            checkbox.checked = selectedItems.has(item);
+            checkbox.setAttribute("aria-label", `Select ${item.alt || "gallery item"}`);
+            checkbox.addEventListener("change", (e) => {
+                if (e.target.checked) {
+                    selectedItems.add(item);
+                } else {
+                    selectedItems.delete(item);
+                }
+            });
+            galleryItem.appendChild(checkbox);
+        }
+
         galleryGrid.appendChild(galleryItem);
     });
+}
 
-    // Add event listeners to checkboxes
-    const checkboxes = galleryGrid.querySelectorAll(".select-checkbox");
-    checkboxes.forEach((checkbox) => {
-        checkbox.addEventListener("change", (e) => {
-            const index = Number(e.target.dataset.index);
-            if (e.target.checked) {
-                if (!selectedItems.includes(index)) selectedItems.push(index);
-            } else {
-                selectedItems = selectedItems.filter((i) => i !== index);
-            }
-        });
+// Function to filter gallery items by type
+function filterGallery(type) {
+    activeFilter = type;
+    renderGallery(getFilteredItems(type));
+}
+
+// Initial render (show all items)
+if (galleryGrid) {
+    renderGallery(galleryItems);
+}
+
+// Event Listeners for Filter Buttons
+if (showPhotosBtn) {
+    showPhotosBtn.addEventListener("click", () => {
+        filterGallery("image");
+        showPhotosBtn.classList.add("active");
+        if (showVideosBtn) showVideosBtn.classList.remove("active");
     });
 }
 
-// Filter gallery items by type
-function filterGallery(type) {
-    const filteredItems = galleryItems.filter((item) => item.type && item.type.startsWith(type));
-    renderGallery(filteredItems);
+if (showVideosBtn) {
+    showVideosBtn.addEventListener("click", () => {
+        filterGallery("video");
+        showVideosBtn.classList.add("active");
+        if (showPhotosBtn) showPhotosBtn.classList.remove("active");
+    });
 }
 
-// Initialize gallery only when the page includes the gallery markup
-function initGallery() {
-    if (!galleryGrid) return; // Page doesn't include a gallery
-
-    // Initial render (show all items)
-    renderGallery(galleryItems);
-
-    // Event Listeners for Filter Buttons
-    if (showPhotosBtn) {
-        showPhotosBtn.addEventListener("click", () => {
-            filterGallery("image");
-            showPhotosBtn.classList.add("active");
-            if (showVideosBtn) showVideosBtn.classList.remove("active");
-        });
-    }
-
-    if (showVideosBtn) {
-        showVideosBtn.addEventListener("click", () => {
-            const hasVideos = galleryItems.some(item => item.type && item.type.startsWith("video"));
-            if (!hasVideos) return;
-            filterGallery("video");
-            showVideosBtn.classList.add("active");
-            if (showPhotosBtn) showPhotosBtn.classList.remove("active");
-        });
-    }
-
-    // Note: Upload, delete, and download functionality requires
-    // corresponding form elements and buttons to be added to the HTML
+// Upload Form Submission (admin mode)
+if (uploadForm && fileInput) {
+    uploadForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const files = fileInput.files;
+        if (files && files.length > 0) {
+            Array.from(files).forEach((file) => {
+                const reader = new FileReader();
+                reader.onload = (loadEvent) => {
+                    galleryItems.push({
+                        url: loadEvent.target.result,
+                        type: file.type || "application/octet-stream",
+                        alt: file.name
+                    });
+                    renderGallery(getFilteredItems());
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+    });
 }
 
-// Run init on DOMContentLoaded to ensure elements exist
-document.addEventListener('DOMContentLoaded', initGallery);
+// Delete Selected Items (filter by item reference, never forward splice)
+if (deleteBtn) {
+    deleteBtn.addEventListener("click", () => {
+        if (selectedItems.size === 0) return;
+        galleryItems = galleryItems.filter((item) => !selectedItems.has(item));
+        selectedItems.clear();
+        renderGallery(getFilteredItems());
+    });
+}
+
+// Download Selected Items
+if (downloadBtn) {
+    downloadBtn.addEventListener("click", () => {
+        selectedItems.forEach((item) => {
+            const link = document.createElement("a");
+            link.href = item.url;
+            link.download = item.alt || item.url.split("/").pop() || "gallery-media";
+            link.click();
+        });
+    });
+}

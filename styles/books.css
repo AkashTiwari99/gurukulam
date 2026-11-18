@@ -2,15 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 .hero {
-    height: 40vh;
-    background: linear-gradient(rgba(246, 246, 246, 0.7), rgba(247, 248, 249, 0.7)),
-        url('../images/Hinduscriptures.jpg') no-repeat center center/cover;
+    min-height: 40vh;
+    padding: 3rem 1rem;
+    background: linear-gradient(rgba(246, 246, 246, 0.7), rgba(247, 248, 249, 0.7));
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
-    overflow: hidden;
 }
 
 .hero::before {
@@ -52,17 +51,14 @@
 }
 
 .section-title {
-    text-decoration-style: solid;
-    font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+    font-size: 2.5rem;
     text-align: center;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--primary-dark), var(--accent-2));
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
     color: transparent;
-    max-width: 100%;
-    word-break: break-word;
+    -webkit-text-fill-color: transparent;
 }
 
 .section-desc {
@@ -71,23 +67,19 @@
     margin: 0 auto 3rem;
     color: var(--text-medium);
     opacity: 0.8;
-    max-width: 100%;
-    word-break: break-word;
-    padding: 0 1rem;
 }
 
 .book-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
-    max-width: 100%;
 }
 
 .book-card {
     background-color: var(--white);
     border-radius: var(--border-radius-medium);
     overflow: hidden;
-    transition: all var(--transition-fast) ease;
+    transition: all var(--transition-speed) ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
@@ -109,7 +101,7 @@
     align-items: center;
     font-size: 4rem;
     color: rgba(255, 255, 255, 0.9);
-    transition: all var(--transition-fast) ease;
+    transition: all var(--transition-speed) ease;
 }
 
 .book-card:hover .book-cover {
@@ -143,10 +135,10 @@
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     text-decoration: none;
-    border-radius: var(--border-radius-medium);
+    border-radius: var(--border-radius);
     font-weight: 500;
     text-align: center;
-    transition: all var(--transition-fast) ease;
+    transition: all var(--transition-speed) ease;
     border: none;
     cursor: pointer;
     position: relative;
@@ -163,7 +155,7 @@
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: all 0.6s ease;
-    z-index: 1;
+    z-index: -1;
 }
 
 .book-btn:hover::before {
@@ -180,135 +172,10 @@
     max-width: 800px;
     margin: 2rem auto 5rem;
     padding: 2rem;
-    background-color: var(--white);
-    border-radius: var(--border-radius-medium);
+    background-color: var(--card-bg-color);
+    border-radius: var(--border-radius);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    word-break: break-word;
-    overflow-wrap: break-word;
-}
-
-/* =================================================================
-   RESPONSIVE - BOOKS PAGE
-   ================================================================= */
-
-/* Mobile */
-@media (max-width: 640px) {
-    .hero {
-        height: 30vh;
-        padding: 40px 15px;
-    }
-
-    .hero h1 {
-        font-size: clamp(1.5rem, 6vw, 2rem);
-    }
-
-    .hero p {
-        font-size: 0.95rem;
-    }
-
-    .book-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem;
-    }
-
-    .library-section {
-        padding: 3rem 1rem;
-    }
-
-    .section-title {
-        font-size: clamp(1.3rem, 5vw, 2rem);
-    }
-
-    .section-desc {
-        font-size: 0.9rem;
-        margin-bottom: 2rem;
-    }
-
-    .book-info h3 {
-        font-size: 1.1rem;
-    }
-
-    .book-info p {
-        font-size: 0.9rem;
-    }
-}
-
-/* Tablet */
-@media (min-width: 641px) and (max-width: 1024px) {
-    .hero {
-        height: 35vh;
-        padding: 50px 20px;
-    }
-
-    .hero h1 {
-        font-size: clamp(2rem, 5vw, 2.5rem);
-    }
-
-    .hero p {
-        font-size: 1.1rem;
-    }
-
-    .book-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 1.5rem;
-    }
-
-    .library-section {
-        padding: 4rem 1.5rem;
-    }
-}
-
-/* Desktop */
-@media (min-width: 1025px) {
-    .book-grid {
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .library-section {
-        padding: 5rem 5%;
-        max-width: 100%;
-        overflow: hidden;
-    }
-
-    .section-title {
-        font-size: clamp(1.5rem, 4.5vw, 2.5rem);
-        max-width: 100%;
-        word-break: break-word;
-    }
-
-    .section-desc {
-        max-width: 700px;
-        margin: 0 auto 3rem;
-        padding: 0;
-    }
-}
-
-/* Desktop Large Screens (>1200px) */
-@media (min-width: 1201px) {
-    .book-grid {
-        max-width: 1400px;
-        gap: 2.5rem;
-    }
-
-    .library-section {
-        padding: 6rem 8%;
-    }
-}
-
-/* Desktop XL Screens (>1440px) */
-@media (min-width: 1441px) {
-    .book-grid {
-        max-width: 1600px;
-        gap: 3rem;
-    }
-
-    .library-section {
-        padding: 7rem 10%;
-    }
 }
 
 .ramayana-content h3 {
@@ -329,6 +196,7 @@
     }
 
     to {
+        opacity: 1;
         opacity: 1;
         transform: translateY(0);
     }

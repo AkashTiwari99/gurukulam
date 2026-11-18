@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programs | Gurukulam</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +15,7 @@
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/programs.css">
     <link rel="stylesheet" href="styles/responsive-improvements.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -35,24 +36,24 @@
             </a>
 
             <!-- Hamburger Menu for Mobile -->
-            <div class="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
+            <button type="button" class="hamburger" aria-label="Toggle menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
 
             <!-- Navigation -->
             <nav class="navbar" id="navbar" aria-label="Main navigation">
                 <ul class="nav-list">
                     <li><a href="index.html">Home</a></li>
-                    <li class="current-page"><a href="programs.html" aria-current="page">Programs</a></li>
+                    <li><a href="programs.html" class="current-page" aria-current="page">Programs</a></li>
                     <li><a href="books.html">Books</a></li>
                     <li><a href="Campus.html">Campus</a></li>
                     <li><a href="Gallery/Gallery.html">Gallery</a></li>
-                    <li><a href="keyboard/keyboard_01.html">Keyboard</a></li>
+                    <li><a href="keyboard/keybord_01.html">Keyboard</a></li>
                     <li class="has-dropdown">
-                        <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-dropdown">About <i class="fas fa-chevron-down"></i></button>
-                        <div id="about-dropdown" class="dropdown-content">
+                        <a href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content" role="menu">
                             <a href="about.html">About Us</a>
                             <a href="Sanatan Dharma_Vision & Mission.html">Our Mission</a>
                             <a href="team.html">Our Team</a>
@@ -75,14 +76,14 @@
 
                 <div class="programs-grid">
                     <!-- Vedic Studies -->
-                    <div class="program-card">
+                    <div class="program-card" id="vedic">
                         <div class="card-icon">
                             <i class="fas fa-book-open"></i>
                         </div>
                         <h3>Vedic Studies</h3>
                         <p>Immerse yourself in the ancient wisdom of the Vedas through our comprehensive courses.
                             Explore the scriptures and their contemporary relevance.</p>
-                        <a href="Sanatan%20Dharma.html" class="button">Explore Program</a>
+                        <a href="programs.html#vedic" class="button">Explore Program</a>
                     </div>
 
                     <!-- Sanskrit Immersion -->
@@ -93,11 +94,11 @@
                         <h3>Sanskrit Immersion</h3>
                         <p>Learn the divine language of Sanskrit through our immersive courses designed for all levels
                             of learners.</p>
-                        <a href="Sanatan%20Dharma.html" class="button">Begin Journey</a>
+                        <a href="Sanatan Dharma.html" class="button">Begin Journey</a>
                     </div>
 
                     <!-- Yoga & Meditation -->
-                    <div class="program-card">
+                    <div class="program-card" id="yoga">
                         <div class="card-icon">
                             <i class="fas fa-spa"></i>
                         </div>
@@ -108,7 +109,7 @@
                     </div>
 
                     <!-- Ayurveda Basics -->
-                    <div class="program-card">
+                    <div class="program-card" id="ayurveda">
                         <div class="card-icon">
                             <i class="fas fa-leaf"></i>
                         </div>
@@ -136,7 +137,7 @@
                         </div>
                         <h3>Yoga Training</h3>
                         <p>Comprehensive yoga training program covering asanas, pranayama, and yogic philosophy.</p>
-                        <a href="programs.html" class="button">View Details</a>
+                        <a href="contact.html" class="button">View Details</a>
                     </div>
                 </div>
             </div>

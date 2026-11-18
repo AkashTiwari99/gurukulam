@@ -1,22 +1,23 @@
-// ============================================================
 // Enhanced Main Application Module
-// ============================================================
+const CONTACT_EMAIL = 'a7333ji@gmail.com';
+
 class MainApp {
     constructor() {
-        this.sliderInterval = null;
-        this.currentSlide = 0;
         this.init();
     }
 
     init() {
-        // Use DOMContentLoaded if not already ready, else fire immediately
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => this.onReady());
-        } else {
-            this.onReady();
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            this.highlightCurrentPage();
+            this.setupContactForm();
+            this.setupNewsletterForm();
+            this.setupDropdownBehavior();
+            this.setupTestimonialSlider();
+            this.setupNavbarToggle();
+            this.setupKeyboardDismiss();
+        });
 
-        // Clean up on unload
+        // Cleanup on page unload
         window.addEventListener('beforeunload', () => {
             if (this.sliderInterval) {
                 clearInterval(this.sliderInterval);
@@ -24,214 +25,303 @@ class MainApp {
         });
     }
 
-    onReady() {
-        this.highlightCurrentPage();
-        this.setupContactForm();
-        this.setupNewsletterForm();
-        this.setupDropdownBehavior();
-        this.setupTestimonialSlider();
+    // Highlight current page in navigation
+    highlightCurrentPage() {
+        const currentPath = decodeURIComponent(window.location.pathname);
+        const currentPage = currentPath.split('/').pop() || 'index.html';
+        const navLinks = Array.from(document.querySelectorAll('.nav-list li a, .navbar ul li a'));
+
+        const matchingLinks = navLinks.filter(link => {
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('javascript:') || href.startsWith('#')) return false;
+
+            const cleanHref = decodeURIComponent(href.split('#')[0].split('?')[0]);
+            const linkPage = cleanHref.split('/').pop() || 'index.html';
+            return linkPage === currentPage;
+        });
+
+        if (matchingLinks.length > 0) {
+            navLinks.forEach(link => {
+                link.classList.remove('current-page');
+                link.removeAttribute('aria-current');
+            });
+
+            matchingLinks.forEach(link => {
+                link.classList.add('current-page');
+                link.setAttribute('aria-current', 'page');
+
+                // Highlight dropdown parent if applicable
+                const parent = link.closest('.has-dropdown');
+                if (parent) {
+                    const parentLink = parent.querySelector(':scope > a');
+                    if (parentLink && parentLink !== link) {
+                        parentLink.classList.add('current-page');
+                    }
+                }
+            });
+        } else {
+            // Ensure any statically marked current-page link has aria-current="page"
+            navLinks.forEach(link => {
+                if (link.classList.contains('current-page')) {
+                    link.setAttribute('aria-current', 'page');
+                }
+            });
+        }
     }
 
-    highlightCurrentPage() {
-        const currentPath = window.location.pathname.replace(/\\/g, '/');
-        const navItems = document.querySelectorAll('.nav-list li a, .nav-list li button');
+    // Setup contact form with validation and honest mailto: fallback
+    setupContactForm() {
+        const contactForm = document.querySelector('.contact-form');
+        if (!contactForm) return;
 
-        navItems.forEach(item => {
-            if (item.tagName.toLowerCase() !== 'a') return;
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-            const href = item.getAttribute('href');
-            if (!href || href.startsWith('javascript:')) return;
+            const name = contactForm.querySelector('#name')?.value.trim() || '';
+            const email = contactForm.querySelector('#email')?.value.trim() || '';
+            const phone = contactForm.querySelector('#phone')?.value.trim() || '';
+            const subjectInput = contactForm.querySelector('#subject')?.value.trim() || '';
+            const message = contactForm.querySelector('#message')?.value.trim() || '';
 
-            let resolvedHref = href;
-            try {
-                resolvedHref = new URL(href, window.location.href).pathname;
-            } catch (e) {
-                resolvedHref = href;
+            if (!name || !email || !message) {
+                this.showFormError('Please fill in all required fields.');
+                return;
             }
 
-            if (resolvedHref === currentPath || currentPath.endsWith(resolvedHref)) {
-                item.classList.add('current-page');
-                item.setAttribute('aria-current', 'page');
-
-                const parentDropdown = item.closest('.has-dropdown');
-                if (parentDropdown) {
-                    const trigger = parentDropdown.querySelector('> button, > a, .dropdown-toggle');
-                    if (trigger) {
-                        trigger.classList.add('current-page');
-                        trigger.setAttribute('aria-expanded', 'true');
-                    }
-                    parentDropdown.classList.add('active');
-                }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                this.showFormError('Please enter a valid email address.');
+                return;
             }
+
+            const mailSubject = subjectInput || `Message from ${name} via Gurukulam Website`;
+            const bodyLines = [
+                `Name: ${name}`,
+                `Email: ${email}`,
+                phone ? `Phone: ${phone}` : null,
+                '',
+                message
+            ].filter(line => line !== null).join('\n');
+
+            const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(bodyLines)}`;
+            window.location.href = mailtoUrl;
+
+            this.showFormSubmissionFeedback(mailtoUrl);
+            contactForm.reset();
         });
     }
 
-    setupContactForm() {
-        const contactForm = document.querySelector('.contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const nameInput = contactForm.querySelector('#name');
-                const emailInput = contactForm.querySelector('#email');
-                const messageInput = contactForm.querySelector('#message');
-
-                if (!nameInput || !emailInput || !messageInput) return;
-
-                const name = nameInput.value.trim();
-                const email = emailInput.value.trim();
-                const message = messageInput.value.trim();
-
-                if (!name || !email || !message) {
-                    this.showFormError('Please fill in all required fields.');
-                    return;
-                }
-
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    this.showFormError('Please enter a valid email address.');
-                    return;
-                }
-
-                this.showFormSubmissionFeedback();
-                contactForm.reset();
-            });
-        }
-    }
-
+    // Setup newsletter form with validation and honest mailto: fallback
     setupNewsletterForm() {
         const newsletterForm = document.querySelector('.newsletter-form');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const emailInput = newsletterForm.querySelector('input[type="email"]');
-                if (!emailInput) return;
+        if (!newsletterForm) return;
 
-                const email = emailInput.value.trim();
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-                if (!email) {
-                    this.showNewsletterFeedback('Please enter an email address.', 'error');
-                    return;
-                }
+            const emailInput = newsletterForm.querySelector('input[type="email"]');
+            const email = emailInput ? emailInput.value.trim() : '';
 
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    this.showNewsletterFeedback('Please enter a valid email address.', 'error');
-                    return;
-                }
+            if (!email) {
+                this.showNewsletterFeedback('Please enter an email address.', 'error');
+                return;
+            }
 
-                this.showNewsletterFeedback('Thank you for subscribing! Check your email for confirmation.', 'success');
-                newsletterForm.reset();
-            });
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                this.showNewsletterFeedback('Please enter a valid email address.', 'error');
+                return;
+            }
+
+            const mailSubject = 'Gurukulam Newsletter Subscription Request';
+            const mailBody = `Please subscribe ${email} to the Gurukulam newsletter.`;
+            const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+            window.location.href = mailtoUrl;
+
+            this.showNewsletterFeedback(
+                `Opening your email client to subscribe ${email}. If no email app opened, please write to `,
+                'success',
+                mailtoUrl
+            );
+            newsletterForm.reset();
+        });
+    }
+
+    createFeedbackElement(className, iconClass, message, mailtoUrl = null, isError = false) {
+        const feedback = document.createElement('div');
+        feedback.className = className;
+        feedback.setAttribute('role', isError ? 'alert' : 'status');
+        feedback.setAttribute('aria-live', isError ? 'assertive' : 'polite');
+
+        const content = document.createElement('div');
+        content.className = 'feedback-content';
+
+        const icon = document.createElement('i');
+        icon.className = iconClass;
+        icon.setAttribute('aria-hidden', 'true');
+
+        const paragraph = document.createElement('p');
+        paragraph.textContent = message;
+
+        if (mailtoUrl) {
+            const emailLink = document.createElement('a');
+            emailLink.href = mailtoUrl;
+            emailLink.textContent = CONTACT_EMAIL;
+            emailLink.style.textDecoration = 'underline';
+            emailLink.style.fontWeight = '600';
+            paragraph.appendChild(emailLink);
+            paragraph.appendChild(document.createTextNode('.'));
         }
+
+        content.appendChild(icon);
+        content.appendChild(paragraph);
+        feedback.appendChild(content);
+        return feedback;
     }
 
     showFormError(message) {
-        const feedback = document.createElement('div');
-        feedback.className = 'form-feedback error';
-        feedback.innerHTML = `
-            <div class="feedback-content">
-                <i class="fas fa-exclamation-circle"></i>
-                <p>${message}</p>
-            </div>
-        `;
-
         const contactSection = document.querySelector('.contact-section');
-        if (contactSection) {
-            const existingFeedback = contactSection.querySelector('.form-feedback');
-            if (existingFeedback) existingFeedback.remove();
-            contactSection.appendChild(feedback);
-            setTimeout(() => feedback.remove(), 3500);
-        }
+        if (!contactSection) return;
+
+        const existingFeedback = contactSection.querySelector('.form-feedback');
+        if (existingFeedback) existingFeedback.remove();
+
+        const feedback = this.createFeedbackElement(
+            'form-feedback error',
+            'fas fa-exclamation-circle',
+            message,
+            null,
+            true
+        );
+
+        contactSection.appendChild(feedback);
+        setTimeout(() => feedback.remove(), 5000);
     }
 
-    showFormSubmissionFeedback() {
-        const feedback = document.createElement('div');
-        feedback.className = 'form-feedback success';
-        feedback.innerHTML = `
-            <div class="feedback-content">
-                <i class="fas fa-check-circle"></i>
-                <p>Thank you for your message! We will get back to you soon.</p>
-            </div>
-        `;
-
+    showFormSubmissionFeedback(mailtoUrl) {
         const contactSection = document.querySelector('.contact-section');
-        if (contactSection) {
-            const existingFeedback = contactSection.querySelector('.form-feedback');
-            if (existingFeedback) existingFeedback.remove();
-            contactSection.appendChild(feedback);
-            setTimeout(() => feedback.remove(), 3500);
-        }
+        if (!contactSection) return;
+
+        const existingFeedback = contactSection.querySelector('.form-feedback');
+        if (existingFeedback) existingFeedback.remove();
+
+        const feedback = this.createFeedbackElement(
+            'form-feedback success',
+            'fas fa-envelope',
+            'Opening your email app with your pre-filled message. If no email client is configured, please email us directly at ',
+            mailtoUrl,
+            false
+        );
+
+        contactSection.appendChild(feedback);
     }
 
-    showNewsletterFeedback(message, type = 'success') {
-        const feedback = document.createElement('div');
-        feedback.className = `newsletter-feedback ${type}`;
-        feedback.innerHTML = `
-            <div class="feedback-content">
-                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-                <p>${message}</p>
-            </div>
-        `;
-
+    showNewsletterFeedback(message, type = 'success', mailtoUrl = null) {
         const newsletterSection = document.querySelector('.newsletter');
-        if (newsletterSection) {
-            const existingFeedback = newsletterSection.querySelector('.newsletter-feedback');
-            if (existingFeedback) existingFeedback.remove();
-            newsletterSection.appendChild(feedback);
-            setTimeout(() => feedback.remove(), 3500);
+        if (!newsletterSection) return;
+
+        const existingFeedback = newsletterSection.querySelector('.newsletter-feedback');
+        if (existingFeedback) existingFeedback.remove();
+
+        const isError = type === 'error';
+        const iconClass = isError ? 'fas fa-exclamation-circle' : 'fas fa-envelope';
+        const feedback = this.createFeedbackElement(
+            `newsletter-feedback ${type}`,
+            iconClass,
+            message,
+            mailtoUrl,
+            isError
+        );
+
+        newsletterSection.appendChild(feedback);
+        if (isError) {
+            setTimeout(() => feedback.remove(), 5000);
         }
     }
 
+    closeDropdown(dropdown) {
+        dropdown.classList.remove('active', 'dropdown-open');
+        const link = dropdown.querySelector(':scope > a');
+        if (link) {
+            link.setAttribute('aria-expanded', 'false');
+        }
+    }
+
+    closeAllDropdowns() {
+        document.querySelectorAll('.has-dropdown').forEach(dropdown => {
+            this.closeDropdown(dropdown);
+        });
+    }
+
+    // Setup dropdown behavior
     setupDropdownBehavior() {
-        const handleDocumentClick = (event) => {
-            const dropdowns = document.querySelectorAll('.has-dropdown');
-            dropdowns.forEach(dropdown => {
-                if (!dropdown.contains(event.target)) {
-                    const content = dropdown.querySelector('.dropdown-content');
-                    const trigger = dropdown.querySelector('> button, > a');
-                    if (content) {
-                        content.style.display = '';
+        const dropdownTriggers = document.querySelectorAll('.has-dropdown > a');
+
+        dropdownTriggers.forEach(link => {
+            if (!link.hasAttribute('aria-expanded')) {
+                link.setAttribute('aria-expanded', 'false');
+            }
+
+            link.addEventListener('click', (e) => {
+                const dropdown = link.closest('.has-dropdown');
+                if (!dropdown) return;
+
+                const href = link.getAttribute('href');
+                const isPlaceholderHref = !href || href === '#' || href.startsWith('javascript:');
+
+                if (window.innerWidth <= 1024 || isPlaceholderHref) {
+                    e.preventDefault();
+                    const willOpen = !dropdown.classList.contains('dropdown-open') && !dropdown.classList.contains('active');
+
+                    // Close sibling dropdowns first
+                    this.closeAllDropdowns();
+
+                    if (willOpen) {
+                        dropdown.classList.add('active', 'dropdown-open');
+                        link.setAttribute('aria-expanded', 'true');
                     }
-                    if (trigger) {
-                        trigger.setAttribute('aria-expanded', 'false');
-                    }
-                    dropdown.classList.remove('active');
                 }
             });
-        };
 
-        document.addEventListener('click', handleDocumentClick);
-
-        // Toggle dropdown on link or button click (mobile behavior)
-        document.querySelectorAll('.has-dropdown > a, .has-dropdown > button').forEach(trigger => {
-            const clickHandler = (e) => {
-                if (window.innerWidth <= 992) {
-                    e.preventDefault();
-                    const dropdown = e.target.closest('.has-dropdown');
-                    if (dropdown) {
-                        dropdown.classList.toggle('active');
-                        const content = dropdown.querySelector('.dropdown-content');
-                        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-
-                        if (content) {
-                            content.style.display = isExpanded ? 'none' : 'block';
-                        }
-                        trigger.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
-                    }
-                }
-            };
-
-            trigger.addEventListener('click', clickHandler);
-
-            trigger.addEventListener('keydown', (e) => {
+            link.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    trigger.click();
+                    link.click();
+                }
+            });
+        });
+
+        // Close dropdowns when clicking outside (via CSS classes so desktop :hover stays intact)
+        document.addEventListener('click', (event) => {
+            document.querySelectorAll('.has-dropdown').forEach(dropdown => {
+                if (!dropdown.contains(event.target)) {
+                    this.closeDropdown(dropdown);
                 }
             });
         });
     }
 
+    // Close open menus/dropdowns on Escape key
+    setupKeyboardDismiss() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Escape') return;
+
+            this.closeAllDropdowns();
+
+            const navbar = document.getElementById('navbar');
+            const hamburger = document.querySelector('.hamburger');
+            if (navbar && navbar.classList.contains('active')) {
+                navbar.classList.remove('active');
+                if (hamburger) {
+                    hamburger.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    hamburger.focus();
+                }
+            }
+        });
+    }
+
+    // Testimonial slider functionality
     setupTestimonialSlider() {
         const slides = document.querySelectorAll('.testimonial-slide');
         const dots = document.querySelectorAll('.dot');
@@ -241,12 +331,10 @@ class MainApp {
         this.currentSlide = 0;
         this.showTestimonial(this.currentSlide);
 
-        // Clear any existing interval before starting a new one
-        if (this.sliderInterval) {
-            clearInterval(this.sliderInterval);
-        }
+        // Auto slide
         this.sliderInterval = setInterval(() => this.nextTestimonial(), 5000);
 
+        // Manual controls
         dots.forEach((dot, index) => {
             if (dot) {
                 dot.addEventListener('click', () => {
@@ -274,185 +362,43 @@ class MainApp {
 
     nextTestimonial() {
         const slides = document.querySelectorAll('.testimonial-slide');
-        if (slides.length === 0) return;
         this.currentSlide = (this.currentSlide + 1) % slides.length;
         this.showTestimonial(this.currentSlide);
     }
 
     prevTestimonial() {
         const slides = document.querySelectorAll('.testimonial-slide');
-        if (slides.length === 0) return;
         this.currentSlide = (this.currentSlide - 1 + slides.length) % slides.length;
         this.showTestimonial(this.currentSlide);
     }
-}
 
-// ============================================================
-// VIEWPORT REALIGNMENT CONTROLLER
-// Monitors orientation shifts and runtime layout widths
-// ============================================================
-class ViewportRealignmentController {
-    constructor() {
-        this.resizeTimer = null;
-        this.init();
-    }
+    // Navbar toggle for mobile
+    setupNavbarToggle() {
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.querySelector('.hamburger');
 
-    init() {
-        const handler = () => this.evaluateViewportConstraints();
+        if (navbar && hamburger) {
+            // Set initial aria-expanded
+            hamburger.setAttribute('aria-expanded', 'false');
 
-        window.addEventListener('resize', handler);
-        window.addEventListener('orientationchange', handler);
+            hamburger.addEventListener('click', () => {
+                const isOpen = navbar.classList.toggle('active');
+                hamburger.classList.toggle('active', isOpen);
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+            });
 
-        // Initial check
-        this.evaluateViewportConstraints();
-    }
-
-    /**
-     * Runtime validation to clean up dirty widths or layout constraints
-     */
-    evaluateViewportConstraints() {
-        const width = window.innerWidth;
-
-        // Force reset active side elements if we're past the mobile breakpoint
-        if (width > 992) {
-            const navbar = document.getElementById('navbar');
-            const hamburger = document.querySelector('.hamburger');
-            const backdrop = document.getElementById('mobileDrawerBackdrop');
-
-            if (navbar && navbar.classList.contains('active')) {
-                navbar.classList.remove('active', 'open');
-                if (hamburger) hamburger.classList.remove('active');
-                if (backdrop) backdrop.classList.remove('active');
-                document.body.classList.remove('drawer-open');
+            // Keyboard fallback for non-button hamburger elements
+            if (hamburger.tagName !== 'BUTTON') {
+                hamburger.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        hamburger.click();
+                    }
+                });
             }
         }
     }
 }
 
-// ============================================================
-// HAMBURGER TOGGLE HANDLER
-// ============================================================
-function initHamburger() {
-    const hamburger = document.querySelector('.hamburger');
-    const navbar = document.getElementById('navbar');
-    const backdrop = document.getElementById('mobileDrawerBackdrop');
-    const navbarClose = document.querySelector('.navbar-close');
-
-    if (!hamburger || !navbar) {
-        console.warn('Hamburger or navbar not found');
-        return;
-    }
-
-    // Create backdrop if missing
-    let backdropElement = backdrop;
-    if (!backdropElement) {
-        backdropElement = document.createElement('div');
-        backdropElement.className = 'mobile-drawer-backdrop';
-        backdropElement.id = 'mobileDrawerBackdrop';
-        document.body.appendChild(backdropElement);
-    }
-
-    function closeMenu() {
-        navbar.classList.remove('active', 'open');
-        hamburger.classList.remove('active');
-        hamburger.setAttribute('aria-expanded', 'false');
-        backdropElement.classList.remove('active');
-        document.body.classList.remove('drawer-open');
-    }
-
-    function openMenu() {
-        navbar.classList.add('active', 'open');
-        hamburger.classList.add('active');
-        hamburger.setAttribute('aria-expanded', 'true');
-        backdropElement.classList.add('active');
-        document.body.classList.add('drawer-open');
-    }
-
-    function toggleMenu(e) {
-        if (e) {
-            e.stopPropagation();
-        }
-        if (navbar.classList.contains('active')) {
-            closeMenu();
-        } else {
-            openMenu();
-        }
-    }
-
-    // Instead of cloneNode (which loses listeners), use a clean approach:
-    // Remove any existing listeners by using fresh event listeners
-    // and tracking state via data attribute.
-
-    // Click event
-    hamburger.addEventListener('click', toggleMenu);
-
-    // Keyboard support
-    hamburger.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            toggleMenu(e);
-        }
-    });
-
-    // Close button handler
-    const closeBtn = navbarClose || document.querySelector('.navbar-close');
-    if (closeBtn) {
-        closeBtn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            closeMenu();
-        });
-    }
-
-    // Backdrop click to close
-    backdropElement.addEventListener('click', function () {
-        closeMenu();
-    });
-
-    // Escape key handler
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && navbar.classList.contains('active')) {
-            closeMenu();
-            hamburger.focus();
-        }
-    });
-
-    // Close on resize to desktop
-    let resizeTimeout;
-    window.addEventListener('resize', function () {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(function () {
-            if (window.innerWidth >= 993 && navbar.classList.contains('active')) {
-                closeMenu();
-            }
-        }, 200);
-    });
-
-    // Close when clicking outside the navbar or hamburger
-    document.addEventListener('click', function (e) {
-        if (!navbar.classList.contains('active')) return;
-
-        const target = e.target;
-        const isInsideNavbar = navbar.contains(target);
-        const isHamburgerClick = hamburger.contains(target);
-
-        if (!isInsideNavbar && !isHamburgerClick) {
-            closeMenu();
-        }
-    });
-
-    console.log('Hamburger initialized successfully');
-}
-
-// ============================================================
-// GLOBAL INVOCATION (runs after DOMContentLoaded)
-// ============================================================
-document.addEventListener('DOMContentLoaded', function () {
-    // Initialize hamburger first (no dependency)
-    initHamburger();
-
-    // Initialize viewport controller
-    new ViewportRealignmentController();
-
-    // Initialize main app
-    new MainApp();
-});
+// Initialize the Main App
+new MainApp();

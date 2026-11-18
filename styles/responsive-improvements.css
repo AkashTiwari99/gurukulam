@@ -29,6 +29,7 @@
 
     /* Buttons & Forms */
     .btn,
+    button:not(.hamburger):not(.sidebar-toggle),
     input[type="submit"],
     input[type="button"] {
         width: 100%;
@@ -54,8 +55,10 @@
         min-height: 120px;
     }
 
-    /* Grid layouts — explicit classes only */
-    .grid {
+    /* Grid layouts */
+    .grid,
+    [class*="grid"],
+    [class*="container"] {
         grid-template-columns: 1fr !important;
     }
 
@@ -67,13 +70,6 @@
     /* Cards */
     [class*="card"] {
         margin-bottom: 1rem;
-    }
-
-    /* Images */
-    img {
-        width: 100%;
-        height: auto;
-        display: block;
     }
 
     /* Tables */
@@ -128,7 +124,7 @@
 
     /* Buttons */
     .btn,
-    button,
+    button:not(.hamburger):not(.sidebar-toggle),
     input[type="submit"] {
         padding: 11px 22px;
         min-height: 44px;
@@ -144,7 +140,6 @@
     }
 
     /* Grid - 2 columns */
-    .grid,
     [class*="grid"] {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
@@ -177,7 +172,7 @@
 
     /* Buttons */
     .btn,
-    button,
+    button:not(.hamburger):not(.sidebar-toggle),
     input[type="submit"] {
         padding: 12px 28px;
         min-height: 44px;
@@ -189,13 +184,6 @@
     input[type="tel"],
     textarea {
         padding: 12px 16px;
-    }
-
-    /* Grid - 3+ columns */
-    .grid,
-    [class*="grid"] {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
     }
 
     .grid-auto {
@@ -313,7 +301,15 @@
     }
 }
 
-/* Mobile menu improvements removed — handled by global.css */
+/* Mobile menu improvements */
+@media (max-width: 900px) {
+    nav a {
+        display: block;
+        padding: 12px 16px;
+        min-height: 48px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+}
 
 /* Footer responsiveness */
 @media (max-width: 768px) {
@@ -359,8 +355,6 @@
         transition-duration: 0.01ms !important;
     }
 }
-
-/* High DPI displays removed — previous block was invalid CSS */
 
 /* Landscape orientation */
 @media (orientation: landscape) and (max-height: 500px) {

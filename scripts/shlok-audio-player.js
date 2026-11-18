@@ -108,9 +108,10 @@
             audio.addEventListener('timeupdate', updateProgress);
             audio.addEventListener('ended', () => {
                 if (!autoPlayActive) {
+                    const finishedButton = currentButton;
                     resetPlayState();
                     // Auto-play next shlok if available
-                    playNextShlok();
+                    playNextShlok(finishedButton);
                 }
                 // when autoPlayActive is true, the auto flow is handled by the playShlokFromDiv ended handler
             });
@@ -193,10 +194,10 @@
     }
 
     // Play next shlok in sequence
-    function playNextShlok() {
-        if (!currentButton) return;
+    function playNextShlok(fromButton = currentButton) {
+        if (!fromButton) return;
         
-        const currentDiv = currentButton.closest('[id^="SH_S"]');
+        const currentDiv = fromButton.closest('[id^="SH_S"]');
         if (!currentDiv) return;
         
         // Find next shlok div
@@ -259,7 +260,7 @@
             showModal(audio, title);
             audio.play();
             showNotification(`🎵 Playing: ${title}`, 'success');
-        });
+        }, { once: true });
 
         audio.addEventListener('error', (e) => {
             console.error('Audio load error:', e, 'audio src:', audio.src);
@@ -407,6 +408,7 @@
             if (closeBtn && closeBtn.contains(e.target)) {
                 if (currentAudio) {
                     currentAudio.pause();
+                    currentAudio = null;
                 }
                 resetPlayState();
                 modal.classList.remove('show');
@@ -456,15 +458,15 @@
     // Add global keyboard shortcuts
     function setupKeyboardShortcuts() {
         document.addEventListener('keydown', (e) => {
-            // Space: Play/Pause (if not typing in input)
-            if (e.code === 'Space' && !e.target.matches('input, textarea')) {
+            // Space: Play/Pause only when audio is active and focus is not on an interactive element
+            const activeEl = document.activeElement;
+            const isInteractive = activeEl && activeEl.matches('input, textarea, select, button, a, [contenteditable="true"]');
+            if (e.code === 'Space' && currentAudio && !isInteractive) {
                 e.preventDefault();
-                if (currentAudio) {
-                    if (isPlaying) {
-                        currentAudio.pause();
-                    } else {
-                        currentAudio.play();
-                    }
+                if (isPlaying) {
+                    currentAudio.pause();
+                } else {
+                    currentAudio.play();
                 }
             }
             
