@@ -53,7 +53,7 @@ class MainApp {
                 // Highlight dropdown parent if applicable
                 const parent = link.closest('.has-dropdown');
                 if (parent) {
-                    const parentLink = parent.querySelector(':scope > a');
+                    const parentLink = parent.querySelector(':scope > a, :scope > button');
                     if (parentLink && parentLink !== link) {
                         parentLink.classList.add('current-page');
                     }
@@ -241,7 +241,7 @@ class MainApp {
 
     closeDropdown(dropdown) {
         dropdown.classList.remove('active', 'dropdown-open');
-        const link = dropdown.querySelector(':scope > a');
+        const link = dropdown.querySelector(':scope > a, :scope > button');
         if (link) {
             link.setAttribute('aria-expanded', 'false');
         }
@@ -255,7 +255,7 @@ class MainApp {
 
     // Setup dropdown behavior
     setupDropdownBehavior() {
-        const dropdownTriggers = document.querySelectorAll('.has-dropdown > a');
+        const dropdownTriggers = document.querySelectorAll('.has-dropdown > a, .has-dropdown > button');
 
         dropdownTriggers.forEach(link => {
             if (!link.hasAttribute('aria-expanded')) {
@@ -267,7 +267,7 @@ class MainApp {
                 if (!dropdown) return;
 
                 const href = link.getAttribute('href');
-                const isPlaceholderHref = !href || href === '#' || href.startsWith('javascript:');
+                const isPlaceholderHref = link.tagName === 'BUTTON' || !href || href === '#' || href.startsWith('javascript:');
 
                 if (window.innerWidth <= 1024 || isPlaceholderHref) {
                     e.preventDefault();
@@ -283,12 +283,14 @@ class MainApp {
                 }
             });
 
-            link.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    link.click();
-                }
-            });
+            if (link.tagName !== 'BUTTON') {
+                link.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        link.click();
+                    }
+                });
+            }
         });
 
         // Close dropdowns when clicking outside (via CSS classes so desktop :hover stays intact)

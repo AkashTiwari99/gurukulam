@@ -11,7 +11,8 @@ ROOT = Path(__file__).resolve().parent.parent
 
 SKIP_PREFIXES = ("http://", "https://", "//", "mailto:", "tel:", "data:", "javascript:", "blob:", "#")
 CSS_URL_RE = re.compile(r"""url\(\s*(?:(['"])(.*?)\1|([^)'"\s]+))\s*\)""", re.IGNORECASE)
-GURUKULAM_PATH_RE = re.compile(r"/gurukulam/", re.IGNORECASE)
+GURUKULAM_PATH_RE = re.compile(r"""(?:^|["'=(\s])/gurukulam/""", re.IGNORECASE)
+CONFLICT_MARKER_RE = re.compile(r"^(?:<{7}|={7}|>{7})", re.MULTILINE)
 BLOCK_COMMENT_RE = re.compile(r"/\*.*?\*/", re.DOTALL)
 LINE_COMMENT_RE = re.compile(r"(^|[^:\\])//[^\n]*")
 
@@ -123,6 +124,13 @@ def main() -> int:
         violations.append("ponytail/:1 forbidden directory exists in repo root")
 
     html_files, css_files, js_files = collect_files()
+
+    for path in html_files + css_files + js_files:
+        rel_path = path.relative_to(ROOT).as_posix()
+        text = path.read_text(encoding="utf-8", errors="replace")
+        for match in CONFLICT_MARKER_RE.finditer(text):
+            line = line_number_for_offset(text, match.start())
+            violations.append(f"{rel_path}:{line} unresolved git merge conflict marker")
 
     for path in html_files:
         rel_path = path.relative_to(ROOT).as_posix()

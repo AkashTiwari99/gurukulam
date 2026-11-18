@@ -391,9 +391,30 @@ img {
 
 .nav-list li a:hover,
 .nav-list li a.current-page,
-.nav-list li a[aria-current="page"] {
+.nav-list li a[aria-current="page"],
+.nav-list li button:hover,
+.nav-list li button.current-page {
     color: var(--primary-dark);
     background-color: rgba(79, 70, 229, 0.08);
+}
+
+.nav-list li button {
+    background: transparent;
+    border: none;
+    font: inherit;
+    font-weight: 500;
+    color: var(--text-dark);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: all var(--transition-fast);
+}
+
+.navbar-close {
+    display: none;
 }
 
 .nav-list li a.current-page,
