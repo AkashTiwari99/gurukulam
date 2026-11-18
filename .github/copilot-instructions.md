@@ -6,7 +6,7 @@ Key locations
 - Root HTML pages: `index.html`, `about.html`, `books.html`, `programs.html`, `Campus.html`, `contact.html` — these are the main entry points.
 - Scripts: `scripts/` (notably `main.js`, `books.js`, `Gallery.js`, `Logo.js`) contain front-end behaviors (nav highlighting, dynamic content loading, gallery mock data). Prefer minimal, unobtrusive JS changes.
 - Styles: `styles/` (e.g., `global.css`, `home.css`, `books.css`, `shlok-mala-styles.css`, `shlok-mala2-styles.css`) control site layout and components.
-- Content: `assets/Books/`, `Gallery/`, `images/` hold book pages and media. Many book sections are replicated under both top-level and the `onepage-website-2/RAMAYANA/` folder — be careful when editing duplicated content.
+- Content: `Gallery/`, `images/` hold book pages and media. Many book sections are replicated under both top-level and the `onepage-website-2/RAMAYANA/` folder — be careful when editing duplicated content.
 
 Big-picture architecture and conventions
 - Static site with client-side JS for interactive behavior. There is no Node/NPM or build step; changes should be made directly to HTML/CSS/JS files.
