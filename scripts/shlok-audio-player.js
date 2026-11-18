@@ -19,16 +19,26 @@
         fileExtension: '.m4a' // Audio file format (this page uses .m4a files)
     };
 
+    // Inline SVG icons (zero external CDN dependency)
+    const ICONS = {
+        play: '<svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>',
+        pause: '<svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>',
+        close: '<svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>',
+        loading: '<svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="8" stroke-dasharray="32 16"/></svg>'
+    };
+
     // Create floating audio player modal
     function createModalPlayer() {
         const modal = document.createElement('div');
         modal.className = 'audio-player-modal';
         modal.id = 'shlokAudioPlayer';
+        modal.setAttribute('role', 'region');
+        modal.setAttribute('aria-label', 'Shlok audio player');
         modal.innerHTML = `
-            <button class="modal-play-btn" id="modalPlayBtn">▶</button>
+            <button type="button" class="modal-play-btn" id="modalPlayBtn" aria-label="Play or pause audio">${ICONS.play}</button>
             <div class="modal-info">
                 <div class="modal-title" id="modalTitle">Select a Shlok</div>
-                <div class="modal-progress">
+                <div class="modal-progress" id="modalProgressContainer" role="slider" aria-label="Seek audio progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
                     <div class="modal-progress-bar" id="modalProgressBar"></div>
                 </div>
                 <div class="modal-time">
@@ -36,16 +46,16 @@
                     <span id="modalDuration">0:00</span>
                 </div>
                 <div class="modal-controls">
-                    <button class="modal-speed-btn" id="modalSpeedBtn">1.0x</button>
+                    <button type="button" class="modal-speed-btn" id="modalSpeedBtn" aria-label="Playback speed">1.0x</button>
                     <div class="modal-autoplay">
-                        <input type="number" id="modalAutoStart" min="1" max="120" placeholder="Start" />
-                        <input type="number" id="modalAutoEnd" min="1" max="120" placeholder="End" />
-                        <button id="modalAutoBtn" class="modal-auto-btn">Auto</button>
-                        <button id="modalStopAutoBtn" class="modal-stop-btn" style="display:none">Stop</button>
+                        <input type="number" id="modalAutoStart" min="1" max="120" placeholder="Start" aria-label="Auto-play start shlok" />
+                        <input type="number" id="modalAutoEnd" min="1" max="120" placeholder="End" aria-label="Auto-play end shlok" />
+                        <button type="button" id="modalAutoBtn" class="modal-auto-btn">Auto</button>
+                        <button type="button" id="modalStopAutoBtn" class="modal-stop-btn" style="display:none">Stop</button>
                     </div>
                 </div>
             </div>
-            <button class="modal-close" id="modalCloseBtn">✕</button>
+            <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Close audio player">${ICONS.close}</button>
         `;
         document.body.appendChild(modal);
         return modal;
@@ -101,6 +111,10 @@
                     progressBar.style.width = percent + '%';
                     currentTimeEl.textContent = formatTime(audio.currentTime);
                     durationEl.textContent = formatTime(audio.duration);
+                    const progressContainer = document.getElementById('modalProgressContainer');
+                    if (progressContainer) {
+                        progressContainer.setAttribute('aria-valuenow', String(Math.round(percent)));
+                    }
                 }
             };
 
@@ -117,29 +131,32 @@
             });
             audio.addEventListener('play', () => {
                 if (playBtn) {
-                    playBtn.textContent = '⏸';
+                    playBtn.innerHTML = ICONS.pause;
                     playBtn.classList.add('playing');
                 }
                 if (currentButton) {
-                    currentButton.textContent = '⏸';
+                    currentButton.innerHTML = ICONS.pause;
                     currentButton.classList.add('playing');
                 }
                 isPlaying = true;
             });
             audio.addEventListener('pause', () => {
                 if (playBtn) {
-                    playBtn.textContent = '▶';
+                    playBtn.innerHTML = ICONS.play;
                     playBtn.classList.remove('playing');
                 }
                 if (currentButton) {
-                    currentButton.textContent = '▶';
+                    currentButton.innerHTML = ICONS.play;
                     currentButton.classList.remove('playing');
                 }
                 isPlaying = false;
             });
             audio.addEventListener('error', (e) => {
                 console.error('Audio error:', e);
-                showNotification('⚠️ Audio file not found: ' + audio.src, 'warning');
+                if (currentAudio === audio) {
+                    currentAudio = null;
+                }
+                showNotification('Audio file not found: ' + audio.src.split('/').pop(), 'warning');
                 resetPlayState();
             });
 
@@ -151,17 +168,39 @@
     function resetPlayState() {
         const playBtn = document.getElementById('modalPlayBtn');
         if (playBtn) {
-            playBtn.textContent = '▶';
+            playBtn.innerHTML = ICONS.play;
             playBtn.classList.remove('playing');
         }
         if (currentButton) {
-            currentButton.textContent = '▶';
+            currentButton.innerHTML = ICONS.play;
             currentButton.classList.remove('playing');
             currentButton.disabled = false;
             currentButton = null;
         }
         isPlaying = false;
         clearInterval(progressInterval);
+    }
+
+    // Close modal cleanly and stop any active autoplay
+    function closeModal() {
+        const modal = document.getElementById('shlokAudioPlayer');
+        if (autoPlayActive) {
+            stopAutoPlay(true);
+        } else {
+            // Ensure UI controls are always reset cleanly
+            const autoBtn = document.getElementById('modalAutoBtn');
+            const stopBtn = document.getElementById('modalStopAutoBtn');
+            if (autoBtn) autoBtn.style.display = 'inline-block';
+            if (stopBtn) stopBtn.style.display = 'none';
+        }
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio = null;
+        }
+        resetPlayState();
+        if (modal) {
+            modal.classList.remove('show');
+        }
     }
 
     // Show modal
@@ -244,7 +283,7 @@
         }
 
         if (currentButton) {
-            currentButton.textContent = '▶';
+            currentButton.innerHTML = ICONS.play;
             currentButton.classList.remove('playing');
             currentButton.disabled = false;
         }
@@ -253,20 +292,28 @@
         const audio = new Audio(audioPath);
 
         audio.addEventListener('canplaythrough', () => {
-            button.textContent = '⏸';
+            button.innerHTML = ICONS.pause;
             button.classList.add('playing');
             button.disabled = false;
 
             showModal(audio, title);
             audio.play();
-            showNotification(`🎵 Playing: ${title}`, 'success');
+            showNotification(`Playing: ${title}`, 'success');
         }, { once: true });
 
         audio.addEventListener('error', (e) => {
             console.error('Audio load error:', e, 'audio src:', audio.src);
-            button.textContent = '▶';
+            if (currentAudio === audio) {
+                currentAudio = null;
+            }
+            if (currentButton === button) {
+                currentButton = null;
+            }
+            button.innerHTML = ICONS.play;
+            button.classList.remove('playing');
             button.disabled = false;
-            showNotification(`❌ Audio file missing: ${audio.src.split('/').pop()}`, 'warning');
+            isPlaying = false;
+            showNotification(`Audio file missing: ${audio.src.split('/').pop()}`, 'warning');
         });
 
         // Track current shlok number for autoplay handling
@@ -285,7 +332,7 @@
             }
         });
 
-        button.textContent = '⏳';
+        button.innerHTML = ICONS.loading;
         button.disabled = true;
 
         currentAudio = audio;
@@ -336,14 +383,16 @@
         playShlokByNumber(s);
     }
 
-    function stopAutoPlay() {
+    function stopAutoPlay(silent = false) {
         autoPlayActive = false;
         autoPlayEnd = null;
         const autoBtn = document.getElementById('modalAutoBtn');
         const stopBtn = document.getElementById('modalStopAutoBtn');
         if (autoBtn) autoBtn.style.display = 'inline-block';
         if (stopBtn) stopBtn.style.display = 'none';
-        showNotification('⏹️ Auto play stopped', 'info');
+        if (!silent) {
+            showNotification('Auto play stopped', 'info');
+        }
     }
 
     // Add play buttons to all shloks
@@ -359,8 +408,9 @@
             
             // Create play button
             const button = document.createElement('button');
+            button.type = 'button';
             button.className = 'shlok-play-btn';
-            button.innerHTML = '▶';
+            button.innerHTML = ICONS.play;
             button.setAttribute('aria-label', `Play Shlok ${shlokNumber}`);
             button.setAttribute('title', `Listen to Shlok ${shlokNumber}`);
             button.dataset.shlokId = shlokNumber;
@@ -406,12 +456,24 @@
             
             // Close modal
             if (closeBtn && closeBtn.contains(e.target)) {
-                if (currentAudio) {
-                    currentAudio.pause();
-                    currentAudio = null;
+                closeModal();
+                return;
+            }
+
+            // Seek on progress bar click
+            const progressContainer = e.target.closest('.modal-progress');
+            if (progressContainer && modal.contains(progressContainer) && currentAudio && Number.isFinite(currentAudio.duration) && currentAudio.duration > 0) {
+                const rect = progressContainer.getBoundingClientRect();
+                if (rect.width > 0) {
+                    const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                    currentAudio.currentTime = currentAudio.duration * ratio;
+                    const progressBar = document.getElementById('modalProgressBar');
+                    const currentTimeEl = document.getElementById('modalCurrentTime');
+                    if (progressBar) progressBar.style.width = `${ratio * 100}%`;
+                    if (currentTimeEl) currentTimeEl.textContent = formatTime(currentAudio.currentTime);
+                    progressContainer.setAttribute('aria-valuenow', String(Math.round(ratio * 100)));
                 }
-                resetPlayState();
-                modal.classList.remove('show');
+                return;
             }
             
             // Play/Pause toggle
@@ -458,6 +520,16 @@
     // Add global keyboard shortcuts
     function setupKeyboardShortcuts() {
         document.addEventListener('keydown', (e) => {
+            // Escape: Close audio player modal
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('shlokAudioPlayer');
+                if (modal && modal.classList.contains('show')) {
+                    e.preventDefault();
+                    closeModal();
+                    return;
+                }
+            }
+
             // Space: Play/Pause only when audio is active and focus is not on an interactive element
             const activeEl = document.activeElement;
             const isInteractive = activeEl && activeEl.matches('input, textarea, select, button, a, [contenteditable="true"]');
@@ -478,12 +550,28 @@
         });
     }
 
-    // (Removed: floating audio info button)
-
     // Add required CSS styles
     function addStyles() {
         const style = document.createElement('style');
         style.textContent = `
+            .site-icon {
+                width: 1em;
+                height: 1em;
+                display: inline-block;
+                vertical-align: -0.125em;
+                flex-shrink: 0;
+                fill: currentColor;
+            }
+
+            .site-icon[fill="none"] {
+                fill: none;
+            }
+
+            .modal-progress {
+                cursor: pointer;
+                height: 8px;
+            }
+
             @keyframes slideIn {
                 from {
                     opacity: 0;
@@ -550,37 +638,16 @@
         document.head.appendChild(style);
     }
 
-    // Check if audio files exist (optional)
-    async function checkAudioAvailability() {
-        const firstShlok = document.querySelector('[id="SH_S1"]');
-        if (!firstShlok) return;
-        
-        const testAudio = new Audio(getAudioPath('1'));
-        console.log('🔎 Testing audio path:', getAudioPath('1'));
-        testAudio.addEventListener('loadedmetadata', () => {
-            console.log('✅ Audio file found at:', testAudio.src);
-        });
-        testAudio.addEventListener('error', () => {
-            console.warn('⚠️ Audio files not found. Make sure they are in the Shlok_audio/ folder relative to this page.');
-            showNotification(`📁 Cannot load ${getAudioPath('1')}. Place audio files in Shlok_audio/ folder as shlok_1.m4a, shlok_2.m4a, etc.`, 'warning');
-        });
-        testAudio.load();
-    }
-
     // Initialize everything
     function init() {
         addStyles();
         addPlayButtons();
         setupModalListeners();
         setupKeyboardShortcuts();
-        checkAudioAvailability();
         
         // Re-add buttons if DOM changes (for dynamic content)
         const observer = new MutationObserver(() => addPlayButtons());
         observer.observe(document.body, { childList: true, subtree: true });
-        
-        console.log('🎵 Shlok Mala Audio Player initialized');
-console.log('📁 Place audio files in: ./Shlok_audio/shlok_1.m4a, ./Shlok_audio/shlok_2.m4a, etc.');
     }
 
     // Start when DOM is ready

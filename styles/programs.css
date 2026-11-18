@@ -70,7 +70,10 @@
 }
 
 .button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
     padding: 12px 30px;
     background: var(--gradient-primary);
     color: white;

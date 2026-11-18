@@ -19,6 +19,8 @@ body {
     font-style: normal;
     padding-left: 100px;
     padding-right: var(--page-padding);
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .content .page {
@@ -38,6 +40,8 @@ body {
     font-style: normal;
     text-align: justify;
     color: var(--accent-1);
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .versetext {
@@ -53,6 +57,8 @@ body {
     text-align: center;
     color: var(--accent-2);
     margin-left: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .quote {
@@ -139,9 +145,5 @@ body {
 @media (max-width: 768px) {
     .page {
         padding: 15px;
-    }
-
-    body {
-        padding: 10px;
     }
 }

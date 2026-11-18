@@ -125,8 +125,69 @@
       color: #3498db;
     }
 
+    /* Gurukulam Top Navigation Bar */
+    .gurukulam-topbar {
+      background: #2c3e50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .gurukulam-topbar-inner {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 6px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px 12px;
+    }
+
+    .gurukulam-topbar-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .gurukulam-topbar a {
+      color: #ecf0f1;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      min-height: 44px;
+      padding: 0 12px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 6px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .gurukulam-topbar a.topbar-home {
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .gurukulam-topbar a:hover,
+    .gurukulam-topbar a:focus-visible {
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+      text-decoration: none;
+      outline: 2px solid #5dade2;
+      outline-offset: -2px;
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
+      .gurukulam-topbar-inner {
+        padding: 4px 10px;
+      }
+
+      .gurukulam-topbar a {
+        font-size: 0.9rem;
+        padding: 0 10px;
+      }
+
       h1 {
         font-size: 2.5rem;
       }
@@ -147,6 +208,18 @@
 </head>
 <body>
 
+  <!-- Gurukulam Top Navigation -->
+  <nav class="gurukulam-topbar" aria-label="Gurukulam navigation">
+    <div class="gurukulam-topbar-inner">
+      <a href="../../index.html" class="topbar-home">&larr; Gurukulam Home</a>
+      <div class="gurukulam-topbar-links">
+        <a href="../../books.html">Books</a>
+        <a href="../../keyboard/keyboard_01.html">Keyboard</a>
+        <a href="../../contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
   <!-- Header -->
   <header>
     <h1>Timeless Wisdom</h1>
@@ -159,7 +232,7 @@
     <section>
       <h2>Introduction</h2>
       <p>Hinduism, one of the world's oldest religions, boasts a rich collection of ancient scriptures that continue to inspire millions. These texts, written in Sanskrit and other ancient languages, encompass a wide range of philosophical, spiritual, and practical teachings. In this blog, we will explore some of the most significant Hindu scriptures and their relevance in the modern world.</p>
-      <img src="../../images/Hinduscriptures.jpg" alt="Hindu Scriptures" width="943" height="544" loading="lazy">
+      <img src="../../images/Hinduscriptures.webp" alt="Hindu Scriptures" width="943" height="544" loading="lazy">
     </section>
 
     <!-- The Vedas -->
@@ -234,7 +307,10 @@
       <h3>Relevance Today</h3>
       <p>The Gita's teachings on performing one's duty without attachment to results are highly applicable in modern professional and personal life. It provides guidance on managing stress, ethical dilemmas, and decision-making.</p>
       <p><strong>Modern Application:</strong> Corporate leaders often turn to the Gita for insights on ethical leadership and decision-making.</p>
-      <img src="../../images/BG Recitation _0.jpg" alt="Bhagavad Gita" width="762" height="563" loading="lazy">
+      <picture>
+        <source srcset="../../images/BG%20Recitation%20_0-480.webp" media="(max-width: 640px)" type="image/webp" width="480" height="355">
+        <img src="../../images/BG Recitation _0.webp" alt="Bhagavad Gita" width="762" height="563" loading="lazy">
+      </picture>
     </section>
 
     <!-- The Ramayana -->
@@ -356,7 +432,7 @@
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Timeless Wisdom Blog. All rights reserved.</p>
+    <p>&copy; 2026 Gurukulam</p>
   </footer>
 
 </body>

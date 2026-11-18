@@ -181,8 +181,10 @@ h3::after {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     margin-left: 12px;
     background: linear-gradient(135deg, #d4a574, #c4956a);
     border: none;
@@ -276,6 +278,12 @@ h3::after {
         0 0 0 1px rgba(212, 175, 55, 0.08) inset;
     font-family: 'Sanskrit Text', serif;
     border: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+/* Defer off-screen shlok rendering strictly below the fold */
+[class^="shlok_"]:nth-child(n+5) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto none auto 240px;
 }
 
 .shlok_B {
@@ -613,9 +621,11 @@ h1::after {
     }
     
     .shlok-play-btn {
-        width: 30px;
-        height: 30px;
-        font-size: 13px;
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+        font-size: 16px;
     }
 }
 

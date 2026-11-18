@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,10 +6,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shlok Mala_1 - अर्थ सहित (Meaning with Hindi & English)</title>
     <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../styles/shlok-mala-styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600&family=Noto+Sans:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .gurukulam-topbar {
+            background: rgba(92, 34, 16, 0.96);
+            border-bottom: 2px solid #d4a574;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .gurukulam-topbar-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 6px 16px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4px 12px;
+        }
+        .gurukulam-topbar-links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4px;
+        }
+        .gurukulam-topbar a {
+            color: #fdf6ec;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            min-height: 44px;
+            padding: 0 12px;
+            display: inline-flex;
+            align-items: center;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .gurukulam-topbar a.topbar-home {
+            font-weight: 600;
+            color: #f7d996;
+        }
+        .gurukulam-topbar a:hover,
+        .gurukulam-topbar a:focus-visible {
+            background: rgba(247, 217, 150, 0.16);
+            color: #fff;
+            outline: 2px solid #f7d996;
+            outline-offset: -2px;
+        }
+        @media (max-width: 640px) {
+            .gurukulam-topbar-inner {
+                padding: 4px 10px;
+            }
+            .gurukulam-topbar a {
+                font-size: 0.9rem;
+                padding: 0 10px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <nav class="gurukulam-topbar" aria-label="Gurukulam navigation">
+        <div class="gurukulam-topbar-inner">
+            <a href="../../index.html" class="topbar-home">&larr; Gurukulam Home</a>
+            <div class="gurukulam-topbar-links">
+                <a href="../../books.html">Books</a>
+                <a href="shlok_mala_2.html">Shlok Mala 2</a>
+                <a href="../../keyboard/keyboard_01.html">Keyboard</a>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <div class="Shlok_Mala">
             <div class="intro" id="Ram">श्रीजानकीवल्लभो विजयते<br />
@@ -637,6 +703,6 @@
             <h1>संपूर्णमिदम् श्लोकमाला_१</h1>
         </div>
     </div>
-<script src="../../scripts/shlok-audio-player.js"></script>
+<script src="../../scripts/shlok-audio-player.js" defer></script>
 </body>
 </html>

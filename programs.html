@@ -7,31 +7,28 @@
     <title>Programs | Gurukulam</title>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/programs.css">
     <link rel="stylesheet" href="styles/responsive-improvements.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Header -->
     <header class="header">
         <div class="container header-container">
             <!-- Logo -->
-            <a href="index.html" class="logo-link">
-                <div class="logo">
-                    <div class="logo-circle">
-                        <span>GURU</span>
-                    </div>
-                    <div class="logo-text">
-                        <span class="logo-main">Gurukulam</span>
-                        <span class="logo-tagline">Reviving Ancient Wisdom</span>
-                    </div>
+            <a href="index.html" class="logo" aria-label="Gurukulam Home">
+                <div class="logo-circle">
+                    <span>GURU</span>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">Gurukulam</span>
+                    <span class="logo-tagline">Reviving Ancient Wisdom</span>
                 </div>
             </a>
 
@@ -44,6 +41,9 @@
 
             <!-- Navigation -->
             <nav class="navbar" id="navbar" aria-label="Main navigation">
+                <button type="button" class="navbar-close" aria-label="Close menu">
+                    <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
                 <ul class="nav-list">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="programs.html" class="current-page" aria-current="page">Programs</a></li>
@@ -52,11 +52,14 @@
                     <li><a href="Gallery/Gallery.html">Gallery</a></li>
                     <li><a href="keyboard/keyboard_01.html">Keyboard</a></li>
                     <li class="has-dropdown">
-                        <a href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">About <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-content" role="menu">
-                            <a href="about.html">About Us</a>
-                            <a href="Sanatan Dharma_Vision & Mission.html">Our Mission</a>
-                            <a href="team.html">Our Team</a>
+                        <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-dropdown">
+                            About
+                            <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div id="about-dropdown" class="dropdown-content" role="menu">
+                            <a href="about.html" role="menuitem">About Us</a>
+                            <a href="Sanatan Dharma_Vision & Mission.html" role="menuitem">Our Mission</a>
+                            <a href="team.html" role="menuitem">Our Team</a>
                         </div>
                     </li>
                     <li><a href="contact.html">Contact</a></li>
@@ -66,7 +69,7 @@
     </header>
 
     <!-- Main Content -->
-    <main>
+    <main id="main-content">
         <!-- Programs Section -->
         <section class="programs">
             <div class="container">
@@ -78,18 +81,18 @@
                     <!-- Vedic Studies -->
                     <div class="program-card" id="vedic">
                         <div class="card-icon">
-                            <i class="fas fa-book-open"></i>
+                            <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                         </div>
                         <h3>Vedic Studies</h3>
                         <p>Immerse yourself in the ancient wisdom of the Vedas through our comprehensive courses.
                             Explore the scriptures and their contemporary relevance.</p>
-                        <a href="programs.html#vedic" class="button">Explore Program</a>
+                        <a href="books.html" class="button">Explore Program</a>
                     </div>
 
                     <!-- Sanskrit Immersion -->
                     <div class="program-card">
                         <div class="card-icon">
-                            <i class="fas fa-language"></i>
+                            <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
                         </div>
                         <h3>Sanskrit Immersion</h3>
                         <p>Learn the divine language of Sanskrit through our immersive courses designed for all levels
@@ -100,29 +103,29 @@
                     <!-- Yoga & Meditation -->
                     <div class="program-card" id="yoga">
                         <div class="card-icon">
-                            <i class="fas fa-spa"></i>
+                            <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 9v5"/><path d="M8 14c1.5-1 2.5-2 4-2s2.5 1 4 2"/><path d="M5 19c2-2 4.5-3 7-3s5 1 7 3"/></svg>
                         </div>
                         <h3>Yoga & Meditation</h3>
                         <p>Experience the physical and spiritual benefits of traditional Yoga and meditation with our
                             certified instructors.</p>
-                        <a href="programs.html#yoga" class="button">Start Training</a>
+                        <a href="Sanatan Dharma.html" class="button">Start Training</a>
                     </div>
 
                     <!-- Ayurveda Basics -->
                     <div class="program-card" id="ayurveda">
                         <div class="card-icon">
-                            <i class="fas fa-leaf"></i>
+                            <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
                         </div>
                         <h3>Ayurveda Basics</h3>
                         <p>Discover the ancient science of life and holistic wellness through fundamental Ayurvedic
                             principles.</p>
-                        <a href="programs.html#ayurveda" class="button">Learn More</a>
+                        <a href="contact.html" class="button">Learn More</a>
                     </div>
 
                     <!-- Ramayana Classes -->
                     <div class="program-card">
                         <div class="card-icon">
-                            <i class="fas fa-scroll"></i>
+                            <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/></svg>
                         </div>
                         <h3>Ramayana Classes</h3>
                         <p>Discover timeless stories and life lessons from the epic Ramayana through our structured
@@ -133,7 +136,7 @@
                     <!-- Yoga Training -->
                     <div class="program-card">
                         <div class="card-icon">
-                            <i class="fas fa-yin-yang"></i>
+                            <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a5 5 0 0 0 0 10 5 5 0 0 1 0 10"/><circle cx="12" cy="7" r="1" fill="currentColor"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
                         </div>
                         <h3>Yoga Training</h3>
                         <p>Comprehensive yoga training program covering asanas, pranayama, and yogic philosophy.</p>
@@ -146,8 +149,30 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Gurukulam. All rights reserved.</p>
+        <div class="container footer-container">
+            <div class="footer-nav" role="navigation" aria-label="Footer navigation" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.25rem 1.25rem;margin-bottom:0.75rem;">
+                <a href="index.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Home</a>
+                <a href="programs.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Programs</a>
+                <a href="books.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Books</a>
+                <a href="Campus.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Campus</a>
+                <a href="Gallery/Gallery.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Gallery</a>
+                <a href="keyboard/keyboard_01.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Keyboard</a>
+                <a href="about.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">About</a>
+                <a href="contact.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Contact</a>
+            </div>
+            <div class="footer-contact" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.25rem 1.5rem;margin-bottom:0.5rem;font-size:0.95rem;">
+                <a href="tel:+919986279053" style="display:inline-flex;align-items:center;gap:0.4rem;min-height:44px;">
+                    <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    +91 9986279053
+                </a>
+                <a href="mailto:a7333ji@gmail.com" style="display:inline-flex;align-items:center;gap:0.4rem;min-height:44px;">
+                    <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    a7333ji@gmail.com
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gurukulam. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

@@ -12,13 +12,21 @@
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="compact-nav" aria-label="Gurukulam navigation">
+        <a href="../index.html">&larr; Gurukulam Home</a>
+        <div class="compact-nav-links">
+            <a href="../books.html">Books</a>
+            <a href="../contact.html">Contact</a>
+        </div>
+    </nav>
     <div class="container">
         <header class="header">
             <h1>Vedic Sanskrit Keyboard</h1>
             <p>Type Devanagari characters with Vedic diacritics</p>
         </header>
 
-        <main>
+        <main id="main-content">
             <div class="text-area-container">
                 <div class="section-toggles-above">
                     <button type="button" class="btn btn-toggle" id="toggle-keyboard" aria-expanded="true"
@@ -35,6 +43,8 @@
                     <button type="button" class="btn btn-secondary" id="clear-btn">🗑️ Clear</button>
                     <button type="button" class="btn btn-secondary" id="download-btn">💾 Download</button>
                     <button type="button" class="btn btn-secondary" id="space-btn">Space</button>
+                    <button type="button" class="btn btn-secondary" id="backspace-btn" aria-label="Backspace">⌫ Backspace</button>
+                    <button type="button" class="btn btn-secondary" id="enter-btn" aria-label="New line">↵ Enter</button>
                 </div>
             </div>
 
@@ -77,8 +87,8 @@
         </main>
     </div>
     <div class="notification" id="notification" role="status" aria-live="polite"></div>
-    <script src="script/Character_data.js"></script>
-    <script src="script/keyboard.js"></script>
+    <script src="script/Character_data.js" defer></script>
+    <script src="script/keyboard.js" defer></script>
 </body>
 
 </html>

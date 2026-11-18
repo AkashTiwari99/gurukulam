@@ -322,6 +322,12 @@ h2::after {
   position: relative;
 }
 
+/* Defer off-screen shlok rendering strictly below the fold */
+.shlok:nth-child(n+5) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto none auto 220px;
+}
+
 .shlok:last-of-type {
   border-bottom: none;
 }

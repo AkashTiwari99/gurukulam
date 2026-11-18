@@ -12,6 +12,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SKIP_PREFIXES = ("http://", "https://", "//", "mailto:", "tel:", "data:", "javascript:", "blob:", "#")
 CSS_URL_RE = re.compile(r"""url\(\s*(?:(['"])(.*?)\1|([^)'"\s]+))\s*\)""", re.IGNORECASE)
 GURUKULAM_PATH_RE = re.compile(r"""(?:^|["'=(\s])/gurukulam/""", re.IGNORECASE)
+FONT_AWESOME_RE = re.compile(r"""font-?awesome""", re.IGNORECASE)
+LOGO_JS_RE = re.compile(r"""(?:^|[/\\"'=\s])scripts/Logo\.js\b""", re.IGNORECASE)
 CONFLICT_MARKER_RE = re.compile(r"^(?:<{7}|={7}|>{7})", re.MULTILINE)
 BLOCK_COMMENT_RE = re.compile(r"/\*.*?\*/", re.DOTALL)
 LINE_COMMENT_RE = re.compile(r"(^|[^:\\])//[^\n]*")
@@ -143,6 +145,17 @@ def main() -> int:
             violations.append(f'{rel_path}:{line} forbidden <link rel="Textsheet"> tag')
 
         for line, tag, attr, value in parser.refs:
+            stripped_val = value.strip()
+            if tag == "a" and attr == "href" and stripped_val == "#":
+                violations.append(f'{rel_path}:{line} dead <a href="#"> link')
+            if tag in ("link", "script") and FONT_AWESOME_RE.search(stripped_val):
+                violations.append(
+                    f'{rel_path}:{line} forbidden Font Awesome CDN reference <{tag} {attr}="{value}">'
+                )
+            if tag == "script" and attr == "src" and LOGO_JS_RE.search(stripped_val):
+                violations.append(
+                    f'{rel_path}:{line} forbidden scripts/Logo.js reference <script src="{value}">'
+                )
             candidate = resolve_ref(path, value)
             if candidate is not None and not target_exists(candidate):
                 violations.append(
@@ -177,6 +190,10 @@ def main() -> int:
             line = line_number_for_offset(cleaned, match.start())
             violations.append(f"{rel_path}:{line} hardcoded /gurukulam/ path")
 
+        for match in FONT_AWESOME_RE.finditer(cleaned):
+            line = line_number_for_offset(cleaned, match.start())
+            violations.append(f"{rel_path}:{line} forbidden Font Awesome reference in CSS")
+
     for path in js_files:
         rel_path = path.relative_to(ROOT).as_posix()
         text = path.read_text(encoding="utf-8", errors="replace")
@@ -185,6 +202,10 @@ def main() -> int:
         for match in GURUKULAM_PATH_RE.finditer(cleaned):
             line = line_number_for_offset(cleaned, match.start())
             violations.append(f"{rel_path}:{line} hardcoded /gurukulam/ path")
+
+        for match in FONT_AWESOME_RE.finditer(cleaned):
+            line = line_number_for_offset(cleaned, match.start())
+            violations.append(f"{rel_path}:{line} forbidden Font Awesome reference in JS")
 
     summary = f"scanned {len(html_files)} HTML, {len(css_files)} CSS, and {len(js_files)} JS files"
     if violations:

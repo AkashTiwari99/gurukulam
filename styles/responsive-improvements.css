@@ -29,7 +29,7 @@
 
     /* Buttons & Forms */
     .btn,
-    button:not(.hamburger):not(.sidebar-toggle),
+    button:not(.hamburger):not(.sidebar-toggle):not(.chapter-sidebar-toggle):not(.navbar-close):not(.dropdown-toggle):not(.dot):not(.shlok-play-btn):not(.modal-close):not(.modal-play-btn),
     input[type="submit"],
     input[type="button"] {
         width: 100%;
@@ -37,6 +37,16 @@
         padding: 12px 16px;
         font-size: 1rem;
         margin-bottom: 0.5rem;
+    }
+
+    .nav-list li button,
+    .filter-buttons button {
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    .nav-list li button {
+        width: 100%;
     }
 
     input[type="text"],
@@ -124,7 +134,7 @@
 
     /* Buttons */
     .btn,
-    button:not(.hamburger):not(.sidebar-toggle),
+    button:not(.hamburger):not(.sidebar-toggle):not(.chapter-sidebar-toggle):not(.navbar-close):not(.dropdown-toggle):not(.dot):not(.shlok-play-btn):not(.modal-close):not(.modal-play-btn),
     input[type="submit"] {
         padding: 11px 22px;
         min-height: 44px;
@@ -172,7 +182,7 @@
 
     /* Buttons */
     .btn,
-    button:not(.hamburger):not(.sidebar-toggle),
+    button:not(.hamburger):not(.sidebar-toggle):not(.chapter-sidebar-toggle):not(.navbar-close):not(.dropdown-toggle):not(.dot):not(.shlok-play-btn):not(.modal-close):not(.modal-play-btn),
     input[type="submit"] {
         padding: 12px 28px;
         min-height: 44px;
@@ -303,10 +313,11 @@
 
 /* Mobile menu improvements */
 @media (max-width: 900px) {
-    nav a {
-        display: block;
-        padding: 12px 16px;
-        min-height: 48px;
+    nav:not(.compact-nav) a {
+        display: flex;
+        align-items: center;
+        padding: 10px 12px;
+        min-height: 44px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 }

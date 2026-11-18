@@ -147,7 +147,51 @@ class MainApp {
         });
     }
 
-    createFeedbackElement(className, iconClass, message, mailtoUrl = null, isError = false) {
+    createFeedbackIcon(isError) {
+        const svgNS = 'http://www.w3.org/2000/svg';
+        const svg = document.createElementNS(svgNS, 'svg');
+        svg.setAttribute('class', 'site-icon');
+        svg.setAttribute('aria-hidden', 'true');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('width', '1.2em');
+        svg.setAttribute('height', '1.2em');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('stroke', 'currentColor');
+        svg.setAttribute('stroke-width', '2');
+        svg.setAttribute('stroke-linecap', 'round');
+        svg.setAttribute('stroke-linejoin', 'round');
+
+        if (isError) {
+            const circle = document.createElementNS(svgNS, 'circle');
+            circle.setAttribute('cx', '12');
+            circle.setAttribute('cy', '12');
+            circle.setAttribute('r', '10');
+            const line1 = document.createElementNS(svgNS, 'line');
+            line1.setAttribute('x1', '12');
+            line1.setAttribute('y1', '8');
+            line1.setAttribute('x2', '12');
+            line1.setAttribute('y2', '12');
+            const line2 = document.createElementNS(svgNS, 'line');
+            line2.setAttribute('x1', '12');
+            line2.setAttribute('y1', '16');
+            line2.setAttribute('x2', '12.01');
+            line2.setAttribute('y2', '16');
+            svg.append(circle, line1, line2);
+        } else {
+            const rect = document.createElementNS(svgNS, 'rect');
+            rect.setAttribute('x', '2');
+            rect.setAttribute('y', '4');
+            rect.setAttribute('width', '20');
+            rect.setAttribute('height', '16');
+            rect.setAttribute('rx', '2');
+            const poly = document.createElementNS(svgNS, 'polyline');
+            poly.setAttribute('points', '22,6 12,13 2,6');
+            svg.append(rect, poly);
+        }
+        return svg;
+    }
+
+    createFeedbackElement(className, _iconType, message, mailtoUrl = null, isError = false) {
         const feedback = document.createElement('div');
         feedback.className = className;
         feedback.setAttribute('role', isError ? 'alert' : 'status');
@@ -156,9 +200,7 @@ class MainApp {
         const content = document.createElement('div');
         content.className = 'feedback-content';
 
-        const icon = document.createElement('i');
-        icon.className = iconClass;
-        icon.setAttribute('aria-hidden', 'true');
+        const icon = this.createFeedbackIcon(isError);
 
         const paragraph = document.createElement('p');
         paragraph.textContent = message;
@@ -188,7 +230,7 @@ class MainApp {
 
         const feedback = this.createFeedbackElement(
             'form-feedback error',
-            'fas fa-exclamation-circle',
+            'error',
             message,
             null,
             true
@@ -207,7 +249,7 @@ class MainApp {
 
         const feedback = this.createFeedbackElement(
             'form-feedback success',
-            'fas fa-envelope',
+            'envelope',
             'Opening your email app with your pre-filled message. If no email client is configured, please email us directly at ',
             mailtoUrl,
             false
@@ -224,10 +266,9 @@ class MainApp {
         if (existingFeedback) existingFeedback.remove();
 
         const isError = type === 'error';
-        const iconClass = isError ? 'fas fa-exclamation-circle' : 'fas fa-envelope';
         const feedback = this.createFeedbackElement(
             `newsletter-feedback ${type}`,
-            iconClass,
+            isError ? 'error' : 'envelope',
             message,
             mailtoUrl,
             isError
@@ -311,14 +352,8 @@ class MainApp {
             this.closeAllDropdowns();
 
             const navbar = document.getElementById('navbar');
-            const hamburger = document.querySelector('.hamburger');
             if (navbar && navbar.classList.contains('active')) {
-                navbar.classList.remove('active');
-                if (hamburger) {
-                    hamburger.classList.remove('active');
-                    hamburger.setAttribute('aria-expanded', 'false');
-                    hamburger.focus();
-                }
+                this.closeNavbar(true);
             }
         });
     }
@@ -355,11 +390,17 @@ class MainApp {
         const dots = document.querySelectorAll('.dot');
 
         slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+            dot.setAttribute('aria-pressed', 'false');
+        });
 
         this.currentSlide = n;
         if (slides[this.currentSlide]) slides[this.currentSlide].classList.add('active');
-        if (dots[this.currentSlide]) dots[this.currentSlide].classList.add('active');
+        if (dots[this.currentSlide]) {
+            dots[this.currentSlide].classList.add('active');
+            dots[this.currentSlide].setAttribute('aria-pressed', 'true');
+        }
     }
 
     nextTestimonial() {
@@ -374,30 +415,103 @@ class MainApp {
         this.showTestimonial(this.currentSlide);
     }
 
+    setNavbarOpen(isOpen, returnFocus = false) {
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.querySelector('.hamburger');
+        const header = navbar ? navbar.closest('.header') : document.querySelector('.header');
+        const backdrop = document.getElementById('navBackdrop');
+
+        if (!navbar) return;
+
+        navbar.classList.toggle('active', isOpen);
+        if (hamburger) {
+            hamburger.classList.toggle('active', isOpen);
+            hamburger.setAttribute('aria-expanded', String(isOpen));
+        }
+        if (backdrop) {
+            backdrop.classList.toggle('active', isOpen);
+        }
+        if (header) {
+            header.classList.toggle('nav-open', isOpen);
+        }
+
+        if (!isOpen && returnFocus && hamburger) {
+            hamburger.focus();
+        }
+    }
+
+    closeNavbar(returnFocus = false) {
+        this.setNavbarOpen(false, returnFocus);
+    }
+
     // Navbar toggle for mobile
     setupNavbarToggle() {
         const navbar = document.getElementById('navbar');
         const hamburger = document.querySelector('.hamburger');
 
-        if (navbar && hamburger) {
-            // Set initial aria-expanded
-            hamburger.setAttribute('aria-expanded', 'false');
+        if (!navbar || !hamburger) return;
 
-            hamburger.addEventListener('click', () => {
-                const isOpen = navbar.classList.toggle('active');
-                hamburger.classList.toggle('active', isOpen);
-                hamburger.setAttribute('aria-expanded', String(isOpen));
-            });
-
-            // Keyboard fallback for non-button hamburger elements
-            if (hamburger.tagName !== 'BUTTON') {
-                hamburger.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        hamburger.click();
-                    }
-                });
+        // Ensure clickable backdrop exists inside .header (same stacking context as .navbar)
+        let backdrop = document.getElementById('navBackdrop');
+        if (!backdrop) {
+            backdrop = document.createElement('div');
+            backdrop.id = 'navBackdrop';
+            backdrop.className = 'nav-backdrop';
+            backdrop.setAttribute('aria-hidden', 'true');
+            const header = navbar.closest('.header') || document.querySelector('.header');
+            if (header) {
+                header.insertBefore(backdrop, header.firstChild);
+            } else {
+                document.body.appendChild(backdrop);
             }
+        }
+
+        // Set initial aria-expanded
+        hamburger.setAttribute('aria-expanded', 'false');
+
+        hamburger.addEventListener('click', () => {
+            const willOpen = !navbar.classList.contains('active');
+            this.setNavbarOpen(willOpen, false);
+        });
+
+        // Wire .navbar-close button inside mobile drawer
+        const closeBtn = navbar.querySelector('.navbar-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                this.closeNavbar(true);
+            });
+        }
+
+        // Clicking outside #navbar (on backdrop) closes the drawer cleanly
+        backdrop.addEventListener('click', () => {
+            this.closeNavbar(true);
+        });
+
+        // Close drawer when navigating via a direct link inside #navbar
+        navbar.addEventListener('click', (e) => {
+            const link = e.target.closest('a[href]');
+            if (!link) return;
+            const href = link.getAttribute('href') || '';
+            if (href && href !== '#' && !href.startsWith('javascript:')) {
+                this.closeNavbar(false);
+            }
+        });
+
+        // Close mobile drawer automatically if viewport widens past breakpoint
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900 && navbar.classList.contains('active')) {
+                this.closeNavbar(false);
+            }
+        });
+
+        // Keyboard fallback for non-button hamburger elements
+        if (hamburger.tagName !== 'BUTTON') {
+            hamburger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    hamburger.click();
+                }
+            });
         }
     }
 }

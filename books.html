@@ -9,33 +9,24 @@
     <meta name="author" content="Gurukulam">
     <title>Ancient Wisdom Library - Gurukulam</title>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    
-    <!-- Preconnect for external resources -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    
-    <!-- DNS prefetch for PDFs -->
-    
-    <!-- Fonts - optimized weights only -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/books.css">
     <link rel="stylesheet" href="styles/responsive-improvements.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <!-- Skip Navigation Link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
+
     <!-- Header -->
     <header class="header">
-        <div class="header-container">
+        <div class="container header-container">
             <!-- Logo -->
-            <a href="index.html" class="logo">
+            <a href="index.html" class="logo" aria-label="Gurukulam Home">
                 <div class="logo-circle">
                     <span>GURU</span>
                 </div>
@@ -45,35 +36,31 @@
                 </div>
             </a>
 
+            <!-- Hamburger Menu for Mobile -->
+            <button type="button" class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <!-- Navigation -->
             <nav class="navbar" id="navbar" aria-label="Main navigation">
-                <!-- Close button for mobile drawer -->
-                <button class="navbar-close" aria-label="Close menu" type="button">
-                    <i class="fas fa-times" aria-hidden="true"></i>
-                    <span class="sr-only">Close</span>
+                <button type="button" class="navbar-close" aria-label="Close menu">
+                    <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                 </button>
-
                 <ul class="nav-list">
                     <li><a href="index.html">Home</a></li>
-                    <li class="has-dropdown">
-                        <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="programs-dropdown" class="dropdown-toggle">
-                            Programs <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div id="programs-dropdown" class="dropdown-content" role="menu" aria-label="Programs submenu">
-                            <a href="programs.html" role="menuitem">Vedic Studies</a>
-                            <a href="programs.html" role="menuitem">Sanskrit Immersion</a>
-                            <a href="programs.html" role="menuitem">Yoga & Meditation</a>
-                            <a href="programs.html" role="menuitem">Ayurveda Basics</a>
-                        </div>
-                    </li>
+                    <li><a href="programs.html">Programs</a></li>
                     <li><a href="books.html" class="current-page" aria-current="page">Books</a></li>
                     <li><a href="Campus.html">Campus</a></li>
                     <li><a href="Gallery/Gallery.html">Gallery</a></li>
+                    <li><a href="keyboard/keyboard_01.html">Keyboard</a></li>
                     <li class="has-dropdown">
-                        <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-dropdown" class="dropdown-toggle">
-                            About <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-dropdown">
+                            About
+                            <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                         </button>
-                        <div id="about-dropdown" class="dropdown-content" role="menu" aria-label="About submenu">
+                        <div id="about-dropdown" class="dropdown-content" role="menu">
                             <a href="about.html" role="menuitem">About Us</a>
                             <a href="Sanatan Dharma_Vision & Mission.html" role="menuitem">Our Mission</a>
                             <a href="team.html" role="menuitem">Our Team</a>
@@ -82,17 +69,6 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-
-            <!-- Right Side Controls: Hamburger -->
-            <div class="header-right-controls">
-                <!-- Hamburger Menu for Mobile -->
-                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navbar" type="button">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="sr-only">Menu</span>
-                </button>
-            </div>
         </div>
     </header>
 
@@ -115,7 +91,7 @@
                 <!-- Ramayana Book Card -->
                 <article class="book-card" role="listitem">
                     <div class="book-cover">
-                        <i class="fas fa-book"></i>
+                        <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                     </div>
                     <div class="book-info">
                         <h3>Ramayana</h3>
@@ -127,7 +103,7 @@
                 <!-- Shloka Mala 1 -->
                 <article class="book-card" role="listitem">
                     <div class="book-cover">
-                        <i class="fas fa-lightbulb"></i>
+                        <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>
                     </div>
                     <div class="book-info">
                         <h3>Shloka Mala 1</h3>
@@ -139,7 +115,7 @@
                 <!-- Shloka Mala 2 -->
                 <article class="book-card" role="listitem">
                     <div class="book-cover">
-                        <i class="fas fa-book-open"></i>
+                        <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                     </div>
                     <div class="book-info">
                         <h3>Shloka Mala 2</h3>
@@ -151,7 +127,7 @@
                 <!-- Reviving Vedic Knowledge -->
                 <article class="book-card" role="listitem">
                     <div class="book-cover">
-                        <i class="fas fa-scroll"></i>
+                        <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/></svg>
                     </div>
                     <div class="book-info">
                         <h3>Reviving Vedic Knowledge</h3>
@@ -163,7 +139,7 @@
                 <!-- Ancient Educational Structures -->
                 <article class="book-card" role="listitem">
                     <div class="book-cover">
-                        <i class="fas fa-university"></i>
+                        <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
                     </div>
                     <div class="book-info">
                         <h3>Ancient Educational Structures</h3>
@@ -175,7 +151,7 @@
                 <!-- Social Entrepreneurship -->
                 <article class="book-card" role="listitem">
                     <div class="book-cover">
-                        <i class="fas fa-hands-helping"></i>
+                        <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
                     <div class="book-info">
                         <h3>Social Entrepreneurship with Vedic Wisdom</h3>
@@ -187,7 +163,7 @@
                 <!-- The Wisdom of the Hindus -->
                 <article class="book-card" role="listitem">
                     <div class="book-cover">
-                        <i class="fas fa-om"></i>
+                        <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-2.5 3.5-3 6.5-3 9a3 3 0 0 0 6 0c0-2.5-.5-5.5-3-9z"/><path d="M12 15c-3.5-1-6.5-3.5-8-6 0 4.5 2.5 8 8 9 5.5-1 8-4.5 8-9-1.5 2.5-4.5 5-8 6z"/><path d="M5 20h14"/></svg>
                     </div>
                     <div class="book-info">
                         <h3>The Wisdom of the Hindus</h3>
@@ -199,7 +175,7 @@
                 <!-- Vedic Wisdom -->
                 <article class="book-card" role="listitem">
                     <div class="book-cover">
-                        <i class="fas fa-star-of-david"></i>
+                        <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                     </div>
                     <div class="book-info">
                         <h3>Vedic Wisdom</h3>
@@ -211,7 +187,7 @@
                 <!-- Vedic Wisdom 2 -->
                 <article class="book-card" role="listitem">
                     <div class="book-cover">
-                        <i class="fas fa-dharmachakra"></i>
+                        <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><line x1="12" y1="3" x2="12" y2="9.5"/><line x1="12" y1="14.5" x2="12" y2="21"/><line x1="3" y1="12" x2="9.5" y2="12"/><line x1="14.5" y1="12" x2="21" y2="12"/><line x1="5.6" y1="5.6" x2="10.2" y2="10.2"/><line x1="13.8" y1="13.8" x2="18.4" y2="18.4"/><line x1="18.4" y1="5.6" x2="13.8" y2="10.2"/><line x1="10.2" y1="13.8" x2="5.6" y2="18.4"/></svg>
                     </div>
                     <div class="book-info">
                         <h3>Vedic Wisdom 2</h3>
@@ -225,55 +201,34 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <div class="logo-circle">
-                    <span>GURU</span>
-                </div>
-                <div class="logo-text">Gurukulam</div>
+        <div class="container footer-container">
+            <div class="footer-nav" role="navigation" aria-label="Footer navigation" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.25rem 1.25rem;margin-bottom:0.75rem;">
+                <a href="index.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Home</a>
+                <a href="programs.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Programs</a>
+                <a href="books.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Books</a>
+                <a href="Campus.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Campus</a>
+                <a href="Gallery/Gallery.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Gallery</a>
+                <a href="keyboard/keyboard_01.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Keyboard</a>
+                <a href="about.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">About</a>
+                <a href="contact.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Contact</a>
             </div>
-
-            <div class="footer-links">
-                <div class="footer-section">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="programs.html">Programs</a></li>
-                        <li><a href="Campus.html">Our Campus</a></li>
-                        <li><a href="Gallery/Gallery.html">Gallery</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>More Info</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="Sanatan Dharma_Vision & Mission.html">Our Mission</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Connect With Us</h4>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon" aria-label="Facebook" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-                        <a href="#" class="social-icon" aria-label="Twitter" rel="noopener noreferrer"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                        <a href="#" class="social-icon" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="#" class="social-icon" aria-label="YouTube" rel="noopener noreferrer"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-                    </div>
-                </div>
+            <div class="footer-contact" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.25rem 1.5rem;margin-bottom:0.5rem;font-size:0.95rem;">
+                <a href="tel:+919986279053" style="display:inline-flex;align-items:center;gap:0.4rem;min-height:44px;">
+                    <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    +91 9986279053
+                </a>
+                <a href="mailto:a7333ji@gmail.com" style="display:inline-flex;align-items:center;gap:0.4rem;min-height:44px;">
+                    <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    a7333ji@gmail.com
+                </a>
             </div>
-        </div>
-
-        <div class="copyright">
-            <p>&copy; 2026-27 Gurukulam. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gurukulam. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- JavaScript Files -->
     <script src="scripts/main.js" defer></script>
-    <script src="scripts/Logo.js" defer></script>
 </body>
 
 </html>

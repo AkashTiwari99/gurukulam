@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @font-face {
     font-family: 'Siddhanta';
-    src: url('../font/AdishilaSanVedic.ttf') format('truetype');
+    src: url('../font/AdishilaSanVedic.woff2') format('woff2'),
+         url('../font/AdishilaSanVedic.ttf') format('truetype');
     font-display: swap;
 }
 
@@ -72,7 +72,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', 'Siddhanta', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Siddhanta', sans-serif;
   background: var(--background-color);
   background-image: 
     radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
@@ -84,6 +84,81 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   overflow-x: clip;
+}
+
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 8px;
+  background: #047857;
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  z-index: 9999;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 8px;
+}
+
+.compact-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  min-height: 52px;
+  padding: 4px 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.compact-nav .compact-nav-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+}
+
+.compact-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  padding: 6px 12px;
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--border-radius-sm);
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.compact-nav a:hover,
+.compact-nav a:focus-visible {
+  background: rgba(102, 126, 234, 0.14);
+  color: var(--primary-dark);
+}
+
+[data-theme="dark"] .compact-nav {
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom-color: var(--border-color);
+}
+
+[data-theme="dark"] .compact-nav a:hover,
+[data-theme="dark"] .compact-nav a:focus-visible {
+  background: rgba(129, 140, 248, 0.2);
+  color: var(--primary-light);
 }
 
 button:focus-visible,
@@ -193,8 +268,13 @@ input:focus-visible {
 }
 
 .controls button {
-  padding: 12px 24px;
-  border: none;
+  padding: 10px 18px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
   background: var(--key-bg);
   color: var(--text-color);
@@ -203,7 +283,6 @@ input:focus-visible {
   font-weight: 500;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-color);
   position: relative;
   overflow: hidden;
 }
@@ -226,7 +305,7 @@ input:focus-visible {
   border: 2px solid var(--border-color);
   border-radius: var(--border-radius-lg);
   font-size: 20px;
-  font-family: 'Siddhanta', 'Inter', monospace;
+  font-family: 'Siddhanta', system-ui, -apple-system, 'Segoe UI', monospace;
   resize: both;
   max-width: 100%;
   background: var(--key-bg);
@@ -467,7 +546,10 @@ input:focus-visible {
   justify-content: center;
 }
 
-.key {
+.key,
+.consonant-btn {
+  min-width: 44px;
+  min-height: 44px;
   width: 52px;
   height: 52px;
   display: flex;
@@ -524,9 +606,10 @@ input:focus-visible {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 52px;
-  height: 80px;
-  padding: 8px;
+  min-width: 58px;
+  min-height: 98px;
+  padding: 6px;
+  gap: 4px;
   background: var(--key-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
@@ -548,7 +631,12 @@ input:focus-visible {
 
 .vowel-main-btn {
   width: 100%;
+  min-width: 40px;
+  min-height: 44px;
   padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
   font-size: 20px;
@@ -556,7 +644,7 @@ input:focus-visible {
   color: var(--character-color); /* Use character color variable */
   font-family: 'Siddhanta', sans-serif;
   transition: all 0.2s ease;
-  border-radius: 4px;
+  border-radius: 6px;
   pointer-events: auto;
 }
 
@@ -568,19 +656,24 @@ input:focus-visible {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .matra-btn {
-  font-size: 14px;
+  font-size: 16px;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   border: none;
   border-radius: 6px;
   cursor: pointer;
   color: white;
-  padding: 0px 8px;
+  padding: 4px 8px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  min-width: 28px;
+  min-width: 40px;
+  min-height: 40px;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   font-family: 'Siddhanta', sans-serif;
   font-weight: 600;
@@ -754,6 +847,10 @@ input:focus-visible {
 #toggle-keyboard {
   position: static;
   padding: 10px 18px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: var(--background-gradient);
   color: white;
   border: none;
@@ -779,7 +876,7 @@ input:focus-visible {
 .section-toggle-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
     justify-content: center;
     margin-top: 10px;
     padding: 8px;
@@ -788,13 +885,17 @@ input:focus-visible {
 }
 
 .section-toggle-btn {
-    padding: 6px 10px;
+    padding: 8px 12px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: rgba(255, 255, 255, 0.2);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: var(--border-radius-sm);
     cursor: pointer;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 500;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: var(--backdrop-blur);
@@ -848,8 +949,9 @@ input:focus-visible {
     }
     
     .section-toggle-btn {
-        padding: 6px 8px;
-        font-size: 11px;
+        padding: 8px 10px;
+        min-height: 44px;
+        font-size: 12px;
     }
 }
 /* Animations */
@@ -891,18 +993,37 @@ input:focus-visible {
     font-size: 2rem;
     line-height: 1.2;
   }
+
+  .key-group.vowels {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+    gap: 8px;
+  }
   
-  .key, .vowel-key {
+  .key,
+  .consonant-btn {
+    min-width: 44px;
+    min-height: 44px;
     width: 44px;
     height: 44px;
+    font-size: 18px;
   }
   
   .vowel-key {
-    height: 66px;
+    width: 100%;
+    min-width: 0;
+    min-height: 94px;
+    height: auto;
   }
-  
-  .key {
-    font-size: 18px;
+
+  .vowel-main-btn {
+    min-height: 44px;
+    min-width: 40px;
+  }
+
+  .matra-btn {
+    min-height: 40px;
+    min-width: 40px;
   }
   
   #text-input {
@@ -916,7 +1037,8 @@ input:focus-visible {
   }
 
   .controls button {
-    padding: 10px 14px;
+    padding: 10px 12px;
+    min-height: 44px;
     flex: 1 1 calc(50% - 10px);
   }
   
@@ -940,10 +1062,16 @@ input:focus-visible {
   #theme-toggle,
   #toggle-keyboard {
     padding: 10px 14px;
+    min-height: 44px;
     font-size: 13px;
   }
   
   .key-group {
+    gap: 6px;
+  }
+
+  .key-group.vowels {
+    grid-template-columns: repeat(auto-fill, minmax(54px, 1fr));
     gap: 6px;
   }
   
@@ -957,8 +1085,9 @@ input:focus-visible {
   }
   
   .section-toggle {
-    padding: 6px 10px;
-    font-size: 11px;
+    padding: 8px 10px;
+    min-height: 44px;
+    font-size: 12px;
   }
 }
 

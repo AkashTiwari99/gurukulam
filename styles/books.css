@@ -1,5 +1,4 @@
 /* futuristic-books.css */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 .hero {
     min-height: 40vh;
@@ -130,7 +129,10 @@
 }
 
 .book-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
     padding: 0.8rem 1.5rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;

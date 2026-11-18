@@ -155,7 +155,7 @@ async function loadContent(url, targetElementId, linkElement) {
 
         const errorHtml = `
             <div class="error-message">
-                <i class="fas fa-exclamation-circle"></i>
+                <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1.5em" height="1.5em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                 <p><strong>Error:</strong> ${errorMessage}</p>
                 <p style="font-size: 0.9em; margin-top: 10px;">If the problem persists, try refreshing the page.</p>
                 <button class="btn btn-primary" onclick="location.reload()" style="margin-top: 10px;">Refresh Page</button>
@@ -371,31 +371,38 @@ function initChapterListDelegation() {
 // Kanda Dropdown Toggle
 // ============================================================
 function initKandaDropdownToggle() {
-    const dropdownToggle = document.querySelector('.kanda-dropdown-container .dropdown-toggle');
-    const dropdownMenu = document.querySelector('.kanda-dropdown-container .dropdown-menu');
+    const dropdownContainer = document.querySelector('.kanda-dropdown-container');
+    const dropdown = dropdownContainer ? dropdownContainer.querySelector('.dropdown') : null;
+    const dropdownToggle = dropdownContainer ? dropdownContainer.querySelector('.dropdown-toggle') : null;
+    const dropdownMenu = dropdownContainer ? dropdownContainer.querySelector('.dropdown-menu') : null;
 
     if (!dropdownToggle || !dropdownMenu) return;
+
+    const setDropdownState = (isOpen) => {
+        dropdownMenu.classList.toggle('open', isOpen);
+        if (dropdown) {
+            dropdown.classList.toggle('open', isOpen);
+        }
+        dropdownToggle.setAttribute('aria-expanded', String(isOpen));
+    };
 
     dropdownToggle.addEventListener('click', (event) => {
         event.preventDefault();
         event.stopPropagation();
-        dropdownMenu.classList.toggle('open');
-        const expanded = dropdownMenu.classList.contains('open');
-        dropdownToggle.setAttribute('aria-expanded', String(expanded));
+        const willOpen = !dropdownMenu.classList.contains('open');
+        setDropdownState(willOpen);
     });
 
     document.addEventListener('click', (event) => {
-        const container = document.querySelector('.kanda-dropdown-container');
-        if (container && !container.contains(event.target)) {
-            dropdownMenu.classList.remove('open');
-            dropdownToggle.setAttribute('aria-expanded', 'false');
+        if (dropdownContainer && !dropdownContainer.contains(event.target)) {
+            setDropdownState(false);
         }
     });
 
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-            dropdownMenu.classList.remove('open');
-            dropdownToggle.setAttribute('aria-expanded', 'false');
+        if (event.key === 'Escape' && dropdownMenu.classList.contains('open')) {
+            setDropdownState(false);
+            dropdownToggle.focus();
         }
     });
 }
@@ -619,40 +626,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize Kanda dropdown after the menu is populated
     initKandaDropdown();
     initKandaDropdownToggle();
-
-    const dropdownLinks = document.querySelectorAll('.kanda-dropdown-container .dropdown-menu a[data-target], #kanda-dropdown-menu a[data-target]');
-    if (dropdownLinks.length > 0) {
-        dropdownLinks.forEach(link => {
-            link.addEventListener('click', (event) => {
-                event.preventDefault();
-                const url = link.getAttribute('href');
-                const targetElementId = link.getAttribute('data-target');
-
-                if (!url || !targetElementId) {
-                    console.warn('Link missing href or data-target attribute');
-                    return;
-                }
-
-                let resolvedUrl;
-                try {
-                    resolvedUrl = new URL(url, window.location.href).href;
-                } catch (e) {
-                    resolvedUrl = url;
-                }
-
-                loadContent(resolvedUrl, targetElementId, link);
-
-                const dropdownMenu = document.querySelector('.kanda-dropdown-container .dropdown-menu');
-                const dropdownToggle = document.querySelector('.kanda-dropdown-container .dropdown-toggle');
-                if (dropdownMenu && window.matchMedia(MOBILE_DRAWER_MEDIA_QUERY).matches) {
-                    dropdownMenu.classList.remove('open');
-                    if (dropdownToggle) {
-                        dropdownToggle.setAttribute('aria-expanded', 'false');
-                    }
-                }
-            });
-        });
-    }
 
     // Auto-load first chapter if no content loaded
     const contentElement = document.getElementById('content');

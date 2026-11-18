@@ -46,7 +46,7 @@ const KANDA_DATA = [
     {
         file: 'YU_Sarga.html',
         name: 'युद्धकाण्डः',
-        chapters: 129,
+        chapters: 128,
         prefix: '../YUDHAKANDA/',
         pattern: 'Yu_sarga_'
     },

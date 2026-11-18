@@ -80,6 +80,12 @@
 
 .filter-buttons button {
     padding: 10px 20px;
+    min-height: 44px;
+    min-width: 44px;
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--gallery-button-bg, #333333);
     color: var(--white, #ffffff);
     border: none;

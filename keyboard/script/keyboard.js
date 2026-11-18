@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const clearBtn = document.getElementById('clear-btn');
     const downloadBtn = document.getElementById('download-btn');
     const spaceBtn = document.getElementById('space-btn');
+    const backspaceBtn = document.getElementById('backspace-btn');
+    const enterBtn = document.getElementById('enter-btn');
     const themeToggle = document.getElementById('theme-toggle');
     const notification = document.getElementById('notification');
     
@@ -185,7 +187,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (typeof consonants !== 'undefined') {
             consonants.forEach(consonant => {
                 const key = document.createElement('button');
-                key.className = 'key';
+                key.type = 'button';
+                key.className = 'key consonant-btn';
                 key.textContent = consonant.devanagari;
                 key.title = `${consonant.roman} - ${consonant.devanagari}`;
                 key.addEventListener('click', () => insertText(consonant.devanagari));
@@ -282,25 +285,59 @@ document.addEventListener('DOMContentLoaded', function() {
         textInput.dispatchEvent(new Event('input', { bubbles: true }));
     }
     
+    // Delete selected range or character immediately before cursor
+    function deleteAtCursor() {
+        const startPos = textInput.selectionStart;
+        const endPos = textInput.selectionEnd;
+        const currentValue = textInput.value;
+
+        if (startPos !== endPos) {
+            textInput.value = currentValue.substring(0, startPos) + currentValue.substring(endPos);
+            textInput.selectionStart = textInput.selectionEnd = startPos;
+        } else if (startPos > 0) {
+            // Handle surrogate pairs cleanly if present
+            let removeCount = 1;
+            const prevCode = currentValue.charCodeAt(startPos - 1);
+            if (prevCode >= 0xDC00 && prevCode <= 0xDFFF && startPos >= 2) {
+                const highCode = currentValue.charCodeAt(startPos - 2);
+                if (highCode >= 0xD800 && highCode <= 0xDBFF) {
+                    removeCount = 2;
+                }
+            }
+            const newPos = startPos - removeCount;
+            textInput.value = currentValue.substring(0, newPos) + currentValue.substring(endPos);
+            textInput.selectionStart = textInput.selectionEnd = newPos;
+        }
+
+        textInput.focus();
+        textInput.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+
     // Setup all event listeners
     function setupEventListeners() {
         // Toggle keyboard visibility
-        toggleKeyboardBtn.addEventListener('click', toggleKeyboardVisibility);
+        if (toggleKeyboardBtn) toggleKeyboardBtn.addEventListener('click', toggleKeyboardVisibility);
         
         // Copy text to clipboard
-        copyBtn.addEventListener('click', copyText);
+        if (copyBtn) copyBtn.addEventListener('click', copyText);
         
         // Clear text area
-        clearBtn.addEventListener('click', clearText);
+        if (clearBtn) clearBtn.addEventListener('click', clearText);
         
         // Download text
-        downloadBtn.addEventListener('click', downloadText);
+        if (downloadBtn) downloadBtn.addEventListener('click', downloadText);
         
         // Insert space
-        spaceBtn.addEventListener('click', () => insertText(' '));
+        if (spaceBtn) spaceBtn.addEventListener('click', () => insertText(' '));
+
+        // Virtual Backspace
+        if (backspaceBtn) backspaceBtn.addEventListener('click', deleteAtCursor);
+
+        // Virtual Enter (newline)
+        if (enterBtn) enterBtn.addEventListener('click', () => insertText('\n'));
         
         // Toggle theme
-        themeToggle.addEventListener('click', toggleTheme);
+        if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
         
         // Handle keyboard shortcuts
         textInput.addEventListener('keydown', handleKeyboardShortcuts);
