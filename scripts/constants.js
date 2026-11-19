@@ -74,9 +74,9 @@ const kandaChapterCountMap = Object.fromEntries(
     KANDA_DATA.map(k => [k.file, k.chapters])
 );
 
-/** Map: kandaFile -> { prefix, pattern } */
+/** Map: kandaFile -> { prefix, pattern, chapters } */
 const kandaInfoMap = Object.fromEntries(
-    KANDA_DATA.map(k => [k.file, { prefix: k.prefix, pattern: k.pattern }])
+    KANDA_DATA.map(k => [k.file, { prefix: k.prefix, pattern: k.pattern, chapters: k.chapters }])
 );
 
 /** Array of kanda file names for quick iteration */
