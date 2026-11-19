@@ -398,3 +398,85 @@ body {
         min-height: 44px;
     }
 }
+
+/* ==========================================================================
+   Mangala Shloka Reader Integration Styles
+   ========================================================================== */
+.mangala-page {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.mangala-page .container {
+    padding: 16px 8px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    width: 100% !important;
+    text-align: center;
+}
+
+.name {
+    font-family: var(--font-primary, 'Noto Serif Devanagari', serif);
+    font-weight: 700;
+    font-size: calc(1.8rem * var(--reader-scale, 1));
+    margin: 0 auto 32px;
+    color: var(--accent-primary);
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-bottom: 16px;
+    width: 100%;
+    text-align: center;
+    line-height: 1.6;
+    border-bottom: 2px solid var(--border-subtle);
+}
+
+.name::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--accent-primary);
+    border-radius: 2px;
+}
+
+.mangala {
+    font-family: var(--font-primary, 'Noto Serif Devanagari', serif);
+    font-size: calc(1.2rem * var(--reader-scale, 1));
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    padding: 20px 24px;
+    background: var(--bg-subtle);
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--accent-primary);
+    box-shadow: var(--shadow-sm);
+    line-height: 1.85;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-left-color 0.2s ease;
+    width: 100%;
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    position: relative;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.mangala:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-left-color: var(--accent-hover);
+}
+
+#RAM_k01_M18 {
+    text-align: justify;
+    font-size: calc(1.1rem * var(--reader-scale, 1));
+    line-height: 1.9;
+}
+

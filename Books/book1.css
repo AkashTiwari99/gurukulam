@@ -176,6 +176,93 @@ body {
     margin-right: var(--space-sm);
 }
 
+/* Sidebar Kanda Navigation */
+.sidebar-kanda-nav {
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.sidebar-kanda-heading,
+.sidebar-sarga-heading {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.sidebar-kanda-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: var(--space-xs);
+}
+
+.sidebar-kanda-link {
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.65rem !important;
+    font-size: 0.88rem !important;
+    color: var(--text-secondary) !important;
+    border-radius: var(--border-radius-small) !important;
+    text-decoration: none;
+    transition: all var(--transition-fast) ease;
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+.sidebar-kanda-link:hover {
+    background: var(--bg-subtle) !important;
+    color: var(--accent-primary) !important;
+    border-color: var(--border-subtle);
+}
+
+.sidebar-kanda-link.active {
+    background: var(--accent-soft) !important;
+    color: var(--accent-primary) !important;
+    font-weight: 600;
+    border-color: var(--border-subtle);
+}
+
+.kanda-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.35rem;
+    height: 1.35rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 999px;
+    background: var(--bg-subtle);
+    color: var(--accent-primary);
+    border: 1px solid var(--border-subtle);
+    flex-shrink: 0;
+}
+
+.sidebar-kanda-link.active .kanda-badge {
+    background: var(--accent-primary);
+    color: var(--text-on-accent);
+    border-color: var(--accent-primary);
+}
+
+.sidebar a.mangala-chapter-link {
+    font-weight: 600;
+    color: var(--accent-primary);
+    background: var(--accent-soft);
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--border-subtle);
+}
+
+.sidebar a.mangala-chapter-link:hover,
+.sidebar a.mangala-chapter-link.active {
+    color: var(--text-on-accent);
+    background: var(--accent-primary);
+}
+
 /* Collapsed state */
 .sidebar.collapsed {
     width: var(--sidebar-collapsed-width);

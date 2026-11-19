@@ -508,35 +508,52 @@ class TestFeature10BooksChapterPagesTheming(unittest.TestCase):
 # ==============================================================================
 class TestFeature11ReaderShellAndMangalaShlokaTheming(unittest.TestCase):
     def test_f11_01_seven_reader_shells_link_required_assets(self):
-        """Verify 7 reader shell pages in Books/book_link/*.html link book1.css and books.js."""
-        reader_shells = list((PROJECT_ROOT / "Books/book_link").glob("*_sarga.html")) + list(
-            (PROJECT_ROOT / "Books/book_link").glob("*_Srga.html")
-        ) + list((PROJECT_ROOT / "Books/book_link").glob("*_Sraga.html"))
-        self.assertTrue(len(reader_shells) >= 5, "Reader shell files must be found")
-        for shell in reader_shells[:3]:
+        """Verify 7 reader shell pages in Books/book_link/*.html link book1.css, books.js, and mangala.css."""
+        reader_shells = [
+            PROJECT_ROOT / "Books/book_link/Bala_Srga.html",
+            PROJECT_ROOT / "Books/book_link/Ay_Sarga.html",
+            PROJECT_ROOT / "Books/book_link/Ara_sarga.html",
+            PROJECT_ROOT / "Books/book_link/KIs_Sraga.html",
+            PROJECT_ROOT / "Books/book_link/SU_Sraga.html",
+            PROJECT_ROOT / "Books/book_link/YU_Sarga.html",
+            PROJECT_ROOT / "Books/book_link/utt_sarga.html",
+        ]
+        self.assertEqual(len(reader_shells), 7, "All 7 Reader shell files must exist")
+        for shell in reader_shells:
+            self.assertTrue(shell.exists(), f"Shell file {shell.name} must exist")
             content = shell.read_text(encoding="utf-8")
-            self.assertIn("book1.css", content)
+            self.assertIn("book1.css", content, f"{shell.name} must link book1.css")
+            self.assertIn("books.js", content, f"{shell.name} must link books.js")
+            self.assertIn("mangala.css", content, f"{shell.name} must link mangala.css")
 
     def test_f11_02_reader_shell_sidebar_starlight_tokens(self):
-        """Verify Books/book1.css defines reader sidebar styling."""
+        """Verify Books/book1.css defines reader sidebar and kanda navigation styling."""
         book1_css = (PROJECT_ROOT / "Books" / "book1.css").read_text(encoding="utf-8")
         self.assertIn(".sidebar", book1_css)
+        self.assertIn(".sidebar-kanda-nav", book1_css)
+        self.assertIn(".sidebar-kanda-link", book1_css)
+        self.assertIn(".mangala-chapter-link", book1_css)
 
     def test_f11_03_reader_scale_custom_property_support(self):
         """Verify Books/style.css supports --reader-scale font scaling multiplier."""
         books_style = (PROJECT_ROOT / "Books" / "style.css").read_text(encoding="utf-8")
         self.assertIn("--reader-scale", books_style)
+        self.assertIn(".mangala-page", books_style)
 
     def test_f11_04_mangala_css_starlight_bronze_tokens(self):
-        """Verify Books/mangala.css defines styling for Bala Kanda mangala shloka."""
+        """Verify Books/mangala.css defines Starlight Bronze tokens for Bala Kanda mangala shloka."""
         mangala_css = (PROJECT_ROOT / "Books" / "mangala.css").read_text(encoding="utf-8")
-        self.assertTrue(len(mangala_css) > 100)
+        self.assertIn("--bg-canvas", mangala_css)
+        self.assertIn("--accent-primary", mangala_css)
+        self.assertIn(".mangala-page", mangala_css)
 
     def test_f11_05_mangala_shloka_page_structure(self):
-        """Verify Books/BALAKANDA/mangala shloka.html links mangala.css and contains verse markup."""
+        """Verify Books/BALAKANDA/mangala shloka.html links mangala.css and contains proper page wrapper."""
         m_html = (PROJECT_ROOT / "Books/BALAKANDA/mangala shloka.html").read_text(encoding="utf-8")
         self.assertIn("mangala.css", m_html)
-        self.assertIn("mangala", m_html)
+        self.assertIn("class=\"page mangala-page\"", m_html)
+        self.assertIn("RAM_k01_M01", m_html)
+        self.assertIn("RAM_k01_M18", m_html)
 
 
 # ==============================================================================
