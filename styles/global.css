@@ -857,12 +857,13 @@ img {
         height: 100dvh;
         background-color: var(--white);
         padding: 72px var(--space-lg) var(--space-lg);
-        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.14);
+        box-shadow: none;
         flex-direction: column;
         align-items: flex-start;
-        transform: translateX(100%);
-        transition: transform var(--transition-med), visibility var(--transition-med);
+        transform: translateX(105%);
+        transition: transform var(--transition-med), visibility var(--transition-med), box-shadow var(--transition-med);
         overflow-y: auto;
+        overflow-x: hidden;
         z-index: 1200;
         visibility: hidden;
         pointer-events: none;
@@ -873,6 +874,7 @@ img {
         display: flex;
         visibility: visible;
         pointer-events: auto;
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
         z-index: 1200;
     }
 
