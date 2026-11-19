@@ -33,22 +33,15 @@ async function loadContent(url, targetElementId, linkElement, isResumed = false)
                 link.classList.remove('active');
             });
             // Add active class to the clicked link or find by URL
-            const isMangalaUrl = decodeURIComponent(url).toLowerCase().includes('mangala');
-            if (isMangalaUrl) {
-                document.querySelectorAll('.sidebar a.mangala-chapter-link, .sidebar a.mangala-kanda-link').forEach(link => {
-                    link.classList.add('active');
-                });
-            } else {
-                let activeLink = linkElement;
-                if (!activeLink) {
-                    const fileName = url.split('/').pop();
-                    activeLink = document.querySelector(`.sidebar a[href$="${fileName}"]`);
-                }
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                    if (typeof activeLink.scrollIntoView === 'function') {
-                        activeLink.scrollIntoView({ block: 'nearest' });
-                    }
+            let activeLink = linkElement;
+            if (!activeLink) {
+                const fileName = url.split('/').pop();
+                activeLink = document.querySelector(`.sidebar a[href$="${fileName}"]`);
+            }
+            if (activeLink) {
+                activeLink.classList.add('active');
+                if (typeof activeLink.scrollIntoView === 'function') {
+                    activeLink.scrollIntoView({ block: 'nearest' });
                 }
             }
 
@@ -194,12 +187,7 @@ function updateSidebarTitle(url) {
     const sidebarTitle = document.querySelector('.sidebar h1');
     if (!sidebarTitle) return;
 
-    const fileName = decodeURIComponent(url.split('/').pop() || '');
-    if (fileName.toLowerCase().includes('mangala')) {
-        sidebarTitle.textContent = 'रामायण मङ्गल श्लोकाः';
-        return;
-    }
-
+    const fileName = url.split('/').pop();
     const isKandaPage = KANDA_FILES.includes(fileName);
     const kandaName = isKandaPage ? getKandaName(fileName) : getKandaName(getCurrentKandaFile());
 
@@ -231,51 +219,6 @@ function closeMobileSidebar() {
 }
 
 // ============================================================
-// Initialize top-level Kanda Navigation in Sidebar
-// ============================================================
-function initSidebarKandaNav(sidebar, currentKanda) {
-    let kandaNav = sidebar.querySelector('.sidebar-kanda-nav');
-    if (!kandaNav) {
-        kandaNav = document.createElement('div');
-        kandaNav.className = 'sidebar-kanda-nav';
-        kandaNav.setAttribute('role', 'navigation');
-        kandaNav.setAttribute('aria-label', 'काण्ड चयन');
-
-        const isBala = currentKanda === 'Bala_Srga.html';
-        const mangalaHref = isBala ? '../BALAKANDA/mangala shloka.html' : 'Bala_Srga.html';
-        const mangalaTarget = isBala ? ' data-target="content"' : '';
-
-        let navHtml = `
-            <div class="sidebar-kanda-heading"><span>सम्पूर्ण रामायण काण्ड</span></div>
-            <div class="sidebar-kanda-list">
-                <a href="${mangalaHref}"${mangalaTarget} class="sidebar-kanda-link mangala-kanda-link" title="मङ्गल श्लोकः">
-                    <span class="kanda-badge">ॐ</span> मङ्गल श्लोकः
-                </a>
-        `;
-        const kandaNums = ['१', '२', '३', '४', '५', '६', '७'];
-        KANDA_DATA.forEach((k, idx) => {
-            const isActive = currentKanda === k.file;
-            navHtml += `
-                <a href="${k.file}" class="sidebar-kanda-link ${isActive ? 'active' : ''}" title="${k.name}">
-                    <span class="kanda-badge">${kandaNums[idx]}</span> ${k.name}
-                </a>
-            `;
-        });
-        navHtml += `
-            </div>
-            <div class="sidebar-sarga-heading"><span>सर्ग सूची</span></div>
-        `;
-        kandaNav.innerHTML = navHtml;
-        const targetBefore = sidebar.querySelector('.chapter-search-container') || sidebar.querySelector('#chapter-list');
-        if (targetBefore) {
-            sidebar.insertBefore(kandaNav, targetBefore);
-        } else {
-            sidebar.appendChild(kandaNav);
-        }
-    }
-}
-
-// ============================================================
 // Function to initialize sidebar with current Kanda chapters
 // ============================================================
 function initSidebar() {
@@ -292,9 +235,6 @@ function initSidebar() {
         titleElement.textContent = getKandaName(currentKanda);
     }
 
-    // Initialize top-level Kanda navigation at the top of the sidebar
-    initSidebarKandaNav(sidebar, currentKanda);
-
     // Ensure chapter search box exists
     initChapterSearch(sidebar);
 
@@ -303,17 +243,6 @@ function initSidebar() {
     // Remove existing links only from the chapter list
     const existingLinks = chapterList.querySelectorAll('a');
     existingLinks.forEach(link => link.remove());
-
-    // Prepend Mangala Shloka in Balakanda chapter list
-    if (currentKanda === 'Bala_Srga.html') {
-        const mangalaLink = document.createElement('a');
-        mangalaLink.href = '../BALAKANDA/mangala shloka.html';
-        mangalaLink.textContent = 'मङ्गल श्लोकः';
-        mangalaLink.setAttribute('data-target', 'content');
-        mangalaLink.setAttribute('data-chapter', '0');
-        mangalaLink.className = 'mangala-chapter-link';
-        chapterList.appendChild(mangalaLink);
-    }
 
     // Generate chapter links
     const basePrefix = kandaInfo.prefix;
@@ -354,6 +283,8 @@ function initKandaDropdown() {
         }
 
         const currentKanda = getCurrentKandaFile();
+
+        // 1. Mangala Shloka option
         const mangalaItem = document.createElement('li');
         const mangalaAnchor = document.createElement('a');
         if (currentKanda === 'Bala_Srga.html') {
@@ -365,41 +296,56 @@ function initKandaDropdown() {
         mangalaAnchor.textContent = 'मङ्गल श्लोकः';
         mangalaAnchor.title = 'रामायण मङ्गल श्लोकाः';
         mangalaAnchor.addEventListener('click', (event) => {
+            const dropdownMenuEl = document.getElementById('kanda-dropdown-menu');
+            if (dropdownMenuEl) dropdownMenuEl.classList.remove('open');
+            const dropdownToggle = document.querySelector('.dropdown-toggle');
+            if (dropdownToggle) dropdownToggle.setAttribute('aria-expanded', 'false');
+
             if (currentKanda === 'Bala_Srga.html') {
                 event.preventDefault();
                 loadContent('../BALAKANDA/mangala shloka.html', 'content', mangalaAnchor);
-                const dropdownMenuEl = document.getElementById('kanda-dropdown-menu');
-                if (dropdownMenuEl) dropdownMenuEl.classList.remove('open');
-                const dropdownToggle = document.querySelector('.dropdown-toggle');
-                if (dropdownToggle) dropdownToggle.setAttribute('aria-expanded', 'false');
             }
         });
         mangalaItem.appendChild(mangalaAnchor);
         dropdownMenu.appendChild(mangalaItem);
 
+        // 2. All 7 Kandas (Balakanda to Uttarakanda)
         KANDA_DATA.forEach(item => {
             const finalUrl = prefix + item.file;
+            const listItem = document.createElement('li');
+            const anchor = document.createElement('a');
+            anchor.href = finalUrl;
+            anchor.textContent = item.name;
+            anchor.setAttribute('data-target', 'content');
+            anchor.setAttribute('data-chapters', item.chapters);
+            anchor.setAttribute('data-kanda', item.file);
 
-            // Don't show current page in dropdown
-            if (!currentPath.endsWith(item.file)) {
-                const listItem = document.createElement('li');
-                const anchor = document.createElement('a');
-                anchor.href = finalUrl;
-                anchor.textContent = item.name;
-                anchor.setAttribute('data-target', 'content');
-                anchor.setAttribute('data-chapters', item.chapters);
-                anchor.setAttribute('data-kanda', item.file);
-
-                // Add click handler - navigate to the Kanda page
-                anchor.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    // Navigate to the Kanda page
-                    window.location.href = finalUrl;
-                });
-
-                listItem.appendChild(anchor);
-                dropdownMenu.appendChild(listItem);
+            if (currentKanda === item.file) {
+                anchor.classList.add('current-kanda');
             }
+
+            // Add click handler
+            anchor.addEventListener('click', (event) => {
+                const dropdownMenuEl = document.getElementById('kanda-dropdown-menu');
+                if (dropdownMenuEl) dropdownMenuEl.classList.remove('open');
+                const dropdownToggle = document.querySelector('.dropdown-toggle');
+                if (dropdownToggle) dropdownToggle.setAttribute('aria-expanded', 'false');
+
+                // If clicking current Kanda, load Sarga 1 of that Kanda
+                if (currentKanda === item.file) {
+                    event.preventDefault();
+                    const sarga1Url = `${item.prefix}${item.pattern}1.html`;
+                    loadContent(sarga1Url, 'content', null);
+                    const contentEl = document.getElementById('content');
+                    if (contentEl) contentEl.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    event.preventDefault();
+                    window.location.href = finalUrl;
+                }
+            });
+
+            listItem.appendChild(anchor);
+            dropdownMenu.appendChild(listItem);
         });
     }
 }
@@ -428,17 +374,6 @@ function updateSidebarLinks(kandaFile, prefix, totalChapters) {
 
     const searchInput = sidebar.querySelector('#chapter-search');
     if (searchInput) searchInput.value = '';
-
-    // Prepend Mangala Shloka in Balakanda chapter list
-    if (kandaFile === 'Bala_Srga.html') {
-        const mangalaLink = document.createElement('a');
-        mangalaLink.href = '../BALAKANDA/mangala shloka.html';
-        mangalaLink.textContent = 'मङ्गल श्लोकः';
-        mangalaLink.setAttribute('data-target', 'content');
-        mangalaLink.setAttribute('data-chapter', '0');
-        mangalaLink.className = 'mangala-chapter-link';
-        chapterList.appendChild(mangalaLink);
-    }
 
     // Generate chapter links
     const basePrefix = kandaInfo.prefix;
@@ -1173,10 +1108,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             targetUrl = `${kandaInfo.prefix}${kandaInfo.pattern}${sargaNum}.html`;
                         }
                     }
-                } else {
+                } else if (!isBalaKanda) {
                     const savedUrl = localStorage.getItem(`gurukulam_last_sarga_${currentKanda}`);
-                    // Only resume if savedUrl is not the old default sarga_1 for BalaKanda
-                    if (savedUrl && (!isBalaKanda || (!savedUrl.endsWith('sarga_1.html') && !savedUrl.includes('sarga_1.html')))) {
+                    if (savedUrl) {
                         targetUrl = savedUrl;
                         if (savedUrl !== defaultFirstUrl) {
                             isResumed = true;
