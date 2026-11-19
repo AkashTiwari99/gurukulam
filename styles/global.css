@@ -1,53 +1,60 @@
 /* Global Styles */
 :root {
-    /* Premium Color Palette */
+    /* Premium Color Palette (Unified to book1.css Royal Indigo & Emerald) */
     --primary-color: #4F46E5;
     /* Indigo 600 */
     --primary-dark: #3730A3;
     /* Indigo 800 */
     --primary-light: #818CF8;
     /* Indigo 400 */
-    --secondary-color: #EC4899;
-    /* Pink 500 */
+    --secondary-color: #4338CA;
+    /* Deep Indigo 700 */
     --accent-color: #10B981;
     /* Emerald 500 */
-    --accent-1: #6a1b9a;
-    /* Deep purple */
-    --accent-2: #d81b60;
-    /* Vibrant pink */
-    --quote-color: #2e7d32;
-    /* Green for quotes */
-    --gallery-button-bg: #333333;
-    /* Gallery button background */
-    --gallery-button-hover: #555555;
-    /* Gallery button hover */
-    --gallery-active: #6C5CE7;
-    /* Gallery active button */
+    --accent-mint: #23D5AB;
+    /* Mint */
+    --accent-1: #4F46E5;
+    /* Royal Indigo */
+    --accent-2: #10B981;
+    /* Emerald Green */
+    --navy-dark: #0F0C29;
+    /* Deep Midnight Navy */
+    --navy-medium: #221B4E;
+    /* Deep Navy Purple */
+    --quote-color: #047857;
+    /* Emerald for quotes */
+    --gallery-button-bg: #1F2937;
+    /* Dark Slate */
+    --gallery-button-hover: #374151;
+    /* Hover Slate */
+    --gallery-active: #4F46E5;
+    /* Active Indigo */
 
     /* Neutral colors - Premium Grays */
-    --dark: #111827;
-    /* Gray 900 */
-    --dark-medium: #374151;
-    /* Gray 700 */
+    --dark: #0F0C29;
+    /* Deep Navy */
+    --dark-medium: #1F2937;
+    /* Gray 800 */
     --medium: #6B7280;
     /* Gray 500 */
     --light-medium: #9CA3AF;
     /* Gray 400 */
-    --light: #F9FAFB;
-    /* Gray 50 */
+    --light: #F8F9FF;
+    /* Soft Light Indigo */
     --white: #FFFFFF;
 
     /* Text colors */
     --text-dark: #111827;
     --text-medium: #4B5563;
     --text-light: #F9FAFB;
-    --primary-text: #333333;
-    /* Dark gray for readability */
-    --secondary-text: #000000;
-    /* Black for secondary text */
+    --primary-text: #1F2937;
+    /* High-contrast dark gray */
+    --secondary-text: #111827;
+    /* Dark for secondary text */
 
     /* Background colors */
-    --primary-bg: #f5f5f5;
+    --primary-bg: #F8F9FF;
+    /* Clean Indigo Tint Background */
     /* Light gray background */
 
     /* Typography - Responsive Font Sizes */
@@ -300,11 +307,11 @@ img {
 .btn-primary {
     background: var(--gradient-primary);
     color: white;
-    box-shadow: 0 4px 12px rgba(107, 56, 251, 0.3);
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.28);
 }
 
 .btn-primary:hover {
-    box-shadow: 0 6px 16px rgba(107, 56, 251, 0.5);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.38);
     transform: translateY(-2px);
 }
 
@@ -571,7 +578,7 @@ img {
 }
 
 .dropdown-content a:hover {
-    background-color: rgba(107, 56, 251, 0.05);
+    background-color: rgba(79, 70, 229, 0.08);
     color: var(--primary-color);
     padding-left: var(--space-lg);
 }
@@ -663,7 +670,7 @@ img {
 }
 
 .dropdown-menu a:hover {
-    background-color: rgba(107, 56, 251, 0.1);
+    background-color: rgba(79, 70, 229, 0.1);
     color: var(--primary-color);
 }
 

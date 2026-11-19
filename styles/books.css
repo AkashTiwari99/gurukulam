@@ -94,18 +94,18 @@
 
 .book-cover {
     height: 180px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--navy-dark, #0F0C29), var(--primary-dark, #3730A3));
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 4rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
     transition: all var(--transition-speed) ease;
 }
 
 .book-card:hover .book-cover {
     color: white;
-    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    background: linear-gradient(135deg, var(--primary-color, #4F46E5), var(--navy-dark, #0F0C29));
 }
 
 .book-info {
@@ -137,36 +137,19 @@
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     text-decoration: none;
-    border-radius: var(--border-radius);
-    font-weight: 500;
+    border-radius: var(--border-radius-medium, 12px);
+    font-weight: 600;
     text-align: center;
-    transition: all var(--transition-speed) ease;
+    transition: all var(--transition-fast, 0.2s) ease;
     border: none;
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.book-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: all 0.6s ease;
-    z-index: -1;
-}
-
-.book-btn:hover::before {
-    left: 100%;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.28);
 }
 
 .book-btn:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.38);
+    color: white;
 }
 
 /* Ramayana Content Section */

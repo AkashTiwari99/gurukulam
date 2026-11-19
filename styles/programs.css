@@ -78,17 +78,18 @@
     background: var(--gradient-primary);
     color: white;
     text-decoration: none;
-    border-radius: var(--border-radius-small);
+    border-radius: var(--border-radius-medium);
     font-weight: 600;
     transition: all var(--transition-fast);
     border: none;
     text-align: center;
     align-self: flex-start;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.28);
 }
 
 .button:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.38);
     color: white;
 }
 

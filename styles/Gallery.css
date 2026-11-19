@@ -100,5 +100,5 @@
 }
 
 .filter-buttons button.active {
-    background-color: var(--gallery-active, #6C5CE7);
+    background-color: var(--gallery-active, #4F46E5);
 }
