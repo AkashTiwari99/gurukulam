@@ -1,10 +1,11 @@
-
-/* Gallery Layout */
+/* Gallery Layout - Starlight Bronze Theme */
 #gallery,
 .gallery-section {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 1.5rem 1rem 3rem;
+    padding: 2rem 1rem 4rem;
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
 }
 
 #gallery h1,
@@ -13,24 +14,34 @@
 .gallery-section h2 {
     text-align: center;
     margin-bottom: 1.5rem;
-    color: var(--text-dark, #111827);
+    color: var(--text-primary);
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 #gallery .gallery-grid,
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+    gap: 1.5rem;
     width: 100%;
 }
 
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: var(--border-radius-medium, 12px);
-    background-color: var(--white, #ffffff);
-    box-shadow: var(--shadow, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+    border-radius: var(--radius-md, 12px);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-sm);
     aspect-ratio: 4 / 3;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-medium);
 }
 
 .gallery-item img,
@@ -39,7 +50,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform var(--transition-med, 0.3s ease);
+    transition: transform 0.3s ease;
 }
 
 .gallery-item:hover img {
@@ -50,11 +61,12 @@
     grid-column: 1 / -1;
     text-align: center;
     padding: 3rem 1.5rem;
-    color: var(--text-medium, #4B5563);
+    color: var(--text-secondary);
     font-size: 1.1rem;
-    background-color: var(--white, #ffffff);
-    border-radius: var(--border-radius-medium, 12px);
-    box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.05));
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md, 12px);
+    box-shadow: var(--shadow-sm);
 }
 
 /* Gallery Item Checkbox */
@@ -74,31 +86,36 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin: 20px 0;
+    margin: 20px 0 32px;
     padding: 0 1rem;
 }
 
 .filter-buttons button {
-    padding: 10px 20px;
+    padding: 8px 22px;
     min-height: 44px;
     min-width: 44px;
     width: auto;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--gallery-button-bg, #333333);
-    color: var(--white, #ffffff);
-    border: none;
-    border-radius: 5px;
+    background-color: var(--bg-subtle);
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 9999px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color var(--transition-fast, 0.2s ease);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .filter-buttons button:hover {
-    background-color: var(--gallery-button-hover, #555555);
+    background-color: var(--bg-surface);
+    border-color: var(--border-medium);
+    transform: translateY(-1px);
 }
 
 .filter-buttons button.active {
-    background-color: var(--gallery-active, #4F46E5);
+    background-color: var(--accent-primary);
+    color: var(--text-on-accent);
+    border-color: var(--accent-primary);
 }

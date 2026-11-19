@@ -31,7 +31,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const numbersSection = document.getElementById('numbers-section');
     
     // State variables
-    let isDarkMode = localStorage.getItem('theme') === 'dark';
+    let storedTheme = null;
+    try {
+        storedTheme = localStorage.getItem('theme');
+    } catch (_) {}
+    let isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark' ||
+        storedTheme === 'dark' ||
+        (storedTheme === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
     let activeSection = 'vowels'; // Default active section
     
     // Initialize the application
@@ -426,19 +432,35 @@ document.addEventListener('DOMContentLoaded', function() {
         setTheme(isDarkMode);
         
         // Save preference to localStorage
-        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        try {
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        } catch (_) {}
     }
     
     // Set theme based on boolean
     function setTheme(darkMode) {
         if (darkMode) {
             document.documentElement.setAttribute('data-theme', 'dark');
-            themeToggle.textContent = '☀️ Light Mode';
+            document.documentElement.setAttribute('data-theme-mode', 'dark');
+            try { document.documentElement.style.colorScheme = 'dark'; } catch (_) {}
+            if (themeToggle) themeToggle.textContent = '☀️ Light Mode';
         } else {
-            document.documentElement.removeAttribute('data-theme');
-            themeToggle.textContent = '🌙 Dark Mode';
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.setAttribute('data-theme-mode', 'light');
+            try { document.documentElement.style.colorScheme = 'light'; } catch (_) {}
+            if (themeToggle) themeToggle.textContent = '🌙 Dark Mode';
         }
     }
+
+    // Coordinate with external storage events (ThemeManager / cross-tab changes)
+    window.addEventListener('storage', (e) => {
+        if (e.key === 'theme') {
+            const val = e.newValue;
+            const dark = val === 'dark' || (val === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            isDarkMode = dark;
+            setTheme(dark);
+        }
+    });
     
     // Show notification
     function showNotification(message, type = 'success') {

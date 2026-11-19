@@ -1,86 +1,78 @@
-/* futuristic-books.css */
+/* Books Page Styles - Starlight Bronze Theme */
 
 .hero {
-    min-height: 40vh;
-    padding: 3rem 1rem;
-    background: linear-gradient(rgba(246, 246, 246, 0.7), rgba(247, 248, 249, 0.7));
+    min-height: 35vh;
+    padding: 4rem 1rem 3rem;
+    background: var(--bg-canvas);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, var(--primary-color), transparent);
-    opacity: 0.3;
-    z-index: 1;
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
     max-width: 800px;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 0.75rem;
     font-weight: 700;
-    letter-spacing: 1px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
 }
 
 .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
 }
 
 /* Library Section */
 .library-section {
-    padding: 5rem 5%;
+    padding: 4rem 5%;
+    background: var(--bg-canvas);
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 .section-title {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
+    font-weight: 700;
     text-align: center;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary-dark), var(--accent-2));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
 }
 
 .section-desc {
     text-align: center;
     max-width: 700px;
     margin: 0 auto 3rem;
-    color: var(--text-medium);
-    opacity: 0.8;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    opacity: 1;
 }
 
 .book-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
 }
 
 .book-card {
-    background-color: var(--white);
-    border-radius: var(--border-radius-medium);
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-lg, 16px);
     overflow: hidden;
-    transition: all var(--transition-speed) ease;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-subtle);
     position: relative;
     height: 100%;
     display: flex;
@@ -88,24 +80,25 @@
 }
 
 .book-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-medium);
 }
 
 .book-cover {
-    height: 180px;
-    background: linear-gradient(135deg, var(--navy-dark, #0F0C29), var(--primary-dark, #3730A3));
+    height: 160px;
+    background: var(--bg-subtle);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 4rem;
-    color: rgba(255, 255, 255, 0.95);
-    transition: all var(--transition-speed) ease;
+    font-size: 3rem;
+    color: var(--accent-primary);
+    border-bottom: 1px solid var(--border-subtle);
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .book-card:hover .book-cover {
-    color: white;
-    background: linear-gradient(135deg, var(--primary-color, #4F46E5), var(--navy-dark, #0F0C29));
+    background: var(--border-subtle);
 }
 
 .book-info {
@@ -116,16 +109,19 @@
 }
 
 .book-info h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
     font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
 }
 
 .book-info p {
-    color: var(--text-medium);
-    opacity: 0.8;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
     margin-bottom: 1.5rem;
     flex: 1;
+    opacity: 1;
 }
 
 .book-btn {
@@ -133,69 +129,56 @@
     align-items: center;
     justify-content: center;
     min-height: 44px;
-    padding: 0.8rem 1.5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
+    padding: 0.65rem 1.5rem;
+    background: var(--accent-primary);
+    color: var(--text-on-accent);
     text-decoration: none;
-    border-radius: var(--border-radius-medium, 12px);
+    border-radius: 9999px;
     font-weight: 600;
+    font-size: 0.95rem;
     text-align: center;
-    transition: all var(--transition-fast, 0.2s) ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.28);
 }
 
 .book-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.38);
-    color: white;
+    opacity: 0.92;
+    color: var(--text-on-accent);
 }
 
 /* Ramayana Content Section */
 .ramayana-content {
     max-width: 800px;
-    margin: 2rem auto 5rem;
+    margin: 3rem auto 5rem;
     padding: 2rem;
-    background-color: var(--card-bg-color);
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
 }
 
 .ramayana-content h3 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin-bottom: 1rem;
-    color: var(--secondary-color);
+    color: var(--accent-primary);
+    font-weight: 600;
 }
 
 .ramayana-content p {
     line-height: 1.8;
+    color: var(--text-secondary);
 }
 
-/* Animation for Books Section */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+@media (max-width: 768px) {
+    .library-section {
+        padding: 3rem 1rem;
     }
 
-    to {
-        opacity: 1;
-        opacity: 1;
-        transform: translateY(0);
+    .book-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
-}
-
-.book-card {
-    animation: fadeInUp 0.5s ease forwards;
-    opacity: 0;
-}
-
-.book-card:nth-child(1) {
-    animation-delay: 0.1s;
-}
-
-.book-card:nth-child(even) {
-    animation-delay: 0.1s;
 }

@@ -1,28 +1,77 @@
 /* ==========================================================================
    Gurukulam - Shlok Mala Shared Styles
-   Unified Modern Royal Theme (Aligned with book1.css)
-   Indigo #4F46E5 | Emerald #10B981 | Midnight Navy #0F0C29
+   03 — Starlight Bronze Design System
+   Apple-inspired minimalist palette: 95% neutral canvas, 5% bronze accent,
+   1px hairline borders, frosted-glass surfaces.
    ========================================================================== */
 
-:root {
-    --mala-primary: #4F46E5;
-    --mala-primary-dark: #3730A3;
-    --mala-primary-light: #EEF2FF;
-    --mala-secondary: #4338CA;
-    --mala-accent: #10B981;
-    --mala-accent-dark: #059669;
-    --mala-accent-light: #ECFDF5;
-    --mala-accent-mint: #23D5AB;
-    --mala-navy-dark: #0F0C29;
-    --mala-navy-medium: #221B4E;
-    --mala-canvas-bg: #F8F9FF;
-    --mala-card-bg: #FFFFFF;
-    --mala-text-dark: #0F0C29;
-    --mala-text-medium: #374151;
-    --mala-text-muted: #6B7280;
-    --mala-border: rgba(79, 70, 229, 0.12);
-    --mala-shadow: 0 4px 20px rgba(15, 12, 41, 0.06);
-    --mala-shadow-hover: 0 8px 30px rgba(79, 70, 229, 0.14);
+:root,
+[data-theme="light"] {
+    color-scheme: light;
+    --mala-primary: var(--accent-primary, #8C5E32);
+    --mala-primary-dark: var(--accent-hover, #734B26);
+    --mala-primary-light: var(--accent-soft, rgba(140, 94, 50, 0.10));
+    --mala-secondary: var(--accent-hover, #734B26);
+    --mala-accent: var(--accent-primary, #8C5E32);
+    --mala-accent-dark: var(--accent-hover, #734B26);
+    --mala-accent-light: var(--accent-soft, rgba(140, 94, 50, 0.10));
+    --mala-accent-mint: var(--status-success, #2E6F40);
+    --mala-navy-dark: var(--text-primary, #1C1B19);
+    --mala-navy-medium: var(--text-secondary, #57534E);
+    --mala-canvas-bg: var(--bg-canvas, #FAF9F6);
+    --mala-card-bg: var(--bg-surface, #FFFFFF);
+    --mala-text-dark: var(--text-primary, #1C1B19);
+    --mala-text-medium: var(--text-secondary, #57534E);
+    --mala-text-muted: var(--text-muted, #78716C);
+    --mala-border: var(--border-subtle, rgba(28, 27, 25, 0.08));
+    --mala-shadow: var(--shadow-sm, 0 1px 2px rgba(28, 27, 25, 0.04));
+    --mala-shadow-hover: var(--shadow-md, 0 8px 24px rgba(28, 27, 25, 0.06));
+}
+
+[data-theme="dark"] {
+    color-scheme: dark;
+    --mala-primary: var(--accent-primary, #D4A373);
+    --mala-primary-dark: var(--accent-hover, #E2B88C);
+    --mala-primary-light: var(--accent-soft, rgba(212, 163, 115, 0.14));
+    --mala-secondary: var(--accent-hover, #E2B88C);
+    --mala-accent: var(--accent-primary, #D4A373);
+    --mala-accent-dark: var(--accent-hover, #E2B88C);
+    --mala-accent-light: var(--accent-soft, rgba(212, 163, 115, 0.14));
+    --mala-accent-mint: var(--status-success, #6BBF82);
+    --mala-navy-dark: var(--text-primary, #F3EFEA);
+    --mala-navy-medium: var(--text-secondary, #B5AFA6);
+    --mala-canvas-bg: var(--bg-canvas, #111110);
+    --mala-card-bg: var(--bg-surface, #1A1918);
+    --mala-text-dark: var(--text-primary, #F3EFEA);
+    --mala-text-medium: var(--text-secondary, #B5AFA6);
+    --mala-text-muted: var(--text-muted, #8C867E);
+    --mala-border: var(--border-subtle, rgba(243, 239, 234, 0.09));
+    --mala-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.25));
+    --mala-shadow-hover: var(--shadow-md, 0 12px 32px rgba(0, 0, 0, 0.35));
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --mala-primary: var(--accent-primary, #D4A373);
+        --mala-primary-dark: var(--accent-hover, #E2B88C);
+        --mala-primary-light: var(--accent-soft, rgba(212, 163, 115, 0.14));
+        --mala-secondary: var(--accent-hover, #E2B88C);
+        --mala-accent: var(--accent-primary, #D4A373);
+        --mala-accent-dark: var(--accent-hover, #E2B88C);
+        --mala-accent-light: var(--accent-soft, rgba(212, 163, 115, 0.14));
+        --mala-accent-mint: var(--status-success, #6BBF82);
+        --mala-navy-dark: var(--text-primary, #F3EFEA);
+        --mala-navy-medium: var(--text-secondary, #B5AFA6);
+        --mala-canvas-bg: var(--bg-canvas, #111110);
+        --mala-card-bg: var(--bg-surface, #1A1918);
+        --mala-text-dark: var(--text-primary, #F3EFEA);
+        --mala-text-medium: var(--text-secondary, #B5AFA6);
+        --mala-text-muted: var(--text-muted, #8C867E);
+        --mala-border: var(--border-subtle, rgba(243, 239, 234, 0.09));
+        --mala-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.25));
+        --mala-shadow-hover: var(--shadow-md, 0 12px 32px rgba(0, 0, 0, 0.35));
+    }
 }
 
 /* Base resets & Canvas background */
@@ -39,6 +88,7 @@ body {
     color: var(--mala-text-dark);
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.7;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* Main Container */
@@ -63,37 +113,37 @@ body {
     padding: 0.4rem 1.1rem;
     font-size: 0.88rem;
     font-weight: 600;
-    color: #FFFFFF !important;
-    background: linear-gradient(135deg, var(--mala-primary), var(--mala-secondary));
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: var(--text-on-accent, #FAF9F6) !important;
+    background: var(--accent-primary, #8C5E32);
+    border: 1px solid var(--accent-hover, #734B26);
     border-radius: 9999px;
     text-decoration: none;
-    box-shadow: 0 3px 12px rgba(79, 70, 229, 0.28);
+    box-shadow: var(--shadow-sm);
     transition: all 0.2s ease;
     white-space: nowrap;
     margin-left: 0.75rem;
 }
 
 .mala-switch-btn:hover {
-    background: linear-gradient(135deg, var(--mala-secondary), var(--mala-primary-dark));
-    box-shadow: 0 5px 18px rgba(79, 70, 229, 0.4);
+    background: var(--accent-hover, #734B26);
+    box-shadow: var(--shadow-md);
     transform: translateY(-1px);
-    color: #FFFFFF !important;
+    color: var(--text-on-accent, #FAF9F6) !important;
 }
 
 /* ==========================================================================
-   Hero / Intro Section (Royal Theme)
+   Hero / Intro Section (Starlight Bronze Minimalist)
    ========================================================================== */
 .mala-hero {
-    background: linear-gradient(135deg, #0F0C29 0%, #221B4E 60%, #1E1B4B 100%);
-    color: #FFFFFF;
+    background: var(--mala-card-bg);
+    color: var(--mala-text-dark);
     border-radius: 20px;
     padding: 2.25rem 2rem;
     margin-bottom: 1.5rem;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 12px 35px rgba(15, 12, 41, 0.18);
-    border: 1px solid rgba(79, 70, 229, 0.25);
+    box-shadow: var(--mala-shadow);
+    border: 1px solid var(--mala-border);
     text-align: center;
 }
 
@@ -104,16 +154,16 @@ body {
     right: 5%;
     transform: translateY(-50%);
     font-size: 9rem;
-    color: rgba(255, 255, 255, 0.04);
+    color: var(--mala-border);
     font-family: 'Noto Serif Devanagari', serif;
     pointer-events: none;
 }
 
 .mala-hero-badge {
     display: inline-block;
-    background: rgba(16, 185, 129, 0.15);
-    border: 1px solid rgba(16, 185, 129, 0.4);
-    color: var(--mala-accent-mint);
+    background: var(--mala-primary-light);
+    border: 1px solid var(--mala-border);
+    color: var(--mala-primary);
     font-size: 0.85rem;
     font-weight: 600;
     padding: 0.35rem 1rem;
@@ -126,33 +176,33 @@ body {
     font-family: 'Noto Serif Devanagari', serif;
     font-size: 2.2rem;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--mala-text-dark);
     margin: 0 0 0.5rem 0;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     letter-spacing: 0.5px;
 }
 
 .mala-hero .hero-subtitle {
     font-size: 1.1rem;
-    color: #E0E7FF;
+    color: var(--mala-text-medium);
     font-weight: 500;
     margin-bottom: 1rem;
 }
 
 .mala-hero .hero-attribution {
     font-size: 0.92rem;
-    color: #C7D2FE;
+    color: var(--mala-text-muted);
     max-width: 820px;
     margin: 0 auto;
     line-height: 1.6;
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--mala-canvas-bg);
     padding: 0.85rem 1.25rem;
     border-radius: 12px;
+    border: 1px solid var(--mala-border);
     border-left: 3px solid var(--mala-accent);
 }
 
 .mala-hero .hero-attribution strong {
-    color: #FFFFFF;
+    color: var(--mala-text-dark);
 }
 
 /* ==========================================================================
@@ -165,12 +215,14 @@ body {
     position: sticky;
     top: 60px;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.98);
+    background: var(--bg-glass, rgba(250, 249, 246, 0.85));
+    -webkit-backdrop-filter: var(--glass-backdrop, saturate(180%) blur(20px));
+    backdrop-filter: var(--glass-backdrop, saturate(180%) blur(20px));
     border: 1px solid var(--mala-border);
     border-radius: 12px;
     margin: 0 0 2rem;
     padding: 0.65rem 1rem;
-    box-shadow: 0 4px 16px rgba(15, 12, 41, 0.04);
+    box-shadow: var(--mala-shadow);
 }
 
 .topic-nav-wrapper {
@@ -184,7 +236,7 @@ body {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    scrollbar-color: rgba(79, 70, 229, 0.3) transparent;
+    scrollbar-color: var(--mala-border) transparent;
     padding-bottom: 4px;
     scroll-behavior: smooth;
     margin: 0 auto;
@@ -195,7 +247,7 @@ body {
 }
 
 .topic-nav-wrapper::-webkit-scrollbar-thumb {
-    background: rgba(79, 70, 229, 0.25);
+    background: var(--mala-border);
     border-radius: 99px;
 }
 
@@ -207,9 +259,9 @@ body {
     font-size: 0.85rem;
     font-weight: 500;
     font-family: 'Noto Serif Devanagari', 'Poppins', sans-serif;
-    color: var(--mala-primary);
-    background: var(--mala-primary-light);
-    border: 1px solid rgba(79, 70, 229, 0.18);
+    color: var(--mala-text-dark);
+    background: var(--mala-card-bg);
+    border: 1px solid var(--mala-border);
     border-radius: 9999px;
     text-decoration: none;
     white-space: nowrap;
@@ -220,9 +272,9 @@ body {
 .topic-nav-pill:hover,
 .topic-nav-pill:focus-visible {
     background: var(--mala-primary);
-    color: #FFFFFF;
+    color: var(--text-on-accent, #FAF9F6);
     border-color: var(--mala-primary);
-    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.28);
+    box-shadow: var(--mala-shadow);
     transform: translateY(-1px);
     outline: none;
 }
@@ -236,7 +288,7 @@ body {
     gap: 0.75rem;
     margin: 2.5rem 0 1.25rem;
     padding-bottom: 0.65rem;
-    border-bottom: 2px solid rgba(79, 70, 229, 0.15);
+    border-bottom: 1px solid var(--mala-border);
     scroll-margin-top: 130px;
 }
 
@@ -258,7 +310,7 @@ body {
     border-radius: 50%;
     background: var(--mala-accent);
     display: inline-block;
-    box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+    box-shadow: 0 0 8px var(--mala-primary-light);
     flex-shrink: 0;
 }
 
@@ -267,7 +319,7 @@ body {
 .shlok-page-container > h3 {
     margin: 2.5rem 0 1.25rem;
     padding-bottom: 0.65rem;
-    border-bottom: 2px solid rgba(79, 70, 229, 0.15);
+    border-bottom: 1px solid var(--mala-border);
     font-family: 'Noto Serif Devanagari', serif;
     font-size: 1.55rem;
     font-weight: 700;
@@ -308,7 +360,7 @@ body {
 .shlok:hover {
     transform: translateY(-2px);
     box-shadow: var(--mala-shadow-hover);
-    border-color: rgba(79, 70, 229, 0.28);
+    border-color: var(--mala-primary);
 }
 
 /* Card Header (Number badge & Play Button) */
@@ -328,10 +380,10 @@ body {
     font-size: 0.85rem;
     font-weight: 600;
     font-family: 'Noto Serif Devanagari', 'Poppins', sans-serif;
-    color: #FFFFFF;
-    background: linear-gradient(135deg, var(--mala-accent), var(--mala-accent-dark));
+    color: var(--text-on-accent, #FAF9F6);
+    background: var(--mala-primary);
     border-radius: 9999px;
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+    box-shadow: var(--mala-shadow);
 }
 
 /* Sanskrit Verse Styling */
@@ -357,35 +409,35 @@ body {
     min-width: 44px !important;
     min-height: 44px !important;
     padding: 0 !important;
-    background: linear-gradient(135deg, var(--mala-primary), var(--mala-secondary)) !important;
+    background: var(--mala-primary) !important;
     border: none !important;
     border-radius: 50% !important;
-    color: #FFFFFF !important;
+    color: var(--text-on-accent, #FAF9F6) !important;
     font-size: 16px !important;
     cursor: pointer !important;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.28) !important;
+    box-shadow: var(--mala-shadow) !important;
     flex-shrink: 0 !important;
 }
 
 .shlok-play-btn:hover {
     transform: scale(1.08) !important;
-    background: linear-gradient(135deg, var(--mala-secondary), var(--mala-primary-dark)) !important;
-    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4) !important;
+    background: var(--mala-primary-dark) !important;
+    box-shadow: var(--mala-shadow-hover) !important;
 }
 
 .shlok-play-btn.playing {
-    background: linear-gradient(135deg, var(--mala-accent), var(--mala-accent-dark)) !important;
-    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.45) !important;
+    background: var(--status-success, #2E6F40) !important;
+    box-shadow: 0 4px 14px rgba(46, 111, 64, 0.45) !important;
     animation: pulse-ring 1.8s infinite;
 }
 
 @keyframes pulse-ring {
     0%, 100% {
-        box-shadow: 0 4px 14px rgba(16, 185, 129, 0.45);
+        box-shadow: 0 4px 14px rgba(46, 111, 64, 0.45);
     }
     50% {
-        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.7);
+        box-shadow: 0 6px 20px rgba(46, 111, 64, 0.7);
     }
 }
 
@@ -403,7 +455,7 @@ body {
 .hindi-box,
 .hindi,
 .hindi-meaning {
-    background: rgba(79, 70, 229, 0.04) !important;
+    background: var(--mala-primary-light) !important;
     border-left: 3.5px solid var(--mala-primary) !important;
     border-radius: 0 10px 10px 0 !important;
     padding: 0.75rem 1.1rem !important;
@@ -419,8 +471,8 @@ body {
 .english-box,
 .english,
 .english-meaning {
-    background: rgba(16, 185, 129, 0.04) !important;
-    border-left: 3.5px solid var(--mala-accent) !important;
+    background: var(--mala-canvas-bg) !important;
+    border-left: 3.5px solid var(--border-strong, rgba(28, 27, 25, 0.16)) !important;
     border-radius: 0 10px 10px 0 !important;
     padding: 0.75rem 1.1rem !important;
     font-family: 'Poppins', sans-serif !important;
@@ -448,12 +500,12 @@ body {
 
 .hindi-pill {
     background: var(--mala-primary);
-    color: #FFFFFF;
+    color: var(--text-on-accent, #FAF9F6);
 }
 
 .english-pill {
-    background: var(--mala-accent);
-    color: #FFFFFF;
+    background: var(--mala-text-medium);
+    color: var(--text-on-accent, #FAF9F6);
 }
 
 /* ==========================================================================
@@ -465,19 +517,35 @@ body {
     right: 24px;
     width: 380px;
     max-width: calc(100vw - 32px);
-    background: rgba(15, 12, 41, 0.96) !important;
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
+    background: var(--bg-glass, rgba(250, 249, 246, 0.88)) !important;
+    -webkit-backdrop-filter: var(--glass-backdrop, saturate(180%) blur(20px));
+    backdrop-filter: var(--glass-backdrop, saturate(180%) blur(20px));
     border-radius: 18px !important;
-    border: 1px solid rgba(79, 70, 229, 0.35) !important;
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35) !important;
+    border: 1px solid var(--border-strong, rgba(28, 27, 25, 0.16)) !important;
+    box-shadow: var(--shadow-md) !important;
     padding: 14px 18px !important;
     z-index: 1200;
     display: none;
     align-items: center;
     gap: 14px;
-    color: #FFFFFF;
+    color: var(--text-primary);
     animation: slideModalUp 0.35s ease;
+}
+
+[data-theme="dark"] .audio-player-modal {
+    background: var(--bg-glass, rgba(17, 17, 16, 0.88)) !important;
+    border-color: var(--border-strong, rgba(243, 239, 234, 0.18)) !important;
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .modal-stop-btn {
+    color: var(--text-on-accent, #111110) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .modal-stop-btn {
+        color: var(--text-on-accent, #111110) !important;
+    }
 }
 
 @keyframes slideModalUp {
@@ -499,20 +567,21 @@ body {
     width: 48px !important;
     height: 48px !important;
     border-radius: 50% !important;
-    background: linear-gradient(135deg, var(--mala-accent), var(--mala-accent-dark)) !important;
+    background: var(--accent-primary, #8C5E32) !important;
     border: none !important;
-    color: #FFFFFF !important;
+    color: var(--text-on-accent, #FAF9F6) !important;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35) !important;
-    transition: transform 0.2s ease;
+    box-shadow: var(--shadow-sm) !important;
+    transition: transform 0.2s ease, background 0.2s ease;
     flex-shrink: 0;
 }
 
 .modal-play-btn:hover {
     transform: scale(1.06);
+    background: var(--accent-hover, #734B26) !important;
 }
 
 .modal-info {
@@ -522,7 +591,7 @@ body {
 
 .modal-title {
     font-size: 0.88rem !important;
-    color: #FFFFFF !important;
+    color: var(--text-primary) !important;
     font-weight: 600 !important;
     font-family: 'Noto Serif Devanagari', 'Poppins', sans-serif;
     white-space: nowrap;
@@ -534,7 +603,7 @@ body {
 .modal-progress {
     width: 100%;
     height: 6px !important;
-    background: rgba(255, 255, 255, 0.15) !important;
+    background: var(--border-subtle, rgba(28, 27, 25, 0.10)) !important;
     border-radius: 3px !important;
     overflow: hidden;
     cursor: pointer;
@@ -544,14 +613,14 @@ body {
 .modal-progress-bar {
     width: 0%;
     height: 100%;
-    background: linear-gradient(90deg, var(--mala-accent), var(--mala-accent-mint)) !important;
+    background: var(--accent-primary, #8C5E32) !important;
     border-radius: 3px;
     transition: width 0.1s linear;
 }
 
 .modal-time {
     font-size: 0.75rem !important;
-    color: #9CA3AF !important;
+    color: var(--text-muted) !important;
     display: flex;
     justify-content: space-between;
 }
@@ -566,19 +635,19 @@ body {
 
 .modal-speed-btn {
     padding: 2px 8px !important;
-    background: rgba(79, 70, 229, 0.3) !important;
-    border: 1px solid rgba(79, 70, 229, 0.5) !important;
+    background: var(--accent-soft, rgba(140, 94, 50, 0.10)) !important;
+    border: 1px solid var(--border-subtle) !important;
     border-radius: 9999px !important;
     font-size: 11px !important;
-    color: #C7D2FE !important;
+    color: var(--accent-primary) !important;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .modal-speed-btn:hover {
-    background: rgba(79, 70, 229, 0.5) !important;
-    color: #FFFFFF !important;
+    background: var(--accent-hover) !important;
+    color: var(--text-on-accent) !important;
 }
 
 .modal-autoplay {
@@ -591,9 +660,9 @@ body {
     width: 48px !important;
     padding: 2px 4px !important;
     border-radius: 6px !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    background: rgba(255, 255, 255, 0.1) !important;
-    color: #FFFFFF !important;
+    border: 1px solid var(--border-subtle) !important;
+    background: var(--bg-surface) !important;
+    color: var(--text-primary) !important;
     font-size: 11px !important;
 }
 
@@ -601,8 +670,8 @@ body {
     padding: 3px 8px !important;
     border-radius: 6px !important;
     border: none !important;
-    background: var(--mala-primary) !important;
-    color: #FFFFFF !important;
+    background: var(--accent-primary) !important;
+    color: var(--text-on-accent) !important;
     font-size: 11px !important;
     font-weight: 600;
     cursor: pointer;
@@ -612,7 +681,7 @@ body {
     padding: 3px 8px !important;
     border-radius: 6px !important;
     border: none !important;
-    background: #EF4444 !important;
+    background: var(--status-danger, #B43B32) !important;
     color: #FFFFFF !important;
     font-size: 11px !important;
     font-weight: 600;
@@ -623,9 +692,9 @@ body {
     width: 32px !important;
     height: 32px !important;
     border-radius: 50% !important;
-    background: rgba(255, 255, 255, 0.1) !important;
+    background: var(--accent-soft) !important;
     border: none !important;
-    color: #9CA3AF !important;
+    color: var(--text-muted) !important;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -635,8 +704,51 @@ body {
 }
 
 .modal-close:hover {
-    background: rgba(255, 255, 255, 0.2) !important;
+    background: var(--border-strong) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Toast Notifications */
+.tts-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    z-index: 10000;
+    box-shadow: var(--shadow-md, 0 8px 24px rgba(0,0,0,0.15));
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.tts-notification.success {
+    background: var(--status-success, #2E6F40) !important;
     color: #FFFFFF !important;
+}
+
+.tts-notification.warning {
+    background: var(--status-warning, #9A6318) !important;
+    color: #FFFFFF !important;
+}
+
+.tts-notification.info {
+    background: var(--accent-primary, #8C5E32) !important;
+    color: var(--text-on-accent, #FAF9F6) !important;
+}
+
+[data-theme="dark"] .tts-notification.success,
+[data-theme="dark"] .tts-notification.warning,
+[data-theme="dark"] .tts-notification.info {
+    color: #111110 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .tts-notification.success,
+    :root:not([data-theme="light"]) .tts-notification.warning,
+    :root:not([data-theme="light"]) .tts-notification.info {
+        color: #111110 !important;
+    }
 }
 
 /* ==========================================================================

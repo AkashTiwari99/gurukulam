@@ -29,7 +29,7 @@
 
     /* Buttons & Forms */
     .btn,
-    button:not(.hamburger):not(.sidebar-toggle):not(.chapter-sidebar-toggle):not(.navbar-close):not(.dropdown-toggle):not(.dot):not(.shlok-play-btn):not(.modal-close):not(.modal-play-btn),
+    button:not(.hamburger):not(.sidebar-toggle):not(.chapter-sidebar-toggle):not(.navbar-close):not(.dropdown-toggle):not(.dot):not(.shlok-play-btn):not(.modal-close):not(.modal-play-btn):not(.theme-btn),
     input[type="submit"],
     input[type="button"] {
         width: 100%;
@@ -134,7 +134,7 @@
 
     /* Buttons */
     .btn,
-    button:not(.hamburger):not(.sidebar-toggle):not(.chapter-sidebar-toggle):not(.navbar-close):not(.dropdown-toggle):not(.dot):not(.shlok-play-btn):not(.modal-close):not(.modal-play-btn),
+    button:not(.hamburger):not(.sidebar-toggle):not(.chapter-sidebar-toggle):not(.navbar-close):not(.dropdown-toggle):not(.dot):not(.shlok-play-btn):not(.modal-close):not(.modal-play-btn):not(.theme-btn),
     input[type="submit"] {
         padding: 11px 22px;
         min-height: 44px;
@@ -182,7 +182,7 @@
 
     /* Buttons */
     .btn,
-    button:not(.hamburger):not(.sidebar-toggle):not(.chapter-sidebar-toggle):not(.navbar-close):not(.dropdown-toggle):not(.dot):not(.shlok-play-btn):not(.modal-close):not(.modal-play-btn),
+    button:not(.hamburger):not(.sidebar-toggle):not(.chapter-sidebar-toggle):not(.navbar-close):not(.dropdown-toggle):not(.dot):not(.shlok-play-btn):not(.modal-close):not(.modal-play-btn):not(.theme-btn),
     input[type="submit"] {
         padding: 12px 28px;
         min-height: 44px;

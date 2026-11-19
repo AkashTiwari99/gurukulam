@@ -8,6 +8,12 @@
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <meta name="description"
         content="Modern online Vedic Sanskrit keyboard for typing Devanagari characters with Vedic diacritics">
+
+    <!-- Anti-FOUC Pre-Hydration Theming Script -->
+    <script>
+    (function(){try{var s=localStorage.getItem("theme");var m=(s==="light"||s==="dark"||s==="system")?s:"system";var d=m==="dark"||(m==="system"&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches);var t=d?"dark":"light";var el=document.documentElement;el.setAttribute("data-theme",t);el.setAttribute("data-theme-mode",m);el.style.colorScheme=t;}catch(e){try{var d=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;var t=d?"dark":"light";var el=document.documentElement;el.setAttribute("data-theme",t);el.setAttribute("data-theme-mode","system");el.style.colorScheme=t;}catch(_){}}})();
+    </script>
+
     <link rel="stylesheet" href="css/CSS_key.css">
 </head>
 
@@ -16,7 +22,11 @@
     <nav class="compact-nav" aria-label="Gurukulam navigation">
         <a href="../index.html">&larr; Gurukulam Home</a>
         <div class="compact-nav-links">
+            <a href="../programs.html">Programs</a>
             <a href="../books.html">Books</a>
+            <a href="../Campus.html">Campus</a>
+            <a href="../Gallery/Gallery.html">Gallery</a>
+            <a href="../about.html">About</a>
             <a href="../contact.html">Contact</a>
         </div>
     </nav>
@@ -87,6 +97,25 @@
         </main>
     </div>
     <div class="notification" id="notification" role="status" aria-live="polite"></div>
+
+    <footer class="footer compact-footer">
+        <div class="container footer-container">
+            <div class="footer-nav" role="navigation" aria-label="Footer navigation">
+                <a href="../index.html">Home</a>
+                <a href="../programs.html">Programs</a>
+                <a href="../books.html">Books</a>
+                <a href="../Campus.html">Campus</a>
+                <a href="../Gallery/Gallery.html">Gallery</a>
+                <a href="keyboard_01.html">Keyboard</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gurukulam. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <script src="script/Character_data.js" defer></script>
     <script src="script/keyboard.js" defer></script>
 </body>

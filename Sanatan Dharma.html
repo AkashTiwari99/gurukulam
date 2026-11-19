@@ -5,346 +5,238 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sanatan Dharma Research Platform | Gurukulam</title>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Anti-FOUC Pre-Hydration Theming Script -->
+    <script>
+    (function(){try{var s=localStorage.getItem("theme");var m=(s==="light"||s==="dark"||s==="system")?s:"system";var d=m==="dark"||(m==="system"&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches);var t=d?"dark":"light";var el=document.documentElement;el.setAttribute("data-theme",t);el.setAttribute("data-theme-mode",m);el.style.colorScheme=t;}catch(e){try{var d=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;var t=d?"dark":"light";var el=document.documentElement;el.setAttribute("data-theme",t);el.setAttribute("data-theme-mode","system");el.style.colorScheme=t;}catch(_){}}})();
+    </script>
+
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/responsive-improvements.css">
     <style>
-        /* Global Styles */
-        :root {
-            --primary: #B45309;
-            --primary-dark: #92400E;
-            --secondary: #9932CC;
-            --dark: #1E293B;
-            --light: #F5F5F5;
-            --accent: #4169E1;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
         body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            line-height: 1.7;
         }
 
-        .skip-link {
-            position: absolute;
-            top: -60px;
-            left: 8px;
-            background: #047857;
-            color: #FFFFFF;
-            padding: 10px 16px;
-            border-radius: 6px;
-            font-weight: 600;
-            text-decoration: none;
-            z-index: 9999;
-        }
-
-        .skip-link:focus {
-            top: 8px;
-        }
-
-        a:focus-visible,
-        button:focus-visible {
-            outline: 3px solid var(--primary);
-            outline-offset: 2px;
-        }
-
-        .site-icon {
-            width: 1em;
-            height: 1em;
-            display: inline-block;
-            vertical-align: -0.125em;
-            flex-shrink: 0;
-        }
-
-        /* Compact Back-to-Gurukulam Navigation Bar */
-        .compact-nav {
-            position: sticky;
-            top: 0;
-            z-index: 200;
-            background-color: #1E293B;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-        }
-
-        .compact-nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.25rem 20px;
-            min-height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 0.25rem 0.75rem;
-        }
-
-        .compact-nav a {
-            color: #F8FAFC;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-            min-height: 44px;
-            padding: 0 0.75rem;
-            border-radius: 6px;
-            transition: background-color 0.2s ease;
-        }
-
-        .compact-nav a:hover {
-            background-color: rgba(255, 255, 255, 0.14);
-        }
-
-        .compact-nav .compact-home {
-            font-weight: 700;
-        }
-
-        .compact-nav-links {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.25rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 2.5rem 0;
+        .vision-header {
+            background: var(--bg-surface);
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            padding: 3.5rem 0;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=1200&auto=format&q=75') center/cover;
-            opacity: 0.2;
-            z-index: 0;
-        }
-
-        header .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        h1 {
-            font-size: 3rem;
+        .vision-header h1 {
+            color: var(--text-primary);
+            font-size: 2.8rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .tagline {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 1rem;
+        .vision-header p {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        /* In-page Section Navigation */
-        nav.section-nav {
-            background-color: #2F4F4F;
-            position: sticky;
-            top: 52px;
-            z-index: 100;
-        }
-
-        nav.section-nav ul {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            list-style: none;
-            padding: 0.4rem 0;
-            gap: 0.25rem 0.5rem;
-        }
-
-        nav.section-nav li {
-            margin: 0;
-        }
-
-        nav.section-nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background-color 0.2s ease;
-        }
-
-        nav.section-nav a:hover {
-            background-color: var(--primary);
-        }
-
-        /* Main Content */
-        section {
-            padding: 3rem 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        h2 {
-            color: var(--primary);
+        #vision h2, #mission h2, #impact h2 {
             font-size: 2.2rem;
             margin-bottom: 1.5rem;
-            text-align: center;
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        h3 {
-            color: var(--secondary);
+        #vision h3, #mission h3, #impact h3 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        #vision h4, #mission h4, #impact h4 {
+            font-size: 1.4rem;
             margin: 1.5rem 0 1rem;
+            color: var(--accent-primary);
         }
 
-        p {
+        .why-matters {
+            background-color: var(--bg-surface);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .data-point {
+            background-color: var(--accent-soft);
+            border-left: 4px solid var(--accent-primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .data-point h5 {
+            font-size: 1.1rem;
+            color: var(--accent-hover);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .data-point p {
+            color: var(--text-secondary);
+        }
+
+        .mission-pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .pillar {
+            background: var(--bg-surface);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-subtle);
+            border-top: 4px solid var(--accent-primary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pillar:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .pillar-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent-primary);
+            color: var(--text-on-accent);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-weight: bold;
             margin-bottom: 1rem;
         }
 
-        /* Why It Matters Section */
-        .why-matters {
-            background-color: white;
-            padding: 3rem 2rem;
-            border-radius: 8px;
-        }
-
-        .why-matters ul,
-        main section ul {
-            margin-left: 2rem;
+        .goals-list {
+            margin-left: 1.5rem;
             margin-bottom: 1.5rem;
+            list-style: none;
         }
 
-        /* Features Section */
-        .features-grid {
+        .goals-list li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .goals-list li::before {
+            content: "•";
+            color: var(--accent-primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .impact-section {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-subtle);
+            padding: 3rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+
+        .impact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
-        .feature-card {
-            background: white;
-            border-radius: 8px;
+        .impact-item {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
             padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
+        .impact-item h4 {
+            color: var(--text-primary);
         }
 
-        .feature-icon {
+        .impact-item p {
+            color: var(--text-secondary);
+        }
+
+        .impact-icon {
             font-size: 2.5rem;
-            color: var(--primary);
+            color: var(--accent-primary);
             margin-bottom: 1rem;
             display: inline-flex;
             align-items: center;
-        }
-
-        /* Call to Action */
-        .cta {
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            color: white;
-            text-align: center;
-            padding: 4rem 0;
-        }
-
-        .cta h2 {
-            color: white;
-        }
-
-        .cta-buttons {
-            display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
         }
 
-        .btn {
+        .cta-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .cta-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            min-height: 44px;
-            padding: 0.75rem 1.5rem;
-            background-color: white;
-            color: var(--dark);
+            min-height: 48px;
+            padding: 0.9rem 2rem;
+            background: var(--accent-primary);
+            color: var(--text-on-accent);
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 50px;
             font-weight: bold;
-            transition: all 0.2s ease;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
         }
 
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-        }
-
-        .btn:hover {
+        .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow-md);
+            background: var(--accent-hover);
+            color: var(--text-on-accent);
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        footer a {
-            color: #F8FAFC;
-            text-decoration: underline;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            min-height: 44px;
-        }
-
-        .footer-contact {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.25rem 1.5rem;
-            margin: 0.75rem 0;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
+            .vision-header h1 {
+                font-size: 2.2rem;
             }
 
-            nav.section-nav {
-                position: static;
+            #vision h2, #mission h2, #impact h2 {
+                font-size: 1.8rem;
             }
 
-            nav.section-nav ul {
-                flex-direction: column;
-                align-items: center;
+            section {
+                padding: 2.5rem 0;
             }
 
-            .why-matters {
-                padding: 2rem 1.25rem;
+            .why-matters,
+            .impact-section {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -352,16 +244,88 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav class="compact-nav" aria-label="Site navigation">
-        <div class="compact-nav-inner">
-            <a href="index.html" class="compact-home">&larr; Gurukulam Home</a>
-            <div class="compact-nav-links">
-                <a href="books.html">Books</a>
-                <a href="programs.html">Programs</a>
-                <a href="contact.html">Contact</a>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo" aria-label="Gurukulam Home">
+                <div class="logo-circle">
+                    <span>GURU</span>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">Gurukulam</span>
+                    <span class="logo-tagline">Reviving Ancient Wisdom</span>
+                </div>
+            </a>
+
+            <!-- Navigation -->
+            <nav class="navbar" id="navbar" aria-label="Main navigation">
+                <button type="button" class="navbar-close" aria-label="Close menu">
+                    <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="Campus.html">Campus</a></li>
+                    <li><a href="Gallery/Gallery.html">Gallery</a></li>
+                    <li><a href="keyboard/keyboard_01.html">Keyboard</a></li>
+                    <li class="has-dropdown">
+                        <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-dropdown">
+                            About
+                            <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div id="about-dropdown" class="dropdown-content" role="menu">
+                            <a href="about.html" role="menuitem">About Us</a>
+                            <a href="Sanatan Dharma_Vision & Mission.html" role="menuitem" class="current-page" aria-current="page">Our Mission</a>
+                            <a href="team.html" role="menuitem">Our Team</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Header Controls (Theme Switcher + Hamburger) -->
+            <div class="header-right-controls">
+                <div class="theme-switcher" role="group" aria-label="Theme selection">
+                    <button type="button" class="theme-btn" data-theme-val="system" aria-label="System theme" aria-pressed="false" title="System theme">
+                        <svg class="site-icon theme-icon" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                        <span class="theme-btn-text">System</span>
+                    </button>
+                    <button type="button" class="theme-btn" data-theme-val="light" aria-label="Light theme" aria-pressed="false" title="Light theme">
+                        <svg class="site-icon theme-icon" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                        <span class="theme-btn-text">Light</span>
+                    </button>
+                    <button type="button" class="theme-btn" data-theme-val="dark" aria-label="Dark theme" aria-pressed="false" title="Dark theme">
+                        <svg class="site-icon theme-icon" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                        <span class="theme-btn-text">Dark</span>
+                    </button>
+                </div>
+                <!-- Hamburger Menu for Mobile -->
+                <button type="button" class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
-    </nav>
+    </header>
 
     <header>
         <div class="container">
@@ -513,15 +477,36 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>Empowering Research and Knowledge Sharing in Sanatan Dharma</p>
-            <div class="footer-contact">
-                <a href="tel:+919986279053">+91 9986279053</a>
-                <a href="mailto:a7333ji@gmail.com">a7333ji@gmail.com</a>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-nav" role="navigation" aria-label="Footer navigation" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.25rem 1.25rem;margin-bottom:0.75rem;">
+                <a href="index.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Home</a>
+                <a href="programs.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Programs</a>
+                <a href="books.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Books</a>
+                <a href="Campus.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Campus</a>
+                <a href="Gallery/Gallery.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Gallery</a>
+                <a href="keyboard/keyboard_01.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Keyboard</a>
+                <a href="about.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">About</a>
+                <a href="contact.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 0.25rem;">Contact</a>
             </div>
-            <p>&copy; 2026 Gurukulam. All rights reserved.</p>
+            <div class="footer-contact" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.25rem 1.5rem;margin-bottom:0.5rem;font-size:0.95rem;">
+                <a href="tel:+919986279053" style="display:inline-flex;align-items:center;gap:0.4rem;min-height:44px;">
+                    <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    +91 9986279053
+                </a>
+                <a href="mailto:a7333ji@gmail.com" style="display:inline-flex;align-items:center;gap:0.4rem;min-height:44px;">
+                    <svg class="site-icon" aria-hidden="true" viewBox="0 0 24 24" width="1em" height="1em" style="fill:none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    a7333ji@gmail.com
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gurukulam. All rights reserved.</p>
+            </div>
         </div>
     </footer>
+
+    <script src="scripts/main.js" defer></script>
 </body>
+
 </html>

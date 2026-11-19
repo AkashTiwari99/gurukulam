@@ -1,23 +1,169 @@
-/* CSS for the Book Page */
-:root {
-    /* Fallback values for standalone chapter page loads (global.css may not be loaded) */
-    --primary-color: #4F46E5;
-    --primary-dark: #3730A3;
-    --accent-color: #10B981;
-    --accent-1: #4F46E5;
-    --accent-2: #10B981;
-    --navy-dark: #0F0C29;
-    --quote-color: #047857;
-    --primary-bg: #F8F9FF;
-    --primary-text: #1F2937;
-    --secondary-text: #6B7280;
+/* ==========================================================================
+   03 — STARLIGHT BRONZE DESIGN SYSTEM TOKENS
+   Books/style.css — Governs all 645 Ramayana Sargas and standalone chapter views
+   Apple-inspired minimalist palette: 95% neutral canvas, 5% bronze accent,
+   1px hairline borders, frosted-glass surfaces.
+   ========================================================================== */
+
+:root,
+[data-theme="light"] {
+    color-scheme: light;
+
+    /* Surfaces */
+    --bg-canvas: #FAF9F6;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #F2EFE9;
+    --bg-glass: rgba(250, 249, 246, 0.78);
+
+    /* Typography */
+    --text-primary: #1C1B19;
+    --text-secondary: #57534E;
+    --text-muted: #78716C;
+
+    /* Accents (Bronze) */
+    --accent-primary: #8C5E32;
+    --accent-hover: #734B26;
+    --accent-soft: rgba(140, 94, 50, 0.10);
+    --text-on-accent: #FAF9F6;
+
+    /* Borders (Hairline 1px) */
+    --border-subtle: rgba(28, 27, 25, 0.08);
+    --border-strong: rgba(28, 27, 25, 0.16);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(28, 27, 25, 0.04);
+    --shadow-md: 0 8px 24px rgba(28, 27, 25, 0.06);
+
+    /* Semantic Status */
+    --status-success: #2E6F40;
+    --status-warning: #9A6318;
+    --status-danger: #B43B32;
+    --status-info: #2F5D8A;
+
+    /* Backward-Compatible Token Aliases */
+    --primary-color: var(--accent-primary);
+    --primary-dark: var(--accent-hover);
+    --primary-light: #B88A58;
+    --secondary-color: #6E4520;
+    --accent-color: var(--accent-primary);
+    --accent-1: var(--accent-primary);
+    --accent-2: var(--text-primary);
+    --navy-dark: var(--text-primary);
+    --navy-medium: var(--text-secondary);
+    --quote-color: var(--accent-primary);
+    --primary-bg: var(--bg-canvas);
+    --primary-text: var(--text-primary);
+    --secondary-text: var(--text-secondary);
     --font-primary: 'Poppins', sans-serif;
+    --page-padding: 32px;
+}
+
+[data-theme="dark"] {
+    color-scheme: dark;
+
+    /* Surfaces */
+    --bg-canvas: #111110;
+    --bg-surface: #1A1918;
+    --bg-subtle: #242220;
+    --bg-glass: rgba(17, 17, 16, 0.78);
+
+    /* Typography */
+    --text-primary: #F3EFEA;
+    --text-secondary: #B5AFA6;
+    --text-muted: #8C867E;
+
+    /* Accents (Bronze) */
+    --accent-primary: #D4A373;
+    --accent-hover: #E2B88C;
+    --accent-soft: rgba(212, 163, 115, 0.14);
+    --text-on-accent: #111110;
+
+    /* Borders (Hairline 1px) */
+    --border-subtle: rgba(243, 239, 234, 0.09);
+    --border-strong: rgba(243, 239, 234, 0.18);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.35);
+
+    /* Semantic Status */
+    --status-success: #6BBF82;
+    --status-warning: #E3A952;
+    --status-danger: #E87A72;
+    --status-info: #7BAAD6;
+
+    /* Backward-Compatible Token Aliases */
+    --primary-color: var(--accent-primary);
+    --primary-dark: var(--accent-hover);
+    --primary-light: #E2B88C;
+    --secondary-color: #A37447;
+    --accent-color: var(--accent-primary);
+    --accent-1: var(--accent-primary);
+    --accent-2: var(--text-primary);
+    --navy-dark: var(--text-primary);
+    --navy-medium: var(--text-secondary);
+    --quote-color: var(--accent-primary);
+    --primary-bg: var(--bg-canvas);
+    --primary-text: var(--text-primary);
+    --secondary-text: var(--text-secondary);
+    --font-primary: 'Poppins', sans-serif;
+    --page-padding: 32px;
+}
+
+/* Zero-JS media query fallback for standalone chapter page views */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+
+        --bg-canvas: #111110;
+        --bg-surface: #1A1918;
+        --bg-subtle: #242220;
+        --bg-glass: rgba(17, 17, 16, 0.78);
+
+        --text-primary: #F3EFEA;
+        --text-secondary: #B5AFA6;
+        --text-muted: #8C867E;
+
+        --accent-primary: #D4A373;
+        --accent-hover: #E2B88C;
+        --accent-soft: rgba(212, 163, 115, 0.14);
+        --text-on-accent: #111110;
+
+        --border-subtle: rgba(243, 239, 234, 0.09);
+        --border-strong: rgba(243, 239, 234, 0.18);
+
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.25);
+        --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.35);
+
+        --status-success: #6BBF82;
+        --status-warning: #E3A952;
+        --status-danger: #E87A72;
+        --status-info: #7BAAD6;
+
+        --primary-color: var(--accent-primary);
+        --primary-dark: var(--accent-hover);
+        --primary-light: #E2B88C;
+        --secondary-color: #A37447;
+        --accent-color: var(--accent-primary);
+        --accent-1: var(--accent-primary);
+        --accent-2: var(--text-primary);
+        --navy-dark: var(--text-primary);
+        --navy-medium: var(--text-secondary);
+        --quote-color: var(--accent-primary);
+        --primary-bg: var(--bg-canvas);
+        --primary-text: var(--text-primary);
+        --secondary-text: var(--text-secondary);
+        --font-primary: 'Poppins', sans-serif;
+        --page-padding: 32px;
+    }
 }
 
 body {
     font-family: var(--font-primary, 'Poppins', sans-serif);
-    background-color: var(--primary-bg);
-    color: var(--primary-text);
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    margin: 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .page {
@@ -29,9 +175,11 @@ body {
     font-optical-sizing: auto;
     font-style: normal;
     padding-left: 100px;
-    padding-right: var(--page-padding);
+    padding-right: var(--page-padding, 32px);
     overflow-wrap: anywhere;
     word-break: break-word;
+    color: var(--text-primary);
+    background-color: transparent;
 }
 
 .content .page {
@@ -42,46 +190,49 @@ body {
 
 .vyakhya {
     font-family: "Noto Serif Devanagari", serif;
-    font-size: calc(1.5em * var(--reader-scale, 1));
-    line-height: 1.65;
-    font-weight: 450;
+    font-size: calc(1.15em * var(--reader-scale, 1));
+    line-height: 1.75;
+    font-weight: 400;
     font-optical-sizing: auto;
     font-style: normal;
     text-align: justify;
-    color: var(--accent-1);
+    color: var(--text-secondary);
     overflow-wrap: anywhere;
     word-break: break-word;
-    margin-top: 0.5rem;
+    margin-top: 0.65rem;
+    border-left: 3px solid var(--accent-soft);
+    padding-left: 0.85rem;
+    border-radius: 0 4px 4px 0;
 }
 
 .versetext {
     font-family: "Noto Serif Devanagari", serif;
-    font-size: calc(1.2em * var(--reader-scale, 1));
-    line-height: 1.7;
-    font-weight: 400;
+    font-size: calc(1.25em * var(--reader-scale, 1));
+    line-height: 1.8;
+    font-weight: 600;
     font-optical-sizing: auto;
     font-style: normal;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     text-align: center;
-    color: var(--accent-2);
+    color: var(--text-primary);
     margin-left: 0;
     overflow-wrap: anywhere;
     word-break: break-word;
 }
 
 .quote {
-    font-weight: bold;
-    color: var(--quote-color);
-    /* background-color: #e8f5e9; Light green background for quotes */
-    padding: 8px 12px;
-    /* Padding for better spacing */
+    font-weight: 600;
+    color: var(--accent-primary);
+    background-color: var(--accent-soft);
+    padding: 2px 8px;
+    border-radius: 4px;
     display: inline-block;
-    /* Ensure padding and border work correctly */
+    margin: 0 2px;
 }
 
 .Rama_1 {
     font-weight: 600;
-    color: var(--primary-color, #4F46E5);
+    color: var(--accent-primary);
     margin-top: 14px;
     margin-bottom: 10px;
     text-align: justify;
@@ -89,7 +240,7 @@ body {
 
 .Rama_2 {
     font-weight: 400;
-    color: var(--navy-dark, #0F0C29);
+    color: var(--text-secondary);
     margin-top: 14px;
     margin-bottom: 10px;
     text-align: center;
@@ -98,7 +249,7 @@ body {
 .Rama_3 {
     font-weight: 800;
     /* shortcut: used as chapter section divider, capped at 1.8em; upgrade if design needs larger heading */
-    color: var(--primary-dark, #3730A3);
+    color: var(--accent-primary);
     margin-top: 20px;
     margin-bottom: 14px;
     text-align: center;
@@ -108,54 +259,57 @@ body {
 
 .authorline {
     text-align: center;
-    color: var(--secondary-text, #6B7280);
-    font-size: 1.1em;
-    margin-top: 20px;
+    color: var(--text-muted);
+    font-size: 1.05em;
+    margin-top: 24px;
+    padding-top: 16px;
     font-style: italic;
     letter-spacing: 0.01em;
+    border-top: 1px dashed var(--border-subtle);
 }
 
 .page h1 {
     display: flex;
     justify-content: center;
-    margin: 12px 0 16px;
-    border-bottom: 3px solid var(--primary-color, #4F46E5);
-    padding-bottom: 8px;
-    color: var(--navy-dark, #0F0C29);
-    font-size: 1.4em;
+    margin: 16px 0 20px;
+    border-bottom: 2px solid var(--accent-primary);
+    padding-bottom: 10px;
+    color: var(--text-primary);
+    font-size: 1.5em;
     letter-spacing: 0.01em;
 }
 
 /* Zoom-in and Zoom-out classes */
 .zoom-in {
     transform: scale(1.2);
-    /* Scale up by 20% */
     transition: transform 0.3s ease;
-    /* Smooth transition */
 }
 
 .zoom-out {
     transform: scale(0.8);
-    /* Scale down by 20% */
     transition: transform 0.3s ease;
-    /* Smooth transition */
 }
 
 /* Verse and bookmark styling */
 .verse {
     position: relative;
     padding-right: 44px;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
+    padding-top: 6px;
     border-radius: 8px;
     margin-bottom: 1.5rem;
     transition: background-color 0.2s ease, border-left-color 0.2s ease;
-    border-bottom: 1px solid rgba(79, 70, 229, 0.08);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.verse:hover {
+    background-color: var(--accent-soft);
 }
 
 .verse.bookmarked {
-    background-color: rgba(245, 158, 11, 0.08);
-    border-left: 4px solid #f59e0b;
-    padding-left: 10px;
+    background-color: var(--accent-soft);
+    border-left: 4px solid var(--accent-primary);
+    padding-left: 12px;
 }
 
 .verse-bookmark-btn {
@@ -173,20 +327,20 @@ body {
     background: transparent;
     border: 1px solid transparent;
     border-radius: 50%;
-    color: #94a3b8;
+    color: var(--text-muted);
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .verse-bookmark-btn:hover {
-    color: #d97706;
-    background: rgba(245, 158, 11, 0.12);
-    border-color: rgba(245, 158, 11, 0.3);
+    color: var(--accent-hover);
+    background: var(--accent-soft);
+    border-color: var(--border-subtle);
 }
 
 .verse-bookmark-btn.active,
 .verse.bookmarked .verse-bookmark-btn {
-    color: #f59e0b;
+    color: var(--accent-primary);
 }
 
 .verse-bookmark-btn svg {
@@ -204,10 +358,10 @@ body {
     text-align: center;
     padding: 2rem 1.5rem;
     margin: 1.5rem 0;
-    background: #fffbeb;
-    border: 1px dashed #f59e0b;
+    background: var(--bg-subtle);
+    border: 1px dashed var(--accent-primary);
     border-radius: 8px;
-    color: #92400e;
+    color: var(--text-primary);
     font-size: 1.05rem;
 }
 

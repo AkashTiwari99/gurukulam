@@ -1,8 +1,178 @@
 // Enhanced Main Application Module
 const CONTACT_EMAIL = 'a7333ji@gmail.com';
 
+// ============================================================
+// THEME MANAGER (Milestone 1 — Starlight Bronze Theming Engine)
+// ============================================================
+class ThemeManager {
+    constructor() {
+        this.STORAGE_KEY = 'theme';
+        this.VALID_MODES = ['system', 'light', 'dark'];
+        this.mediaQuery = (typeof window !== 'undefined' && window.matchMedia)
+            ? window.matchMedia('(prefers-color-scheme: dark)')
+            : null;
+        this.currentMode = this.getStoredMode();
+        this.init();
+    }
+
+    /**
+     * Safely reads the theme preference from localStorage.
+     * Returns 'system', 'light', or 'dark'. Defaults to 'system'.
+     */
+    getStoredMode() {
+        try {
+            const stored = localStorage.getItem(this.STORAGE_KEY);
+            if (this.VALID_MODES.includes(stored)) {
+                return stored;
+            }
+        } catch (e) {
+            // Storage access restricted (private browsing / security settings)
+        }
+        return 'system';
+    }
+
+    /**
+     * Safely persists the theme mode to localStorage.
+     */
+    setStoredMode(mode) {
+        try {
+            localStorage.setItem(this.STORAGE_KEY, mode);
+        } catch (e) {
+            // Storage write restricted or quota exceeded
+        }
+    }
+
+    /**
+     * Resolves effective theme ('light' or 'dark') given mode ('system', 'light', 'dark').
+     */
+    resolveTheme(mode) {
+        if (mode === 'dark') return 'dark';
+        if (mode === 'light') return 'light';
+        return (this.mediaQuery && this.mediaQuery.matches) ? 'dark' : 'light';
+    }
+
+    /**
+     * Applies theme to documentElement and synchronizes UI.
+     * @param {string} mode - 'system' | 'light' | 'dark'
+     * @param {boolean} [persist=true] - Whether to persist to localStorage
+     */
+    applyTheme(mode, persist = true) {
+        if (!this.VALID_MODES.includes(mode)) {
+            mode = 'system';
+        }
+        this.currentMode = mode;
+
+        if (persist) {
+            this.setStoredMode(mode);
+        }
+
+        const resolvedTheme = this.resolveTheme(mode);
+        const root = document.documentElement;
+
+        // Set CSS attribute hooks
+        root.setAttribute('data-theme', resolvedTheme);
+        root.setAttribute('data-theme-mode', mode);
+
+        // Inform browser engine / native controls (scrollbars, form inputs)
+        try {
+            root.style.colorScheme = resolvedTheme;
+        } catch (e) {
+            // Graceful fallback for older engines
+        }
+
+        // Synchronize switcher buttons
+        this.syncUI();
+    }
+
+    /**
+     * Public method to change mode and persist.
+     */
+    setTheme(mode) {
+        this.applyTheme(mode, true);
+    }
+
+    /**
+     * Synchronizes all .theme-btn elements across the page with current mode.
+     */
+    syncUI() {
+        const mode = this.currentMode;
+        const buttons = document.querySelectorAll('.theme-btn');
+        buttons.forEach(btn => {
+            const val = btn.getAttribute('data-theme-val');
+            const isActive = (val === mode);
+            btn.classList.toggle('active', isActive);
+            btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+    }
+
+    /**
+     * Attaches delegated click listeners, OS change listener, and storage synchronization.
+     */
+    setupListeners() {
+        // Delegated click handler on document handles all current and dynamic .theme-btn elements
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('.theme-btn');
+            if (!btn) return;
+            e.preventDefault();
+            const val = btn.getAttribute('data-theme-val');
+            if (val && this.VALID_MODES.includes(val)) {
+                this.setTheme(val);
+            }
+        });
+
+        // Listen for OS media query changes
+        if (this.mediaQuery) {
+            const onOSChange = () => {
+                // Only adapt when the user preference is set to 'system'
+                if (this.currentMode === 'system') {
+                    this.applyTheme('system', false);
+                }
+            };
+
+            if (typeof this.mediaQuery.addEventListener === 'function') {
+                this.mediaQuery.addEventListener('change', onOSChange);
+            } else if (typeof this.mediaQuery.addListener === 'function') {
+                this.mediaQuery.addListener(onOSChange);
+            }
+        }
+
+        // Multi-tab synchronization
+        window.addEventListener('storage', (e) => {
+            if (e.key === this.STORAGE_KEY && e.newValue) {
+                if (this.VALID_MODES.includes(e.newValue)) {
+                    this.applyTheme(e.newValue, false);
+                }
+            }
+        });
+    }
+
+    /**
+     * Initializes ThemeManager state and event listeners.
+     */
+    init() {
+        // Apply theme immediately (safe because documentElement is already available)
+        this.applyTheme(this.currentMode, false);
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                this.syncUI();
+                this.setupListeners();
+            });
+        } else {
+            this.syncUI();
+            this.setupListeners();
+        }
+    }
+}
+
 class MainApp {
     constructor() {
+        // Initialize ThemeManager and expose to global scope for tests / cross-component access
+        this.themeManager = new ThemeManager();
+        if (typeof window !== 'undefined') {
+            window.themeManager = this.themeManager;
+        }
+
         this.init();
     }
 
@@ -14,6 +184,7 @@ class MainApp {
             this.setupDropdownBehavior();
             this.setupTestimonialSlider();
             this.setupNavbarToggle();
+            this.setupNavbarScroll();
             this.setupKeyboardDismiss();
         });
 
@@ -23,6 +194,20 @@ class MainApp {
                 clearInterval(this.sliderInterval);
             }
         });
+    }
+
+    // Navbar scroll shrink behavior (toggles .scrolled on .header)
+    setupNavbarScroll() {
+        const header = document.querySelector('.header');
+        if (!header) return;
+
+        const onScroll = () => {
+            const scrolled = window.scrollY > 20;
+            header.classList.toggle('scrolled', scrolled);
+        };
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll(); // Check scroll position immediately on page load/refresh
     }
 
     // Highlight current page in navigation

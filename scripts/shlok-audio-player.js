@@ -11,6 +11,43 @@
     let currentShlokNumber = null;
     let autoPlayActive = false;
     let autoPlayEnd = null;
+    let currentSpeed = 1.0;
+    
+    // Keyboard navigation helper for audio progress slider
+    function attachProgressKeydownListener(container) {
+        if (!container || container._hasKeydown) return;
+        container._hasKeydown = true;
+        container.addEventListener('keydown', (e) => {
+            if (!currentAudio || !Number.isFinite(currentAudio.duration) || currentAudio.duration <= 0) return;
+            const step = 5;
+            let handled = false;
+            if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                currentAudio.currentTime = Math.min(currentAudio.duration, currentAudio.currentTime + step);
+                handled = true;
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                currentAudio.currentTime = Math.max(0, currentAudio.currentTime - step);
+                handled = true;
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                currentAudio.currentTime = 0;
+                handled = true;
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                currentAudio.currentTime = currentAudio.duration;
+                handled = true;
+            }
+            if (handled) {
+                const ratio = currentAudio.currentTime / currentAudio.duration;
+                const progressBar = document.getElementById('modalProgressBar');
+                const currentTimeEl = document.getElementById('modalCurrentTime');
+                if (progressBar) progressBar.style.width = `${ratio * 100}%`;
+                if (currentTimeEl) currentTimeEl.textContent = formatTime(currentAudio.currentTime);
+                container.setAttribute('aria-valuenow', String(Math.round(ratio * 100)));
+            }
+        });
+    }
     
     // Configuration
     const config = {
@@ -46,7 +83,7 @@
                     <span id="modalDuration">0:00</span>
                 </div>
                 <div class="modal-controls">
-                    <button type="button" class="modal-speed-btn" id="modalSpeedBtn" aria-label="Playback speed">1.0x</button>
+                    <button type="button" class="modal-speed-btn" id="modalSpeedBtn" aria-label="Playback speed">${currentSpeed === 1 ? '1.0' : currentSpeed}x</button>
                     <div class="modal-autoplay">
                         <input type="number" id="modalAutoStart" min="1" max="120" placeholder="Start" aria-label="Auto-play start shlok" />
                         <input type="number" id="modalAutoEnd" min="1" max="120" placeholder="End" aria-label="Auto-play end shlok" />
@@ -57,6 +94,8 @@
             </div>
             <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Close audio player">${ICONS.close}</button>
         `;
+        const progressContainer = modal.querySelector('#modalProgressContainer');
+        attachProgressKeydownListener(progressContainer);
         document.body.appendChild(modal);
         return modal;
     }
@@ -215,18 +254,20 @@
         const notification = document.createElement('div');
         notification.className = `tts-notification ${type}`;
         notification.textContent = message;
+        notification.setAttribute('role', 'status');
+        notification.setAttribute('aria-live', 'polite');
         notification.style.cssText = `
             position: fixed;
             top: 20px;
             right: 20px;
             padding: 12px 20px;
-            background: ${type === 'success' ? '#27ae60' : type === 'warning' ? '#f39c12' : '#d4a574'};
-            color: white;
             border-radius: 8px;
             z-index: 10000;
             animation: slideIn 0.3s ease;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            font-family: 'Noto Sans', sans-serif;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 13px;
+            font-weight: 500;
         `;
         document.body.appendChild(notification);
         setTimeout(() => notification.remove(), 3000);
@@ -290,8 +331,11 @@
 
         // Create new audio
         const audio = new Audio(audioPath);
+        audio.playbackRate = currentSpeed;
 
         audio.addEventListener('canplaythrough', () => {
+            if (currentAudio !== audio) return; // Guard against canceled loads
+            audio.playbackRate = currentSpeed;
             button.innerHTML = ICONS.pause;
             button.classList.add('playing');
             button.disabled = false;
@@ -442,6 +486,19 @@
 
     // Setup modal event listeners
     function setupModalListeners() {
+        const progressContainer = document.getElementById('modalProgressContainer');
+        if (progressContainer) {
+            attachProgressKeydownListener(progressContainer);
+        }
+
+        // Delegated keydown for progress bar seeking
+        document.addEventListener('keydown', (e) => {
+            const container = e.target && (e.target.id === 'modalProgressContainer' || (e.target.closest && e.target.closest('.modal-progress')));
+            if (container) {
+                attachProgressKeydownListener(container);
+            }
+        });
+
         document.addEventListener('click', (e) => {
             const modal = document.getElementById('shlokAudioPlayer');
             if (!modal) return;
@@ -489,13 +546,14 @@
             
             // Speed control
             if (speedBtn && speedBtn.contains(e.target)) {
+                const speeds = [1.0, 1.25, 1.5, 0.75];
+                const currentIndex = speeds.indexOf(currentSpeed);
+                const nextIndex = (currentIndex + 1) % speeds.length;
+                currentSpeed = speeds[nextIndex];
                 if (currentAudio) {
-                    const speeds = [1.0, 1.25, 1.5, 0.75];
-                    const currentSpeed = currentAudio.playbackRate;
-                    const nextIndex = (speeds.indexOf(currentSpeed) + 1) % speeds.length;
-                    currentAudio.playbackRate = speeds[nextIndex];
-                    speedBtn.textContent = speeds[nextIndex] + 'x';
+                    currentAudio.playbackRate = currentSpeed;
                 }
+                speedBtn.textContent = (currentSpeed === 1 ? '1.0' : currentSpeed) + 'x';
             }
 
             // Autoplay start
@@ -583,8 +641,53 @@
                 }
             }
             
+            .tts-notification {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                border-radius: 8px;
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-size: 13px;
+                font-weight: 500;
+            }
+
+            .tts-notification.success {
+                background: var(--status-success, #2E6F40) !important;
+                color: #FFFFFF !important;
+            }
+            
             .tts-notification.warning {
-                background: #f39c12 !important;
+                background: var(--status-warning, #9A6318) !important;
+                color: #FFFFFF !important;
+            }
+
+            .tts-notification.info {
+                background: var(--accent-primary, #8C5E32) !important;
+                color: var(--text-on-accent, #FAF9F6) !important;
+            }
+
+            [data-theme="dark"] .tts-notification.warning {
+                color: #111110 !important;
+            }
+
+            [data-theme="dark"] .tts-notification.success {
+                color: #111110 !important;
+            }
+
+            [data-theme="dark"] .tts-notification.info {
+                color: #111110 !important;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                :root:not([data-theme="light"]) .tts-notification.warning,
+                :root:not([data-theme="light"]) .tts-notification.success,
+                :root:not([data-theme="light"]) .tts-notification.info {
+                    color: #111110 !important;
+                }
             }
             
             .modal-controls {
@@ -595,24 +698,27 @@
             
             .modal-speed-btn {
                 padding: 4px 10px;
-                background: rgba(212, 175, 55, 0.2);
-                border: 1px solid rgba(212, 175, 55, 0.3);
+                background: var(--accent-soft, rgba(140, 94, 50, 0.10));
+                border: 1px solid var(--border-subtle, rgba(28, 27, 25, 0.12));
                 border-radius: 15px;
                 font-size: 12px;
-                color: #5c3a21;
+                color: var(--accent-primary, #8C5E32);
                 cursor: pointer;
                 transition: all 0.2s;
             }
             
             .modal-speed-btn:hover {
-                background: rgba(212, 175, 55, 0.3);
+                background: var(--accent-hover, #734B26);
+                color: var(--text-on-accent, #FAF9F6);
             }
 
             .modal-autoplay input[type="number"] {
                 width: 64px;
                 padding: 4px 6px;
                 border-radius: 6px;
-                border: 1px solid rgba(0,0,0,0.08);
+                border: 1px solid var(--border-subtle, rgba(28, 27, 25, 0.15));
+                background: var(--bg-surface, #FFFFFF);
+                color: var(--text-primary, #1C1B19);
                 font-size: 12px;
             }
 
@@ -620,14 +726,25 @@
                 padding: 4px 8px;
                 border-radius: 8px;
                 border: none;
-                background: #d4a574;
-                color: #fff;
+                background: var(--accent-primary, #8C5E32);
+                color: var(--text-on-accent, #FAF9F6);
                 cursor: pointer;
                 font-size: 12px;
             }
 
             .modal-stop-btn {
-                background: #c94b4b;
+                background: var(--status-danger, #B43B32);
+                color: #FFFFFF;
+            }
+
+            [data-theme="dark"] .modal-stop-btn {
+                color: #111110 !important;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                :root:not([data-theme="light"]) .modal-stop-btn {
+                    color: #111110 !important;
+                }
             }
             
             .shlok-play-btn:disabled {
