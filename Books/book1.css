@@ -516,12 +516,24 @@ html {
     pointer-events: auto;
 }
 
-/* ===== RESPONSIVE - MOBILE & TABLET ===== */
+/* ===== RESPONSIVE - MOBILE & TABLET (<= 1024px) ===== */
 @media (max-width: 1024px) {
     :root {
-        --sidebar-width: 240px;
+        --sidebar-width: 280px;
         --sidebar-collapsed-width: 0;
         --header-height: 64px;
+    }
+
+    body {
+        overflow-x: hidden;
+        overflow-x: clip;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .header {
+        -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
+        background: rgba(255, 255, 255, 0.98) !important;
     }
 
     .header-container {
@@ -530,10 +542,21 @@ html {
         gap: 0.5rem;
     }
 
-    /* ---- Mobile Sidebar ---- */
+    /* Main Container on Tablet & Mobile */
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        height: auto !important;
+        min-height: calc(100vh - var(--header-height)) !important;
+        width: 100%;
+        margin-left: 0 !important;
+        overflow: visible !important;
+    }
+
+    /* Off-canvas Sidebar Drawer */
     .sidebar {
         display: none;
-        width: var(--sidebar-width);
+        width: var(--sidebar-width) !important;
         flex: 0 0 var(--sidebar-width);
         height: calc(100dvh - var(--header-height));
         max-height: calc(100dvh - var(--header-height));
@@ -545,6 +568,8 @@ html {
         border-radius: 0 1rem 1rem 0;
         padding: 1rem;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: contain;
         transform: none;
         transition: left 0.3s ease;
         z-index: 9997;
@@ -562,29 +587,42 @@ html {
         min-height: 44px;
     }
 
-    /* ---- Content Full Width on Mobile ---- */
+    /* Content Area on Tablet & Mobile */
     .content {
-        width: 100%;
+        width: 100% !important;
         min-width: 0;
         max-width: 100%;
         flex: none;
-        padding: 15px;
+        padding: 20px;
         margin-right: 0;
         margin-left: 0;
         box-shadow: none;
-        overflow-y: visible;
+        overflow-y: visible !important;
+        overflow-x: clip !important;
         overflow-wrap: anywhere;
-        height: auto;
+        height: auto !important;
+        min-height: calc(100vh - var(--header-height)) !important;
     }
 
     .content .page {
-        padding: 15px;
+        padding: 16px !important;
         margin-left: 0 !important;
-        padding-left: 15px !important;
-        padding-right: 15px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
     }
 
-    /* ---- Chapter Sidebar Toggle Pill Button ---- */
+    /* Reader Sticky Toolbar docks cleanly under Header */
+    .reader-toolbar {
+        position: sticky;
+        top: var(--header-height, 64px) !important;
+        z-index: 40;
+        -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
+        background: #f8f9ff !important;
+        border: 1px solid rgba(79, 70, 229, 0.15);
+    }
+
+    /* Chapter Sidebar Toggle Pill Button */
     .chapter-sidebar-toggle,
     #sidebarToggle {
         display: inline-flex !important;
@@ -623,7 +661,7 @@ html {
         background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
     }
 
-    /* ---- Backdrop ---- */
+    /* Drawer Backdrop */
     .mobile-drawer-backdrop {
         position: fixed;
         inset: 0;
@@ -648,37 +686,7 @@ html {
     }
 }
 
-@media (max-width: 900px) {
-    .header {
-        -webkit-backdrop-filter: none;
-        backdrop-filter: none;
-        background: rgba(255, 255, 255, 0.98);
-    }
-}
-
-/* ---- Tablet Portrait Specific ---- */
-@media (min-width: 641px) and (max-width: 1024px) {
-    .content {
-        padding: 20px !important;
-    }
-
-    .content .page {
-        padding: 20px !important;
-    }
-
-    .sidebar {
-        width: 280px !important;
-    }
-
-    .chapter-sidebar-toggle,
-    #sidebarToggle {
-        bottom: 16px !important;
-        left: 16px !important;
-        z-index: 1100 !important;
-    }
-}
-
-/* ---- Mobile Portrait Specific ---- */
+/* Mobile Portrait Narrow Screens (<= 640px) */
 @media (max-width: 640px) {
     .content {
         padding: 12px !important;
@@ -688,16 +696,11 @@ html {
         padding: 12px !important;
     }
 
-    .sidebar {
-        width: 280px !important;
-    }
-
     .chapter-sidebar-toggle,
     #sidebarToggle {
         bottom: 12px !important;
         left: 12px !important;
         font-size: 0.85rem !important;
-        z-index: 1100 !important;
     }
 }
 
