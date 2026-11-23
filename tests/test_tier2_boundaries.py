@@ -376,6 +376,29 @@ class TestFeature08InteractiveFeaturesBoundaries(unittest.TestCase):
         main_js = (PROJECT_ROOT / "scripts" / "main.js").read_text(encoding="utf-8")
         self.assertIn("preventDefault", main_js)
 
+    def test_f8_b06_tablet_keyboard_crash_resilience(self):
+        """Verify tablet keyboard crash resilience, drag clamping, and GPU safety."""
+        key_js = (PROJECT_ROOT / "keyboard" / "script" / "keyboard.js").read_text(encoding="utf-8")
+        key_css = (PROJECT_ROOT / "keyboard" / "css" / "CSS_key.css").read_text(encoding="utf-8")
+        key_html = (PROJECT_ROOT / "keyboard" / "keyboard_01.html").read_text(encoding="utf-8")
+
+        # 1. Native tablet software keyboard suppression & focus preservation
+        self.assertIn("inputmode", key_js, "keyboard.js must manage inputmode to prevent soft keyboard clash")
+        self.assertIn("inputmode=\"none\"", key_html, "keyboard_01.html must set inputmode=none on text-input")
+        self.assertIn("preventFocusSteal", key_js, "keyboard.js must prevent focus stealing on virtual key taps")
+
+        # 2. Touch event error boundaries & window event tracking
+        self.assertIn("setPointerCapture", key_js)
+        self.assertIn("orientationchange", key_js, "keyboard.js must clamp coordinates on orientation change")
+        self.assertIn("isDragging", key_js, "keyboard.js must guard against multi-touch drag state corruption")
+
+        # 3. Tablet CSS safety (1024px breakpoint, GPU blur disable, touch scrolling)
+        self.assertIn("@media (max-width: 1024px)", key_css, "CSS_key.css must define tablet responsive rules")
+        self.assertIn("-webkit-overflow-scrolling", key_css, "CSS_key.css must define touch overflow scrolling")
+        self.assertIn("resize: none", key_css, "CSS_key.css must disable resize handle on touch devices")
+        self.assertIn("keyboard-section", key_css, "CSS_key.css must disable backdrop blur on keyboard sections")
+        self.assertIn("pan-y", key_css, "CSS_key.css must permit vertical page scroll on touch header")
+
 
 # ==============================================================================
 # Feature 9: WCAG Contrast Boundaries (5 Tests)

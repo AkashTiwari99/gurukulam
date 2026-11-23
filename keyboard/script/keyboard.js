@@ -39,6 +39,14 @@ document.addEventListener('DOMContentLoaded', function() {
         storedTheme === 'dark' ||
         (storedTheme === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
     let activeSection = 'vowels'; // Default active section
+
+    // Helper: Prevent virtual keyboard buttons from stealing focus from text area
+    function preventFocusSteal(element) {
+        if (!element) return;
+        const prevent = (e) => e.preventDefault();
+        element.addEventListener('pointerdown', prevent);
+        element.addEventListener('mousedown', prevent);
+    }
     
     // Initialize the application
     function init() {
@@ -57,8 +65,19 @@ document.addEventListener('DOMContentLoaded', function() {
         // Make keyboard draggable
         makeDraggable(keyboardContainer);
         
-        // Focus on text input
-        textInput.focus();
+        // Suppress native tablet/mobile software keyboard clash when using virtual keyboard
+        if (textInput) {
+            textInput.setAttribute('inputmode', 'none');
+            // Only auto-focus on non-touch desktop devices to prevent tablet viewport jumping
+            const isTouchDevice = (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) || window.innerWidth <= 1024;
+            if (!isTouchDevice) {
+                try {
+                    textInput.focus({ preventScroll: true });
+                } catch (_) {
+                    textInput.focus();
+                }
+            }
+        }
         
         // Show default section
         showSection('vowels');
@@ -88,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleBtn.textContent = `${section.icon} ${section.name}`;
             toggleBtn.title = `Show ${section.name} section`;
             toggleBtn.setAttribute('aria-pressed', 'false');
+            preventFocusSteal(toggleBtn);
             toggleBtn.addEventListener('click', () => showSection(section.id));
             
             toggleContainer.appendChild(toggleBtn);
@@ -98,13 +118,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Show specific section and hide others
     function showSection(sectionId) {
-        // Hide all sections
-        vowelsSection.classList.add('hidden');
-        consonantsSection.classList.add('hidden');
-        specialSection.classList.add('hidden');
-        vedicSection.classList.add('hidden');
-        samaSection.classList.add('hidden');
-        numbersSection.classList.add('hidden');
+        // Hide all sections safely
+        if (vowelsSection) vowelsSection.classList.add('hidden');
+        if (consonantsSection) consonantsSection.classList.add('hidden');
+        if (specialSection) specialSection.classList.add('hidden');
+        if (vedicSection) vedicSection.classList.add('hidden');
+        if (samaSection) samaSection.classList.add('hidden');
+        if (numbersSection) numbersSection.classList.add('hidden');
         
         // Remove active class from all buttons
         document.querySelectorAll('.section-toggle-btn').forEach(btn => {
@@ -115,22 +135,22 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show selected section
         switch(sectionId) {
             case 'vowels':
-                vowelsSection.classList.remove('hidden');
+                if (vowelsSection) vowelsSection.classList.remove('hidden');
                 break;
             case 'consonants':
-                consonantsSection.classList.remove('hidden');
+                if (consonantsSection) consonantsSection.classList.remove('hidden');
                 break;
             case 'special':
-                specialSection.classList.remove('hidden');
+                if (specialSection) specialSection.classList.remove('hidden');
                 break;
             case 'vedic':
-                vedicSection.classList.remove('hidden');
+                if (vedicSection) vedicSection.classList.remove('hidden');
                 break;
             case 'sama':
-                samaSection.classList.remove('hidden');
+                if (samaSection) samaSection.classList.remove('hidden');
                 break;
             case 'numbers':
-                numbersSection.classList.remove('hidden');
+                if (numbersSection) numbersSection.classList.remove('hidden');
                 break;
         }
         
@@ -142,6 +162,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         activeSection = sectionId;
+
+        // Reset scroll position to top of keyboard body on section switch
+        if (keyboardContainer) {
+            keyboardContainer.scrollTop = 0;
+        }
     }
     
     // Render all keyboard sections
@@ -156,15 +181,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Render vowels with matra buttons
     function renderVowels() {
-        if (typeof vowels !== 'undefined') {
+        if (typeof vowels !== 'undefined' && vowelsGroup) {
             vowels.forEach(vowel => {
                 const vowelKey = document.createElement('div');
                 vowelKey.className = 'vowel-key';
                 
                 const mainBtn = document.createElement('button');
+                mainBtn.type = 'button';
                 mainBtn.className = 'vowel-main-btn';
                 mainBtn.textContent = vowel.devanagari;
                 mainBtn.title = `${vowel.roman} - ${vowel.devanagari}`;
+                preventFocusSteal(mainBtn);
                 mainBtn.addEventListener('click', () => insertText(vowel.devanagari));
                 
                 vowelKey.appendChild(mainBtn);
@@ -174,9 +201,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     matraContainer.className = 'matra-container';
                     
                     const matraBtn = document.createElement('button');
+                    matraBtn.type = 'button';
                     matraBtn.className = 'matra-btn';
                     matraBtn.textContent = vowel.matra;
                     matraBtn.title = `Matra for ${vowel.roman}`;
+                    preventFocusSteal(matraBtn);
                     matraBtn.addEventListener('click', () => insertText(vowel.matra));
                     
                     matraContainer.appendChild(matraBtn);
@@ -190,13 +219,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Render consonants
     function renderConsonants() {
-        if (typeof consonants !== 'undefined') {
+        if (typeof consonants !== 'undefined' && consonantsGroup) {
             consonants.forEach(consonant => {
                 const key = document.createElement('button');
                 key.type = 'button';
                 key.className = 'key consonant-btn';
                 key.textContent = consonant.devanagari;
                 key.title = `${consonant.roman} - ${consonant.devanagari}`;
+                preventFocusSteal(key);
                 key.addEventListener('click', () => insertText(consonant.devanagari));
                 
                 consonantsGroup.appendChild(key);
@@ -206,12 +236,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Render special characters
     function renderSpecialChars() {
-        if (typeof specialChars !== 'undefined') {
+        if (typeof specialChars !== 'undefined' && specialGroup) {
             specialChars.forEach(char => {
                 const key = document.createElement('button');
+                key.type = 'button';
                 key.className = 'key';
                 key.textContent = char.devanagari;
                 key.title = `${char.title} - ${char.roman}`;
+                preventFocusSteal(key);
                 key.addEventListener('click', () => insertText(char.devanagari));
                 
                 specialGroup.appendChild(key);
@@ -221,12 +253,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Render Vedic diacritics
     function renderVedicDiacritics() {
-        if (typeof vedicDiacritics !== 'undefined') {
+        if (typeof vedicDiacritics !== 'undefined' && vedicGroup) {
             vedicDiacritics.forEach(diacritic => {
                 const key = document.createElement('button');
+                key.type = 'button';
                 key.className = 'key accent-key';
                 key.textContent = diacritic.char;
                 key.title = diacritic.title;
+                preventFocusSteal(key);
                 key.addEventListener('click', () => insertText(diacritic.char));
                 
                 vedicGroup.appendChild(key);
@@ -236,16 +270,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Render SAMA_svara diacritics
     function renderSamaSvara() {
-        if (typeof SAMA_svara !== 'undefined') {
+        if (typeof SAMA_svara !== 'undefined' && samaGroup) {
             SAMA_svara.forEach(item => {
                 const key = document.createElement('button');
+                key.type = 'button';
                 key.className = 'key';
                 key.textContent = item.char;
                 key.title = item.title;
+                preventFocusSteal(key);
                 key.addEventListener('click', () => insertText(item.char));
                 
                 // Special styling for superscript numbers
-                if (item.title.includes('superscript')) {
+                if (item.title && item.title.includes('superscript')) {
                     key.classList.add('super-btn');
                 }
                 
@@ -256,15 +292,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Render numbers
     function renderNumbers() {
-        if (typeof numbers !== 'undefined') {
+        if (typeof numbers !== 'undefined' && numbersGroup) {
             numbers.forEach(number => {
                 const numberContainer = document.createElement('div');
                 numberContainer.className = 'number-container';
                 
                 const numberBtn = document.createElement('button');
+                numberBtn.type = 'button';
                 numberBtn.className = 'number-btn';
                 numberBtn.textContent = number.devanagari;
                 numberBtn.title = `${number.roman} - ${number.devanagari}`;
+                preventFocusSteal(numberBtn);
                 numberBtn.addEventListener('click', () => insertText(number.devanagari));
                 
                 numberContainer.appendChild(numberBtn);
@@ -275,17 +313,23 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Insert text at cursor position
     function insertText(text) {
-        const startPos = textInput.selectionStart;
-        const endPos = textInput.selectionEnd;
+        if (!textInput) return;
         const currentValue = textInput.value;
+        const startPos = (typeof textInput.selectionStart === 'number') ? textInput.selectionStart : currentValue.length;
+        const endPos = (typeof textInput.selectionEnd === 'number') ? textInput.selectionEnd : currentValue.length;
         
         textInput.value = currentValue.substring(0, startPos) + 
                           text + 
                           currentValue.substring(endPos, currentValue.length);
         
         // Set cursor position after inserted text
-        textInput.selectionStart = textInput.selectionEnd = startPos + text.length;
-        textInput.focus();
+        const newPos = startPos + text.length;
+        textInput.selectionStart = textInput.selectionEnd = newPos;
+        try {
+            textInput.focus({ preventScroll: true });
+        } catch (_) {
+            textInput.focus();
+        }
         
         // Trigger input event for any listeners
         textInput.dispatchEvent(new Event('input', { bubbles: true }));
@@ -293,9 +337,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Delete selected range or character immediately before cursor
     function deleteAtCursor() {
-        const startPos = textInput.selectionStart;
-        const endPos = textInput.selectionEnd;
+        if (!textInput) return;
         const currentValue = textInput.value;
+        const startPos = (typeof textInput.selectionStart === 'number') ? textInput.selectionStart : currentValue.length;
+        const endPos = (typeof textInput.selectionEnd === 'number') ? textInput.selectionEnd : currentValue.length;
 
         if (startPos !== endPos) {
             textInput.value = currentValue.substring(0, startPos) + currentValue.substring(endPos);
@@ -315,7 +360,11 @@ document.addEventListener('DOMContentLoaded', function() {
             textInput.selectionStart = textInput.selectionEnd = newPos;
         }
 
-        textInput.focus();
+        try {
+            textInput.focus({ preventScroll: true });
+        } catch (_) {
+            textInput.focus();
+        }
         textInput.dispatchEvent(new Event('input', { bubbles: true }));
     }
 
@@ -333,20 +382,31 @@ document.addEventListener('DOMContentLoaded', function() {
         // Download text
         if (downloadBtn) downloadBtn.addEventListener('click', downloadText);
         
-        // Insert space
-        if (spaceBtn) spaceBtn.addEventListener('click', () => insertText(' '));
+        // Insert space (with focus steal prevention)
+        if (spaceBtn) {
+            preventFocusSteal(spaceBtn);
+            spaceBtn.addEventListener('click', () => insertText(' '));
+        }
 
-        // Virtual Backspace
-        if (backspaceBtn) backspaceBtn.addEventListener('click', deleteAtCursor);
+        // Virtual Backspace (with focus steal prevention)
+        if (backspaceBtn) {
+            preventFocusSteal(backspaceBtn);
+            backspaceBtn.addEventListener('click', deleteAtCursor);
+        }
 
-        // Virtual Enter (newline)
-        if (enterBtn) enterBtn.addEventListener('click', () => insertText('\n'));
+        // Virtual Enter (newline with focus steal prevention)
+        if (enterBtn) {
+            preventFocusSteal(enterBtn);
+            enterBtn.addEventListener('click', () => insertText('\n'));
+        }
         
         // Toggle theme
         if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
         
-        // Handle keyboard shortcuts
-        textInput.addEventListener('keydown', handleKeyboardShortcuts);
+        // Handle physical keyboard shortcuts
+        if (textInput) {
+            textInput.addEventListener('keydown', handleKeyboardShortcuts);
+        }
     }
     
     // Toggle keyboard visibility
@@ -354,12 +414,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const keyboard = document.querySelector('.keyboard-container');
         if (!keyboard) return;
         const isHidden = keyboard.classList.toggle('hidden');
-        toggleKeyboardBtn.setAttribute('aria-expanded', String(!isHidden));
-        toggleKeyboardBtn.textContent = isHidden ? '⌨️ Show Keyboard' : '⌨️ Hide Keyboard';
+        if (toggleKeyboardBtn) {
+            toggleKeyboardBtn.setAttribute('aria-expanded', String(!isHidden));
+            toggleKeyboardBtn.textContent = isHidden ? '⌨️ Show Keyboard' : '⌨️ Hide Keyboard';
+        }
+        // When virtual keyboard is hidden, restore native inputmode for device software keyboard
+        if (textInput) {
+            if (isHidden) {
+                textInput.removeAttribute('inputmode');
+            } else {
+                textInput.setAttribute('inputmode', 'none');
+            }
+        }
     }
     
     // Copy text to clipboard (Clipboard API with execCommand fallback)
     async function copyText() {
+        if (!textInput) return;
         const value = textInput.value;
         if (value.trim() === '') {
             showNotification('Text area is empty', 'error');
@@ -377,7 +448,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         try {
-            textInput.focus();
+            textInput.focus({ preventScroll: true });
             textInput.select();
             const copied = document.execCommand('copy');
             if (copied) {
@@ -392,23 +463,27 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Clear text area
     function clearText() {
-        if (textInput.value.trim() === '') return;
+        if (!textInput || textInput.value.trim() === '') return;
         
         if (confirm('Are you sure you want to clear the text?')) {
             textInput.value = '';
-            textInput.focus();
+            try {
+                textInput.focus({ preventScroll: true });
+            } catch (_) {
+                textInput.focus();
+            }
             showNotification('Text cleared', 'success');
         }
     }
     
     // Download text as file
     function downloadText() {
-        if (textInput.value.trim() === '') {
+        if (!textInput || textInput.value.trim() === '') {
             showNotification('Text area is empty', 'error');
             return;
         }
         
-        const blob = new Blob([textInput.value], { type: 'text/plain' });
+        const blob = new Blob([textInput.value], { type: 'text/plain;charset=utf-8' });
         const url = URL.createObjectURL(blob);
         
         const a = document.createElement('a');
@@ -417,9 +492,11 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.appendChild(a);
         a.click();
         
-        // Clean up
+        // Clean up safely
         setTimeout(() => {
-            document.body.removeChild(a);
+            if (a.parentNode) {
+                a.parentNode.removeChild(a);
+            }
             URL.revokeObjectURL(url);
         }, 100);
         
@@ -464,6 +541,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Show notification
     function showNotification(message, type = 'success') {
+        if (!notification) return;
         notification.textContent = message;
         notification.className = 'notification show ' + type;
         setTimeout(() => {
@@ -473,10 +551,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Handle keyboard shortcuts
     function handleKeyboardShortcuts(e) {
-        // Handle special keyboard shortcuts based on the instructions
-        // This is a simplified version - you might want to expand this
-        
-        // For example, handle capital letters for retroflex consonants
         if (e.shiftKey) {
             switch(e.key) {
                 case 'T': e.preventDefault(); insertText('ट'); break;
@@ -488,21 +562,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 case 'H': e.preventDefault(); insertText('ः'); break;
             }
         }
-        
-        // Handle other special cases as needed
     }
     
     // Make element draggable via unified Pointer Events (mouse + touch + pen)
+    // with touch safety, orientation clamp, drag threshold, and error boundaries
     function makeDraggable(element) {
         const header = element ? element.querySelector('.keyboard-header') : null;
-        if (!header) return;
+        if (!header || !element) return;
 
         let isDragging = false;
+        let hasMoved = false;
         let activePointerId = null;
         let startX = 0;
         let startY = 0;
         let initialX = 0;
         let initialY = 0;
+
+        const DRAG_THRESHOLD = 4; // minimum movement (px) before detaching into floating mode
 
         header.addEventListener('pointerdown', (e) => {
             // Do not hijack taps/clicks on section toggle buttons
@@ -513,7 +589,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
+            // Multi-touch guard: if already dragging, ignore secondary touches
+            if (isDragging) {
+                return;
+            }
+
+            // On narrow screens (phone / tablet portrait <= 768px), keep keyboard docked to prevent layout blowout
+            if (window.innerWidth <= 768) {
+                return;
+            }
+
             isDragging = true;
+            hasMoved = false;
             activePointerId = e.pointerId;
             startX = e.clientX;
             startY = e.clientY;
@@ -522,27 +609,40 @@ document.addEventListener('DOMContentLoaded', function() {
             initialX = rect.left;
             initialY = rect.top;
 
-            element.classList.add('is-floating', 'dragging');
-            element.style.left = `${initialX}px`;
-            element.style.top = `${initialY}px`;
-            element.style.width = `${rect.width}px`;
-            element.style.bottom = 'auto';
-            element.style.right = 'auto';
-
+            // Safely capture pointer on header; catch DOMException on tablet/multi-touch devices
             if (header.setPointerCapture) {
-                header.setPointerCapture(e.pointerId);
+                try {
+                    header.setPointerCapture(e.pointerId);
+                } catch (_) {}
             }
             header.style.cursor = 'grabbing';
-            e.preventDefault();
         });
 
-        header.addEventListener('pointermove', (e) => {
+        const onPointerMove = (e) => {
             if (!isDragging || e.pointerId !== activePointerId) return;
-
-            e.preventDefault();
 
             const dx = e.clientX - startX;
             const dy = e.clientY - startY;
+
+            // Use higher movement threshold for touch (12px) to prevent finger jitter detachment
+            const dragThreshold = (e.pointerType === 'touch') ? 12 : 4;
+
+            // Only transition to floating once drag exceeds the movement threshold
+            if (!hasMoved) {
+                if (Math.hypot(dx, dy) < dragThreshold) {
+                    return;
+                }
+                hasMoved = true;
+                const rect = element.getBoundingClientRect();
+                element.classList.add('is-floating', 'dragging');
+                element.style.left = `${initialX}px`;
+                element.style.top = `${initialY}px`;
+                element.style.width = `${Math.min(rect.width, window.innerWidth - 20)}px`;
+                element.style.bottom = 'auto';
+                element.style.right = 'auto';
+            }
+
+            e.preventDefault();
 
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
@@ -558,11 +658,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             element.style.left = `${newX}px`;
             element.style.top = `${newY}px`;
-        });
+        };
 
-        function stopDrag(e) {
+        const stopDrag = (e) => {
             if (!isDragging || (e.pointerId !== undefined && e.pointerId !== activePointerId)) return;
             isDragging = false;
+            hasMoved = false;
             if (header.releasePointerCapture && activePointerId !== null) {
                 try {
                     header.releasePointerCapture(activePointerId);
@@ -573,11 +674,59 @@ document.addEventListener('DOMContentLoaded', function() {
             activePointerId = null;
             element.classList.remove('dragging');
             header.style.cursor = 'grab';
+        };
+
+        // Attach listeners to window so pointer capture drops never hang the drag state
+        window.addEventListener('pointermove', onPointerMove, { passive: false });
+        window.addEventListener('pointerup', stopDrag);
+        window.addEventListener('pointercancel', stopDrag);
+        header.style.cursor = 'grab';
+
+        // Orientation change & viewport resize clamping for tablet/mobile devices
+        function clampPosition() {
+            if (!element.classList.contains('is-floating')) return;
+
+            // Re-dock cleanly if screen becomes narrow
+            if (window.innerWidth <= 768) {
+                element.classList.remove('is-floating', 'dragging');
+                element.style.left = '';
+                element.style.top = '';
+                element.style.width = '';
+                element.style.bottom = '';
+                element.style.right = '';
+                return;
+            }
+
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            const elementWidth = element.offsetWidth;
+            const elementHeight = element.offsetHeight;
+
+            const padding = 10;
+            const maxX = Math.max(padding, viewportWidth - elementWidth - padding);
+            const maxY = Math.max(padding, viewportHeight - elementHeight - padding);
+
+            const currentLeft = parseFloat(element.style.left) || padding;
+            const currentTop = parseFloat(element.style.top) || padding;
+
+            element.style.left = `${Math.max(padding, Math.min(currentLeft, maxX))}px`;
+            element.style.top = `${Math.max(padding, Math.min(currentTop, maxY))}px`;
+            element.style.width = `${Math.min(elementWidth, viewportWidth - 2 * padding)}px`;
         }
 
-        header.addEventListener('pointerup', stopDrag);
-        header.addEventListener('pointercancel', stopDrag);
-        header.style.cursor = 'grab';
+        window.addEventListener('resize', clampPosition);
+        window.addEventListener('orientationchange', clampPosition);
+
+        // Double-click or double-tap on header quickly resets and docks the keyboard
+        header.addEventListener('dblclick', (e) => {
+            if (e.target.closest('.section-toggle-container, button')) return;
+            element.classList.remove('is-floating', 'dragging');
+            element.style.left = '';
+            element.style.top = '';
+            element.style.width = '';
+            element.style.bottom = '';
+            element.style.right = '';
+        });
     }
     
     // Initialize the application

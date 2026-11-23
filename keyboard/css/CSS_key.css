@@ -383,7 +383,7 @@ input:focus-visible {
 
 #text-input:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15), var(--shadow-md);
+  box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-md);
   background: var(--key-bg);
 }
 
@@ -405,6 +405,8 @@ input:focus-visible {
   user-select: none;
   transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
   resize: both;
   min-width: 300px;
   min-height: 280px;
@@ -434,7 +436,9 @@ input:focus-visible {
   text-align: center;
   font-weight: 600;
   user-select: none;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 20;
   overflow: hidden;
   touch-action: none;
 }
@@ -458,7 +462,74 @@ input:focus-visible {
   touch-action: manipulation;
 }
 
-/* Mobile responsiveness for dragging */
+/* Tablet & Mobile viewport responsiveness (<= 1024px) */
+@media (max-width: 1024px) {
+  /* Eliminate GPU blur lag & WebKit crashes on tablet */
+  *,
+  *::before,
+  *::after {
+    --backdrop-blur: none !important;
+  }
+
+  .keyboard-container,
+  .keyboard-section,
+  #text-input,
+  .compact-nav,
+  .section-toggle-btn,
+  #notification {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .keyboard-container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 16px auto 0;
+    max-height: 55vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    resize: none !important;
+    background: var(--bg-surface);
+  }
+
+  #text-input {
+    resize: none !important;
+  }
+
+  .keyboard-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding: 12px 16px;
+  }
+
+  .key-group.vowels {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(58px, 1fr));
+    gap: 8px;
+  }
+
+  .vowel-key {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* Touchscreens: disable CSS resize handles & permit vertical page scrolling on header */
+@media (pointer: coarse) {
+  .keyboard-container,
+  #text-input {
+    resize: none !important;
+  }
+
+  .keyboard-header {
+    touch-action: pan-y;
+  }
+}
+
+/* Mobile & narrow tablet responsiveness (<= 768px): keep keyboard docked */
 @media (max-width: 768px) {
   .keyboard-container {
     width: 100%;
@@ -468,14 +539,23 @@ input:focus-visible {
     max-height: 60vh;
     resize: none;
   }
+
+  .keyboard-container.is-floating {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    margin: 16px auto 0 !important;
+    max-width: 100% !important;
+  }
   
   .keyboard-header {
-    cursor: grab;
-    touch-action: none; /* Prevent scrolling during drag on mobile */
+    cursor: default;
+    touch-action: pan-y;
   }
   
   .keyboard-header:active {
-    cursor: grabbing;
+    cursor: default;
   }
 }
 
